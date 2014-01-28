@@ -63,6 +63,24 @@ A graphical Henshin specification is shown in Figure~\ref{fig:gen-test-data}
 
 \subsection{Task 3: Computing Rankings}
 
+%% - Couples sorted by their average rating
+%% - Couples sorted by the number of common movies
+
+\subsection{Extension Task 1: Finding Cliques}
+
+%% Create a Clique node for every set of at least N Persons that act together
+%% in at least C Movies.  This is a generalization of Task 2 where a Couple is
+%% essentially a Clique for N = 2 and C = 3.  (Possibly, we let C fixed at 3.)
+%%
+%% Possible solution alternatives: (a) somehow have N and C as parameters to
+%% the transformation, or (b) have a higher-order transformation that gets N
+%% and C and generates a rule for that combination.
+
+\subsection{Extension Task 2: Compute Rankings for Cliques}
+
+%% Same queries as for Task 3, except they are for Cliques rather than for
+%% Couples.
+
 \section{Evaluation Criteria}
 
 \subsection{Completeness \& Correctness}
@@ -83,9 +101,11 @@ and saving the model).
 There are two versions of the transformations: Task 1 and Task 1+2.
 Please run the benchmarks for both versions and both data sets.
 
+%% Tassilo: Why not measuring Task 2 on its own?
+
 Plot the benchmarks. On the x-axis you print the size of the data set
 in number of nodes and on the y-axis you plot the time. The number of nodes
-includes all types of nodes (movies and actors). Make the measurements in
+includes all types of nodes (movies and persons). Make the measurements in
 steps of 100,000 nodes. For the synthetic data, choose n=?,...,?
 For the IMDB data, take the whole data set and to sampling. You can use
 the sampler provided in \cite{IMDB2EMF}. 
