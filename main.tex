@@ -25,10 +25,12 @@ This is the movies case for the TTC 2014.
 \vskip 32pt
 
 
-\section{Introduction}
+\section{Introduction (MTT)}
 
 
-\section{Detailed Case Description}
+\section{Detailed Case Description (MTT)}
+
+MM and data\\
 
 The transformation is on data from a movie database.
 We use the metamodel shown in Figure~\ref{fig:metamodel}.
@@ -44,7 +46,7 @@ parser provided in \cite{IMDB2EMF} for this purpose.
 \label{fig:metamodel}
 \end{figure}
 
-\subsection{Task 1: Generating Test Data}
+\subsection{Task 1: Generating Test Data (CK)}
 \label{sec:gen-test-data}
 
 The first task is to generate some test data.
@@ -59,14 +61,20 @@ A graphical Henshin specification is shown in Figure~\ref{fig:gen-test-data}
 \label{fig:gen-test-data}
 \end{figure}
 
-\subsection{Task 2: Finding Couples}
+\subsection{Task 2: Finding Couples (CK)}
 
-\subsection{Task 3: Computing Rankings}
+Implementation of the task
+
+\subsection{Task 3: Computing Average Rankings (CK)}
 
 %% - Couples sorted by their average rating
 %% - Couples sorted by the number of common movies
 
-\subsection{Extension Task 1: Finding Cliques}
+Implementation of the task
+
+\subsection{Extension Task 1: Compute Top Ten Couples (TH)}
+
+\subsection{Extension Task 2: Finding Cliques (TH)}
 
 %% Create a Clique node for every set of at least N Persons that act together
 %% in at least C Movies.  This is a generalization of Task 2 where a Couple is
@@ -76,18 +84,25 @@ A graphical Henshin specification is shown in Figure~\ref{fig:gen-test-data}
 %% the transformation, or (b) have a higher-order transformation that gets N
 %% and C and generates a rule for that combination.
 
-\subsection{Extension Task 2: Compute Rankings for Cliques}
+\subsection{Extension Task 3: Compute Average Rankings for Cliques (TH)}
+
+\subsection{Extension Task 4: Compute Top Ten Cliques (TH)}
 
 %% Same queries as for Task 3, except they are for Cliques rather than for
 %% Couples.
 
-\section{Evaluation Criteria}
 
-\subsection{Completeness \& Correctness}
+\section{Evaluation Criteria (MTT)}
+
+Test data from December 2013. Contact us to get the data.
+
+\subsection{Correctness Tests (TH)}
 
 Correctness is checked using the synthetic data.
 
-\subsection{Benchmarks}
+We provide: number of couples and top ten lists.
+
+\subsection{Benchmarks (CK)}
 
 Perform benchmarks using the following input data sets:
 \begin{enumerate}
@@ -98,7 +113,7 @@ For both cases, you should run the transformation and measure
 the time needed to complete the transformation (without loading 
 and saving the model).
 
-There are two versions of the transformations: Task 1 and Task 1+2.
+There are two versions of the transformations: Finding Couple and Finding Cliques.
 Please run the benchmarks for both versions and both data sets.
 
 %% Tassilo: Why not measuring Task 2 on its own?
