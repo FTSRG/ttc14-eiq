@@ -23,21 +23,46 @@ Matthias Tichy\\ Chalmers $|$ University of Gothenburg, Sweden \\matthias.tichy@
   Social networks and other web 2.0 platforms use huge amounts of data
   to offer new services to customers. Often these data can be
   expressed as huge graphs and thus could be seen as a potential new
-  application field for model transformations. Automotive software is
-  an existing application area for model-driven software engineering
-  is and its models approach also huge sizes. Both these application
-  areas require that model transformation tools scale to models with
-  millions of nodes and edges. This transformation case uses the IMBDB
-  movie database as a model with such a size. The transformation deals
-  with identifying all cliques of $n$ actors which perform in the same movie.
+  application field for model transformations. However, this
+  application area requires that model transformation tools scale to
+  models with millions of objects. This transformation case targets
+  this application area by using the IMBDB movie database as a
+  model. The transformation deals with identifying all cliques of $n$
+  actors which perform in the same movies.
   \end{abstract}
 \vskip 32pt
 
 
 \section{Introduction (MTT)}
 
+The driving force behind social networks and other new web 2.0
+offerings is often huge amount of data. Consequently, concepts like
+MapReduce \cite{Dean08} and libraries like Hadoop \cite{Hadoop} and
+Giraph \cite{Giraph} have been developed to efficiently process these
+huge amount of data. However, model transformation approaches have so
+far not adressed this field.
 
-\section{Detailed Case Description (MTT)}
+Automotive software is an already well-established application field
+for model-driven software engineering and its models approach also
+huge sizes. As a consequence from these two examples, model
+transformation approaches must be scalable to models with million
+objects to be applicable for these application areas.
+
+We present in the following a case which uses the IMDB movie database
+\cite{IMDBDATA} as a data source. The IMDB movie database contains
+information about movies, actors performing in the movies, movie
+ratings, etc. The main task is to develop a model transformation which
+identifies \emph{all} cliques of $n$ actors which perform in the same
+movies and calculate the average rating of those movies. Evaluation
+criteria are correctness and performance.
+
+In the following section, we describe the case in more detail
+including the meta model as well as the different basic and extension
+tasks. After that, Section \ref{sec-eval} presents the evaluation
+criteria for submitted solutions to this case.
+
+
+\section{Detailed Case Description (MTT)}\label{sec-case}
 
 MM and data\\
 
@@ -101,7 +126,7 @@ Implementation of the task
 %% Couples.
 
 
-\section{Evaluation Criteria (MTT)}
+\section{Evaluation Criteria (MTT)}\label{sec-eval}
 
 Test data from December 2013. Contact us to get the data.
 
