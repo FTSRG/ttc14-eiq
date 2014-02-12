@@ -205,8 +205,21 @@ NOTE TO US: IMPLEMENT SAMPLING!
 
 \appendix
 
-\section{Expected Results}
-\label{sec:expected-results}
+\section{Expected Number of Couples and Cliques}
+\label{sec:expected-numbers}
+
+\begin{table}[h!]
+  \centering
+  \begin{tabular}{| l | r | r | r | r |}
+  \hline
+  \textbf{Model} & \textbf{\#Couples} & \textbf{\#Triples} & \textbf{\#Quadruples} & \textbf{\#Quintuples}\\
+  \hline
+  \hline
+\end{tabular}
+\caption{The synthetic models with the expected numbers of Couples and Cliques of various sizes}
+\label{tab:synthetic-numbers}
+\end{table}
+
 
 \begin{table}[h!]
   \centering
@@ -215,7 +228,7 @@ NOTE TO US: IMPLEMENT SAMPLING!
   \textbf{Model}              & \textbf{\#Couples} & \textbf{\#Triples}\\
   \hline
   imdb-0005000-49930.movies   & 17352 & 127825\\
-  imdb-0010000-98168.movies   & 28211 & 98168\\
+  imdb-0010000-98168.movies   & 28211 & 188712\\
   imdb-0030000-207420.movies  & 35198 & 200532\\
   imdb-0045000-299504.movies  & 43294 & 210985\\
   imdb-0065000-404920.movies  & 57889 & 220891\\
@@ -253,6 +266,10 @@ NOTE TO US: IMPLEMENT SAMPLING!
 \caption{The IMDb Models with the expected numbers of Couples and Triples (Cliques of size 3)}
 \label{tab:imdb-numbers}
 \end{table}
+
+\section{Expected Top-Ten Lists}
+\label{sec:expected-top-ten}
+
 
 
 \end{document}
