@@ -125,14 +125,24 @@ The goal of this task is to produce top-ten lists of the couples created by
 Task~2.  For this purpose, two model queries should be given.
 
 \begin{enumerate}
-\item[(a)] Compute the top-ten couples according to the number of common movies.
-\item[(b)] Compute the top-ten couples according to the average rating of their
+\item[(a)] Compute the top-ten couples according to the average rating of their
   common movies (requires Task~3 to be solved).
+\item[(b)] Compute the top-ten couples according to the number of common
+  movies.
 \end{enumerate}
 
 Each of the couples in the top-ten lists should be printed with the names of
-the two persons, the average rating (only if Task~3 has been solved), and a
-list of the couple's common movies, each movie with its title and rating.
+the two persons, the average rating (only if Task~3 has been solved), and the
+number of the couple's common movies.  We don't require printing the common
+movies' titles because the couple with the most common movies in the complete
+IMDb model has more than 400 of them.
+
+If two couples have the same value for the average rating/number of common
+movies, their order in the top-ten list is arbitrary.  However, an extra bonus
+point can be earned by cutting those ties with the respective other metric.
+E.g., when computing metric (a) and two couples have the same average rating,
+then the one with more common movies should be listed first.  If both values
+are equal, the order may be arbitrary (but preferrably still stable) again.
 
 \subsection{Extension Task 2: Finding Cliques (TH)}
 
