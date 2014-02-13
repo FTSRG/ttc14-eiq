@@ -139,10 +139,11 @@ IMDb model has more than 400 of them.
 
 If two couples have the same value for the average rating/number of common
 movies, their order in the top-ten list is arbitrary.  However, an extra bonus
-point can be earned by cutting those ties with the respective other metric.
-E.g., when computing metric (a) and two couples have the same average rating,
-then the one with more common movies should be listed first.  If both values
-are equal, the order may be arbitrary (but preferrably still stable) again.
+point can be earned by cutting those ties in a stable manner, for example by
+applying the respective other metric in that case.  E.g., when computing metric
+(a) and two couples have the same average rating, then the one with more common
+movies could be listed first.  If both values are equal, one could fall back to
+comparing hash-codes or the names of the members of the couples.
 
 \subsection{Extension Task 2: Finding Cliques (TH)}
 
@@ -171,21 +172,22 @@ You can earn an extra bonus point if \(c\) may be customized.
 Like it was done for couples in Task~3, the \verb|avgRating| attribute of
 cliques should be set to the average rating of all its common movies.
 
-\subsection{Extension Task 4: Compute Top Ten Cliques (TH)}
+\subsection{Extension Task 4: Compute Top-Ten Cliques (TH)}
 
 This is a variant of Extension Task~1 for cliques instead of couples.  Again,
 two queries should be given.
 
 \begin{enumerate}
-\item[(a)] Compute the top-ten cliques of size \(n\) according to the number of
-  common movies.
-\item[(b)] Compute the top-ten cliques of size \(n\) according to the average
-  rating of their common movies (requires Extension Task~3 to be solved).
+\item[(a)] Compute the top-ten cliques of a given size \(n\) according to the
+  average rating of their common movies (requires Extension Task~3 to be
+  solved).
+\item[(b)] Compute the top-ten cliques of a given size \(n\) according to the
+  number of common movies.
 \end{enumerate}
 
 Again, every clique should be printed with the names of its members, the
-average rating, and the list of common movies, each movie with its title and
-rating.
+average rating, and the number of common movies.  Like in Extension Task~1, an
+extra bonus point can be earned by cutting ties in a stable manner.
 
 
 \section{Evaluation Criteria (MTT)}\label{sec-eval}
@@ -229,6 +231,8 @@ NOTE TO US: IMPLEMENT SAMPLING!
 \bibliography{biblio}
 
 \appendix
+
+
 
 \section{Expected Number of Couples and Cliques}
 \label{sec:expected-numbers}
