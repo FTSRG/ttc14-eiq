@@ -83,6 +83,21 @@ parser provided in \cite{IMDB2EMF} for this purpose.
 \subsection{Task 1: Generating Test Data (CK)}
 \label{sec:gen-test-data}
 
+%% Notes from Tassilo:
+%%
+%% - The test data generation currently creates models contains only couples.
+%% For the extension tasks it would be good if the rules also created cliques
+%% of size 3, 4, and 5.  The real data does contain such cliques, but finding
+%% those is extremely costly.  Therefore, we should be able to validate
+%% solutions for the extension tasks also with just the simpler, smaller
+%% generated models.
+%%
+%% - The test data generation should also assign unique names to the Actors and
+%% Actresses, and ratings to the Movies.  Else, the computation of the average
+%% rating and the top-ten queries cannot be evaluated with the test models.
+%% (Again, the real IMDb models are probably to complex/large for most
+%% participants.)
+
 The first task is to generate some test data.
 This will be used to test the correctness and to do benchmarks later.
 The generation of the test data should go as follows...
