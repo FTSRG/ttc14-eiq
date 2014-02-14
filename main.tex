@@ -43,18 +43,20 @@ huge amount of data. However, model transformation approaches have so
 far not adressed this field.
 
 Automotive software is an already well-established application field
-for model-driven software engineering and its models approach also
+for model-driven software engineering and its models also approach
 huge sizes. As a consequence from these two examples, model
 transformation approaches must be scalable to models with million
 objects to be applicable for these application areas.
 
 We present in the following a case which uses the IMDb movie database
-\cite{IMDBDATA} as a data source. The IMDb movie database contains
-information about movies, actors performing in the movies, movie
-ratings, etc. The main task is to develop a model transformation which
-identifies \emph{all} cliques of $n$ actors which perform in at least
-three common movies and calculate the average rating of those movies. Evaluation
-criteria are correctness and performance.
+\cite{IMDBDATA} as a data source. The IMDb movie database contains information
+about movies, actors performing in the movies, movie ratings, etc. The main
+task is to develop a model transformation which identifies \emph{all} couples
+of two actors who perform in at least three common movies and calculate the
+average rating of those movies.  This core task is then generalized to cliques
+of \(n\) actors.  Furthermore, some queries calculating top-ten lists of
+couples and cliques are to be written.  Evaluation criteria are correctness and
+performance.
 
 In the following section, we describe the case in more detail
 including the meta model as well as the different basic and extension
