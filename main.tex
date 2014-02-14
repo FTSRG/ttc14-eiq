@@ -66,22 +66,23 @@ criteria for submitted solutions to this case.
 
 \section{Detailed Case Description (MTT)}\label{sec-case}
 
-We use the IMDb data about movies, actors, actresses and movie ratings for
-this transformation case. The resulting metamodel is shown in
-Figure~\ref{fig:metamodel}. In addition to the obvious classes, the
-metamodel contains a common superclass for actors and actresses as
-well as classes for groups of actors which play in common movies. The
-class \p{Group} contains the attribute \p{avgRating} which stores the
-average rating of the common movies of the group of actors. The
-metamodel distinguishes between groups of two persons or a clique of
-$n$ persons to support the different tasks in this transformation
-cases.  The EMF model as well as a parser for the IMDb database file
-is available at \cite{IMDB2EMF}.
+We use the IMDb data about movies, actors, actresses and movie ratings for this
+transformation case. The resulting metamodel is shown in
+Figure~\ref{fig:metamodel}. In addition to the obvious classes, the metamodel
+contains a common superclass for actors and actresses as well as classes for
+groups of actors which play in common movies. The class \p{Group} contains the
+attribute \p{avgRating} which stores the average rating of the common movies of
+the group of actors. The metamodel distinguishes between groups of two persons
+(a \verb|Couple|) or a \verb|Clique| of $n$ persons to support the different
+tasks in this transformation cases.  The EMF model as well as a parser for the
+IMDb database file is available at \cite{IMDB2EMF}.
+
+TODO: Add the URL where the pre-parsed IMDb models can be downloaded.
 
 \begin{figure}[ht]
 \centering
 \includegraphics[width=0.6\textwidth]{movies}
-\caption{Simplified metamodel for the movie database.}
+\caption{A metamodel for the relevant aspects of the movie database}
 \label{fig:metamodel}
 \end{figure}
 
