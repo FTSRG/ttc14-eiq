@@ -27,9 +27,9 @@ Matthias Tichy\\ Chalmers $|$ University of Gothenburg, Sweden \\matthias.tichy@
   application field for model transformations. However, this
   application area requires that model transformation tools scale to
   models with millions of objects. This transformation case targets
-  this application area by using the IMBDB movie database as a
+  this application area by using the IMDB movie database as a
   model. The transformation deals with identifying all cliques of $n$
-  actors which perform in the same movies.
+  actors which perform in a set of movies together.
   \end{abstract}
 \vskip 32pt
 
@@ -53,8 +53,8 @@ We present in the following a case which uses the IMDB movie database
 \cite{IMDBDATA} as a data source. The IMDB movie database contains
 information about movies, actors performing in the movies, movie
 ratings, etc. The main task is to develop a model transformation which
-identifies \emph{all} cliques of $n$ actors which perform in the same
-movies and calculate the average rating of those movies. Evaluation
+identifies \emph{all} cliques of $n$ actors which perform in at least
+three common movies and calculate the average rating of those movies. Evaluation
 criteria are correctness and performance.
 
 In the following section, we describe the case in more detail
@@ -65,7 +65,7 @@ criteria for submitted solutions to this case.
 
 \section{Detailed Case Description (MTT)}\label{sec-case}
 
-We use the data about movies, actors, actresses and movie ratings for
+We use the IMDB data about movies, actors, actresses and movie ratings for
 this transformation case. The resulting metamodel is shown in
 Figure~\ref{fig:metamodel}. In addition to the obvious classes, the
 metamodel contains a common superclass for actors and actresses as
