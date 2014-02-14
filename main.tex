@@ -134,16 +134,15 @@ the ratings in the second rule.
 
 \subsection{Task 2: Finding Couples (CK)}
 
-In this task, a transformation shall be implemented that
-takes a graph consisting of inter-connected movies, actors
-and actresses as input, and creates additional nodes and 
-links in this graph.\footnote{Both in-place and out-place 
-transformation approaches are possible.} Specifically,
-the task is to find all pairs of persons (actors or actresses)
-which played together in at least three movies. For every
-such pair, the transformation is supposed to create an
-object of type \textsf{Couple} and references to all
-movies in which \emph{both} persons played in.
+In this task, a transformation shall be implemented that takes a graph
+consisting of inter-connected movies, actors and actresses as input, and
+creates additional nodes and links in this graph.\footnote{Both in-place and
+  out-place transformation approaches are possible.} Specifically, the task is
+to find all pairs of persons (actors or actresses) which played together in at
+least three movies.  For every such pair, the transformation is supposed to
+create an object of type \textsf{Couple} referencing both persons using the
+\verb|p1| and \verb|p2| references, and referencing all movies in which
+\emph{both} persons played in using the \verb|commonMovies| reference.
 
 
 \subsection{Task 3: Computing Average Rankings (CK)}
