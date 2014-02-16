@@ -73,11 +73,8 @@ contains a common superclass for actors and actresses as well as classes for
 groups of actors which play in common movies. The class \p{Group} contains the
 attribute \p{avgRating} which stores the average rating of the common movies of
 the group of actors. The metamodel distinguishes between groups of two persons
-(a \verb|Couple|) or a \verb|Clique| of $n$ persons to support the different
-tasks in this transformation cases.  The EMF model as well as a parser for the
-IMDb database file is available at \cite{IMDB2EMF}.
-
-TODO: Add the URL where the pre-parsed IMDb models can be downloaded.
+(a \p{Couple}) or a \p{Clique} of $n$ persons to support the different
+tasks in this transformation case.  
 
 \begin{figure}[ht]
 \centering
@@ -85,6 +82,14 @@ TODO: Add the URL where the pre-parsed IMDb models can be downloaded.
 \caption{A metamodel for the relevant aspects of the movie database}
 \label{fig:metamodel}
 \end{figure}
+
+The EMF model as well as a parser for the
+IMDb database files is available at \cite{IMDB2EMF}. The pre-parsed
+IMDb models are available on request. The transformation case will use
+synthetic data (as generated in Task 1) for the evaluation of
+the correctness of the submitted transformations as well as real data
+from IMDb for the performance evaluation.
+
 
 \subsection{Task 1: Generating Test Data (CK)}
 \label{sec:gen-test-data}
