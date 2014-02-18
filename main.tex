@@ -3,6 +3,7 @@
 \usepackage{onecolpceurws}
 \usepackage{url}
 \usepackage{hyperref}
+\usepackage{verbatim}
 
 \title{The TTC 2014 Movie Database Case}
 
@@ -16,6 +17,8 @@ Matthias Tichy\\ Chalmers $|$ University of Gothenburg, Sweden \\matthias.tichy@
 \newcommand{\p}[1]{\textsf{\small #1}}
 
 \institution{}
+
+\newcommand{\qr}[3]{\noindent{}Top-15 #2 for #3:{\scriptsize\verbatiminput{query-results/#1}}}
 
 \begin{document}
 \maketitle
@@ -54,7 +57,7 @@ about movies, actors performing in the movies, movie ratings, etc. The main
 task is to develop a model transformation which identifies \emph{all} couples
 of two actors who perform in at least three common movies and calculate the
 average rating of those movies.  This core task is then generalized to cliques
-of \(n\) actors.  Furthermore, some queries calculating top-fifteen lists of
+of \(n\) actors.  Furthermore, some queries calculating top-15 lists of
 couples and cliques are to be written.  Evaluation criteria are correctness and
 performance.
 
@@ -106,7 +109,7 @@ from IMDb for the performance evaluation.
 %%
 %% - The test data generation should also assign unique names to the Actors and
 %% Actresses, and ratings to the Movies.  Else, the computation of the average
-%% rating and the top-fifteen queries cannot be evaluated with the test models.
+%% rating and the top-15 queries cannot be evaluated with the test models.
 %% (Again, the real IMDb models are probably to complex/large for most
 %% participants.)
 
@@ -162,20 +165,19 @@ of all couple nodes to the average (i.e. the
 arithmetic mean) of the ratings of all movies that
 \emph{both} persons played in.
 
-\subsection{Extension Task 1: Compute Top-Fifteen Couples (TH)}
+\subsection{Extension Task 1: Compute Top-15 Couples (TH)}
 
-The goal of this task is to produce top-fifteen lists of the couples created by
+The goal of this task is to produce top-15 lists of the couples created by
 Task~2.  For this purpose, two model queries should be given.
 
 \begin{enumerate}
-\item[(a)] Compute the top-fifteen couples according to the average rating of
+\item[(a)] Compute the top 15 couples according to the average rating of
   their common movies (requires Task~3 to be solved).
-\item[(b)] Compute the top-fifteen couples according to the number of common
-  movies.
+\item[(b)] Compute the top 15 couples according to the number of common movies.
 \end{enumerate}
 
-Each of the couples in the top-fifteen lists should be printed with the names of
-the two persons, the average rating (only if Task~3 has been solved), and the
+Each of the couples in the top-15 lists should be printed with the names of the
+two persons, the average rating (only if Task~3 has been solved), and the
 number of the couple's common movies.  We don't require printing the common
 movies' titles because the couple with the most common movies in the complete
 IMDb model has more than 400 of them.
@@ -210,16 +212,16 @@ You can earn an extra bonus point if \(c\) may be customized.
 Like it was done for couples in Task~3, the \verb|avgRating| attribute of
 cliques should be set to the average rating of all its common movies.
 
-\subsection{Extension Task 4: Compute Top-Fifteen Cliques (TH)}
+\subsection{Extension Task 4: Compute Top-15 Cliques (TH)}
 
 This is a variant of Extension Task~1 for cliques instead of couples.  Again,
 two queries should be given.
 
 \begin{enumerate}
-\item[(a)] Compute the top-fifteen cliques of a given size \(n\) according to the
+\item[(a)] Compute the top-15 cliques of a given size \(n\) according to the
   average rating of their common movies (requires Extension Task~3 to be
   solved).
-\item[(b)] Compute the top-fifteen cliques of a given size \(n\) according to the
+\item[(b)] Compute the top-15 cliques of a given size \(n\) according to the
   number of common movies.
 \end{enumerate}
 
@@ -272,18 +274,17 @@ and the y-axis shows the execution times (e.g. in seconds).
 \bibliographystyle{plain}
 \bibliography{biblio}
 
+\newpage
 \appendix
-
-
 
 \section{Expected Number of Couples and Cliques}
 \label{sec:expected-numbers}
 
-\begin{table}[h!]
+\begin{table}[!ht]
   \centering
   \begin{tabular}{| l | r | r | r | r |}
     \hline
-    \textbf{Model (\(n\))} & \textbf{\#Couples} & \textbf{\#Triples} & \textbf{\#Quadruples} & \textbf{\#Quintuples}\\
+    \textbf{Model (\(n\))} & \textbf{\#Couples} & \textbf{\#3-Cliques} & \textbf{\#4-Cliques} & \textbf{\#5-Cliques}\\
     \hline
     1000   & 10000   & 10000   & 5000    & 1000\\
     2000   & 20000   & 20000   & 10000   & 2000\\
@@ -301,11 +302,11 @@ and the y-axis shows the execution times (e.g. in seconds).
 \end{table}
 
 
-\begin{table}[h!]
+\begin{table}[!ht]
   \centering
   \begin{tabular}{| l | r | r |}
     \hline
-    \textbf{Model}              & \textbf{\#Couples} & \textbf{\#Triples}\\
+    \textbf{Model}              & \textbf{\#Couples} & \textbf{\#3-Cliques}\\
     \hline
     imdb-0005000-49930.movies   & 17352              & 127825\\
     imdb-0010000-98168.movies   & 28211              & 188712\\
@@ -321,17 +322,112 @@ and the y-axis shows the execution times (e.g. in seconds).
     imdb-all-3257145.movies     & 2709371            & 8227081\\
     \hline
   \end{tabular}
-  \caption{The IMDb Models with the expected numbers of Couples and Triples (Cliques of size 3)}
+  \caption{The IMDb Models with the expected numbers of Couples and Cliques of size 3}
   \label{tab:imdb-numbers}
 \end{table}
 
-\section{Expected Top-Fifteen Lists}
-\label{sec:expected-top-ten}
+\newpage
+\section{Expected Top-15 Lists}
+\label{sec:top-15}
 
+\subsection{Synthetic Models}
+\label{sec:top-15:synthetic-models}
+
+\subsubsection{Couples}
+
+%% Couples
+\qr{synth-1000.query.couples}{couples}{synthetic model with \(n=1000\)}
+\qr{synth-2000.query.couples}{couples}{synthetic model with \(n=2000\)}
+\qr{synth-3000.query.couples}{couples}{synthetic model with \(n=3000\)}
+\qr{synth-4000.query.couples}{couples}{synthetic model with \(n=4000\)}
+\qr{synth-5000.query.couples}{couples}{synthetic model with \(n=5000\)}
+\qr{synth-10000.query.couples}{couples}{synthetic model with \(n=10000\)}
+\qr{synth-50000.query.couples}{couples}{synthetic model with \(n=50000\)}
+\qr{synth-100000.query.couples}{couples}{synthetic model with \(n=100000\)}
+\qr{synth-200000.query.couples}{couples}{synthetic model with \(n=200000\)}
+
+\newpage
+\subsubsection{Cliques of size 3}
+
+%% Cliques of size 3
+\qr{synth-1000.query.3cliques}{3-cliques}{synthetic model with \(n=1000\)}
+\qr{synth-2000.query.3cliques}{3-cliques}{synthetic model with \(n=2000\)}
+\qr{synth-3000.query.3cliques}{3-cliques}{synthetic model with \(n=3000\)}
+\qr{synth-4000.query.3cliques}{3-cliques}{synthetic model with \(n=4000\)}
+\qr{synth-5000.query.3cliques}{3-cliques}{synthetic model with \(n=5000\)}
+\qr{synth-10000.query.3cliques}{3-cliques}{synthetic model with \(n=10000\)}
+\qr{synth-50000.query.3cliques}{3-cliques}{synthetic model with \(n=50000\)}
+\qr{synth-100000.query.3cliques}{3-cliques}{synthetic model with \(n=100000\)}
+\qr{synth-200000.query.3cliques}{3-cliques}{synthetic model with \(n=200000\)}
+
+\newpage
+\subsubsection{Cliques of size 4}
+
+%% Cliques of size 4
+\qr{synth-1000.query.4cliques}{4-cliques}{synthetic model with \(n=1000\)}
+\qr{synth-2000.query.4cliques}{4-cliques}{synthetic model with \(n=2000\)}
+\qr{synth-3000.query.4cliques}{4-cliques}{synthetic model with \(n=3000\)}
+\qr{synth-4000.query.4cliques}{4-cliques}{synthetic model with \(n=4000\)}
+\qr{synth-5000.query.4cliques}{4-cliques}{synthetic model with \(n=5000\)}
+\qr{synth-10000.query.4cliques}{4-cliques}{synthetic model with \(n=10000\)}
+\qr{synth-50000.query.4cliques}{4-cliques}{synthetic model with \(n=50000\)}
+\qr{synth-100000.query.4cliques}{4-cliques}{synthetic model with \(n=100000\)}
+\qr{synth-200000.query.4cliques}{4-cliques}{synthetic model with \(n=200000\)}
+
+\newpage
+\subsubsection{Cliques of size 5}
+
+%% Cliques of size 5
+\qr{synth-1000.query.5cliques}{5-cliques}{synthetic model with \(n=1000\)}
+\qr{synth-2000.query.5cliques}{5-cliques}{synthetic model with \(n=2000\)}
+\qr{synth-3000.query.5cliques}{5-cliques}{synthetic model with \(n=3000\)}
+\qr{synth-4000.query.5cliques}{5-cliques}{synthetic model with \(n=4000\)}
+\qr{synth-5000.query.5cliques}{5-cliques}{synthetic model with \(n=5000\)}
+\qr{synth-10000.query.5cliques}{5-cliques}{synthetic model with \(n=10000\)}
+\qr{synth-50000.query.5cliques}{5-cliques}{synthetic model with \(n=50000\)}
+\qr{synth-100000.query.5cliques}{5-cliques}{synthetic model with \(n=100000\)}
+\qr{synth-200000.query.5cliques}{5-cliques}{synthetic model with \(n=200000\)}
+
+\newpage
+\subsection{IMDb Models}
+\label{sec:top-15:imdb-models}
+
+\subsubsection{Couples}
+
+%% Couples
+\qr{imdb-0005000-49930.movies.bin.query.couples}{couples}{model \p{imdb-0005000-49930}}
+\qr{imdb-0010000-98168.movies.bin.query.couples}{couples}{model \p{imdb-0010000-98168}}
+\qr{imdb-0030000-207420.movies.bin.query.couples}{couples}{model \p{imdb-0030000-207420}}
+\qr{imdb-0045000-299504.movies.bin.query.couples}{couples}{model \p{imdb-0045000-299504}}
+\qr{imdb-0065000-404920.movies.bin.query.couples}{couples}{model \p{imdb-0065000-404920}}
+\qr{imdb-0085000-499995.movies.bin.query.couples}{couples}{model \p{imdb-0085000-499995}}
+\qr{imdb-0130000-709551.movies.bin.query.couples}{couples}{model \p{imdb-0130000-709551}}
+\qr{imdb-0200000-1004463.movies.bin.query.couples}{couples}{model \p{imdb-0200000-1004463}}
+\qr{imdb-0340000-1505143.movies.bin.query.couples}{couples}{model \p{imdb-0340000-1505143}}
+\qr{imdb-0495000-2000900.movies.bin.query.couples}{couples}{model \p{imdb-0495000-2000900}}
+\qr{imdb-0660000-2501893.movies.bin.query.couples}{couples}{model \p{imdb-0660000-2501893}}
+\qr{imdb-all-3257145.movies.bin.query.couples}{couples}{model \p{imdb-all-3257145}}
+
+
+\newpage
+\subsubsection{Cliques of size 3}
+
+%% Cliques of size 3
+\qr{imdb-0005000-49930.movies.bin.query.triples}{3-cliques}{model \p{imdb-0005000-49930}}
+\qr{imdb-0010000-98168.movies.bin.query.triples}{3-cliques}{model \p{imdb-0010000-98168}}
+\qr{imdb-0030000-207420.movies.bin.query.triples}{3-cliques}{model \p{imdb-0030000-207420}}
+\qr{imdb-0045000-299504.movies.bin.query.triples}{3-cliques}{model \p{imdb-0045000-299504}}
+\qr{imdb-0065000-404920.movies.bin.query.triples}{3-cliques}{model \p{imdb-0065000-404920}}
+\qr{imdb-0085000-499995.movies.bin.query.triples}{3-cliques}{model \p{imdb-0085000-499995}}
+\qr{imdb-0130000-709551.movies.bin.query.triples}{3-cliques}{model \p{imdb-0130000-709551}}
+\qr{imdb-0200000-1004463.movies.bin.query.triples}{3-cliques}{model \p{imdb-0200000-1004463}}
+\qr{imdb-0340000-1505143.movies.bin.query.triples}{3-cliques}{model \p{imdb-0340000-1505143}}
+\qr{imdb-0495000-2000900.movies.bin.query.triples}{3-cliques}{model \p{imdb-0495000-2000900}}
+\qr{imdb-0660000-2501893.movies.bin.query.triples}{3-cliques}{model \p{imdb-0660000-2501893}}
+\qr{imdb-all-3257145.movies.bin.query.triples}{3-cliques}{model \p{imdb-all-3257145}}
 
 
 \end{document}
-
 
 
 % Local Variables:
