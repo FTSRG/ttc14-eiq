@@ -1,0 +1,29 @@
+There are 200532 groups.
+
+Top-10 by Average Rating
+========================
+
+ 1. 3-Clique avgRating  8.567,   3 movies (Dale, Alan (II); Haysbert, John; Sutherland, Kyle)
+ 2. 3-Clique avgRating  8.333,   3 movies (Brunsmann, Keith; Lopez, Layla; Saunders, Eddie (II))
+ 3. 3-Clique avgRating  8.333,   3 movies (Moses, Joel; Povolotskiy, Georgiy; Richter, Jonas)
+ 4. 3-Clique avgRating  8.333,   3 movies (Campbell, Richard (XXII); Criss, Jason; Tajima, Seina)
+ 5. 3-Clique avgRating  8.333,   3 movies (Coleman, Brittani; Marks, Lindsey; Moses, Joel)
+ 6. 3-Clique avgRating  8.333,   3 movies (Brunsmann, Keith; Campbell, Richard (XXII); Moses, Joel)
+ 7. 3-Clique avgRating  8.333,   3 movies (Beatty, Lauren (I); Saunders, Eddie (II); Walker, Joe (XXVI))
+ 8. 3-Clique avgRating  8.333,   3 movies (Lopez, Layla; Povolotskiy, Georgiy; Rosenthal, Bruce)
+ 9. 3-Clique avgRating  8.333,   3 movies (Brunsmann, Keith; Richter, Jonas; Walker, Joe (XXVI))
+10. 3-Clique avgRating  8.333,   3 movies (Coleman, Brittani; Moses, Joel; Povolotskiy, Georgiy)
+
+Top-10 by Number of Common Movies
+=================================
+
+ 1. 3-Clique avgRating  0.800,  19 movies (Fontana, Sal; Tedeschini, Paul; Valentino (XII))
+ 2. 3-Clique avgRating  0.000,  16 movies (Franey, Hughes; Henry, Ga�lle; Morante, Panfilo)
+ 3. 3-Clique avgRating  4.600,  15 movies (Burton, Jeff (V); Gordon, Jeff (VI); LaBonte, Don)
+ 4. 3-Clique avgRating  0.000,  15 movies (Dickens, Stafford; Tedeschini, Paul; Valentino (XII))
+ 5. 3-Clique avgRating  4.436,  14 movies (Busch, Lukan; Earnhardt, Dale; Hamlin, Divinoni)
+ 6. 3-Clique avgRating  4.436,  14 movies (Burton, Jeff (V); Johnson, Jimmie (II); Stewart, Tony (V))
+ 7. 3-Clique avgRating  4.436,  14 movies (Burton, Jeff (V); Busch, Kyle; Earnhardt, Dale)
+ 8. 3-Clique avgRating  4.436,  14 movies (Busch, Kyle; Gordon, Jeff (VI); Kahnemann, Heinz)
+ 9. 3-Clique avgRating  4.436,  14 movies (Earnhardt, Dale; Hamlin, Divinoni; Newman, Ryan (IV))
+10. 3-Clique avgRating  4.436,  14 movies (Bifiskis, Arnoldas; Hamlin, Divinoni; Kahnemann, Heinz)

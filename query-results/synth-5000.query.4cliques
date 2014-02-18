@@ -1,0 +1,39 @@
+There are 25000 groups.
+
+Top-15 by Average Rating
+========================
+
+ 1. 4-Clique avgRating 49992.000,   3 movies (a49990; a49991; a49992; a49993)
+ 2. 4-Clique avgRating 49992.000,   3 movies (a49990; a49991; a49992; a49994)
+ 3. 4-Clique avgRating 49992.000,   3 movies (a49990; a49992; a49993; a49994)
+ 4. 4-Clique avgRating 49992.000,   3 movies (a49991; a49992; a49993; a49994)
+ 5. 4-Clique avgRating 49992.000,   3 movies (a49990; a49991; a49993; a49994)
+ 6. 4-Clique avgRating 49982.000,   3 movies (a49980; a49981; a49982; a49984)
+ 7. 4-Clique avgRating 49982.000,   3 movies (a49980; a49982; a49983; a49984)
+ 8. 4-Clique avgRating 49982.000,   3 movies (a49980; a49981; a49982; a49983)
+ 9. 4-Clique avgRating 49982.000,   3 movies (a49980; a49981; a49983; a49984)
+10. 4-Clique avgRating 49982.000,   3 movies (a49981; a49982; a49983; a49984)
+11. 4-Clique avgRating 49972.000,   3 movies (a49970; a49972; a49973; a49974)
+12. 4-Clique avgRating 49972.000,   3 movies (a49970; a49971; a49973; a49974)
+13. 4-Clique avgRating 49972.000,   3 movies (a49970; a49971; a49972; a49973)
+14. 4-Clique avgRating 49972.000,   3 movies (a49971; a49972; a49973; a49974)
+15. 4-Clique avgRating 49972.000,   3 movies (a49970; a49971; a49972; a49974)
+
+Top-15 by Number of Common Movies
+=================================
+
+ 1. 4-Clique avgRating 49992.000,   3 movies (a49990; a49991; a49992; a49993)
+ 2. 4-Clique avgRating 49992.000,   3 movies (a49990; a49991; a49992; a49994)
+ 3. 4-Clique avgRating 49992.000,   3 movies (a49990; a49992; a49993; a49994)
+ 4. 4-Clique avgRating 49992.000,   3 movies (a49991; a49992; a49993; a49994)
+ 5. 4-Clique avgRating 49992.000,   3 movies (a49990; a49991; a49993; a49994)
+ 6. 4-Clique avgRating 49982.000,   3 movies (a49980; a49981; a49982; a49984)
+ 7. 4-Clique avgRating 49982.000,   3 movies (a49980; a49982; a49983; a49984)
+ 8. 4-Clique avgRating 49982.000,   3 movies (a49980; a49981; a49982; a49983)
+ 9. 4-Clique avgRating 49982.000,   3 movies (a49980; a49981; a49983; a49984)
+10. 4-Clique avgRating 49982.000,   3 movies (a49981; a49982; a49983; a49984)
+11. 4-Clique avgRating 49972.000,   3 movies (a49970; a49972; a49973; a49974)
+12. 4-Clique avgRating 49972.000,   3 movies (a49970; a49971; a49973; a49974)
+13. 4-Clique avgRating 49972.000,   3 movies (a49970; a49971; a49972; a49973)
+14. 4-Clique avgRating 49972.000,   3 movies (a49971; a49972; a49973; a49974)
+15. 4-Clique avgRating 49972.000,   3 movies (a49970; a49971; a49972; a49974)

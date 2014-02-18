@@ -1,0 +1,29 @@
+There are 220891 groups.
+
+Top-10 by Average Rating
+========================
+
+ 1. 3-Clique avgRating  8.567,   3 movies (Dale, Alan (II); Haysbert, John; Sutherland, Kyle)
+ 2. 3-Clique avgRating  8.350,   4 movies (Beatty, Lauren (I); Povolotskiy, Georgiy; Walker, Joe (XXVI))
+ 3. 3-Clique avgRating  8.350,   4 movies (Beatty, Lauren (I); Richter, Jonas; Walker, Joe (XXVI))
+ 4. 3-Clique avgRating  8.350,   4 movies (Lopez, Layla; Rosenthal, Bruce; Saunders, Eddie (II))
+ 5. 3-Clique avgRating  8.350,   4 movies (Lopez, Layla; Saunders, Eddie (II); Walker, Joe (XXVI))
+ 6. 3-Clique avgRating  8.350,   4 movies (Rosenthal, Bruce; Saunders, Eddie (II); Walker, Joe (XXVI))
+ 7. 3-Clique avgRating  8.350,   4 movies (Beatty, Lauren (I); Povolotskiy, Georgiy; Rosenthal, Bruce)
+ 8. 3-Clique avgRating  8.350,   4 movies (Lopez, Layla; Rosenthal, Bruce; Walker, Joe (XXVI))
+ 9. 3-Clique avgRating  8.350,   4 movies (Richter, Jonas; Rosenthal, Bruce; Walker, Joe (XXVI))
+10. 3-Clique avgRating  8.350,   4 movies (Povolotskiy, Georgiy; Saunders, Eddie (II); Walker, Joe (XXVI))
+
+Top-10 by Number of Common Movies
+=================================
+
+ 1. 3-Clique avgRating  0.000,  31 movies (Kataine, Kim; Yamamura, Noriko (I); �mura, Masao)
+ 2. 3-Clique avgRating  0.000,  31 movies (Wakabayashi, Hidetoshi; Yamamura, Noriko (I); �mura, Masao)
+ 3. 3-Clique avgRating  0.000,  31 movies (Kataine, Kim; Wakabayashi, Hidetoshi; Yamamura, Noriko (I))
+ 4. 3-Clique avgRating  0.000,  31 movies (Kataine, Kim; Wakabayashi, Hidetoshi; �mura, Masao)
+ 5. 3-Clique avgRating  0.000,  28 movies (Kataine, Kim; Miki, Sharon; Wakabayashi, Hidetoshi)
+ 6. 3-Clique avgRating  0.000,  28 movies (Kataine, Kim; Miki, Sharon; Yamamura, Noriko (I))
+ 7. 3-Clique avgRating  0.000,  28 movies (Miki, Sharon; Wakabayashi, Hidetoshi; Yamamura, Noriko (I))
+ 8. 3-Clique avgRating  0.000,  28 movies (Kataine, Kim; Miki, Sharon; �mura, Masao)
+ 9. 3-Clique avgRating  0.000,  28 movies (Miki, Sharon; Yamamura, Noriko (I); �mura, Masao)
+10. 3-Clique avgRating  0.000,  28 movies (Miki, Sharon; Wakabayashi, Hidetoshi; �mura, Masao)

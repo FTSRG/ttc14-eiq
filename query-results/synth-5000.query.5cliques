@@ -1,0 +1,39 @@
+There are 5000 groups.
+
+Top-15 by Average Rating
+========================
+
+ 1. 5-Clique avgRating 49992.000,   3 movies (a49990; a49991; a49992; a49993; a49994)
+ 2. 5-Clique avgRating 49982.000,   3 movies (a49980; a49981; a49982; a49983; a49984)
+ 3. 5-Clique avgRating 49972.000,   3 movies (a49970; a49971; a49972; a49973; a49974)
+ 4. 5-Clique avgRating 49962.000,   3 movies (a49960; a49961; a49962; a49963; a49964)
+ 5. 5-Clique avgRating 49952.000,   3 movies (a49950; a49951; a49952; a49953; a49954)
+ 6. 5-Clique avgRating 49942.000,   3 movies (a49940; a49941; a49942; a49943; a49944)
+ 7. 5-Clique avgRating 49932.000,   3 movies (a49930; a49931; a49932; a49933; a49934)
+ 8. 5-Clique avgRating 49922.000,   3 movies (a49920; a49921; a49922; a49923; a49924)
+ 9. 5-Clique avgRating 49912.000,   3 movies (a49910; a49911; a49912; a49913; a49914)
+10. 5-Clique avgRating 49902.000,   3 movies (a49900; a49901; a49902; a49903; a49904)
+11. 5-Clique avgRating 49892.000,   3 movies (a49890; a49891; a49892; a49893; a49894)
+12. 5-Clique avgRating 49882.000,   3 movies (a49880; a49881; a49882; a49883; a49884)
+13. 5-Clique avgRating 49872.000,   3 movies (a49870; a49871; a49872; a49873; a49874)
+14. 5-Clique avgRating 49862.000,   3 movies (a49860; a49861; a49862; a49863; a49864)
+15. 5-Clique avgRating 49852.000,   3 movies (a49850; a49851; a49852; a49853; a49854)
+
+Top-15 by Number of Common Movies
+=================================
+
+ 1. 5-Clique avgRating 49992.000,   3 movies (a49990; a49991; a49992; a49993; a49994)
+ 2. 5-Clique avgRating 49982.000,   3 movies (a49980; a49981; a49982; a49983; a49984)
+ 3. 5-Clique avgRating 49972.000,   3 movies (a49970; a49971; a49972; a49973; a49974)
+ 4. 5-Clique avgRating 49962.000,   3 movies (a49960; a49961; a49962; a49963; a49964)
+ 5. 5-Clique avgRating 49952.000,   3 movies (a49950; a49951; a49952; a49953; a49954)
+ 6. 5-Clique avgRating 49942.000,   3 movies (a49940; a49941; a49942; a49943; a49944)
+ 7. 5-Clique avgRating 49932.000,   3 movies (a49930; a49931; a49932; a49933; a49934)
+ 8. 5-Clique avgRating 49922.000,   3 movies (a49920; a49921; a49922; a49923; a49924)
+ 9. 5-Clique avgRating 49912.000,   3 movies (a49910; a49911; a49912; a49913; a49914)
+10. 5-Clique avgRating 49902.000,   3 movies (a49900; a49901; a49902; a49903; a49904)
+11. 5-Clique avgRating 49892.000,   3 movies (a49890; a49891; a49892; a49893; a49894)
+12. 5-Clique avgRating 49882.000,   3 movies (a49880; a49881; a49882; a49883; a49884)
+13. 5-Clique avgRating 49872.000,   3 movies (a49870; a49871; a49872; a49873; a49874)
+14. 5-Clique avgRating 49862.000,   3 movies (a49860; a49861; a49862; a49863; a49864)
+15. 5-Clique avgRating 49852.000,   3 movies (a49850; a49851; a49852; a49853; a49854)

@@ -1,0 +1,39 @@
+There are 2000 groups.
+
+Top-15 by Average Rating
+========================
+
+ 1. 5-Clique avgRating 19992.000,   3 movies (a19990; a19991; a19992; a19993; a19994)
+ 2. 5-Clique avgRating 19982.000,   3 movies (a19980; a19981; a19982; a19983; a19984)
+ 3. 5-Clique avgRating 19972.000,   3 movies (a19970; a19971; a19972; a19973; a19974)
+ 4. 5-Clique avgRating 19962.000,   3 movies (a19960; a19961; a19962; a19963; a19964)
+ 5. 5-Clique avgRating 19952.000,   3 movies (a19950; a19951; a19952; a19953; a19954)
+ 6. 5-Clique avgRating 19942.000,   3 movies (a19940; a19941; a19942; a19943; a19944)
+ 7. 5-Clique avgRating 19932.000,   3 movies (a19930; a19931; a19932; a19933; a19934)
+ 8. 5-Clique avgRating 19922.000,   3 movies (a19920; a19921; a19922; a19923; a19924)
+ 9. 5-Clique avgRating 19912.000,   3 movies (a19910; a19911; a19912; a19913; a19914)
+10. 5-Clique avgRating 19902.000,   3 movies (a19900; a19901; a19902; a19903; a19904)
+11. 5-Clique avgRating 19892.000,   3 movies (a19890; a19891; a19892; a19893; a19894)
+12. 5-Clique avgRating 19882.000,   3 movies (a19880; a19881; a19882; a19883; a19884)
+13. 5-Clique avgRating 19872.000,   3 movies (a19870; a19871; a19872; a19873; a19874)
+14. 5-Clique avgRating 19862.000,   3 movies (a19860; a19861; a19862; a19863; a19864)
+15. 5-Clique avgRating 19852.000,   3 movies (a19850; a19851; a19852; a19853; a19854)
+
+Top-15 by Number of Common Movies
+=================================
+
+ 1. 5-Clique avgRating 19992.000,   3 movies (a19990; a19991; a19992; a19993; a19994)
+ 2. 5-Clique avgRating 19982.000,   3 movies (a19980; a19981; a19982; a19983; a19984)
+ 3. 5-Clique avgRating 19972.000,   3 movies (a19970; a19971; a19972; a19973; a19974)
+ 4. 5-Clique avgRating 19962.000,   3 movies (a19960; a19961; a19962; a19963; a19964)
+ 5. 5-Clique avgRating 19952.000,   3 movies (a19950; a19951; a19952; a19953; a19954)
+ 6. 5-Clique avgRating 19942.000,   3 movies (a19940; a19941; a19942; a19943; a19944)
+ 7. 5-Clique avgRating 19932.000,   3 movies (a19930; a19931; a19932; a19933; a19934)
+ 8. 5-Clique avgRating 19922.000,   3 movies (a19920; a19921; a19922; a19923; a19924)
+ 9. 5-Clique avgRating 19912.000,   3 movies (a19910; a19911; a19912; a19913; a19914)
+10. 5-Clique avgRating 19902.000,   3 movies (a19900; a19901; a19902; a19903; a19904)
+11. 5-Clique avgRating 19892.000,   3 movies (a19890; a19891; a19892; a19893; a19894)
+12. 5-Clique avgRating 19882.000,   3 movies (a19880; a19881; a19882; a19883; a19884)
+13. 5-Clique avgRating 19872.000,   3 movies (a19870; a19871; a19872; a19873; a19874)
+14. 5-Clique avgRating 19862.000,   3 movies (a19860; a19861; a19862; a19863; a19864)
+15. 5-Clique avgRating 19852.000,   3 movies (a19850; a19851; a19852; a19853; a19854)
