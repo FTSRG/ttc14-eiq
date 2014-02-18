@@ -54,7 +54,7 @@ about movies, actors performing in the movies, movie ratings, etc. The main
 task is to develop a model transformation which identifies \emph{all} couples
 of two actors who perform in at least three common movies and calculate the
 average rating of those movies.  This core task is then generalized to cliques
-of \(n\) actors.  Furthermore, some queries calculating top-ten lists of
+of \(n\) actors.  Furthermore, some queries calculating top-fifteen lists of
 couples and cliques are to be written.  Evaluation criteria are correctness and
 performance.
 
@@ -66,15 +66,16 @@ criteria for submitted solutions to this case.
 
 \section{Detailed Case Description (MTT)}\label{sec-case}
 
-We use the IMDb data about movies, actors, actresses and movie ratings for this
-transformation case. The resulting metamodel is shown in
-Figure~\ref{fig:metamodel}. In addition to the obvious classes, the metamodel
+We use the IMDb data about movies, actors, actresses, and movie ratings for
+this transformation case. The resulting metamodel is shown in
+Figure~\ref{fig:metamodel}.  The names of actors and actresses are always
+unique in the models.  In addition to the obvious classes, the metamodel
 contains a common superclass for actors and actresses as well as classes for
 groups of actors which play in common movies. The class \p{Group} contains the
 attribute \p{avgRating} which stores the average rating of the common movies of
 the group of actors. The metamodel distinguishes between groups of two persons
-(a \p{Couple}) or a \p{Clique} of $n$ persons to support the different
-tasks in this transformation case.  
+(a \p{Couple}) or a \p{Clique} of $n$ persons to support the different tasks in
+this transformation case.
 
 \begin{figure}[ht]
 \centering
@@ -86,7 +87,7 @@ tasks in this transformation case.
 The EMF model as well as a parser for the
 IMDb database files is available at \cite{IMDB2EMF}. The pre-parsed
 IMDb models are available on request. The transformation case will use
-synthetic data (as generated in Task 1) for the evaluation of
+synthetic data (as generated in Task~1) for the evaluation of
 the correctness of the submitted transformations as well as real data
 from IMDb for the performance evaluation.
 
@@ -105,7 +106,7 @@ from IMDb for the performance evaluation.
 %%
 %% - The test data generation should also assign unique names to the Actors and
 %% Actresses, and ratings to the Movies.  Else, the computation of the average
-%% rating and the top-ten queries cannot be evaluated with the test models.
+%% rating and the top-fifteen queries cannot be evaluated with the test models.
 %% (Again, the real IMDb models are probably to complex/large for most
 %% participants.)
 
@@ -161,31 +162,26 @@ of all couple nodes to the average (i.e. the
 arithmetic mean) of the ratings of all movies that
 \emph{both} persons played in.
 
-\subsection{Extension Task 1: Compute Top-Ten Couples (TH)}
+\subsection{Extension Task 1: Compute Top-Fifteen Couples (TH)}
 
-The goal of this task is to produce top-ten lists of the couples created by
+The goal of this task is to produce top-fifteen lists of the couples created by
 Task~2.  For this purpose, two model queries should be given.
 
 \begin{enumerate}
-\item[(a)] Compute the top-ten couples according to the average rating of their
-  common movies (requires Task~3 to be solved).
-\item[(b)] Compute the top-ten couples according to the number of common
+\item[(a)] Compute the top-fifteen couples according to the average rating of
+  their common movies (requires Task~3 to be solved).
+\item[(b)] Compute the top-fifteen couples according to the number of common
   movies.
 \end{enumerate}
 
-Each of the couples in the top-ten lists should be printed with the names of
+Each of the couples in the top-fifteen lists should be printed with the names of
 the two persons, the average rating (only if Task~3 has been solved), and the
 number of the couple's common movies.  We don't require printing the common
 movies' titles because the couple with the most common movies in the complete
 IMDb model has more than 400 of them.
 
 If two couples have the same value for the average rating/number of common
-movies, their order in the top-ten list is arbitrary.  However, an extra bonus
-point can be earned by cutting those ties in a stable manner, for example by
-applying the respective other metric in that case.  E.g., when computing metric
-(a) and two couples have the same average rating, then the one with more common
-movies could be listed first.  If both values are equal, one could fall back to
-comparing hash-codes or the names of the members of the couples.
+movies, their order should be determined in some stable manner.
 
 \subsection{Extension Task 2: Finding Cliques (TH)}
 
@@ -214,22 +210,21 @@ You can earn an extra bonus point if \(c\) may be customized.
 Like it was done for couples in Task~3, the \verb|avgRating| attribute of
 cliques should be set to the average rating of all its common movies.
 
-\subsection{Extension Task 4: Compute Top-Ten Cliques (TH)}
+\subsection{Extension Task 4: Compute Top-Fifteen Cliques (TH)}
 
 This is a variant of Extension Task~1 for cliques instead of couples.  Again,
 two queries should be given.
 
 \begin{enumerate}
-\item[(a)] Compute the top-ten cliques of a given size \(n\) according to the
+\item[(a)] Compute the top-fifteen cliques of a given size \(n\) according to the
   average rating of their common movies (requires Extension Task~3 to be
   solved).
-\item[(b)] Compute the top-ten cliques of a given size \(n\) according to the
+\item[(b)] Compute the top-fifteen cliques of a given size \(n\) according to the
   number of common movies.
 \end{enumerate}
 
 Again, every clique should be printed with the names of its members, the
-average rating, and the number of common movies.  Like in Extension Task~1, an
-extra bonus point can be earned by cutting ties in a stable manner.
+average rating, and the number of common movies.
 
 
 \section{Evaluation Criteria (MTT)}\label{sec-eval}
@@ -330,7 +325,7 @@ and the y-axis shows the execution times (e.g. in seconds).
   \label{tab:imdb-numbers}
 \end{table}
 
-\section{Expected Top-Ten Lists}
+\section{Expected Top-Fifteen Lists}
 \label{sec:expected-top-ten}
 
 
