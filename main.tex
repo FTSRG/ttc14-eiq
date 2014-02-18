@@ -152,15 +152,15 @@ creates additional nodes and links in this graph.\footnote{Both in-place and
 to find all pairs of persons (actors or actresses) which played together in at
 least three movies.  For every such pair, the transformation is supposed to
 create an object of type \textsf{Couple} referencing both persons using the
-\verb|p1| and \verb|p2| references, and referencing all movies in which
-\emph{both} persons played in using the \verb|commonMovies| reference.
+\p{p1} and \p{p2} references, and referencing all movies in which
+\emph{both} persons played in using the \p{commonMovies} reference.
 
 
 \subsection{Task 3: Computing Average Rankings (CK)}
 
 The input model of this task is the one generated in Task 2,
 i.e., a graph consisting of movie, actor, actress and couple
-nodes. The goal of this task is to set the \verb|avgRating|-attribute
+nodes. The goal of this task is to set the \p{avgRating}-attribute
 of all couple nodes to the average (i.e. the
 arithmetic mean) of the ratings of all movies that
 \emph{both} persons played in.
@@ -192,7 +192,7 @@ least \(n\) persons (with \(n \geq 3\)) acting together in at least 3 movies.
 So a couple is essentially a clique of size \(n = 2\).
 
 The extension task is to find cliques of a given size \(n\), and to create a
-\verb|Clique| element for each of them referencing the clique's members, and
+\p{Clique} element for each of them referencing the clique's members, and
 its common movies like the couples in Task~2.
 
 The task will be evaluated for \(n \in \{3, 4, 5\}\), so it can be solved by
@@ -209,7 +209,7 @@ You can earn an extra bonus point if \(c\) may be customized.
 
 \subsection{Extension Task 3: Compute Average Rankings for Cliques (TH)}
 
-Like it was done for couples in Task~3, the \verb|avgRating| attribute of
+Like it was done for couples in Task~3, the \p{avgRating} attribute of
 cliques should be set to the average rating of all its common movies.
 
 \subsection{Extension Task 4: Compute Top-15 Cliques (TH)}
