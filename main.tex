@@ -41,9 +41,9 @@ Matthias Tichy\\ Chalmers $|$ University of Gothenburg, Sweden \\matthias.tichy@
 The driving force behind social networks and other new web 2.0
 offerings is often huge amount of data. Consequently, concepts like
 MapReduce \cite{Dean08} and libraries like Hadoop \cite{Hadoop} and
-Giraph \cite{Giraph} have been developed to efficiently process these
-huge amount of data. However, model transformation approaches have so
-far not adressed this field.
+Giraph \cite{Giraph} have been developed to efficiently process this
+huge amount of data. However, model transformation approaches have
+not adressed this field so far.
 
 Automotive software is an already well-established application field
 for model-driven software engineering and its models also approach
@@ -51,7 +51,7 @@ huge sizes. As a consequence from these two examples, model
 transformation approaches must be scalable to models with million
 objects to be applicable for these application areas.
 
-We present in the following a case which uses the IMDb movie database
+In the following, we present a case which uses the IMDb movie database
 \cite{IMDBDATA} as a data source. The IMDb movie database contains information
 about movies, actors performing in the movies, movie ratings, etc. The main
 task is to develop a model transformation which identifies \emph{all} couples
@@ -62,8 +62,8 @@ of \(n\) actors.  Furthermore, some queries calculating top-15 lists of
 couples and cliques are to be written.  Evaluation criteria are correctness and
 performance.
 
-In the following section, we describe the case in more detail
-including the meta model as well as the different basic and extension
+In the next section, we describe the case in more detail
+including the meta model as well as the different core and extension
 tasks. After that, Section \ref{sec-eval} presents the evaluation
 criteria for submitted solutions to this case.
 
@@ -193,10 +193,11 @@ least \(n\) persons (with \(n \geq 3\)) acting together in at least 3 movies.
 So a couple is essentially a clique of size \(n = 2\).
 
 The extension task is to find cliques of a given size \(n\), and to create a
-\p{Clique} element for each of them referencing the clique's members, and
-its common movies like the couples in Task~2.
+\p{Clique} element for each of them referencing the clique's members using the
+\p{persons} reference and its common movies using the \p{commonMovies}
+reference.
 
-The task will be evaluated for \(n \in \{3, 4, 5\}\), so it can be solved by
+The task will be evaluated for \(n \in \{3, 4, 5\}\), so it could be solved by
 writing three similar rules manually.  However, to achieve a full completeness
 score for this task, a solution should work for any \(n \geq 3\).  Therefore, a
 transformation could have \(n\) as a parameter, or there could be a
@@ -233,15 +234,14 @@ as well as real data from the IMDb database.  The IMDb database is regularly
 updated.  In order to provide a common set of data, we provide the models
 generated from the IMDb database in December 2013 to participants by request.
 
-\subsection{Correctness Tests (TH)}
+\subsection{Correctness and Completeness (TH)}
 
 All tasks and extension tasks are scored evenly with zero to three points.
 Zero means the task has not been tackled at all, three points means the task
-has been completely solved and the implementation is correct.
-
-The performance of a solution is not relevant, here.  If a solution works
-correctly for the smaller models but won't terminate or run out of memory for
-the larger models, it may still achieve three points.
+has been completely solved and the implementation is correct.  The performance
+of a solution is not relevant, here.  If a solution works correctly for the
+smaller models but won't terminate or run out of memory for the larger models,
+it may still achieve three points.
 
 The following list explains the evaluation criteria for the individual tasks.
 
@@ -253,8 +253,8 @@ The following list explains the evaluation criteria for the individual tasks.
   synthetic and the IMDb models.  The expected numbers for both kinds of models
   are shown in Table~\ref{tab:synthetic-numbers} and
   Table~\ref{tab:imdb-numbers} in the appendix.  Furthermore, the correct
-  setting of the \p{p1}, \p{p2}, and \p{commonMovies} references will be spot
-  checked.
+  setting of the \p{p1}, \p{p2}, and \p{commonMovies} references will be
+  spot-checked.
 \item[Task~3] The correct average ranking of couples will be spot-checked for
   both the synthetic and the IMDb models.  Refer to Section~\ref{sec:top-15}
   for the expected values of the top-15 average ratings.
@@ -265,7 +265,8 @@ The following list explains the evaluation criteria for the individual tasks.
   the same value for that criterion, the respective other metric is used to cut
   the tie.  If that also doesn't suffice, the names of the actors are used for
   comparison.  While this is a sensible approach, it is not strictly required.
-  Sorting stably according criterion (a) and (b) is enough.
+  Sorting stably according criterion (a) and (b) is enough to achieve a full
+  score.
 \item[Extension~Task~2] The finding of cliques will be evaluated for the sizes
   \(n \in \{3,4,5\}\) for the synthetic models and for \(n=3\) for the IMDb
   models.  The main evaluation criterion, however, is that the value of \(n\)
@@ -280,7 +281,7 @@ The following list explains the evaluation criteria for the individual tasks.
   the synthetic (\(n \in \{3,4,5\}\)) and the IMDb models (\(n=3\)).  Again,
   the expected top-15 lists are printed in Section~\ref{sec:top-15}.  Like for
   Extension Task~1, the a stable sorting according to (a) average rating, or
-  (b) number of common movies is enough.
+  (b) number of common movies is enough to achieve a full score.
 \end{description}
 
 
@@ -296,8 +297,9 @@ executed using two different sets of input data:
 For both cases, you should run the transformation for Task 2 
 and measure the time needed to complete the transformation 
 (without loading and saving the model).
-If you solved also the extension task 2 (finding cliques), please also generate benchmarks
-for this cases.
+If you solved also the extension task 2 (finding cliques), please also generate
+benchmarks for these cases using \(n \in \{3,4,5\}\) for the synthetic test
+models and \(n = 3\) for the IMDb models.
 
 %% Tassilo: Why not measuring Task 2 on its own?
 
