@@ -202,10 +202,6 @@ transformation could have \(n\) as a parameter, or there could be a
 higher-order transformation that receives \(n\) and generates a rule creating
 cliques of exactly that size.
 
-It would be interesting to be able to specify the required number of common
-movies \(c\) freely.  By default and according to Task~2, \(c\) is fixed to 3.
-You can earn an extra bonus point if \(c\) may be customized.
-
 
 \subsection{Extension Task 3: Compute Average Rankings for Cliques (TH)}
 
@@ -231,17 +227,61 @@ average rating, and the number of common movies.
 
 \section{Evaluation Criteria (MTT)}\label{sec-eval}
 
-The evaluation of the submitted transformation will be done on
-synthetic data as well as real data from the IMDb database. The IMDb
-database is regularly updated. In order to provide a common set of
-data, we provide the IMDb database in a version from December 2013 to
-participants by request. 
+The evaluation of the submitted transformation will be done on synthetic data
+as well as real data from the IMDb database.  The IMDb database is regularly
+updated.  In order to provide a common set of data, we provide the models
+generated from the IMDb database in December 2013 to participants by request.
 
 \subsection{Correctness Tests (TH)}
 
-Correctness is checked using the synthetic data.
+All tasks and extension tasks are scored evenly with zero to three points.
+Zero means the task has not been tackled at all, three points means the task
+has been completely solved and the implementation is correct.
 
-We provide: number of couples and top ten lists.
+The performance of a solution is not relevant, here.  If a solution works
+correctly for the smaller models but won't terminate or run out of memory for
+the larger models, it may still achieve three points.
+
+The following list explains the evaluation criteria for the individual tasks.
+
+\begin{description}
+\item[Task~1] The test data generation will be evaluated for different values
+  of \(n\).  The correct number of elements, their relationships, and the
+  correctly set attribute values will be assessed.
+\item[Task~2] The correct number of couples will be evaluated for both the
+  synthetic and the IMDb models.  The expected numbers for both kinds of models
+  are shown in Table~\ref{tab:synthetic-numbers} and
+  Table~\ref{tab:imdb-numbers} in the appendix.  Furthermore, the correct
+  setting of the \p{p1}, \p{p2}, and \p{commonMovies} references will be spot
+  checked.
+\item[Task~3] The correct average ranking of couples will be spot-checked for
+  both the synthetic and the IMDb models.  Refer to Section~\ref{sec:top-15}
+  for the expected values of the top-15 average ratings.
+\item[Extension~Task~1] The Top-15 lists of couples will be evaluated for both
+  the synthetic and the IMDb models.  Section~\ref{sec:top-15} lists the
+  expected top-15 lists for each model.  The couples are sorted by the (a)
+  average rating or by (b) the number of common movies.  If two couples have
+  the same value for that criterion, the respective other metric is used to cut
+  the tie.  If that also doesn't suffice, the names of the actors are used for
+  comparison.  While this is a sensible approach, it is not strictly required.
+  Sorting stably according criterion (a) and (b) is enough.
+\item[Extension~Task~2] The finding of cliques will be evaluated for the sizes
+  \(n \in \{3,4,5\}\) for the synthetic models and for \(n=3\) for the IMDb
+  models.  The main evaluation criterion, however, is that the value of \(n\)
+  can be chosen freely, i.e., the rule for a given \(n\) is not written
+  manually but it is a parameter to the transformation, or a parameter to a
+  higher-order transformation generating a transformation for that value.
+\item[Extension~Task~3] The correct average ranking of cliques will be
+  spot-checked for both the synthetic and the IMDb models.  Refer to
+  Section~\ref{sec:top-15} for the expected values of the top-15 average
+  ratings.
+\item[Extension~Task~4] The Top-15 lists of cliques will be evaluated for both
+  the synthetic (\(n \in \{3,4,5\}\)) and the IMDb models (\(n=3\)).  Again,
+  the expected top-15 lists are printed in Section~\ref{sec:top-15}.  Like for
+  Extension Task~1, the a stable sorting according to (a) average rating, or
+  (b) number of common movies is enough.
+\end{description}
+
 
 \subsection{Benchmarks (CK)}
 
@@ -282,7 +322,7 @@ and the y-axis shows the execution times (e.g. in seconds).
 
 \begin{table}[!ht]
   \centering
-  \begin{tabular}{| l | r | r | r | r |}
+  \begin{tabular}{| r | r | r | r | r |}
     \hline
     \textbf{Model (\(n\))} & \textbf{\#Couples} & \textbf{\#3-Cliques} & \textbf{\#4-Cliques} & \textbf{\#5-Cliques}\\
     \hline
@@ -306,20 +346,20 @@ and the y-axis shows the execution times (e.g. in seconds).
   \centering
   \begin{tabular}{| l | r | r |}
     \hline
-    \textbf{Model}              & \textbf{\#Couples} & \textbf{\#3-Cliques}\\
+    \textbf{Model}                  & \textbf{\#Couples} & \textbf{\#3-Cliques}\\
     \hline
-    imdb-0005000-49930.movies   & 17352              & 127825\\
-    imdb-0010000-98168.movies   & 28211              & 188712\\
-    imdb-0030000-207420.movies  & 35198              & 200532\\
-    imdb-0045000-299504.movies  & 43294              & 210985\\
-    imdb-0065000-404920.movies  & 57889              & 220891\\
-    imdb-0085000-499995.movies  & 79470              & 243314\\
-    imdb-0130000-709551.movies  & 136956             & 307405\\
-    imdb-0200000-1004463.movies & 244627             & 457833\\
-    imdb-0340000-1505143.movies & 585689             & 1469156\\
-    imdb-0495000-2000900.movies & 1017752            & 2173809\\
-    imdb-0660000-2501893.movies & 1562317            & 3953798\\
-    imdb-all-3257145.movies     & 2709371            & 8227081\\
+    \p{imdb-0005000-49930.movies}   & 17352              & 127825\\
+    \p{imdb-0010000-98168.movies}   & 28211              & 188712\\
+    \p{imdb-0030000-207420.movies}  & 35198              & 200532\\
+    \p{imdb-0045000-299504.movies}  & 43294              & 210985\\
+    \p{imdb-0065000-404920.movies}  & 57889              & 220891\\
+    \p{imdb-0085000-499995.movies}  & 79470              & 243314\\
+    \p{imdb-0130000-709551.movies}  & 136956             & 307405\\
+    \p{imdb-0200000-1004463.movies} & 244627             & 457833\\
+    \p{imdb-0340000-1505143.movies} & 585689             & 1469156\\
+    \p{imdb-0495000-2000900.movies} & 1017752            & 2173809\\
+    \p{imdb-0660000-2501893.movies} & 1562317            & 3953798\\
+    \p{imdb-all-3257145.movies}     & 2709371            & 8227081\\
     \hline
   \end{tabular}
   \caption{The IMDb Models with the expected numbers of Couples and Cliques of size 3}
