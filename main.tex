@@ -56,7 +56,8 @@ We present in the following a case which uses the IMDb movie database
 about movies, actors performing in the movies, movie ratings, etc. The main
 task is to develop a model transformation which identifies \emph{all} couples
 of two actors who perform in at least three common movies and calculate the
-average rating of those movies.  This core task is then generalized to cliques
+average rating of those movies.\footnote{This task together with a solution in Henshin is also
+described in \cite{KTG14}.} This core task is then generalized to cliques
 of \(n\) actors.  Furthermore, some queries calculating top-15 lists of
 couples and cliques are to be written.  Evaluation criteria are correctness and
 performance.
@@ -286,30 +287,39 @@ The following list explains the evaluation criteria for the individual tasks.
 \subsection{Benchmarks (CK)}
 
 The goal of this task is to generate a performance benchmark
-of your solutions to Task 2 and 3. These benchmarks should be
+of your solution to Task 2 (finding couples). This benchmark should be
 executed using two different sets of input data:
 \begin{enumerate}
 \item[(a)] synthetic test data generated using the transformation for Task 1, 
 \item[(b)] provided data from the IMDb movie database (available at \cite{IMDBDATA}; parsable, e.g., using \cite{IMDB2EMF}).
 \end{enumerate}
-For both cases, you should run the transformations for Task 2 and 3
-separately and measure the time needed to complete the transformation 
+For both cases, you should run the transformation for Task 2 
+and measure the time needed to complete the transformation 
 (without loading and saving the model).
-If you solved also the extension tasks, please also generate benchmarks
-for these cases.
+If you solved also the extension task 2 (finding cliques), please also generate benchmarks
+for this cases.
 
 %% Tassilo: Why not measuring Task 2 on its own?
 
-In order to evaluate the scalability of the solution, you should
-increase the input model size in equal step sizes, e.g. by 
-100000 nodes. For the synthetic test data, the parameter can be
-set to $n=5000, 10000, 15000\ldots$ to achieve this. For the
-real data from the IMDb database, we compiled about 30 input 
-models of different sizes that you should use.
-We recommend plotting the run-times using charts where
-the x-axis refers to the size of the input model in number of nodes,
-and the y-axis shows the execution times (e.g. in seconds).
+In order to evaluate the scalability of the solution and to compare it with other solutions,
+you should use specific input models / model sizes. For the synthetic test data, please use
+the values for $n$ shown in Table~\ref{tab:synthetic-numbers}. For the IMDB data version,
+please use the provided models listed in Table~\ref{tab:imdb-numbers}.
 
+%We recommend plotting the run-times using charts where
+%the x-axis refers to the size of the input model in number of nodes,
+%and the y-axis shows the execution times (e.g. in seconds).
+
+\noindent
+\textbf{Important:}
+\begin{itemize}
+\item Please restrict your benchmarks to those input models that can be
+processed within \textbf{5 minutes} or less. Transformations that take longer than 5 minutes
+will not be considered in the evaluation.
+\item Please provide a solution that can run on an x86-based Linux system and that can be started
+on the command-line. This will be important to reproduce your results, in particular the benchmarks.
+Please document the setup of your solution and the requirements to the system environment.
+\end{itemize}
 
 \bibliographystyle{plain}
 \bibliography{biblio}
