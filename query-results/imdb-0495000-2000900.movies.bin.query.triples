@@ -1,18 +1,23 @@
-Top-10 by Average Rating
+Top-15 by Average Rating
 ========================
 
- 1. 3-Clique avgRating  9.615,  27 movies (Brewster, Renee-Marie; Cook, Abby; Mantei, Matt)
- 2. 3-Clique avgRating  9.615,  27 movies (Gubler, Matthias; Mantei, Matt; Moore, Sherron)
- 3. 3-Clique avgRating  9.615,  27 movies (Gibson, Thomas (IV); Gubler, Matthias; Moore, Sherron)
- 4. 3-Clique avgRating  9.615,  27 movies (Cook, Abby; Gibson, Thomas (IV); Moore, Sherron)
- 5. 3-Clique avgRating  9.615,  27 movies (Gibson, Thomas (IV); Moore, Sherron; Vangsoe, Michaela)
- 6. 3-Clique avgRating  9.615,  27 movies (Gibson, Thomas (IV); Gubler, Matthias; Vangsoe, Michaela)
- 7. 3-Clique avgRating  9.615,  27 movies (Brewster, Renee-Marie; Mantei, Matt; Moore, Sherron)
- 8. 3-Clique avgRating  9.615,  27 movies (Gubler, Matthias; Mantei, Matt; Vangsoe, Michaela)
+ 1. 3-Clique avgRating  9.615,  27 movies (Brewster, Renee-Marie; Cook, Abby; Gibson, Thomas (IV))
+ 2. 3-Clique avgRating  9.615,  27 movies (Brewster, Renee-Marie; Cook, Abby; Gubler, Matthias)
+ 3. 3-Clique avgRating  9.615,  27 movies (Brewster, Renee-Marie; Cook, Abby; Mantei, Matt)
+ 4. 3-Clique avgRating  9.615,  27 movies (Brewster, Renee-Marie; Cook, Abby; Moore, Sherron)
+ 5. 3-Clique avgRating  9.615,  27 movies (Brewster, Renee-Marie; Cook, Abby; Vangsoe, Michaela)
+ 6. 3-Clique avgRating  9.615,  27 movies (Brewster, Renee-Marie; Gibson, Thomas (IV); Gubler, Matthias)
+ 7. 3-Clique avgRating  9.615,  27 movies (Brewster, Renee-Marie; Gibson, Thomas (IV); Mantei, Matt)
+ 8. 3-Clique avgRating  9.615,  27 movies (Brewster, Renee-Marie; Gibson, Thomas (IV); Moore, Sherron)
  9. 3-Clique avgRating  9.615,  27 movies (Brewster, Renee-Marie; Gibson, Thomas (IV); Vangsoe, Michaela)
-10. 3-Clique avgRating  9.615,  27 movies (Gibson, Thomas (IV); Mantei, Matt; Vangsoe, Michaela)
+10. 3-Clique avgRating  9.615,  27 movies (Brewster, Renee-Marie; Gubler, Matthias; Mantei, Matt)
+11. 3-Clique avgRating  9.615,  27 movies (Brewster, Renee-Marie; Gubler, Matthias; Moore, Sherron)
+12. 3-Clique avgRating  9.615,  27 movies (Brewster, Renee-Marie; Gubler, Matthias; Vangsoe, Michaela)
+13. 3-Clique avgRating  9.615,  27 movies (Brewster, Renee-Marie; Mantei, Matt; Moore, Sherron)
+14. 3-Clique avgRating  9.615,  27 movies (Brewster, Renee-Marie; Mantei, Matt; Vangsoe, Michaela)
+15. 3-Clique avgRating  9.615,  27 movies (Brewster, Renee-Marie; Moore, Sherron; Vangsoe, Michaela)
 
-Top-10 by Number of Common Movies
+Top-15 by Number of Common Movies
 =================================
 
  1. 3-Clique avgRating  1.661, 100 movies (Daniels, Bernalee; Lloyd, Harold (II); Pollard, Aaron)
@@ -25,3 +30,8 @@ Top-10 by Number of Common Movies
  8. 3-Clique avgRating  1.609,  58 movies (Lloyd, Harold (II); Pollard, Aaron; Stevenson, Charles (III))
  9. 3-Clique avgRating  1.179,  58 movies (Pete, Panhandle; Strong, John (II); Wood, Mark (V))
 10. 3-Clique avgRating  2.140,  57 movies (Brooks, Sarah (V); Lloyd, Harold (II); Stevenson, Charles (III))
+11. 3-Clique avgRating  1.512,  57 movies (Daniels, Bernalee; Jamison, C.J.; Lloyd, Harold (II))
+12. 3-Clique avgRating  1.666,  56 movies (Brooks, Sarah (V); Pollard, Aaron; Stevenson, Charles (III))
+13. 3-Clique avgRating  1.438,  56 movies (Daniels, Bernalee; Jamison, C.J.; Pollard, Aaron)
+14. 3-Clique avgRating  1.438,  56 movies (Jamison, C.J.; Lloyd, Harold (II); Pollard, Aaron)
+15. 3-Clique avgRating  1.429,  56 movies (Daniels, Bernalee; Lloyd, Harold (II); Stevenson, Charles (III))

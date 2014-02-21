@@ -36,7 +36,7 @@ Matthias Tichy\\ Chalmers $|$ University of Gothenburg, Sweden \\matthias.tichy@
 \vskip 32pt
 
 
-\section{Introduction (MTT)}
+\section{Introduction}
 
 The driving force behind social networks and other new web 2.0
 offerings is often huge amount of data. Consequently, concepts like
@@ -68,7 +68,7 @@ tasks. After that, Section \ref{sec-eval} presents the evaluation
 criteria for submitted solutions to this case.
 
 
-\section{Detailed Case Description (MTT)}\label{sec-case}
+\section{Detailed Case Description}\label{sec-case}
 
 We use the IMDb data about movies, actors, actresses, and movie ratings for
 this transformation case. The resulting metamodel is shown in
@@ -96,7 +96,7 @@ the correctness of the submitted transformations as well as real data
 from IMDb for the performance evaluation.
 
 
-\subsection{Task 1: Generating Test Data (CK)}
+\subsection{Task 1: Generating Test Data}
 \label{sec:gen-test-data}
 
 %% Notes from Tassilo:
@@ -144,7 +144,7 @@ of $n$ which can be found in Table~\ref{tab:synthetic-numbers}.
 \label{fig:gen-test-data}
 \end{figure}
 
-\subsection{Task 2: Finding Couples (CK)}
+\subsection{Task 2: Finding Couples}
 
 In this task, a transformation shall be implemented that takes a graph
 consisting of inter-connected movies, actors and actresses as input, and
@@ -157,7 +157,7 @@ create an object of type \textsf{Couple} referencing both persons using the
 \emph{both} persons played in using the \p{commonMovies} reference.
 
 
-\subsection{Task 3: Computing Average Rankings (CK)}
+\subsection{Task 3: Computing Average Rankings}
 
 The input model of this task is the one generated in Task 2,
 i.e., a graph consisting of movie, actor, actress and couple
@@ -166,7 +166,7 @@ of all couple nodes to the average (i.e. the
 arithmetic mean) of the ratings of all movies that
 \emph{both} persons played in.
 
-\subsection{Extension Task 1: Compute Top-15 Couples (TH)}
+\subsection{Extension Task 1: Compute Top-15 Couples}
 
 The goal of this task is to produce top-15 lists of the couples created by
 Task~2.  For this purpose, two model queries should be given.
@@ -186,7 +186,7 @@ IMDb model has more than 400 of them.
 If two couples have the same value for the average rating/number of common
 movies, their order should be determined in some stable manner.
 
-\subsection{Extension Task 2: Finding Cliques (TH)}
+\subsection{Extension Task 2: Finding Cliques}
 
 This extension task is a generalization of Task~2.  A clique is a group of at
 least \(n\) persons (with \(n \geq 3\)) acting together in at least 3 movies.
@@ -205,12 +205,12 @@ higher-order transformation that receives \(n\) and generates a rule creating
 cliques of exactly that size.
 
 
-\subsection{Extension Task 3: Compute Average Rankings for Cliques (TH)}
+\subsection{Extension Task 3: Compute Average Rankings for Cliques}
 
 Like it was done for couples in Task~3, the \p{avgRating} attribute of
 cliques should be set to the average rating of all its common movies.
 
-\subsection{Extension Task 4: Compute Top-15 Cliques (TH)}
+\subsection{Extension Task 4: Compute Top-15 Cliques}
 
 This is a variant of Extension Task~1 for cliques instead of couples.  Again,
 two queries should be given.
@@ -227,14 +227,14 @@ Again, every clique should be printed with the names of its members, the
 average rating, and the number of common movies.
 
 
-\section{Evaluation Criteria (MTT)}\label{sec-eval}
+\section{Evaluation Criteria}\label{sec-eval}
 
 The evaluation of the submitted transformation will be done on synthetic data
 as well as real data from the IMDb database.  The IMDb database is regularly
 updated.  In order to provide a common set of data, we provide the models
 generated from the IMDb database in December 2013 to participants by request.
 
-\subsection{Correctness and Completeness (TH)}
+\subsection{Correctness and Completeness}
 
 All tasks and extension tasks are scored evenly with zero to three points.
 Zero means the task has not been tackled at all, three points means the task
@@ -285,7 +285,7 @@ The following list explains the evaluation criteria for the individual tasks.
 \end{description}
 
 
-\subsection{Benchmarks (CK)}
+\subsection{Benchmarks}
 
 The goal of this task is to generate a performance benchmark
 of your solution to Task 2 (finding couples). This benchmark should be
