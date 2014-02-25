@@ -38,12 +38,12 @@ Matthias Tichy\\ Chalmers $|$ University of Gothenburg, Sweden \\matthias.tichy@
 
 \section{Introduction}
 
-The driving force behind social networks and other new web 2.0
-offerings is often huge amount of data. Consequently, concepts like
-MapReduce \cite{Dean08} and libraries like Hadoop \cite{Hadoop} and
-Giraph \cite{Giraph} have been developed to efficiently process this
-huge amount of data. However, model transformation approaches have
-not adressed this field so far.
+The driving force behind social networks and other new web 2.0 offerings is
+often a huge amount of data from which interesting information can be
+extracted.  Consequently, concepts like MapReduce \cite{Dean08} and libraries
+like Hadoop \cite{Hadoop} and Giraph \cite{Giraph} have been developed to
+efficiently process this huge amount of data. However, model transformation
+approaches have not adressed this field so far.
 
 Automotive software is an already well-established application field
 for model-driven software engineering and its models also approach
@@ -56,11 +56,11 @@ In the following, we present a case which uses the IMDb movie database
 about movies, actors performing in the movies, movie ratings, etc. The main
 task is to develop a model transformation which identifies \emph{all} couples
 of two actors who perform in at least three common movies and calculate the
-average rating of those movies.\footnote{This task together with a solution in Henshin is also
-described in \cite{KTG14}.} This core task is then generalized to cliques
-of \(n\) actors.  Furthermore, some queries calculating top-15 lists of
-couples and cliques are to be written.  Evaluation criteria are correctness and
-performance.
+average rating of those movies.\footnote{This task together with a solution in
+  Henshin is also described in \cite{KTG14}.} This core task is then
+generalized to cliques of \(n\) actors.  Furthermore, some queries calculating
+top-15 lists of couples and cliques are to be written.  Evaluation criteria are
+correctness/completeness and performance.
 
 In the next section, we describe the case in more detail
 including the meta model as well as the different core and extension
@@ -76,10 +76,10 @@ Figure~\ref{fig:metamodel}.  The names of actors and actresses are always
 unique in the models.  In addition to the obvious classes, the metamodel
 contains a common superclass for actors and actresses as well as classes for
 groups of actors which play in common movies. The class \p{Group} contains the
-attribute \p{avgRating} which stores the average rating of the common movies of
-the group of actors. The metamodel distinguishes between groups of two persons
-(a \p{Couple}) or a \p{Clique} of $n$ persons to support the different tasks in
-this transformation case.
+attribute \p{avgRating} which is intended to store the average rating of the
+common movies of the group of actors. The metamodel distinguishes between
+groups of two persons (a \p{Couple}) or a \p{Clique} of $n$ persons to support
+the different tasks in this transformation case.
 
 \begin{figure}[ht]
 \centering
@@ -88,12 +88,11 @@ this transformation case.
 \label{fig:metamodel}
 \end{figure}
 
-The EMF model as well as a parser for the
-IMDb database files is available at \cite{IMDB2EMF}. The pre-parsed
-IMDb models are available on request. The transformation case will use
-synthetic data (as generated in Task~1) for the evaluation of
-the correctness of the submitted transformations as well as real data
-from IMDb for the performance evaluation.
+The EMF model as well as a parser for the IMDb database files is available at
+\cite{IMDB2EMF}. The pre-parsed IMDb models are available on request. The
+transformation case will use synthetic data (as generated in Task~1) as well as
+real IMDB data for the evaluation of the correctness and performance of the
+submitted solutions.
 
 
 \subsection{Task 1: Generating Test Data}
@@ -319,9 +318,12 @@ are available on request.
 \item Please restrict your benchmarks to those input models that can be
 processed within \textbf{5 minutes} or less. Transformations that take longer than 5 minutes
 will not be considered in the evaluation.
-\item Please provide a solution that can run on an x86-based Linux system and that can be started
-on the command-line. This will be important to reproduce your results, in particular the benchmarks.
-Please document the setup of your solution and the requirements to the system environment.
+\item Please provide a solution that can run on an x86-based Linux system and
+  that can be started on the command-line. This will be important to reproduce
+  your results on a remote testing system\footnote{The system we will use for
+    evaluating the performance is a 64bit Linux system with 8 cores and 16 GB
+    RAM.}, in particular the benchmarks.  Please document the setup of your
+  solution and the requirements to the system environment.
 \end{itemize}
 The benchmark results are scored by comparing the run-times with the
 other solutions. The fastest solution gets 21 points (same amount as for
