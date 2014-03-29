@@ -1,0 +1,508 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage{graphicx}
+\usepackage{onecolpceurws}
+\usepackage{url}
+\usepackage{hyperref}
+\usepackage{verbatim}
+
+\title{The TTC 2014 Movie Database Case}
+
+\author{
+Tassilo Horn\\ University of Koblenz-Landau\\ Germany\\ horn@uni-koblenz.de
+\and
+Christian Krause\\ SAP Innovation Center\\ Germany\\ christian.krause01@sap.com
+\and
+Matthias Tichy\\ Chalmers $|$ University of Gothenburg, Sweden \\matthias.tichy@cse.gu.se
+}
+\newcommand{\p}[1]{\textsf{\small #1}}
+
+\institution{}
+
+\newcommand{\qr}[3]{\noindent{}Top-15 #2 for #3:{\scriptsize\verbatiminput{../query-results/#1}}}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+  Social networks and other web 2.0 platforms use huge amounts of data to offer
+  new services to customers. Often this data can be expressed as huge graphs
+  and thus could be seen as a potential new application field for model
+  transformations. However, this application area requires that model
+  transformation tools scale to models with millions of objects. This
+  transformation case targets this application area by using the IMDb movie
+  database as a model. The transformation deals with identifying all actor
+  couples which perform together in a set of at least three movies.
+  \end{abstract}
+\vskip 32pt
+
+
+\section{Introduction}
+
+The driving force behind social networks and other new web 2.0 offerings is
+often a huge amount of data from which interesting information can be
+extracted.  Consequently, concepts like MapReduce \cite{Dean08} and libraries
+like Hadoop \cite{Hadoop} and Giraph \cite{Giraph} have been developed to
+efficiently process this huge amount of data. However, model transformation
+approaches have not adressed this field so far.
+
+Automotive software is an already well-established application field
+for model-driven software engineering and its models also approach
+huge sizes. As a consequence from these two examples, model
+transformation approaches must be scalable to models with million
+objects to be applicable for these application areas.
+
+In the following, we present a case which uses the IMDb movie database
+\cite{IMDBDATA} as a data source. The IMDb movie database contains information
+about movies, actors performing in the movies, movie ratings, etc. The main
+task is to develop a model transformation which identifies \emph{all} couples
+of two actors who perform in at least three common movies and calculate the
+average rating of those movies.\footnote{This task together with a solution in
+  Henshin is also described in \cite{KTG14}.} This core task is then
+generalized to cliques of \(n\) actors.  Furthermore, some queries calculating
+top-15 lists of couples and cliques are to be written.  Evaluation criteria are
+correctness/completeness and performance.
+
+In the next section, we describe the case in more detail
+including the meta model as well as the different core and extension
+tasks. After that, Section \ref{sec-eval} presents the evaluation
+criteria for submitted solutions to this case.
+
+
+\section{Detailed Case Description}\label{sec-case}
+
+We use the IMDb data about movies, actors, actresses, and movie ratings for
+this transformation case. The resulting metamodel is shown in
+Figure~\ref{fig:metamodel}.  The names of actors and actresses are always
+unique in the models.  In addition to the obvious classes, the metamodel
+contains a common superclass for actors and actresses as well as classes for
+groups of actors which play in common movies. The class \p{Group} contains the
+attribute \p{avgRating} which is intended to store the average rating of the
+common movies of the group of actors. The metamodel distinguishes between
+groups of two persons (a \p{Couple}) or a \p{Clique} of $n$ persons to support
+the different tasks in this transformation case.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.6\textwidth]{movies}
+\caption{A metamodel for the relevant aspects of the movie database}
+\label{fig:metamodel}
+\end{figure}
+
+The EMF model as well as a parser for the IMDb database files is available at
+\cite{IMDB2EMF}. The pre-parsed IMDb models are available on
+request\footnote{\label{imdb-access}Contact Matthias Tichy for getting
+  access.}. The transformation case will use synthetic data (as generated in
+Task~1) as well as real IMDb data for the evaluation of the correctness and
+performance of the submitted solutions.
+
+\subsection*{Non-EMF Solutions}
+\label{sec:non-emf-solutions}
+
+As stated above, the pre-parsed IMDb models are available as EMF models.
+However, we can also provide the models in some simple generic format (e.g.,
+CSV) on request for solution authors that work with a different modeling
+framework.  Please contact Tassilo Horn in that case.
+
+
+\subsection{Task 1: Generating Test Data}
+\label{sec:gen-test-data}
+
+%% Notes from Tassilo:
+%%
+%% - The test data generation currently creates models contains only couples.
+%% For the extension tasks it would be good if the rules also created cliques
+%% of size 3, 4, and 5.  The real data does contain such cliques, but finding
+%% those is extremely costly.  Therefore, we should be able to validate
+%% solutions for the extension tasks also with just the simpler, smaller
+%% generated models.
+%%
+%% - The test data generation should also assign unique names to the Actors and
+%% Actresses, and ratings to the Movies.  Else, the computation of the average
+%% rating and the top-15 queries cannot be evaluated with the test models.
+%% (Again, the real IMDb models are probably to complex/large for most
+%% participants.)
+
+The goal of this task is to generate (synthetic) test data which will be used
+later to evaluate the correctness and the performance of the solution of the
+main task. The transformation to be implemented takes an empty model and a
+parameter \(N\geq0\),
+and generates movies, actresses, actors, and references between them.  The
+number of objects to be generated is determined by the parameter $N$.
+Specifically, the transformation is supposed to generate $5N$ actors, $5N$
+actresses and $10N$ movies, totalling in $20N$ nodes.  Additionally, the
+references between persons and movies are generated in a specified way.
+
+The specific patterns to be generated are shown in the Henshin~\cite{ABJ+10}
+rules in Figure~\ref{fig:gen-test-data}.  Each of the two used rules generates
+five persons and five movies.  The five persons in the rule
+\textsf{createPositive} play together in three movies.  In contrast, every
+possible pair of persons generated by the rule \textsf{createNegative} plays
+together in at most two movies.  The movie ratings and the name of the persons
+are derived from the rule parameter $n$ which takes the values from 0 to
+\(N-1\).
+The entry point for the test data generator is the iterated unit
+\textsf{createExample}.  The unit has the integer-valued parameter $N$ which
+determines the number of loops to execute.  Specifically, this unit executes
+the sequential unit \textsf{createTest} $N$ times with parameter values
+$0\ldots{}N-1$ for $n$.  The unit \textsf{createTest} invokes the rule
+\textsf{createPositive} and \textsf{createNegative} both with $n$ as parameter.
+
+For the following tasks, test data should be generated for different values of
+$N$ which can be found in Table~\ref{tab:synthetic-numbers}.
+
+
+\begin{figure}[p]
+\centering
+\includegraphics[scale=1.0,angle=90]{gen-test-data4}
+\caption{Henshin specification for generating synthetic movie test data.}
+\label{fig:gen-test-data}
+\end{figure}
+
+\subsection{Task 2: Finding Couples}
+
+In this task, a transformation shall be implemented that takes a graph
+consisting of inter-connected movies, actors and actresses as input, and
+creates additional nodes and links in this graph.\footnote{Both in-place and
+  out-place transformation approaches are possible.} Specifically, the task is
+to find all pairs of persons (actors or actresses) which played together in at
+least three movies.  For every such pair, the transformation is supposed to
+create an object of type \p{Couple} referencing both persons using the
+\p{p1} and \p{p2} references, and referencing all movies in which
+\emph{both} persons played in using the \p{commonMovies} reference.
+
+\subsection{Task 3: Computing Average Rankings}
+
+The input model of this task is the one generated in Task 2,
+i.e., a graph consisting of movie, actor, actress and couple
+nodes. The goal of this task is to set the \p{avgRating}-attribute
+of all couple nodes to the average (i.e. the
+arithmetic mean) of the ratings of all movies that
+\emph{both} persons played in.
+
+\subsection{Extension Task 1: Compute Top-15 Couples}
+
+The goal of this task is to produce top-15 lists of the couples created by
+Task~2.  For this purpose, two model queries should be given.
+
+\begin{enumerate}
+\item[(a)] Compute the top 15 couples according to the average rating of
+  their common movies (requires Task~3 to be solved).
+\item[(b)] Compute the top 15 couples according to the number of common movies.
+\end{enumerate}
+
+Each of the couples in the top-15 lists should be printed with the names of the
+two persons, the average rating (only if Task~3 has been solved), and the
+number of the couple's common movies.  We don't require printing the common
+movies' titles because the couple with the most common movies in the complete
+IMDb model has more than 400 of them.
+
+If two couples have the same value for the average rating/number of common
+movies, their order should be determined in some stable manner.
+
+\subsection{Extension Task 2: Finding Cliques}
+
+This extension task is a generalization of Task~2.  A clique is a group of at
+least \(n\) persons (with \(n \geq 3\)) acting together in at least 3 movies.
+So a couple is essentially a clique of size \(n = 2\).
+
+The extension task is to find cliques of a given size \(n\), and to create a
+\p{Clique} element for each of them referencing the clique's members using the
+\p{persons} reference and its common movies using the \p{commonMovies}
+reference.
+
+The task will be evaluated for \(n \in \{3, 4, 5\}\), so it could be solved by
+writing three similar rules manually.  However, to achieve a full completeness
+score for this task, a solution should work for any \(n \geq 3\).  Therefore, a
+transformation could have \(n\) as a parameter, or there could be a
+higher-order transformation that receives \(n\) and generates a rule creating
+cliques of exactly that size.
+
+
+\subsection{Extension Task 3: Compute Average Rankings for Cliques}
+
+Like it was done for couples in Task~3, the \p{avgRating} attribute of
+cliques should be set to the average rating of all its common movies.
+
+\subsection{Extension Task 4: Compute Top-15 Cliques}
+
+This is a variant of Extension Task~1 for cliques instead of couples.  Again,
+two queries should be given.
+
+\begin{enumerate}
+\item[(a)] Compute the top-15 cliques of a given size \(n\) according to the
+  average rating of their common movies (requires Extension Task~3 to be
+  solved).
+\item[(b)] Compute the top-15 cliques of a given size \(n\) according to the
+  number of common movies.
+\end{enumerate}
+
+Again, every clique should be printed with the names of its members, the
+average rating, and the number of common movies.
+
+
+\section{Evaluation Criteria}\label{sec-eval}
+
+The evaluation of the submitted transformation will be done on synthetic data
+as well as real data from the IMDb database.  The IMDb database is regularly
+updated.  In order to provide a common set of data, we provide the models
+generated from the IMDb database in December 2013 to participants by
+request\textsuperscript{\ref{imdb-access}}.
+
+\subsection{Correctness and Completeness}
+
+All tasks and extension tasks are scored evenly with zero to three points.
+Zero means the task has not been tackled at all, three points means the task
+has been completely solved and the implementation is correct.  The performance
+of a solution is not relevant, here.  If a solution works correctly for the
+smaller models but won't terminate or run out of memory for the larger models,
+it may still achieve three points.
+
+The following list explains the evaluation criteria for the individual tasks.
+
+\begin{description}
+\item[Task~1] The test data generation will be evaluated for different values
+  of \(N\).
+  The correct number of elements, their relationships, and the correctly set
+  attribute values will be assessed.
+\item[Task~2] The correct number of couples will be evaluated for both the
+  synthetic and the IMDb models.  The expected numbers for both kinds of models
+  are shown in Table~\ref{tab:synthetic-numbers} and
+  Table~\ref{tab:imdb-numbers} in the appendix.  Furthermore, the correct
+  setting of the \p{p1}, \p{p2}, and \p{commonMovies} references will be
+  spot-checked.
+\item[Task~3] The correct average ranking of couples will be spot-checked for
+  both the synthetic and the IMDb models.  Refer to Section~\ref{sec:top-15}
+  for the expected values of the top-15 average ratings.
+\item[Extension~Task~1] The Top-15 lists of couples will be evaluated for both
+  the synthetic and the IMDb models.  Section~\ref{sec:top-15} lists the
+  expected top-15 lists for each model.  The couples are sorted by the (a)
+  average rating or by (b) the number of common movies.  If two couples have
+  the same value for that criterion, the respective other metric is used to cut
+  the tie.  If that also doesn't suffice, the names of the actors are used for
+  comparison.  While this is a sensible approach, it is not strictly required.
+  Sorting stably according criterion (a) and (b) is enough to achieve a full
+  score.
+\item[Extension~Task~2] The finding of cliques will be evaluated for the sizes
+  \(n \in \{3,4,5\}\) for the synthetic models and for \(n=3\) for the IMDb
+  models.  The main evaluation criterion, however, is that the value of \(n\)
+  can be chosen freely, i.e., the rule for a given \(n\) is not written
+  manually but it is a parameter to the transformation, or a parameter to a
+  higher-order transformation generating a transformation for that value.
+\item[Extension~Task~3] The correct average ranking of cliques will be
+  spot-checked for both the synthetic and the IMDb models.  Refer to
+  Section~\ref{sec:top-15} for the expected values of the top-15 average
+  ratings.
+\item[Extension~Task~4] The Top-15 lists of cliques will be evaluated for both
+  the synthetic (\(n \in \{3,4,5\}\)) and the IMDb models (\(n=3\)).  Again,
+  the expected top-15 lists are printed in Section~\ref{sec:top-15}.  Like for
+  Extension Task~1, the a stable sorting according to (a) average rating, or
+  (b) number of common movies is enough to achieve a full score.
+\end{description}
+
+
+\subsection{Benchmarks}
+
+The goal of this task is to generate a performance benchmark
+of your solution to Task 2 (finding couples). This benchmark should be
+executed using two different sets of input data:
+\begin{enumerate}
+\item[(a)] synthetic test data generated using the transformation for Task 1, 
+\item[(b)] provided data from the IMDb movie database (available at \cite{IMDBDATA}; parsable, e.g., using \cite{IMDB2EMF}).
+\end{enumerate}
+For both cases, you should run the transformation for Task 2 
+and measure the time needed to complete the transformation 
+(without loading and saving the model).
+If you solved also the extension task 2 (finding cliques), please also generate
+benchmarks for these cases using \(n \in \{3,4,5\}\) for the synthetic test
+models and \(n = 3\) for the IMDb models.
+
+In order to evaluate the scalability of the solution and to compare it with other solutions,
+you should use specific input models / model sizes. For the synthetic test data, please use
+the values for $N$ shown in Table~\ref{tab:synthetic-numbers}. For the IMDb data version,
+please use the provided models listed in Table~\ref{tab:imdb-numbers}. The models
+are available on request\textsuperscript{\ref{imdb-access}}.
+
+%We recommend plotting the run-times using charts where
+%the x-axis refers to the size of the input model in number of nodes,
+%and the y-axis shows the execution times (e.g. in seconds).
+
+\noindent
+\textbf{Important:}
+\begin{itemize}
+\item Please restrict your benchmarks to those input models that can be
+processed within \textbf{5 minutes} or less. Transformations that take longer than 5 minutes
+will not be considered in the evaluation.
+\item Please provide a solution that can run on an x86-based Linux system and
+  that can be started on the command-line. This will be important to reproduce
+  your results on a remote testing system\footnote{The system we will use for
+    evaluating the performance is a 64bit Linux system with 8 cores and 16 GB
+    RAM.}, in particular the benchmarks.  Please document the setup of your
+  solution and the requirements to the system environment.
+\end{itemize}
+The benchmark results are scored by comparing the run-times with the
+other solutions. The fastest solution gets 21 points (same amount as for
+correctness and completeness). The rest of the solutions get proportional
+scores.
+
+\bibliographystyle{plain}
+\bibliography{biblio}
+
+\newpage
+\appendix
+
+\section{Expected Number of Couples and Cliques}
+\label{sec:expected-numbers}
+
+\begin{table}[!ht]
+  \centering
+  \begin{tabular}{| r | r | r | r | r |}
+    \hline
+    \textbf{Model (\(N\))} & \textbf{\#Couples} & \textbf{\#3-Cliques} & \textbf{\#4-Cliques} & \textbf{\#5-Cliques}\\
+    \hline
+    1000   & 10000   & 10000   & 5000    & 1000\\
+    2000   & 20000   & 20000   & 10000   & 2000\\
+    3000   & 30000   & 30000   & 15000   & 3000\\
+    4000   & 40000   & 40000   & 20000   & 4000\\
+    5000   & 50000   & 50000   & 25000   & 5000\\
+    10000  & 100000  & 100000  & 50000   & 10000\\
+    50000  & 500000  & 500000  & 250000  & 50000\\
+    100000 & 1000000 & 1000000 & 500000  & 100000\\
+    200000 & 2000000 & 2000000 & 1000000 & 200000\\
+    \hline
+\end{tabular}
+\caption{The synthetic models with the expected numbers of Couples and Cliques of various sizes}
+\label{tab:synthetic-numbers}
+\end{table}
+
+
+\begin{table}[!ht]
+  \centering
+  \begin{tabular}{| l | r | r |}
+    \hline
+    \textbf{Model}                  & \textbf{\#Couples} & \textbf{\#3-Cliques}\\
+    \hline
+    \p{imdb-0005000-49930.movies}   & 17352              & 127825\\
+    \p{imdb-0010000-98168.movies}   & 28211              & 188712\\
+    \p{imdb-0030000-207420.movies}  & 35198              & 200532\\
+    \p{imdb-0045000-299504.movies}  & 43294              & 210985\\
+    \p{imdb-0065000-404920.movies}  & 57889              & 220891\\
+    \p{imdb-0085000-499995.movies}  & 79470              & 243314\\
+    \p{imdb-0130000-709551.movies}  & 136956             & 307405\\
+    \p{imdb-0200000-1004463.movies} & 244627             & 457833\\
+    \p{imdb-0340000-1505143.movies} & 585689             & 1469156\\
+    \p{imdb-0495000-2000900.movies} & 1017752            & 2173809\\
+    \p{imdb-0660000-2501893.movies} & 1562317            & 3953798\\
+    \p{imdb-all-3257145.movies}     & 2709371            & 8227081\\
+    \hline
+  \end{tabular}
+  \caption{The IMDb Models with the expected numbers of Couples and Cliques of size 3}
+  \label{tab:imdb-numbers}
+\end{table}
+
+\newpage
+\section{Expected Top-15 Lists}
+\label{sec:top-15}
+
+\subsection{Synthetic Models}
+\label{sec:top-15:synthetic-models}
+
+\subsubsection{Couples}
+
+%% Couples
+\qr{synth-1000.query.couples}{couples}{synthetic model with \(n=1000\)}
+\qr{synth-2000.query.couples}{couples}{synthetic model with \(n=2000\)}
+\qr{synth-3000.query.couples}{couples}{synthetic model with \(n=3000\)}
+\qr{synth-4000.query.couples}{couples}{synthetic model with \(n=4000\)}
+\qr{synth-5000.query.couples}{couples}{synthetic model with \(n=5000\)}
+\qr{synth-10000.query.couples}{couples}{synthetic model with \(n=10000\)}
+\qr{synth-50000.query.couples}{couples}{synthetic model with \(n=50000\)}
+\qr{synth-100000.query.couples}{couples}{synthetic model with \(n=100000\)}
+\qr{synth-200000.query.couples}{couples}{synthetic model with \(n=200000\)}
+
+\newpage
+\subsubsection{Cliques of size 3}
+
+%% Cliques of size 3
+\qr{synth-1000.query.3cliques}{3-cliques}{synthetic model with \(n=1000\)}
+\qr{synth-2000.query.3cliques}{3-cliques}{synthetic model with \(n=2000\)}
+\qr{synth-3000.query.3cliques}{3-cliques}{synthetic model with \(n=3000\)}
+\qr{synth-4000.query.3cliques}{3-cliques}{synthetic model with \(n=4000\)}
+\qr{synth-5000.query.3cliques}{3-cliques}{synthetic model with \(n=5000\)}
+\qr{synth-10000.query.3cliques}{3-cliques}{synthetic model with \(n=10000\)}
+\qr{synth-50000.query.3cliques}{3-cliques}{synthetic model with \(n=50000\)}
+\qr{synth-100000.query.3cliques}{3-cliques}{synthetic model with \(n=100000\)}
+\qr{synth-200000.query.3cliques}{3-cliques}{synthetic model with \(n=200000\)}
+
+\newpage
+\subsubsection{Cliques of size 4}
+
+%% Cliques of size 4
+\qr{synth-1000.query.4cliques}{4-cliques}{synthetic model with \(n=1000\)}
+\qr{synth-2000.query.4cliques}{4-cliques}{synthetic model with \(n=2000\)}
+\qr{synth-3000.query.4cliques}{4-cliques}{synthetic model with \(n=3000\)}
+\qr{synth-4000.query.4cliques}{4-cliques}{synthetic model with \(n=4000\)}
+\qr{synth-5000.query.4cliques}{4-cliques}{synthetic model with \(n=5000\)}
+\qr{synth-10000.query.4cliques}{4-cliques}{synthetic model with \(n=10000\)}
+\qr{synth-50000.query.4cliques}{4-cliques}{synthetic model with \(n=50000\)}
+\qr{synth-100000.query.4cliques}{4-cliques}{synthetic model with \(n=100000\)}
+\qr{synth-200000.query.4cliques}{4-cliques}{synthetic model with \(n=200000\)}
+
+\newpage
+\subsubsection{Cliques of size 5}
+
+%% Cliques of size 5
+\qr{synth-1000.query.5cliques}{5-cliques}{synthetic model with \(n=1000\)}
+\qr{synth-2000.query.5cliques}{5-cliques}{synthetic model with \(n=2000\)}
+\qr{synth-3000.query.5cliques}{5-cliques}{synthetic model with \(n=3000\)}
+\qr{synth-4000.query.5cliques}{5-cliques}{synthetic model with \(n=4000\)}
+\qr{synth-5000.query.5cliques}{5-cliques}{synthetic model with \(n=5000\)}
+\qr{synth-10000.query.5cliques}{5-cliques}{synthetic model with \(n=10000\)}
+\qr{synth-50000.query.5cliques}{5-cliques}{synthetic model with \(n=50000\)}
+\qr{synth-100000.query.5cliques}{5-cliques}{synthetic model with \(n=100000\)}
+\qr{synth-200000.query.5cliques}{5-cliques}{synthetic model with \(n=200000\)}
+
+\newpage
+\subsection{IMDb Models}
+\label{sec:top-15:imdb-models}
+
+\subsubsection{Couples}
+
+%% Couples
+\qr{imdb-0005000-49930.movies.bin.query.couples}{couples}{model \p{imdb-0005000-49930}}
+\qr{imdb-0010000-98168.movies.bin.query.couples}{couples}{model \p{imdb-0010000-98168}}
+\qr{imdb-0030000-207420.movies.bin.query.couples}{couples}{model \p{imdb-0030000-207420}}
+\qr{imdb-0045000-299504.movies.bin.query.couples}{couples}{model \p{imdb-0045000-299504}}
+\qr{imdb-0065000-404920.movies.bin.query.couples}{couples}{model \p{imdb-0065000-404920}}
+\qr{imdb-0085000-499995.movies.bin.query.couples}{couples}{model \p{imdb-0085000-499995}}
+\qr{imdb-0130000-709551.movies.bin.query.couples}{couples}{model \p{imdb-0130000-709551}}
+\qr{imdb-0200000-1004463.movies.bin.query.couples}{couples}{model \p{imdb-0200000-1004463}}
+\qr{imdb-0340000-1505143.movies.bin.query.couples}{couples}{model \p{imdb-0340000-1505143}}
+\qr{imdb-0495000-2000900.movies.bin.query.couples}{couples}{model \p{imdb-0495000-2000900}}
+\qr{imdb-0660000-2501893.movies.bin.query.couples}{couples}{model \p{imdb-0660000-2501893}}
+\qr{imdb-all-3257145.movies.bin.query.couples}{couples}{model \p{imdb-all-3257145}}
+
+
+\newpage
+\subsubsection{Cliques of size 3}
+
+%% Cliques of size 3
+\qr{imdb-0005000-49930.movies.bin.query.triples}{3-cliques}{model \p{imdb-0005000-49930}}
+\qr{imdb-0010000-98168.movies.bin.query.triples}{3-cliques}{model \p{imdb-0010000-98168}}
+\qr{imdb-0030000-207420.movies.bin.query.triples}{3-cliques}{model \p{imdb-0030000-207420}}
+\qr{imdb-0045000-299504.movies.bin.query.triples}{3-cliques}{model \p{imdb-0045000-299504}}
+\qr{imdb-0065000-404920.movies.bin.query.triples}{3-cliques}{model \p{imdb-0065000-404920}}
+\qr{imdb-0085000-499995.movies.bin.query.triples}{3-cliques}{model \p{imdb-0085000-499995}}
+\qr{imdb-0130000-709551.movies.bin.query.triples}{3-cliques}{model \p{imdb-0130000-709551}}
+\qr{imdb-0200000-1004463.movies.bin.query.triples}{3-cliques}{model \p{imdb-0200000-1004463}}
+\qr{imdb-0340000-1505143.movies.bin.query.triples}{3-cliques}{model \p{imdb-0340000-1505143}}
+\qr{imdb-0495000-2000900.movies.bin.query.triples}{3-cliques}{model \p{imdb-0495000-2000900}}
+\qr{imdb-0660000-2501893.movies.bin.query.triples}{3-cliques}{model \p{imdb-0660000-2501893}}
+\qr{imdb-all-3257145.movies.bin.query.triples}{3-cliques}{model \p{imdb-all-3257145}}
+
+
+\end{document}
+
+
+% Local Variables:
+% coding: utf-8-dos
+% End:
