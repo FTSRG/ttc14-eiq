@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated movies -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="hu.bme.mit.ttc.imdb.movies.presentation.MoviesModelWizardID"
+            name="%_UI_MoviesModelWizard_label"
+            class="hu.bme.mit.ttc.imdb.movies.presentation.MoviesModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/MoviesModelFile.gif">
+         <description>%_UI_MoviesModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated movies -->
+      <editor
+            id="hu.bme.mit.ttc.imdb.movies.presentation.MoviesEditorID"
+            name="%_UI_MoviesEditor_label"
+            icon="icons/full/obj16/MoviesModelFile.gif"
+            extensions="movies"
+            class="hu.bme.mit.ttc.imdb.movies.presentation.MoviesEditor"
+            contributorClass="hu.bme.mit.ttc.imdb.movies.presentation.MoviesActionBarContributor">
+      </editor>
+   </extension>
+
+</plugin>
