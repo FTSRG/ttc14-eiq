@@ -1,4 +1,4 @@
-package hu.bme.mit.ttc.transformation;
+package hu.bme.mit.ttc.imdb.generator;
 
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Iterables;
@@ -18,7 +18,7 @@ import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 
 @SuppressWarnings("all")
-public class Transformation {
+public class Generator {
   protected Resource r;
   
   @Extension
@@ -33,7 +33,7 @@ public class Transformation {
     IntegerRange _upTo = new IntegerRange(0, _minus);
     final Procedure1<Integer> _function = new Procedure1<Integer>() {
       public void apply(final Integer it) {
-        Transformation.this.createTest((it).intValue());
+        Generator.this.createTest((it).intValue());
       }
     };
     IterableExtensions.<Integer>forEach(_upTo, _function);
@@ -58,7 +58,7 @@ public class Transformation {
         public void apply(final Integer it) {
           int _multiply = (10 * n);
           int _plus = (_multiply + (it).intValue());
-          Movie _createMovie = Transformation.this.createMovie(_plus);
+          Movie _createMovie = Generator.this.createMovie(_plus);
           movies.add(_createMovie);
         }
       };
@@ -118,7 +118,7 @@ public class Transformation {
         public void apply(final Integer it) {
           int _multiply = (10 * n);
           int _plus = (_multiply + (it).intValue());
-          Movie _createMovie = Transformation.this.createMovie(_plus);
+          Movie _createMovie = Generator.this.createMovie(_plus);
           movies.add(_createMovie);
         }
       };

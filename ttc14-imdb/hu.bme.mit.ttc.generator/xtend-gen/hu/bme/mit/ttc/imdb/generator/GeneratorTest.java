@@ -1,6 +1,6 @@
-package hu.bme.mit.ttc.generator;
+package hu.bme.mit.ttc.imdb.generator;
 
-import hu.bme.mit.ttc.generator.Generator;
+import hu.bme.mit.ttc.imdb.generator.Generator;
 import java.util.Map;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;

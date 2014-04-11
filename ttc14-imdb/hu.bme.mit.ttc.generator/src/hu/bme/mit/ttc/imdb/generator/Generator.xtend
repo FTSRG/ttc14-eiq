@@ -1,10 +1,10 @@
-package hu.bme.mit.ttc.transformation
+package hu.bme.mit.ttc.imdb.generator
 
 import com.google.common.collect.ImmutableList
 import hu.bme.mit.ttc.imdb.movies.MoviesFactory
 import org.eclipse.emf.ecore.resource.Resource
 
-class Transformation {
+class Generator {
 
 	protected Resource r
 	

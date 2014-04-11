@@ -1,4 +1,4 @@
-package hu.bme.mit.ttc.generator
+package hu.bme.mit.ttc.imdb.transformation
 
 import org.eclipse.emf.common.util.URI
 import org.eclipse.emf.ecore.resource.Resource
@@ -6,7 +6,7 @@ import org.eclipse.emf.ecore.resource.ResourceSet
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl
 import org.junit.Test
 
-class GeneratorTest {
+class TransformationTest {
 
 	ResourceSet rs;
 	Resource r;
@@ -14,13 +14,11 @@ class GeneratorTest {
 	@Test
 	def test() {
 		rs = new ResourceSetImpl;
-		r = rs.createResource(URI.createPlatformResourceURI("hu.bme.mit.ttc.imdb.instance/model/synthetic.movies", true));
-		
-		val generator = new Generator
-		generator.r = r
-		generator.generate(1)
-		
-		r.save(emptyMap)
+		r = rs.getResource(URI.createPlatformResourceURI("hu.bme.mit.ttc.imdb.instance/model/synthetic.movies", true), true);
+
+		val transformation = new Transformation
+		transformation.r = r
+		transformation.createCouples
 	}
 
 }
