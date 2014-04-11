@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin>
+
+   <extension
+         id="hu.bme.mit.ttc.imdb.queries.playedTogetherIn"
+         point="org.eclipse.incquery.runtime.queryspecification">
+      <matcher
+            querySpecificationProvider="hu.bme.mit.ttc.imdb.queries.util.PlayedTogetherInQuerySpecification$Provider"
+            id="hu.bme.mit.ttc.imdb.queries.playedTogetherIn">
+      </matcher>
+   </extension>
+   <extension
+         id="hu.bme.mit.ttc.imdb.queries.couple"
+         point="org.eclipse.incquery.runtime.queryspecification">
+      <matcher
+            querySpecificationProvider="hu.bme.mit.ttc.imdb.queries.util.CoupleQuerySpecification$Provider"
+            id="hu.bme.mit.ttc.imdb.queries.couple">
+      </matcher>
+   </extension>
+   <extension
+         id="hu.bme.mit.ttc.imdb.queries.commonMoviesOfCouple"
+         point="org.eclipse.incquery.runtime.queryspecification">
+      <matcher
+            querySpecificationProvider="hu.bme.mit.ttc.imdb.queries.util.CommonMoviesOfCoupleQuerySpecification$Provider"
+            id="hu.bme.mit.ttc.imdb.queries.commonMoviesOfCouple">
+      </matcher>
+   </extension>
+
+</plugin>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ASCII"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:movies="http://movies/1.0">
+  <movies:Actor movies="/5 /6 /7 /8" name="a0"/>
+  <movies:Actor movies="/5 /6 /7 /8" name="a1"/>
+  <movies:Actor movies="/6 /7 /8" name="a2"/>
+  <movies:Actress movies="/6 /7 /8 /9" name="a3"/>
+  <movies:Actress movies="/6 /7 /8 /9" name="a4"/>
+  <movies:Movie persons="/0 /1"/>
+  <movies:Movie persons="/0 /1 /2 /3 /4" rating="1.0"/>
+  <movies:Movie persons="/0 /1 /2 /3 /4" rating="2.0"/>
+  <movies:Movie persons="/0 /1 /2 /3 /4" rating="3.0"/>
+  <movies:Movie persons="/3 /4" rating="4.0"/>
+  <movies:Actor movies="/15 /16" name="a5"/>
+  <movies:Actor movies="/15 /16 /17" name="a6"/>
+  <movies:Actress movies="/16 /17 /18" name="a7"/>
+  <movies:Actress movies="/17 /18 /19" name="a8"/>
+  <movies:Actress movies="/18 /19" name="a9"/>
+  <movies:Movie persons="/10 /11" rating="5.0"/>
+  <movies:Movie persons="/10 /11 /12" rating="6.0"/>
+  <movies:Movie persons="/11 /12 /13" rating="7.0"/>
+  <movies:Movie persons="/12 /13 /14" rating="8.0"/>
+  <movies:Movie persons="/13 /14" rating="9.0"/>
+</xmi:XMI>
