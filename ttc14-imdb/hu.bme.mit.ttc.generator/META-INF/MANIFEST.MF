@@ -4,3 +4,7 @@ Bundle-Name: TTC Generator
 Bundle-SymbolicName: hu.bme.mit.ttc.generator
 Bundle-Version: 1.0.0.qualifier
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Require-Bundle: org.eclipse.xtend.lib,
+ com.google.guava,
+ org.eclipse.xtext.xbase.lib
+
