@@ -19,6 +19,8 @@ class TransformationTest {
 		val transformation = new Transformation
 		transformation.r = r
 		transformation.createCouples
+		
+		r.save(emptyMap)
 	}
 
 }

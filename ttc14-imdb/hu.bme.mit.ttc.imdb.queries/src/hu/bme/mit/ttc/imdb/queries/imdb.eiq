@@ -21,3 +21,9 @@ pattern commonMoviesOfCouple(p1, p2, m) {
 	find couple(p1, p2);
 	find playedTogetherIn(p1, p2, m);
 }
+
+pattern coupleWithRating(p1, p2, avgRating) {
+	Couple.p1(c, p1);
+	Couple.p2(c, p2);
+	Couple.avgRating(c, avgRating);	
+}
