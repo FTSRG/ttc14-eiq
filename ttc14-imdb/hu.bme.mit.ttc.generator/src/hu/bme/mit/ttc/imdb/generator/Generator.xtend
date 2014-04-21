@@ -27,9 +27,9 @@ class Generator {
 		val movies = newArrayList()
 		(0 .. 4).forEach[movies += createMovie(10 * n + it)]
 
-		val a = createActor("a" + (10 * n))
-		val b = createActor("a" + (10 * n + 1))
-		val c = createActor("a" + (10 * n + 2))
+		val a =   createActor("a" + (10 * n))
+		val b =   createActor("a" + (10 * n + 1))
+		val c =   createActor("a" + (10 * n + 2))
 		val d = createActress("a" + (10 * n + 3))
 		val e = createActress("a" + (10 * n + 4))
 
@@ -49,8 +49,8 @@ class Generator {
 		val movies = newArrayList()
 		(5 .. 9).forEach[movies += createMovie(10 * n + it)]
 
-		val a = createActor("a" + (10 * n + 5))
-		val b = createActor("a" + (10 * n + 6))
+		val a =   createActor("a" + (10 * n + 5))
+		val b =   createActor("a" + (10 * n + 6))
 		val c = createActress("a" + (10 * n + 7))
 		val d = createActress("a" + (10 * n + 8))
 		val e = createActress("a" + (10 * n + 9))

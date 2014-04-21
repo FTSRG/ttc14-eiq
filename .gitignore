@@ -32,3 +32,5 @@
 *.tdo
 auto/
 case_description_src/main.pdf
+bin/
+target/

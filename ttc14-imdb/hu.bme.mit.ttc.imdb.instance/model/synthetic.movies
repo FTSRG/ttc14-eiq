@@ -20,4 +20,14 @@
   <movies:Movie persons="/11 /12 /13" rating="7.0"/>
   <movies:Movie persons="/12 /13 /14" rating="8.0"/>
   <movies:Movie persons="/13 /14" rating="9.0"/>
+  <movies:Couple commonMovies="/8 /6 /7" avgRating="2.0" p1="/1" p2="/4"/>
+  <movies:Couple commonMovies="/8 /6 /7" avgRating="2.0" p1="/1" p2="/2"/>
+  <movies:Couple commonMovies="/8 /6 /7 /5" avgRating="1.5" p1="/0" p2="/1"/>
+  <movies:Couple commonMovies="/8 /9 /6 /7" avgRating="2.5" p1="/3" p2="/4"/>
+  <movies:Couple commonMovies="/8 /6 /7" avgRating="2.0" p1="/2" p2="/4"/>
+  <movies:Couple commonMovies="/8 /6 /7" avgRating="2.0" p1="/0" p2="/2"/>
+  <movies:Couple commonMovies="/8 /6 /7" avgRating="2.0" p1="/0" p2="/4"/>
+  <movies:Couple commonMovies="/8 /6 /7" avgRating="2.0" p1="/0" p2="/3"/>
+  <movies:Couple commonMovies="/8 /6 /7" avgRating="2.0" p1="/1" p2="/3"/>
+  <movies:Couple commonMovies="/8 /6 /7" avgRating="2.0" p1="/2" p2="/3"/>
 </xmi:XMI>
