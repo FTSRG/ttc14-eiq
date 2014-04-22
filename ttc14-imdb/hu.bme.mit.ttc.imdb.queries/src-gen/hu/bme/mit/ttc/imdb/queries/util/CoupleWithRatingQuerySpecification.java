@@ -2,6 +2,7 @@ package hu.bme.mit.ttc.imdb.queries.util;
 
 import com.google.common.collect.Sets;
 import hu.bme.mit.ttc.imdb.queries.CoupleWithRatingMatcher;
+import hu.bme.mit.ttc.imdb.queries.util.CoupleQuerySpecification;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
@@ -15,7 +16,10 @@ import org.eclipse.incquery.runtime.matchers.psystem.PParameter;
 import org.eclipse.incquery.runtime.matchers.psystem.PQuery.PQueryStatus;
 import org.eclipse.incquery.runtime.matchers.psystem.PVariable;
 import org.eclipse.incquery.runtime.matchers.psystem.basicdeferred.ExportedParameter;
+import org.eclipse.incquery.runtime.matchers.psystem.basicenumerables.PositivePatternCall;
 import org.eclipse.incquery.runtime.matchers.psystem.basicenumerables.TypeBinary;
+import org.eclipse.incquery.runtime.matchers.psystem.basicenumerables.TypeUnary;
+import org.eclipse.incquery.runtime.matchers.tuple.FlatTuple;
 
 /**
  * A pattern-specific query specification that can instantiate CoupleWithRatingMatcher in a type-safe way.
@@ -80,8 +84,8 @@ public final class CoupleWithRatingQuerySpecification extends BaseGeneratedQuery
       
       
       
-      new TypeBinary(body, context, var_c, var_p1, getFeatureLiteral("http://movies/1.0", "Couple", "p1"), "http://movies/1.0/Couple.p1");
-      new TypeBinary(body, context, var_c, var_p2, getFeatureLiteral("http://movies/1.0", "Couple", "p2"), "http://movies/1.0/Couple.p2");
+      new PositivePatternCall(body, new FlatTuple(var_c, var_p1, var_p2), CoupleQuerySpecification.instance());
+      new TypeUnary(body, var_c, getClassifierLiteral("http://movies/1.0", "Couple"), "http://movies/1.0/Couple");
       new TypeBinary(body, context, var_c, var_avgRating, getFeatureLiteral("http://movies/1.0", "Group", "avgRating"), "http://movies/1.0/Group.avgRating");
       bodies.add(body);
     }setStatus(PQueryStatus.OK);

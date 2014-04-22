@@ -29,8 +29,7 @@ import org.eclipse.incquery.runtime.util.IncQueryLoggingUtil;
  * <p>Original source:
  * <code><pre>
  * pattern coupleWithRating(p1, p2, avgRating) {
- * 	Couple.p1(c, p1);
- * 	Couple.p2(c, p2);
+ * 	find couple(c, p1, p2);
  * 	Couple.avgRating(c, avgRating);	
  * }
  * </pre></code>

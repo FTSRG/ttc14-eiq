@@ -2,6 +2,7 @@ package hu.bme.mit.ttc.imdb.queries
 
 import "http://movies/1.0"
 
+// Task 2
 pattern playedTogetherIn(p1, p2, m) = {
 	Person.movies(p1, m);
 	Movie.persons(m, p2);
@@ -9,7 +10,7 @@ pattern playedTogetherIn(p1, p2, m) = {
 	p1 != p2;
 }
 
-pattern couple(p1 : Person, p2 : Person) {
+pattern personsToCouple(p1 : Person, p2 : Person) {
 	N == count find playedTogetherIn(p1, p2, _m);
 	check(N >= 3);
 	Person.name(p1, p1name);
@@ -17,13 +18,67 @@ pattern couple(p1 : Person, p2 : Person) {
 	check(p1name < p2name);
 }
 
-pattern commonMoviesOfCouple(p1, p2, m) {
-	find couple(p1, p2);
+// Task 3
+pattern commonMoviesToCouple(p1, p2, m) {
+	find personsToCouple(p1, p2);
 	find playedTogetherIn(p1, p2, m);
 }
 
-pattern coupleWithRating(p1, p2, avgRating) {
+pattern couple(c, p1, p2) {
 	Couple.p1(c, p1);
-	Couple.p2(c, p2);
+	Couple.p2(c, p2);	
+}
+
+pattern coupleWithRating(p1, p2, avgRating) {
+	find couple(c, p1, p2);
 	Couple.avgRating(c, avgRating);	
 }
+
+// Extension Task 1 a)
+
+
+// Extension Task 1 b)
+pattern commonMoviesOfCouple(c, m) {
+	Couple.commonMovies(c, m);
+}
+
+pattern countOfCommonMoviesOfCouple(p1, p2, n) {
+	find couple(c, p1, p2);
+	n == count find commonMoviesOfCouple(c, _m);
+}
+
+// Extension Task 2
+pattern commonMoviesOfGroup(g, m) {
+	Group.commonMovies(g, m);
+}
+
+// a Group is either a Couple or a Clique
+pattern memberOfGroup(g, p0) {
+	Couple.p1(g, p0);
+} or {
+	Couple.p2(g, p0);
+} or {
+	Clique.persons(g, p0);
+}
+
+//pattern playedIn(p0, m) = {
+//	Person.movies(p0, m);
+//}
+
+pattern commonMovieOfGroupAndPerson(g, p, m) {
+	find commonMoviesOfGroup(g, m);
+	Person.movies(p, m);
+}
+
+pattern memberCandidateToGroup(g : Group, p : Person) {
+	neg find memberOfGroup(g, p);
+	n == count find commonMovieOfGroupAndPerson(g, p, m);
+	check(n >= 3);
+}
+
+pattern nextCliques(g, p0) = {
+	find commonMoviesOfGroup(g, m);
+	find memberCandidateToGroup(g, p0); 
+	// play in at least 3 movies
+}
+

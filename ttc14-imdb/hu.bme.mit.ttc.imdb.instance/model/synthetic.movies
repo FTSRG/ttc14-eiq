@@ -30,4 +30,5 @@
   <movies:Couple commonMovies="/8 /6 /7" avgRating="2.0" p1="/0" p2="/3"/>
   <movies:Couple commonMovies="/8 /6 /7" avgRating="2.0" p1="/1" p2="/3"/>
   <movies:Couple commonMovies="/8 /6 /7" avgRating="2.0" p1="/2" p2="/3"/>
+  <movies:Clique commonMovies="/8 /6 /7" avgRating="2.0" persons="/2 /3 /4"/>
 </xmi:XMI>
