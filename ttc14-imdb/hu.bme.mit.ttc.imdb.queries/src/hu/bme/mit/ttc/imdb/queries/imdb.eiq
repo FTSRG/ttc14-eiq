@@ -71,8 +71,8 @@ pattern nextCliques(g : Group, p : Person)  {
 	n == count find commonMovieOfGroupAndPerson(g, p, m);
 	check(n >= 3);
 	
-	Clique(c);
-	neg find memberOfGroup(p, c);
+//	Clique(c);
+//	neg find memberOfGroup(p, c);
 	
 }
 

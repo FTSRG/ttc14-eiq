@@ -14,7 +14,7 @@ class TransformationTest {
 	Resource r;
 
 	@Test
-	def testSyntheticMovies() {
+	def void testSyntheticMovies() {
 		val config = new Configuration
 		config.instanceModel = "hu.bme.mit.ttc.imdb.instance/model/synthetic.movies"
 		config.instanceModelURI = URI.createPlatformResourceURI(config.instanceModel, true)
