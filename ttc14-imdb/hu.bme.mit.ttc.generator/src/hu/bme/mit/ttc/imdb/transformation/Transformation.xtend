@@ -22,7 +22,7 @@ class Transformation {
 			couple.setP1(p1)
 			couple.setP2(p2)
 			var sumRating = 0.0
-			val commonMovies = commonMoviesMatcher.getAllValuesOfm(p1, p2);
+			val commonMovies = commonMoviesMatcher.allValuesOfm
 			for ( m : commonMovies ) {
 				couple.commonMovies += m
 				sumRating = sumRating + m.rating
