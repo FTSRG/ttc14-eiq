@@ -53,12 +53,12 @@ pattern commonMoviesOfGroup(g, m) {
 }
 
 // a Group is either a Couple or a Clique
-pattern memberOfGroup(g, p0) {
-	Couple.p1(g, p0);
+pattern memberOfGroup(g, p) {
+	Couple.p1(g, p);
 } or {
-	Couple.p2(g, p0);
+	Couple.p2(g, p);
 } or {
-	Clique.persons(g, p0);
+	Clique.persons(g, p);
 }
 
 //pattern playedIn(p0, m) = {

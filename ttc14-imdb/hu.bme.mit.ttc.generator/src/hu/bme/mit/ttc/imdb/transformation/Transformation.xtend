@@ -4,6 +4,8 @@ import hu.bme.mit.ttc.imdb.movies.MoviesFactory
 import hu.bme.mit.ttc.imdb.queries.Imdb
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.incquery.runtime.api.IncQueryEngine
+import hu.bme.mit.ttc.imdb.queries.util.PersonsToCoupleQuerySpecification.Provider
+import hu.bme.mit.ttc.imdb.movies.Group
 
 class Transformation {
 
@@ -34,6 +36,19 @@ class Transformation {
 	}
 	
 	def createCliques() {
+		val engine = IncQueryEngine.on(r)
+		val nextCliquesMatcher = getNextCliques(engine)
+		val memberOfGroupMatcher = getMemberOfGroup(engine)
+
+		nextCliquesMatcher.forEachMatch [
+			val clique = createClique()
 		
+			memberOfGroupMatcher.getAllValuesOfp(g)
+			val gPersons = memberOfGroupMatcher.allValuesOfp
+			
+			clique.commonMovies.addAll(g.commonMovies)
+			clique.persons.addAll(gPersons);
+			clique.persons.add(p)
+		]
 	}
 }
