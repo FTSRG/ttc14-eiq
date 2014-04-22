@@ -13,7 +13,7 @@ import org.eclipse.incquery.runtime.exception.IncQueryException;
 import org.eclipse.incquery.runtime.extensibility.IQuerySpecificationProvider;
 import org.eclipse.incquery.runtime.matchers.psystem.PBody;
 import org.eclipse.incquery.runtime.matchers.psystem.PParameter;
-import org.eclipse.incquery.runtime.matchers.psystem.PQuery.PQueryStatus;
+import org.eclipse.incquery.runtime.matchers.psystem.PQuery;
 import org.eclipse.incquery.runtime.matchers.psystem.PVariable;
 import org.eclipse.incquery.runtime.matchers.psystem.basicdeferred.ExportedParameter;
 import org.eclipse.incquery.runtime.matchers.psystem.basicenumerables.PositivePatternCall;
@@ -88,13 +88,13 @@ public final class CoupleWithRatingQuerySpecification extends BaseGeneratedQuery
       new TypeUnary(body, var_c, getClassifierLiteral("http://movies/1.0", "Couple"), "http://movies/1.0/Couple");
       new TypeBinary(body, context, var_c, var_avgRating, getFeatureLiteral("http://movies/1.0", "Group", "avgRating"), "http://movies/1.0/Group.avgRating");
       bodies.add(body);
-    }setStatus(PQueryStatus.OK);
+    }setStatus(PQuery.PQueryStatus.OK);
     return bodies;
   }
   
   private CoupleWithRatingQuerySpecification() throws IncQueryException {
     super();
-    setStatus(PQueryStatus.UNINITIALIZED);
+    setStatus(PQuery.PQueryStatus.UNINITIALIZED);
   }
   
   @SuppressWarnings("all")

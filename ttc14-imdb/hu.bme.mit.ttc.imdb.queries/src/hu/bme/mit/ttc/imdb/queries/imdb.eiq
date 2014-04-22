@@ -3,7 +3,7 @@ package hu.bme.mit.ttc.imdb.queries
 import "http://movies/1.0"
 
 // Task 2
-pattern playedTogetherIn(p1, p2, m) = {
+pattern playedTogetherIn(p1, p2, m) {
 	Person.movies(p1, m);
 	Movie.persons(m, p2);
 	
@@ -53,7 +53,7 @@ pattern commonMoviesOfGroup(g, m) {
 }
 
 // a Group is either a Couple or a Clique
-pattern memberOfGroup(g, p) {
+pattern memberOfGroup(p, g) {
 	Couple.p1(g, p);
 } or {
 	Couple.p2(g, p);
@@ -61,18 +61,27 @@ pattern memberOfGroup(g, p) {
 	Clique.persons(g, p);
 }
 
-//pattern playedIn(p0, m) = {
-//	Person.movies(p0, m);
-//}
-
 pattern commonMovieOfGroupAndPerson(g, p, m) {
 	find commonMoviesOfGroup(g, m);
 	Person.movies(p, m);
 }
 
-pattern nextCliques(g : Group, p : Person) {
-	neg find memberOfGroup(g, p);
+pattern nextCliques(g : Group, p : Person)  {
+	neg find alphabeticallyLaterMemberOfGroup(g, p);
 	n == count find commonMovieOfGroupAndPerson(g, p, m);
 	check(n >= 3);
+	
+	Clique(c);
+	neg find memberOfGroup(p, c);
+	
 }
+
+// this also filters the person in the argument
+pattern alphabeticallyLaterMemberOfGroup(g : Group, p : Person)  {
+	find memberOfGroup(m, g);
+	Person.name(p, pName);
+	Person.name(m, mName);
+	check(mName >= pName);
+}
+
 

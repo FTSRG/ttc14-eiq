@@ -24,6 +24,7 @@ class TransformationTest {
 		val transformation = new Transformation
 		transformation.r = r
 		transformation.createCouples
+		transformation.createCliques
 		
 		r.save(emptyMap)
 	}

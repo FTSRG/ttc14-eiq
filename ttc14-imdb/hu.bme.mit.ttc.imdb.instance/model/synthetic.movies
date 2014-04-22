@@ -20,15 +20,60 @@
   <movies:Movie persons="/11 /12 /13" rating="7.0"/>
   <movies:Movie persons="/12 /13 /14" rating="8.0"/>
   <movies:Movie persons="/13 /14" rating="9.0"/>
-  <movies:Couple commonMovies="/8 /6 /7" avgRating="2.0" p1="/1" p2="/4"/>
-  <movies:Couple commonMovies="/8 /6 /7" avgRating="2.0" p1="/1" p2="/2"/>
-  <movies:Couple commonMovies="/8 /6 /7 /5" avgRating="1.5" p1="/0" p2="/1"/>
-  <movies:Couple commonMovies="/8 /9 /6 /7" avgRating="2.5" p1="/3" p2="/4"/>
-  <movies:Couple commonMovies="/8 /6 /7" avgRating="2.0" p1="/2" p2="/4"/>
-  <movies:Couple commonMovies="/8 /6 /7" avgRating="2.0" p1="/0" p2="/2"/>
-  <movies:Couple commonMovies="/8 /6 /7" avgRating="2.0" p1="/0" p2="/4"/>
-  <movies:Couple commonMovies="/8 /6 /7" avgRating="2.0" p1="/0" p2="/3"/>
-  <movies:Couple commonMovies="/8 /6 /7" avgRating="2.0" p1="/1" p2="/3"/>
-  <movies:Couple commonMovies="/8 /6 /7" avgRating="2.0" p1="/2" p2="/3"/>
-  <movies:Clique commonMovies="/8 /6 /7" avgRating="2.0" persons="/2 /3 /4"/>
+  <movies:Couple commonMovies="/7 /5 /8 /9 /6" avgRating="2.0" p1="/1" p2="/4"/>
+  <movies:Couple commonMovies="/7 /5 /8 /9 /6" avgRating="2.0" p1="/1" p2="/2"/>
+  <movies:Couple commonMovies="/7 /5 /8 /9 /6" avgRating="2.0" p1="/3" p2="/4"/>
+  <movies:Couple commonMovies="/7 /5 /8 /9 /6" avgRating="2.0" p1="/2" p2="/4"/>
+  <movies:Couple commonMovies="/7 /5 /8 /9 /6" avgRating="2.0" p1="/0" p2="/3"/>
+  <movies:Couple commonMovies="/7 /5 /8 /9 /6" avgRating="2.0" p1="/2" p2="/3"/>
+  <movies:Couple commonMovies="/7 /5 /8 /9 /6" avgRating="2.0" p1="/1" p2="/3"/>
+  <movies:Couple commonMovies="/7 /5 /8 /9 /6" avgRating="2.0" p1="/0" p2="/4"/>
+  <movies:Couple commonMovies="/7 /5 /8 /9 /6" avgRating="2.0" p1="/0" p2="/2"/>
+  <movies:Couple commonMovies="/7 /5 /8 /9 /6" avgRating="2.0" p1="/0" p2="/1"/>
+  <movies:Clique commonMovies="/7 /8 /9 /6" persons="/3 /0 /4"/>
+  <movies:Clique commonMovies="/7 /8 /6" persons="/1 /0 /2"/>
+  <movies:Clique commonMovies="/7 /8 /9 /6" persons="/1 /0 /3"/>
+  <movies:Clique commonMovies="/7 /8 /9 /6" persons="/2 /0 /4"/>
+  <movies:Clique commonMovies="/7 /8 /9 /6" persons="/1 /0 /4"/>
+  <movies:Clique commonMovies="/7 /8 /9 /6" persons="/1 /3 /4"/>
+  <movies:Clique commonMovies="/7 /8 /9 /6" persons="/2 /3 /4"/>
+  <movies:Clique commonMovies="/7 /8 /9 /6" persons="/2 /1 /3"/>
+  <movies:Clique commonMovies="/7 /8 /9 /6" persons="/2 /1 /4"/>
+  <movies:Clique commonMovies="/7 /8 /9 /6" persons="/2 /0 /3"/>
+  <movies:Clique commonMovies="/7 /8 /9 /6" persons="/0 /1 /3 /4"/>
+  <movies:Clique commonMovies="/7 /8 /9 /6" persons="/0 /2 /3"/>
+  <movies:Clique commonMovies="/7 /8 /9 /6" persons="/0 /2 /4"/>
+  <movies:Clique commonMovies="/7 /8 /9 /6" persons="/0 /1 /4"/>
+  <movies:Clique commonMovies="/7 /8 /9 /6" persons="/0 /3 /4"/>
+  <movies:Clique commonMovies="/7 /8 /9 /6" persons="/2 /1 /3"/>
+  <movies:Clique commonMovies="/7 /8 /6" persons="/0 /2 /1 /3"/>
+  <movies:Clique commonMovies="/7 /8 /6" persons="/0 /1 /2"/>
+  <movies:Clique commonMovies="/7 /8 /6" persons="/0 /2 /1 /4"/>
+  <movies:Clique commonMovies="/7 /8 /9 /6" persons="/2 /1 /3 /4"/>
+  <movies:Clique commonMovies="/7 /8 /9 /6" persons="/0 /2 /3 /4"/>
+  <movies:Clique commonMovies="/7 /8 /9 /6" persons="/1 /3 /4"/>
+  <movies:Clique commonMovies="/7 /8 /9 /6" persons="/2 /1 /4"/>
+  <movies:Clique commonMovies="/7 /8 /9 /6" persons="/0 /1 /3"/>
+  <movies:Clique commonMovies="/7 /8 /9 /6" persons="/2 /3 /4"/>
+  <movies:Clique commonMovies="/7 /8 /9 /6" persons="/0 /1 /3 /4"/>
+  <movies:Clique commonMovies="/7 /8 /9 /6" persons="/0 /3 /4"/>
+  <movies:Clique commonMovies="/7 /8 /9 /6" persons="/2 /1 /3"/>
+  <movies:Clique commonMovies="/7 /8 /6" persons="/0 /2 /1 /4"/>
+  <movies:Clique commonMovies="/7 /8 /9 /6" persons="/2 /1 /3 /4"/>
+  <movies:Clique commonMovies="/7 /8 /9 /6" persons="/0 /2 /3 /4"/>
+  <movies:Clique commonMovies="/7 /8 /9 /6" persons="/2 /1 /4"/>
+  <movies:Clique commonMovies="/7 /8 /9 /6" persons="/2 /1 /3 /4"/>
+  <movies:Clique commonMovies="/7 /8 /9 /6" persons="/0 /1 /3"/>
+  <movies:Clique commonMovies="/7 /8 /9 /6" persons="/2 /3 /4"/>
+  <movies:Clique commonMovies="/7 /8 /9 /6" persons="/0 /2 /3 /4"/>
+  <movies:Clique commonMovies="/7 /8 /9 /6" persons="/0 /2 /4"/>
+  <movies:Clique commonMovies="/7 /8 /9 /6" persons="/0 /2 /3"/>
+  <movies:Clique commonMovies="/7 /8 /9 /6" persons="/0 /1 /4"/>
+  <movies:Clique commonMovies="/7 /8 /6" persons="/0 /2 /1 /3"/>
+  <movies:Clique commonMovies="/7 /8 /6" persons="/0 /2 /1 /3"/>
+  <movies:Clique commonMovies="/7 /8 /6" persons="/0 /1 /2"/>
+  <movies:Clique commonMovies="/7 /8 /6" persons="/0 /2 /1 /3 /4"/>
+  <movies:Clique commonMovies="/7 /8 /6" persons="/0 /2 /1 /4"/>
+  <movies:Clique commonMovies="/7 /8 /9 /6" persons="/0 /1 /3 /4"/>
+  <movies:Clique commonMovies="/7 /8 /9 /6" persons="/1 /3 /4"/>
 </xmi:XMI>

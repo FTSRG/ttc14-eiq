@@ -4,8 +4,6 @@ import hu.bme.mit.ttc.imdb.movies.MoviesFactory
 import hu.bme.mit.ttc.imdb.queries.Imdb
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.incquery.runtime.api.IncQueryEngine
-import hu.bme.mit.ttc.imdb.queries.util.PersonsToCoupleQuerySpecification.Provider
-import hu.bme.mit.ttc.imdb.movies.Group
 
 class Transformation {
 
@@ -16,8 +14,8 @@ class Transformation {
 
 	def createCouples() {
 		val engine = IncQueryEngine.on(r)
-		val coupleMatcher = getCouple(engine)
-		val commonMoviesMatcher = getCommonMoviesOfCouple(engine);
+		val coupleMatcher = getPersonsToCouple(engine)
+		val commonMoviesMatcher = getCommonMoviesToCouple(engine);
 
 		coupleMatcher.forEachMatch [
 			val couple = createCouple()
@@ -31,6 +29,7 @@ class Transformation {
 			}
 			val n = commonMovies.size
 			couple.avgRating = sumRating / n
+			
 			r.contents += couple
 		]
 	}
@@ -43,12 +42,14 @@ class Transformation {
 		nextCliquesMatcher.forEachMatch [
 			val clique = createClique()
 		
-			memberOfGroupMatcher.getAllValuesOfp(g)
-			val gPersons = memberOfGroupMatcher.allValuesOfp
+			val gPersons = memberOfGroupMatcher.getAllValuesOfp(g)
 			
 			clique.commonMovies.addAll(g.commonMovies)
-			clique.persons.addAll(gPersons);
+			clique.commonMovies.retainAll(p.movies)
+			clique.persons.addAll(gPersons)
 			clique.persons.add(p)
+			
+			r.contents += clique
 		]
 	}
 }
