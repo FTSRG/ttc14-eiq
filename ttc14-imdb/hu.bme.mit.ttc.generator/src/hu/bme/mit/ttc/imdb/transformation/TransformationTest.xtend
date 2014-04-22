@@ -12,9 +12,14 @@ class TransformationTest {
 	Resource r;
 
 	@Test
-	def test() {
+	def testSyntheticMovies() {
+		xform(URI.createPlatformResourceURI("hu.bme.mit.ttc.imdb.instance/model/synthetic.movies", true))
+	}
+
+	
+	def xform(URI instanceModelURI) {
 		rs = new ResourceSetImpl;
-		r = rs.getResource(URI.createPlatformResourceURI("hu.bme.mit.ttc.imdb.instance/model/synthetic.movies", true), true);
+		r = rs.getResource(instanceModelURI, true);
 
 		val transformation = new Transformation
 		transformation.r = r
