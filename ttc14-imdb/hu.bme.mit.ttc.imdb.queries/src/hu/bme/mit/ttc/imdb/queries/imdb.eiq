@@ -70,15 +70,9 @@ pattern commonMovieOfGroupAndPerson(g, p, m) {
 	Person.movies(p, m);
 }
 
-pattern memberCandidateToGroup(g : Group, p : Person) {
+pattern nextCliques(g : Group, p : Person) {
 	neg find memberOfGroup(g, p);
 	n == count find commonMovieOfGroupAndPerson(g, p, m);
 	check(n >= 3);
-}
-
-pattern nextCliques(g, p0) = {
-	find commonMoviesOfGroup(g, m);
-	find memberCandidateToGroup(g, p0); 
-	// play in at least 3 movies
 }
 
