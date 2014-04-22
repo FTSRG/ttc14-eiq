@@ -35,8 +35,10 @@ class TransformationTest {
 		bmr.startStopper
 		val transformation = new Transformation
 		transformation.r = r
-		transformation.createCouples
-		transformation.createCliques
+		transformation.createCouples // 2-cliques
+		transformation.createCliques // 3-cliques
+		transformation.createCliques // 4-cliques
+		transformation.createCliques // 5-cliques
 		bmr.setXFormTime
 		
 		// persist model

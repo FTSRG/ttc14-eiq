@@ -15,7 +15,7 @@ class GeneratorTest {
 	@Test
 	def test() {
 		val config = new Configuration
-		config.n = 1
+		config.n = 2
 		config.instanceModelURI = URI.createPlatformResourceURI("hu.bme.mit.ttc.imdb.instance/model/synthetic.movies", true)
 		generate(config)
 	}

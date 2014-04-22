@@ -90,6 +90,30 @@
       </matcher>
    </extension>
    <extension
+         id="hu.bme.mit.ttc.imdb.queries.subsetOfGroup"
+         point="org.eclipse.incquery.runtime.queryspecification">
+      <matcher
+            querySpecificationProvider="hu.bme.mit.ttc.imdb.queries.util.SubsetOfGroupQuerySpecification$Provider"
+            id="hu.bme.mit.ttc.imdb.queries.subsetOfGroup">
+      </matcher>
+   </extension>
+   <extension
+         id="hu.bme.mit.ttc.imdb.queries.x"
+         point="org.eclipse.incquery.runtime.queryspecification">
+      <matcher
+            querySpecificationProvider="hu.bme.mit.ttc.imdb.queries.util.XQuerySpecification$Provider"
+            id="hu.bme.mit.ttc.imdb.queries.x">
+      </matcher>
+   </extension>
+   <extension
+         id="hu.bme.mit.ttc.imdb.queries.union"
+         point="org.eclipse.incquery.runtime.queryspecification">
+      <matcher
+            querySpecificationProvider="hu.bme.mit.ttc.imdb.queries.util.UnionQuerySpecification$Provider"
+            id="hu.bme.mit.ttc.imdb.queries.union">
+      </matcher>
+   </extension>
+   <extension
          id="hu.bme.mit.ttc.imdb.queries.alphabeticallyLaterMemberOfGroup"
          point="org.eclipse.incquery.runtime.queryspecification">
       <matcher
