@@ -2,14 +2,6 @@
 <plugin>
 
    <extension
-         id="hu.bme.mit.ttc.imdb.queries.possibleNewMemberToGroup"
-         point="org.eclipse.incquery.runtime.queryspecification">
-      <matcher
-            querySpecificationProvider="hu.bme.mit.ttc.imdb.queries.util.PossibleNewMemberToGroupQuerySpecification$Provider"
-            id="hu.bme.mit.ttc.imdb.queries.possibleNewMemberToGroup">
-      </matcher>
-   </extension>
-   <extension
          id="hu.bme.mit.ttc.imdb.queries.playedTogetherIn"
          point="org.eclipse.incquery.runtime.queryspecification">
       <matcher
@@ -95,6 +87,14 @@
       <matcher
             querySpecificationProvider="hu.bme.mit.ttc.imdb.queries.util.NextCliquesQuerySpecification$Provider"
             id="hu.bme.mit.ttc.imdb.queries.nextCliques">
+      </matcher>
+   </extension>
+   <extension
+         id="hu.bme.mit.ttc.imdb.queries.alphabeticallyLaterMemberOfGroup"
+         point="org.eclipse.incquery.runtime.queryspecification">
+      <matcher
+            querySpecificationProvider="hu.bme.mit.ttc.imdb.queries.util.AlphabeticallyLaterMemberOfGroupQuerySpecification$Provider"
+            id="hu.bme.mit.ttc.imdb.queries.alphabeticallyLaterMemberOfGroup">
       </matcher>
    </extension>
 
