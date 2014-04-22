@@ -34,13 +34,16 @@ pattern coupleWithRating(p1, p2, avgRating) {
 	Couple.avgRating(c, avgRating);	
 }
 
-// Extension Task 1 a)
-
-
-// Extension Task 1 b)
+// Extension Task 1
 pattern commonMoviesOfCouple(c, m) {
 	Couple.commonMovies(c, m);
 }
+
+// Extension Task 1 a)
+
+
+
+// Extension Task 1 b)
 
 pattern countOfCommonMoviesOfCouple(p1, p2, n) {
 	find couple(c, p1, p2);
