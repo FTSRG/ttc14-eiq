@@ -90,14 +90,6 @@
       </matcher>
    </extension>
    <extension
-         id="hu.bme.mit.ttc.imdb.queries.memberCandidateToGroup"
-         point="org.eclipse.incquery.runtime.queryspecification">
-      <matcher
-            querySpecificationProvider="hu.bme.mit.ttc.imdb.queries.util.MemberCandidateToGroupQuerySpecification$Provider"
-            id="hu.bme.mit.ttc.imdb.queries.memberCandidateToGroup">
-      </matcher>
-   </extension>
-   <extension
          id="hu.bme.mit.ttc.imdb.queries.nextCliques"
          point="org.eclipse.incquery.runtime.queryspecification">
       <matcher

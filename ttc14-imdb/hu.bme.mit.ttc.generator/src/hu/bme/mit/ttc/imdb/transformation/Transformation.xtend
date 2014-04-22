@@ -32,4 +32,8 @@ class Transformation {
 			r.contents += couple
 		]
 	}
+	
+	def createCliques() {
+		
+	}
 }
