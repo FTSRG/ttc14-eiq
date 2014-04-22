@@ -9,10 +9,9 @@ import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 public class Util {
 	
 	public static void registerStandaloneEMFPackages() {
-
 		Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().put("ecore", new EcoreResourceFactoryImpl());
 		Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().put("movies", new XMIResourceFactoryImpl());
-		MoviesPackage mp = MoviesPackage.eINSTANCE;
+		MoviesPackage.eINSTANCE.eClass();
 	}
 
 }

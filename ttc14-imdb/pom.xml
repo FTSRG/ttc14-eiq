@@ -11,6 +11,7 @@
 		<module>hu.bme.mit.ttc.imdb</module>
 		<module>hu.bme.mit.ttc.imdb.queries</module>
 		<module>hu.bme.mit.ttc.imdb.generator</module>
+		<module>hu.bme.mit.ttc.imdb.transformation</module>
 	</modules>
 
 	<properties>
