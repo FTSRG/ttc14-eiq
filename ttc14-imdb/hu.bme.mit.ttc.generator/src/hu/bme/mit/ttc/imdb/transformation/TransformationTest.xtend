@@ -5,6 +5,8 @@ import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.emf.ecore.resource.ResourceSet
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl
 import org.junit.Test
+import hu.bme.mit.ttc.imdb.util.Configuration
+import hu.bme.mit.ttc.imdb.util.BenchmarkResults
 
 class TransformationTest {
 
@@ -13,19 +15,35 @@ class TransformationTest {
 
 	@Test
 	def testSyntheticMovies() {
-		xform(URI.createPlatformResourceURI("hu.bme.mit.ttc.imdb.instance/model/synthetic.movies", true))
+		val config = new Configuration
+		config.instanceModel = "hu.bme.mit.ttc.imdb.instance/model/synthetic.movies"
+		config.instanceModelURI = URI.createPlatformResourceURI(config.instanceModel, true)
+		xform(config)
 	}
 
 	
-	def xform(URI instanceModelURI) {
+	def xform(Configuration config) {
+		val bmr = new BenchmarkResults
+		
+		// read instance model
+		bmr.startStopper
 		rs = new ResourceSetImpl;
-		r = rs.getResource(instanceModelURI, true);
-
+		r = rs.getResource(config.instanceModelURI, true);
+		bmr.setReadTime
+		
+		// transform model
+		bmr.startStopper
 		val transformation = new Transformation
 		transformation.r = r
 		transformation.createCouples
+		bmr.setXFormTime
 		
+		// persist model
+		bmr.startStopper
 		r.save(emptyMap)
+		bmr.setSaveTime
+		
+		bmr.printResults
 	}
 
 }

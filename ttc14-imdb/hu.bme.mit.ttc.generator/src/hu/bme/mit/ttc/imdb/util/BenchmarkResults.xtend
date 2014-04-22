@@ -4,9 +4,13 @@ class BenchmarkResults {
 	Long startTime;
 	Long readTime;
 	Long xformTime;
+	Long saveTime;
 	
 	def printResults() {
-		println(readTime + " " + xformTime);
+		println("Read: " + readTime/1000000 + 
+		   " ms XForm: " + xformTime/1000000 + 
+		   " ms Save: "  + saveTime/1000000 + 
+		   " ms");
 	}
 	
 	def startStopper() {
@@ -14,11 +18,15 @@ class BenchmarkResults {
 	}
 	
 	def setReadTime() {
-		readTime = System.nanoTime();
+		readTime = System.nanoTime()-startTime;
 	}
 	
 	def setXFormTime() {
-		xformTime = System.nanoTime();
+		xformTime = System.nanoTime()-startTime;
+	}
+	
+	def setSaveTime() {
+		saveTime = System.nanoTime()-startTime;
 	}
 	
 }
