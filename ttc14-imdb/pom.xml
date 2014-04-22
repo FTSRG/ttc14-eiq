@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>hu.bme.mit.ttc</groupId>
+	<artifactId>hu.bme.mit.ttc</artifactId>
+	<version>1.0.0-SNAPSHOT</version>
+	<packaging>pom</packaging>
+	<modules>
+		<module>hu.bme.mit.ttc.imdb</module>
+		<module>hu.bme.mit.ttc.imdb.queries</module>
+		<module>hu.bme.mit.ttc.imdb.generator</module>
+	</modules>
+
+	<properties>
+		<tycho.version>0.20.0</tycho.version>
+		<tycho.extras.version>0.20.0</tycho.extras.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<maven.compiler.showWarnings>true</maven.compiler.showWarnings>
+		<xtend.compiler.version>2.5.4</xtend.compiler.version>
+		<incquery.update.site>http://download.eclipse.org/incquery/updates/integration</incquery.update.site>
+		<maven.compiler.source>1.7</maven.compiler.source>
+		<maven.compiler.target>1.7</maven.compiler.target>
+		<emf.version>2.9.1-v20130827-0309</emf.version>
+	</properties>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-maven-plugin</artifactId>
+				<version>${tycho.version}</version>
+				<extensions>true</extensions>
+			</plugin>
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-source-plugin</artifactId>
+				<version>${tycho.version}</version>
+				<executions>
+					<execution>
+						<id>plugin-source</id>
+						<goals>
+							<goal>plugin-source</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>target-platform-configuration</artifactId>
+				<version>${tycho.version}</version>
+				<configuration>
+					<environments>
+						<environment>
+							<os>win32</os>
+							<ws>win32</ws>
+							<arch>x86_64</arch>
+						</environment>
+						<environment>
+							<os>linux</os>
+							<ws>gtk</ws>
+							<arch>x86_64</arch>
+						</environment>
+						<environment>
+							<os>macosx</os>
+							<ws>cocoa</ws>
+							<arch>x86_64</arch>
+						</environment>
+					</environments>
+				</configuration>
+			</plugin>
+		</plugins>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.eclipse.xtend</groupId>
+					<artifactId>xtend-maven-plugin</artifactId>
+					<version>${xtend.compiler.version}</version>
+					<executions>
+						<execution>
+							<goals>
+								<goal>compile</goal>
+							</goals>
+							<configuration>
+								<!-- need to prefix by basedir to generate to currently built module -->
+								<outputDirectory>${basedir}/xtend-gen</outputDirectory>
+							</configuration>
+
+						</execution>
+					</executions>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+	<repositories>
+		<repository>
+			<id>kepler</id>
+			<layout>p2</layout>
+			<url>http://download.eclipse.org/releases/kepler</url>
+		</repository>
+		<repository>
+			<id>kepler.update</id>
+			<layout>p2</layout>
+			<url>http://download.eclipse.org/eclipse/updates/4.3</url>
+		</repository>
+		<repository>
+			<id>incquery</id>
+			<layout>p2</layout>
+			<url>${incquery.update.site}</url>
+		</repository>
+
+		<repository>
+			<id>emf-incquery</id>
+			<url>https://repo.eclipse.org/content/repositories/emf-incquery-snapshots/</url>
+		</repository>
+
+		<repository>
+			<id>acceleo</id>
+			<name>Acceleo Repository (with EMF)</name>
+			<url>https://repo.eclipse.org/content/groups/acceleo</url>
+		</repository>
+
+		<!-- repository> <id>xtend</id> <url>http://build.eclipse.org/common/xtend/maven/</url> 
+			</repository -->
+		<!-- repository> <id>maven.eclipse.org</id> <url>http://maven.eclipse.org/nexus/content/groups/public/</url> 
+			</repository -->
+	</repositories>
+
+</project>

@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: hu.bme.mit.ttc.imdb.queries
 Bundle-SymbolicName: hu.bme.mit.ttc.imdb.queries;singleton:=true
-Bundle-Version: 0.0.1.qualifier
+Bundle-Version: 1.0.0.qualifier
 Export-Package: hu.bme.mit.ttc.imdb.queries,
  hu.bme.mit.ttc.imdb.queries.util
 Require-Bundle: hu.bme.mit.ttc.imdb,
