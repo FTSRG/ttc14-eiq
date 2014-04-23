@@ -28,7 +28,7 @@ pattern commonMoviesToCouple(p1, p2, m) {
 	find playedTogetherIn(p1, p2, m);
 }
 
-//// Task 3
+// Task 3
 
 pattern couple(c, p1, p2) {
 	Couple.p1(c, p1);

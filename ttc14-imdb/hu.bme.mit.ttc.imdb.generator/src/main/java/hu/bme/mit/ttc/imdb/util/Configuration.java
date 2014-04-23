@@ -18,14 +18,14 @@ public class Configuration {
 	protected CommandLine cmd;
 	protected Integer n;
 
-	protected String instanceModel;
-	protected URI instanceModelURI;
-	
+	protected String instanceModelPath;
+	protected String instanceModelDir;
 
 	public Configuration() {
 		initOptions();
 	}
-	public Configuration(String args[]) throws ParseException  {
+
+	public Configuration(String args[]) throws ParseException {
 		initOptions();
 
 		if (Arrays.asList(args).contains("-help")) {
@@ -34,20 +34,26 @@ public class Configuration {
 		}
 
 		processArguments(args);
-
 	}
 
 	protected void initOptions() {
 		options.addOption("help", false, "displays this text");
-		options.addOption(requiredOption("instanceModel", "instance model as PlatformResourceURI"));
-		options.addOption(requiredOption("N", "model size"));
+		// for the generator
+		options.addOption("instanceModelDir", true, "instance model directory");
+		options.addOption("N", true, "model size");
+		// for the transformation
+		options.addOption("instanceModelPath", true, "instance model path");
 	}
 
 	protected void processArguments(String[] args) throws ParseException {
 		cmd = parser.parse(options, args);
 
-		instanceModel = cmd.getOptionValue("instanceModel");
-		n= new Integer(cmd.getOptionValue("N"));
+		instanceModelPath = cmd.getOptionValue("instanceModelPath");
+		instanceModelDir = cmd.getOptionValue("instanceModelDir");
+		
+		if (cmd.hasOption("N")) {
+			n = new Integer(cmd.getOptionValue("N"));
+		}
 	}
 
 	// shorthand for generating required options
@@ -61,27 +67,21 @@ public class Configuration {
 		HelpFormatter formatter = new HelpFormatter();
 		formatter.setWidth(120);
 
-		formatter.printHelp("java -jar ttc14-solution.jar [options]", "options:", options, "", false);
+		formatter.printHelp("java -jar ttc14-solution.jar [options]",
+				"options:", options, "", false);
 		System.out.println();
 	}
 
-	public String getInstanceModel() {
-		return instanceModel;
-	}
-	public void setInstanceModel(String instanceModel) {
-		this.instanceModel = instanceModel;
-	}
 	public Integer getN() {
 		return n;
 	}
-	public void setN(Integer n) {
-		this.n = n;
+	
+	public String getInstanceModelDir() {
+		return instanceModelDir;
 	}
-	public URI getInstanceModelURI() {
-		return instanceModelURI;
-	}
-	public void setInstanceModelURI(URI instanceModelURI) {
-		this.instanceModelURI = instanceModelURI;
+	
+	public String getInstanceModelPath() {
+		return instanceModelPath;
 	}
 
 }

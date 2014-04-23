@@ -13,7 +13,6 @@ public class GeneratorMain {
 		Util.registerStandaloneEMFPackages();
 		
 		GeneratorTest generator = new GeneratorTest();
-		config.setInstanceModelURI(URI.createFileURI(config.getInstanceModel()));
 		generator.generate(config);
 	}
 

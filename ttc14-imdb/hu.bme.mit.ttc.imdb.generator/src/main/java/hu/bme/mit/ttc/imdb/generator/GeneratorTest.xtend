@@ -12,17 +12,11 @@ class GeneratorTest {
 	ResourceSet rs;
 	Resource r;
 
-	@Test
-	def test() {
-		val config = new Configuration
-		config.n = 2
-		config.instanceModelURI = URI.createPlatformResourceURI("hu.bme.mit.ttc.imdb.instance/model/synthetic.movies", true)
-		generate(config)
-	}
-	
 	def generate(Configuration config) {
-		rs = new ResourceSetImpl;
-		r = rs.createResource(config.instanceModelURI);
+		val instanceModelURI = URI.createFileURI(config.instanceModelDir + "/synthetic-" + config.n + ".movies")
+		
+		rs = new ResourceSetImpl
+		r = rs.createResource(instanceModelURI)
 		
 		val generator = new Generator
 		generator.r = r

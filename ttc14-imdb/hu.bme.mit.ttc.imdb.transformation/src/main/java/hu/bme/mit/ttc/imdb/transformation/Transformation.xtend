@@ -31,7 +31,6 @@ class Transformation {
 		val commonMoviesMatcher = engine.commonMoviesToCouple
 		val personNameMatcher = engine.personName
 
-		println("matching")
 		coupleMatcher.forEachMatch [
 			val couple = createCouple()
 			
