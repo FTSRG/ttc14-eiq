@@ -7,17 +7,30 @@
 		<groupId>hu.bme.mit.ttc</groupId>
 		<version>1.0.0-SNAPSHOT</version>
 	</parent>
+	<packaging>eclipse-plugin</packaging>
 	<artifactId>hu.bme.mit.ttc.imdb.generator</artifactId>
-	<version>1.0.0-SNAPSHOT</version>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<xtend.version>2.5.4</xtend.version>
 	</properties>
 	<build>
 		<plugins>
+<!-- 			<plugin> -->
+<!-- 				<groupId>org.apache.maven.plugins</groupId> -->
+<!-- 				<artifactId>maven-jar-plugin</artifactId> -->
+<!-- 				<version>2.4</version> -->
+<!-- 				<configuration> -->
+<!-- 					<archive> -->
+<!-- 						<manifest> -->
+<!-- 							<addClasspath>true</addClasspath> -->
+<!-- 							<classpathPrefix>lib/</classpathPrefix> -->
+<!-- 							<mainClass>hu.bme.mit.ttc.imdb.main.GeneratorMain</mainClass> -->
+<!-- 						</manifest> -->
+<!-- 					</archive> -->
+<!-- 				</configuration> -->
+<!-- 			</plugin> -->
 			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-jar-plugin</artifactId>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-jar-plugin</artifactId>
 				<version>2.4</version>
 				<configuration>
 					<archive>
@@ -53,7 +66,6 @@
 			<plugin>
 				<groupId>org.eclipse.xtend</groupId>
 				<artifactId>xtend-maven-plugin</artifactId>
-				<version>${xtend.version}</version>
 				<executions>
 					<execution>
 						<goals>
@@ -74,115 +86,6 @@
 				</configuration>
 			</plugin>
 		</plugins>
-		<pluginManagement>
-			<plugins>
-				<!--This plugin's configuration is used to store Eclipse m2e settings 
-					only. It has no influence on the Maven build itself. -->
-				<plugin>
-					<groupId>org.eclipse.m2e</groupId>
-					<artifactId>lifecycle-mapping</artifactId>
-					<version>1.0.0</version>
-					<configuration>
-						<lifecycleMappingMetadata>
-							<pluginExecutions>
-								<pluginExecution>
-									<pluginExecutionFilter>
-										<groupId>
-											org.apache.maven.plugins
-										</groupId>
-										<artifactId>
-											maven-dependency-plugin
-										</artifactId>
-										<versionRange>
-											[2.1,)
-										</versionRange>
-										<goals>
-											<goal>
-												copy-dependencies
-											</goal>
-										</goals>
-									</pluginExecutionFilter>
-									<action>
-										<ignore></ignore>
-									</action>
-								</pluginExecution>
-							</pluginExecutions>
-						</lifecycleMappingMetadata>
-					</configuration>
-				</plugin>
-			</plugins>
-		</pluginManagement>
 	</build>
-	<dependencies>
 
-		<!-- Xtend -->
-		<dependency>
-			<groupId>org.eclipse.xtend</groupId>
-			<artifactId>org.eclipse.xtend.lib</artifactId>
-			<version>${xtend.version}</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.eclipse.xtext</groupId>
-			<artifactId>org.eclipse.xtext.xbase.lib</artifactId>
-			<version>${xtend.version}</version>
-		</dependency>
-
-		<!-- JUnit -->
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>4.10</version>
-		</dependency>
-
-		<!-- ttc imdb dependecies -->
-		<dependency>
-			<groupId>hu.bme.mit.ttc</groupId>
-			<artifactId>hu.bme.mit.ttc.imdb</artifactId>
-			<version>1.0.0-SNAPSHOT</version>
-		</dependency>
-
-		<dependency>
-			<groupId>hu.bme.mit.ttc</groupId>
-			<artifactId>hu.bme.mit.ttc.imdb.queries</artifactId>
-			<version>1.0.0-SNAPSHOT</version>
-		</dependency>
-
-		<!-- commons CLI -->
-
-		<dependency>
-			<groupId>commons-cli</groupId>
-			<artifactId>commons-cli</artifactId>
-			<version>1.2</version>
-		</dependency>
-
-		<!-- Guava -->
-
-		<dependency>
-			<groupId>com.google.guava</groupId>
-			<artifactId>guava</artifactId>
-			<version>15.0</version>
-		</dependency>
-
-		<!-- Ecore -->
-
-		<dependency>
-			<groupId>org.eclipse.emf</groupId>
-			<artifactId>org.eclipse.emf.common</artifactId>
-			<version>${emf.version}</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.eclipse.emf</groupId>
-			<artifactId>org.eclipse.emf.ecore</artifactId>
-			<version>${emf.version}</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.eclipse.emf</groupId>
-			<artifactId>org.eclipse.emf.ecore.xmi</artifactId>
-			<version>${emf.version}</version>
-		</dependency>
-
-	</dependencies>
 </project>

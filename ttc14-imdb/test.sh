@@ -1,6 +1,6 @@
 #!/bin/bash
 
-sizes="1 10 100 1000"
+sizes="1 10 100"
 
 vmargs="-XX:MaxPermSize=256m -Xms5G -Xmx5G"
 
