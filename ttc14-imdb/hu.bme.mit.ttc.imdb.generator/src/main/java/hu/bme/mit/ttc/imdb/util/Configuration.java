@@ -9,7 +9,6 @@ import org.apache.commons.cli.Option;
 import org.apache.commons.cli.Options;
 import org.apache.commons.cli.ParseException;
 import org.apache.commons.cli.PosixParser;
-import org.eclipse.emf.common.util.URI;
 
 public class Configuration {
 

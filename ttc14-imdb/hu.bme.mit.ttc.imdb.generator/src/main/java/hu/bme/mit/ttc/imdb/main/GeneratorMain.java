@@ -4,7 +4,6 @@ import hu.bme.mit.ttc.imdb.generator.GeneratorTest;
 import hu.bme.mit.ttc.imdb.util.Configuration;
 
 import org.apache.commons.cli.ParseException;
-import org.eclipse.emf.common.util.URI;
 
 public class GeneratorMain {
 
