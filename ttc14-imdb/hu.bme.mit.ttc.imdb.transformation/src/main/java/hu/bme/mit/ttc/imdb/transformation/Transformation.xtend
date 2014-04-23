@@ -21,12 +21,12 @@ class Transformation {
 	extension Imdb = Imdb.instance
 
 	def createCouples() {
-//		val x = new HashSet<IQuerySpecification<?>>
-//		x += #{personsToCouple, commonMoviesToCouple, personName}
-//		val group = new GenericPatternGroup(x)
-//		
+		val x = new HashSet<IQuerySpecification<?>>
+		x += #{personsToCouple, commonMoviesToCouple, personName}
+		val group = new GenericPatternGroup(x)
+		
 		val engine = IncQueryEngine.on(r)
-//		group.prepare(engine);
+		group.prepare(engine);
 		val coupleMatcher = engine.personsToCouple
 		val commonMoviesMatcher = engine.commonMoviesToCouple
 		val personNameMatcher = engine.personName
@@ -41,10 +41,9 @@ class Transformation {
 			couple.setP1(p1)
 			couple.setP2(p2)
 			
-			val commonMovies = commonMoviesMatcher.allValuesOfm
-//			couple.commonMovies.addAll(commonMovies)
-
-//			calculateAvgRating(commonMovies, couple)
+			val commonMovies = commonMoviesMatcher.getAllValuesOfm(p1name, p2name)
+			couple.commonMovies.addAll(commonMovies)
+			calculateAvgRating(commonMovies, couple)
 			
 			r.contents += couple
 		]
@@ -59,25 +58,25 @@ class Transformation {
 		val n = commonMovies.size
 		group.avgRating = sumRating / n
 	}
-//	
-//	def createCliques() {
-//		val engine = IncQueryEngine.on(r)
-//		val nextCliquesMatcher = getNextCliques(engine)
-//		val memberOfGroupMatcher = getMemberOfGroup(engine)
-//
-//		nextCliquesMatcher.forEachMatch [
-//			val clique = createClique()
-//		
-//			val gPersons = memberOfGroupMatcher.getAllValuesOfp(g)
-//			
-//			clique.commonMovies.addAll(g.commonMovies)
-//			clique.commonMovies.retainAll(p.movies)
-//			calculateAvgRating(clique.commonMovies, clique)
-//			
-//			clique.persons.addAll(gPersons)
-//			clique.persons.add(p)
-//			
-//			r.contents += clique
-//		]
-//	}
+	
+	def createCliques() {
+		val engine = IncQueryEngine.on(r)
+		val nextCliquesMatcher = getNextCliques(engine)
+		val memberOfGroupMatcher = getMemberOfGroup(engine)
+
+		nextCliquesMatcher.forEachMatch [
+			val clique = createClique()
+		
+			val gPersons = memberOfGroupMatcher.getAllValuesOfp(g)
+			
+			clique.commonMovies.addAll(g.commonMovies)
+			clique.commonMovies.retainAll(p.movies)
+			calculateAvgRating(clique.commonMovies, clique)
+			
+			clique.persons.addAll(gPersons)
+			clique.persons.add(p)
+			
+			r.contents += clique
+		]
+	}
 }

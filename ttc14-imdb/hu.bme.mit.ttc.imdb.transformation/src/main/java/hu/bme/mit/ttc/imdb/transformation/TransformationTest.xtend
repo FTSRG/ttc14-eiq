@@ -42,7 +42,7 @@ class TransformationTest {
 		
 		// persist model
 		bmr.startStopper
-//		r.save(emptyMap)
+		r.save(emptyMap)
 		bmr.setSaveTime
 		
 		bmr.printResults
