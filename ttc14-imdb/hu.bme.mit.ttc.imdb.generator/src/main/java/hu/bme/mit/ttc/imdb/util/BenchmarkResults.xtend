@@ -18,17 +18,17 @@ class BenchmarkResults {
 
 	def setReadTime() {
 		readTime = System.nanoTime() - startTime
-		println("Read: " + readTime)
+		println("Read: " + readTime / 1000000 )
 	}
 
 	def setXFormTime() {
 		xformTime = System.nanoTime() - startTime
-		println("XForm: " + xformTime)
+		println("XForm: " + xformTime / 1000000 )
 	}
 
 	def setSaveTime() {
 		saveTime = System.nanoTime() - startTime
-		println("Save: " + saveTime)
+		println("Save: " + saveTime / 1000000 )
 	}
 
 }
