@@ -3,10 +3,11 @@ package hu.bme.mit.ttc.imdb.queries
 import "http://movies/1.0"
 
 // Task 2
+// Couples
 pattern playedTogetherIn(p1name, p2name, m) {
 	Person.movies(p1, m);
 	Movie.persons(m, p2);
-	
+
 	find personName(p1, p1name);
 	find personName(p2, p2name);
 
@@ -15,8 +16,14 @@ pattern playedTogetherIn(p1name, p2name, m) {
 
 pattern personsToCouple(p1name, p2name) {
 	find playedTogetherIn(p1name, p2name, _anymovie);
-	N == count find playedTogetherIn(p1name, p2name, _m);
-	check(N >= 3);
+	find playedTogetherIn(p1name, p2name, m1);
+	find playedTogetherIn(p1name, p2name, m2);
+	find playedTogetherIn(p1name, p2name, m3);
+	m1 != m2;
+	m2 != m3;
+	m1 != m3;
+	//N == count find playedTogetherIn(p1name, p2name, _m);
+	//check(N >= 3);
 }
 
 pattern personName(p, pName) {
@@ -29,10 +36,10 @@ pattern commonMoviesToCouple(p1, p2, m) {
 }
 
 // Task 3
-
+// Average rankings
 pattern couple(c, p1, p2) {
 	Couple.p1(c, p1);
-	Couple.p2(c, p2);	
+	Couple.p2(c, p2);
 }
 
 //pattern coupleWithRating(p1, p2, avgRating) {
@@ -41,20 +48,14 @@ pattern couple(c, p1, p2) {
 //}
 
 // Extension Task 1
+// Top-15 Couples
 pattern commonMoviesOfCouple(c, m) {
 	Couple.commonMovies(c, m);
 }
 
 pattern coupleWithRating(c, avgRating) {
-	Couple.avgRating(c, avgRating);	
+	Couple.avgRating(c, avgRating);
 }
-
-
-// Extension Task 1 a)
-
-
-
-// Extension Task 1 b)
 
 pattern countOfCommonMoviesOfCouple(p1, p2, n) {
 	find couple(c, p1, p2);
@@ -62,8 +63,14 @@ pattern countOfCommonMoviesOfCouple(p1, p2, n) {
 }
 
 // Extension Task 2
+// Clique
 pattern commonMoviesOfGroup(g, m) {
 	Group.commonMovies(g, m);
+}
+
+// Groups
+pattern group(g) {
+	Group(g);
 }
 
 // a Group is either a Couple or a Clique
@@ -80,34 +87,21 @@ pattern commonMovieOfGroupAndPerson(g, p, m) {
 	Person.movies(p, m);
 }
 
-pattern nextCliques(g : Group, p : Person)  {
+pattern nextCliques(g : Group, p : Person) {
+	find commonMovieOfGroupAndPerson(g, p, m1);
+	find commonMovieOfGroupAndPerson(g, p, m2);
+	find commonMovieOfGroupAndPerson(g, p, m3);
+	m1 != m2;
+	m2 != m3;
+	m1 != m3;
 	neg find alphabeticallyLaterMemberOfGroup(g, p);
-	n == count find commonMovieOfGroupAndPerson(g, p, m);
-	check(n >= 3);
-//	neg find union(g, p);
 }
 
-//pattern subsetOfGroup(g0 : Group, gx : Group) {
-//	neg find x(p0, g0, gx);
-//}
-//
-//pattern x(p0 : Person, g0 : Group, gx : Group) {
-//	find memberOfGroup(p0, g0);
-//	neg find memberOfGroup(p0, gx);
-//}
-//
-//pattern union(g0, p) {
-//	find memberOfGroup(p, gx);
-//	find subsetOfGroup(g0, gx);
-//}
-
-
-
-// this also filters the person in the argument
-pattern alphabeticallyLaterMemberOfGroup(g : Group, p : Person)  {
+// this also filters the person in the parameter
+pattern alphabeticallyLaterMemberOfGroup(g : Group, p : Person) {
 	find memberOfGroup(m, g);
-	Person.name(p, pName);
-	Person.name(m, mName);
+	find personName(p, pName);
+	find personName(m, mName);
 	check(mName >= pName);
 }
 
