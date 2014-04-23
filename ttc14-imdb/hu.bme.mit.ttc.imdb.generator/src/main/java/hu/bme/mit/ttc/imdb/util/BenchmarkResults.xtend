@@ -5,7 +5,9 @@ class BenchmarkResults {
 	Long readTime;
 	Long xformTime;
 	Long saveTime;
-
+	
+	public boolean printImmediately
+	
 	def printResults() {
 		println(
 			"Read: " + readTime / 1000000 + " ms XForm: " + xformTime / 1000000 + " ms Save: " + saveTime / 1000000 +
@@ -18,17 +20,17 @@ class BenchmarkResults {
 
 	def setReadTime() {
 		readTime = System.nanoTime() - startTime
-		println("Read: " + readTime / 1000000 )
+		if (printImmediately) println("Read: " + readTime / 1000000 )
 	}
 
 	def setXFormTime() {
 		xformTime = System.nanoTime() - startTime
-		println("XForm: " + xformTime / 1000000 )
+		if (printImmediately) println("XForm: " + xformTime / 1000000 )
 	}
 
 	def setSaveTime() {
 		saveTime = System.nanoTime() - startTime
-		println("Save: " + saveTime / 1000000 )
+		if (printImmediately) println("Save: " + saveTime / 1000000 )
 	}
 
 }

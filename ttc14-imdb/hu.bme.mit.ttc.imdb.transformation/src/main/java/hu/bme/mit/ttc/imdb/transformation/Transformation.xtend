@@ -21,7 +21,7 @@ class Transformation {
 	extension MoviesFactory = MoviesFactory.eINSTANCE
 	extension Imdb = Imdb.instance
 
-	def createCouples() {
+	def createCouples(boolean calcAVGRating) {
 		val x = new HashSet<IQuerySpecification<?>>
 		x += #{personsToCouple, commonMoviesToCouple, personName}
 		val group = new GenericPatternGroup(x)
@@ -40,7 +40,8 @@ class Transformation {
 			couple.setP2(p2)
 			val commonMovies = commonMoviesMatcher.getAllValuesOfm(p1name, p2name)
 			couple.commonMovies.addAll(commonMovies)
-			calculateAvgRating(commonMovies, couple)
+			if (calcAVGRating) 
+				calculateAvgRating(commonMovies, couple)
 			r.contents += couple
 		]
 	}
@@ -98,7 +99,7 @@ class Transformation {
 		// group.avgRating = DoubleMath.mean(commonMovies.map[rating]) // if we have the latest version of Guava
 	}
 
-	def createCliques() {
+	def createCliques(boolean calcAVGRating) {
 		val engine = IncQueryEngine.on(r)
 		val nextCliquesMatcher = getNextCliques(engine)
 		val memberOfGroupMatcher = getMemberOfGroup(engine)
@@ -111,7 +112,8 @@ class Transformation {
 			val gPersons = memberOfGroupMatcher.getAllValuesOfp(g)
 			clique.commonMovies.addAll(g.commonMovies)
 			clique.commonMovies.retainAll(p.movies)
-			calculateAvgRating(clique.commonMovies, clique)
+			if (calcAVGRating)
+				calculateAvgRating(clique.commonMovies, clique)
 			clique.persons.addAll(gPersons)
 			clique.persons.add(p)
 			r.contents += clique

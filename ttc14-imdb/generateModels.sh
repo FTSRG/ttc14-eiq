@@ -12,5 +12,3 @@ for n in $sizes; do
        -instanceModelDir ./hu.bme.mit.ttc.imdb.instance/model -N $n
 
 done
-
-#	java $vmargs -jar hu.bme.mit.ttc.imdb.transformation/target/hu.bme.mit.ttc.imdb.transformation-1.0.0-SNAPSHOT.jar -instanceModelPath /home/szarnyasg/git/ttc14-eiq/ttc14-imdb/hu.bme.mit.ttc.imdb.instance/model/synthetic-$n.movies
