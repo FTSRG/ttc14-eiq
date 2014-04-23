@@ -1,17 +1,17 @@
 package hu.bme.mit.ttc.imdb.transformation
 
-import hu.bme.mit.ttc.imdb.movies.Couple
+import hu.bme.mit.ttc.imdb.movies.Group
 import hu.bme.mit.ttc.imdb.movies.Movie
 import hu.bme.mit.ttc.imdb.movies.MoviesFactory
+import hu.bme.mit.ttc.imdb.queries.CoupleWithRatingMatch
 import hu.bme.mit.ttc.imdb.queries.Imdb
-import java.util.Set
-import org.eclipse.emf.ecore.resource.Resource
-import org.eclipse.incquery.runtime.api.IncQueryEngine
-import hu.bme.mit.ttc.imdb.movies.Group
 import java.util.Collection
+import java.util.HashSet
+import java.util.List
+import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.incquery.runtime.api.GenericPatternGroup
 import org.eclipse.incquery.runtime.api.IQuerySpecification
-import java.util.HashSet
+import org.eclipse.incquery.runtime.api.IncQueryEngine
 
 class Transformation {
 
@@ -48,6 +48,42 @@ class Transformation {
 		]
 	}
 	
+	def topCouplesByRating() {
+		println("Top-15 by Average Rating")
+		println("========================")
+		val n = 15;
+		val engine = IncQueryEngine.on(r)
+		val coupleWithRatingMatcher = engine.coupleWithRating
+		
+		val ccfr = new CoupleComparatorForRating
+		val rankedCouples = coupleWithRatingMatcher.allMatches.sort(ccfr)
+		
+		printCouples(n, rankedCouples)
+	}
+	
+	def topCouplesByCommonMovies() {
+		println("Top-15 by Number of Common Movies")
+		println("=================================")
+
+		val n = 15;
+		val engine = IncQueryEngine.on(r)
+		val coupleWithRatingMatcher = engine.coupleWithRating
+		
+		val ccfm = new CoupleComparatorForCommonMovies
+		val rankedCouples = coupleWithRatingMatcher.allMatches.sort(ccfm)
+		
+		printCouples(n, rankedCouples)
+	}
+	
+	def printCouples(int n, List<CoupleWithRatingMatch> rankedCouples) {
+		(0..n - 1).forEach[
+			val c = rankedCouples.get(it);
+			println(String.format("%d. Couple avgRating %.03f,  %d movies (%s; %s)",
+								it + 1, c.avgRating, c.c.commonMovies.size, c.c.p1.name, c.c.p2.name
+			))
+		]
+	}
+		
 	def calculateAvgRating(Collection<Movie> commonMovies, Group group) {
 		var sumRating = 0.0
 		

@@ -33,6 +33,9 @@ class TransformationTest {
 //		transformation.createCliques // 5-cliques
 		bmr.setXFormTime
 		
+		transformation.topCouplesByRating
+		transformation.topCouplesByCommonMovies
+		
 		// persist model
 		bmr.startStopper
 //		r.save(emptyMap)

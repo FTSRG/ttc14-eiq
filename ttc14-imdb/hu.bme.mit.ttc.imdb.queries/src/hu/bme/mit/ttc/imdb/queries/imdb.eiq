@@ -35,15 +35,20 @@ pattern couple(c, p1, p2) {
 	Couple.p2(c, p2);	
 }
 
-pattern coupleWithRating(p1, p2, avgRating) {
-	find couple(c, p1, p2);
-	Couple.avgRating(c, avgRating);	
-}
+//pattern coupleWithRating(p1, p2, avgRating) {
+//	find couple(c, p1, p2);
+//	Couple.avgRating(c, avgRating);	
+//}
 
 // Extension Task 1
 pattern commonMoviesOfCouple(c, m) {
 	Couple.commonMovies(c, m);
 }
+
+pattern coupleWithRating(c, avgRating) {
+	Couple.avgRating(c, avgRating);	
+}
+
 
 // Extension Task 1 a)
 

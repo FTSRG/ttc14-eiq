@@ -16,7 +16,6 @@ public class TransformationMain {
 		new EMFPatternLanguageStandaloneSetup().createInjectorAndDoEMFRegistration();
 		
 		TransformationTest tt = new TransformationTest();
-//		config.setInstanceModelURI(URI.createFileURI(config.getInstanceModel()));
 		tt.xform(config);
 	}
 

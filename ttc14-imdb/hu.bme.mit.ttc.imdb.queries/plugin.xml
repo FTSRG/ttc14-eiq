@@ -42,19 +42,19 @@
       </matcher>
    </extension>
    <extension
-         id="hu.bme.mit.ttc.imdb.queries.coupleWithRating"
-         point="org.eclipse.incquery.runtime.queryspecification">
-      <matcher
-            querySpecificationProvider="hu.bme.mit.ttc.imdb.queries.util.CoupleWithRatingQuerySpecification$Provider"
-            id="hu.bme.mit.ttc.imdb.queries.coupleWithRating">
-      </matcher>
-   </extension>
-   <extension
          id="hu.bme.mit.ttc.imdb.queries.commonMoviesOfCouple"
          point="org.eclipse.incquery.runtime.queryspecification">
       <matcher
             querySpecificationProvider="hu.bme.mit.ttc.imdb.queries.util.CommonMoviesOfCoupleQuerySpecification$Provider"
             id="hu.bme.mit.ttc.imdb.queries.commonMoviesOfCouple">
+      </matcher>
+   </extension>
+   <extension
+         id="hu.bme.mit.ttc.imdb.queries.coupleWithRating"
+         point="org.eclipse.incquery.runtime.queryspecification">
+      <matcher
+            querySpecificationProvider="hu.bme.mit.ttc.imdb.queries.util.CoupleWithRatingQuerySpecification$Provider"
+            id="hu.bme.mit.ttc.imdb.queries.coupleWithRating">
       </matcher>
    </extension>
    <extension
