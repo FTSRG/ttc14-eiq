@@ -12,7 +12,6 @@ import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.incquery.runtime.api.GenericPatternGroup
 import org.eclipse.incquery.runtime.api.IQuerySpecification
 import org.eclipse.incquery.runtime.api.IncQueryEngine
-import com.google.common.math.DoubleMath
 
 class Transformation {
 
@@ -22,12 +21,12 @@ class Transformation {
 	extension Imdb = Imdb.instance
 
 	def createCouples(boolean calcAVGRating) {
-		val x = new HashSet<IQuerySpecification<?>>
-		x += #{personsToCouple, commonMoviesToCouple, personName}
-		val group = new GenericPatternGroup(x)
+//		val x = new HashSet<IQuerySpecification<?>>
+//		x += #{personsToCouple, commonMoviesToCouple, personName}
+//		val group = new GenericPatternGroup(x)
 
 		val engine = IncQueryEngine.on(r)
-		group.prepare(engine);
+//		group.prepare(engine);
 		val coupleMatcher = engine.personsToCouple
 		val commonMoviesMatcher = engine.commonMoviesToCouple
 		val personNameMatcher = engine.personName
