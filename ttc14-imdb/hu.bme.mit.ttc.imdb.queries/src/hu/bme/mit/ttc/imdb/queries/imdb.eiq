@@ -106,3 +106,30 @@ pattern alphabeticallyLaterMemberOfGroup(g : Group, p : Person) {
 }
 
 
+// alternative nextClique to avoid decart product in alphabeticallyLater 
+pattern nextCliques2(g : Group, p : Person) {
+	find commonMovieOfGroupAndPerson(g, p, m1);
+	find commonMovieOfGroupAndPerson(g, p, m2);
+	find commonMovieOfGroupAndPerson(g, p, m3);
+	m1 != m2;
+	m2 != m3;
+	m1 != m3;
+	find alphabeticallyLatestMemberOfGroup(g, pl);
+	find personName(p, pName);
+	find personName(pl, plName);
+	check(pName >= plName);
+}
+
+pattern alphabeticallyLatestMemberOfGroup(g : Group, p : Person) {
+	find memberOfGroup(p, g);
+	neg find alphabeticallyLaterMemberOfGroup2(g, p, _m);
+}
+
+pattern alphabeticallyLaterMemberOfGroup2(g : Group, p : Person, m : Person) {
+	find memberOfGroup(p, g);
+	find memberOfGroup(m, g);
+	find personName(p, pName);
+	find personName(m, mName);
+	check(mName >= pName);
+}
+

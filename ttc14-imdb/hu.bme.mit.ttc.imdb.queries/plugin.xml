@@ -113,5 +113,29 @@
             id="hu.bme.mit.ttc.imdb.queries.alphabeticallyLaterMemberOfGroup">
       </matcher>
    </extension>
+   <extension
+         id="hu.bme.mit.ttc.imdb.queries.nextCliques2"
+         point="org.eclipse.incquery.runtime.queryspecification">
+      <matcher
+            querySpecificationProvider="hu.bme.mit.ttc.imdb.queries.util.NextCliques2QuerySpecification$Provider"
+            id="hu.bme.mit.ttc.imdb.queries.nextCliques2">
+      </matcher>
+   </extension>
+   <extension
+         id="hu.bme.mit.ttc.imdb.queries.alphabeticallyLatestMemberOfGroup"
+         point="org.eclipse.incquery.runtime.queryspecification">
+      <matcher
+            querySpecificationProvider="hu.bme.mit.ttc.imdb.queries.util.AlphabeticallyLatestMemberOfGroupQuerySpecification$Provider"
+            id="hu.bme.mit.ttc.imdb.queries.alphabeticallyLatestMemberOfGroup">
+      </matcher>
+   </extension>
+   <extension
+         id="hu.bme.mit.ttc.imdb.queries.alphabeticallyLaterMemberOfGroup2"
+         point="org.eclipse.incquery.runtime.queryspecification">
+      <matcher
+            querySpecificationProvider="hu.bme.mit.ttc.imdb.queries.util.AlphabeticallyLaterMemberOfGroup2QuerySpecification$Provider"
+            id="hu.bme.mit.ttc.imdb.queries.alphabeticallyLaterMemberOfGroup2">
+      </matcher>
+   </extension>
 
 </plugin>
