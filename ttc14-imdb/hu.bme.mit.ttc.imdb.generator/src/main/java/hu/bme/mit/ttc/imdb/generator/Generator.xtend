@@ -1,6 +1,5 @@
 package hu.bme.mit.ttc.imdb.generator
 
-import com.google.common.collect.ImmutableList
 import hu.bme.mit.ttc.imdb.movies.MoviesFactory
 import org.eclipse.emf.ecore.resource.Resource
 
@@ -33,9 +32,9 @@ class Generator {
 		val d = createActress("a" + (10 * n + 3))
 		val e = createActress("a" + (10 * n + 4))
 
-		val actors = ImmutableList.of(a, b, c, d, e)
-		val firstTwo = ImmutableList.of(a, b)
-		val lastTwo = ImmutableList.of(d, e)
+		val actors =   #[a, b, c, d, e]
+		val firstTwo = #[a, b]
+		val lastTwo =  #[         d, e]
 
 		movies.get(0).persons += firstTwo;
 		(1 .. 3).forEach[movies.get(it).persons += actors]
@@ -55,12 +54,12 @@ class Generator {
 		val d = createActress("a" + (10 * n + 8))
 		val e = createActress("a" + (10 * n + 9))
 
-		val actors = ImmutableList.of(a, b, c, d, e)
-		movies.get(0).persons += ImmutableList.of(a, b)
-		movies.get(1).persons += ImmutableList.of(a, b, c)
-		movies.get(2).persons += ImmutableList.of(   b, c, d)
-		movies.get(3).persons += ImmutableList.of(      c, d, e)
-		movies.get(4).persons += ImmutableList.of(         d, e)
+		val actors =             #[a, b, c, d, e]
+		movies.get(0).persons += #[a, b]
+		movies.get(1).persons += #[a, b, c]
+		movies.get(2).persons += #[   b, c, d]
+		movies.get(3).persons += #[      c, d, e]
+		movies.get(4).persons += #[         d, e]
 		
 		r.contents += actors
 		r.contents += movies
