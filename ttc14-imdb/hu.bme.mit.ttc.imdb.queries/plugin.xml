@@ -2,11 +2,11 @@
 <plugin>
 
    <extension
-         id="hu.bme.mit.ttc.imdb.queries.playedTogetherIn"
+         id="hu.bme.mit.ttc.imdb.queries.personName"
          point="org.eclipse.incquery.runtime.queryspecification">
       <matcher
-            querySpecificationProvider="hu.bme.mit.ttc.imdb.queries.util.PlayedTogetherInQuerySpecification$Provider"
-            id="hu.bme.mit.ttc.imdb.queries.playedTogetherIn">
+            querySpecificationProvider="hu.bme.mit.ttc.imdb.queries.util.PersonNameQuerySpecification$Provider"
+            id="hu.bme.mit.ttc.imdb.queries.personName">
       </matcher>
    </extension>
    <extension
@@ -15,14 +15,6 @@
       <matcher
             querySpecificationProvider="hu.bme.mit.ttc.imdb.queries.util.PersonsToCoupleQuerySpecification$Provider"
             id="hu.bme.mit.ttc.imdb.queries.personsToCouple">
-      </matcher>
-   </extension>
-   <extension
-         id="hu.bme.mit.ttc.imdb.queries.personName"
-         point="org.eclipse.incquery.runtime.queryspecification">
-      <matcher
-            querySpecificationProvider="hu.bme.mit.ttc.imdb.queries.util.PersonNameQuerySpecification$Provider"
-            id="hu.bme.mit.ttc.imdb.queries.personName">
       </matcher>
    </extension>
    <extension
