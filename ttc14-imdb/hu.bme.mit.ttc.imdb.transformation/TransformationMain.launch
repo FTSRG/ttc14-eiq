@@ -7,7 +7,7 @@
 <listEntry value="1"/>
 </listAttribute>
 <stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="hu.bme.mit.ttc.imdb.main.TransformationMain"/>
-<stringAttribute key="org.eclipse.jdt.launching.PROGRAM_ARGUMENTS" value="-instanceModelPath ../hu.bme.mit.ttc.imdb.instance/model/synthetic-1.movies"/>
+<stringAttribute key="org.eclipse.jdt.launching.PROGRAM_ARGUMENTS" value="-instanceModelPath ../hu.bme.mit.ttc.imdb.instance/model/synthetic-1000.movies&#13;&#10;-task t3"/>
 <stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="hu.bme.mit.ttc.imdb.transformation"/>
 <stringAttribute key="org.eclipse.jdt.launching.VM_ARGUMENTS" value="-Xms5G -Xmx5G"/>
 </launchConfiguration>
