@@ -5,7 +5,7 @@ import org.eclipse.emf.ecore.resource.Resource
 
 class Generator {
 
-	protected Resource r
+	public Resource r
 	
 	extension MoviesFactory = MoviesFactory.eINSTANCE
 

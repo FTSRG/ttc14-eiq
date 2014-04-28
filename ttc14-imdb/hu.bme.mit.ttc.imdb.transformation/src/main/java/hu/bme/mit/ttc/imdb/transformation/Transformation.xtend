@@ -12,9 +12,16 @@ import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.incquery.runtime.api.GenericPatternGroup
 import org.eclipse.incquery.runtime.api.IQuerySpecification
 import org.eclipse.incquery.runtime.api.IncQueryEngine
+import hu.bme.mit.ttc.imdb.util.BenchmarkResults
 
 class Transformation {
 
+	new (Resource r, BenchmarkResults bmr) {
+		this.r = r;
+		this.bmr = bmr;
+	}
+	
+	protected val BenchmarkResults bmr;
 	protected Resource r
 
 	extension MoviesFactory = MoviesFactory.eINSTANCE

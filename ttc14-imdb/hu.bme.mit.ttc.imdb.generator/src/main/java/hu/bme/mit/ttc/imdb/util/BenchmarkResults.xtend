@@ -1,36 +1,31 @@
 package hu.bme.mit.ttc.imdb.util
 
+import java.util.LinkedList
+import java.util.List
+import java.util.HashMap
+import java.util.Map
+import hu.bme.mit.ttc.imdb.generator.StatisticEntry
+
 class BenchmarkResults {
-	Long startTime;
-	Long readTime;
-	Long xformTime;
-	Long saveTime;
 	
-	public boolean printImmediately
+	val separator = ";\t"
+	
+	val List<String> statNames = new LinkedList;
+	val Map<String,StatisticEntry> statValues = new HashMap;
+	public boolean printImmediately = false
 	
 	def printResults() {
-		println(
-			"Read: " + readTime / 1000000 + " ms XForm: " + xformTime / 1000000 + " ms Save: " + saveTime / 1000000 +
-				" ms");
+		println('''«FOR statName : statNames SEPARATOR separator»«statName»«ENDFOR»''');
+		println('''«FOR statName : statNames SEPARATOR separator»«statValues.get(statName).time»«ENDFOR»''');
 	}
 
-	def startStopper() {
-		startTime = System.nanoTime();
+	def startStopper(String name) {
+		statNames.add(name)
+		statValues.put(name, new StatisticEntry(name))
 	}
 
-	def setReadTime() {
-		readTime = System.nanoTime() - startTime
-		if (printImmediately) println("Read: " + readTime / 1000000 )
+	def endStopper(String name) {
+		statValues.get(name).end
+		if(printImmediately) println(name + " = " + statValues.get(name).time)
 	}
-
-	def setXFormTime() {
-		xformTime = System.nanoTime() - startTime
-		if (printImmediately) println("XForm: " + xformTime / 1000000 )
-	}
-
-	def setSaveTime() {
-		saveTime = System.nanoTime() - startTime
-		if (printImmediately) println("Save: " + saveTime / 1000000 )
-	}
-
 }

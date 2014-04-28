@@ -20,19 +20,19 @@ class TransformationTest {
 		val bmr = new BenchmarkResults
 		
 		// read instance model
-		bmr.startStopper
+		bmr.startStopper("Load/Generate")
 		val model = init(config,bmr)
-		bmr.setReadTime
+		bmr.endStopper("Load/Generate")
 		
 		// transform model
-		bmr.startStopper
+		bmr.startStopper("Transform")
 		model.execute(config,bmr);
-		bmr.setXFormTime
+		bmr.endStopper("Transform")
 		
 		// persist model
-		bmr.startStopper
+		bmr.startStopper("Save")
 		model.finalize(config,bmr)
-		bmr.setSaveTime
+		bmr.endStopper("Save")
 		
 		bmr.printResults
 	}
@@ -46,8 +46,7 @@ class TransformationTest {
 	}
 	
 	def protected void execute(Resource r, Configuration config, BenchmarkResults bmr) {
-		val transformation = new Transformation
-		transformation.r = r
+		val transformation = new Transformation(r,bmr)
 		
 		val calcAVGRating = config.AVGRating
 		
