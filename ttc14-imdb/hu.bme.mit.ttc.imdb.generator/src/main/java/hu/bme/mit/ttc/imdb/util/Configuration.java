@@ -125,9 +125,9 @@ public class Configuration {
 	
 	public boolean getAVGRating() {
 		boolean calcAVGRating = false;
-		if ((task == "t2") || (task == "et2") || (task == "et1b") || (task == "et4b"))
+		if (task.equals("t2") || task.equals("et2") || task.equals("et1b") || task.equals("et4b"))
 			calcAVGRating = false;
-		else if ((task == "t3") || (task == "et3") || (task == "et1a") || (task == "et4a"))
+		else if (task.equals("t3") || task.equals("et3") || task.equals("et1a") || task.equals("et4a"))
 			calcAVGRating = true;
 		return calcAVGRating;
 	}
