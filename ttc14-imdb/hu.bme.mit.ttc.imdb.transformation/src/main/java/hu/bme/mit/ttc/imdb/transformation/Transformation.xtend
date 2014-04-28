@@ -137,8 +137,26 @@ class Transformation {
 		// group.avgRating = DoubleMath.mean(commonMovies.map[rating]) // if we have the latest version of Guava
 	}
 
-	def createCliques(boolean calcAVGRating) {
+	def createCliques(boolean calcAVGRating, int cliques) {
 		val engine = IncQueryEngine.on(r)
+		
+		if(cliques == 3) {
+			bmr.startStopper("clique/3engine")
+			val clique3 = getPersonsTo3Clique(engine)
+			bmr.endStopper("clique/3engine")
+		}
+		else if(cliques == 4) {
+			bmr.startStopper("clique/4engine")
+			val clique4 = getPersonsTo4Clique(engine)
+			bmr.endStopper("clique/4engine")
+		}
+		else if(cliques == 5) {
+			bmr.startStopper("clique/5engine")
+			val clique5 = getPersonsTo5Clique(engine)
+			bmr.endStopper("clique/5engine")
+		}
+		
+		/*val engine = IncQueryEngine.on(r)
 		val nextCliquesMatcher = getNextCliques(engine)
 		val memberOfGroupMatcher = getMemberOfGroup(engine)
 		val groupMatcher = getGroup(engine)
@@ -159,6 +177,6 @@ class Transformation {
 		
 		oldGroups.forEach[
 			r.contents -= it
-		]
+		]*/
 	}
 }

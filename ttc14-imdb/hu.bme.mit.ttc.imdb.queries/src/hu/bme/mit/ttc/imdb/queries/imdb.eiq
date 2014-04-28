@@ -95,83 +95,175 @@ pattern countOfCommonMoviesOfCouple(p1, p2, n) {
 	n == count find commonMoviesOfCouple(c, _m);
 }
 
+// ET2 v2
+
+pattern personsTo3Clique(p1name, p2name, p3name) {
+	Person.movies(P1, M1);
+	Person.movies(P2, M1);
+	Person.movies(P3, M1);
+	
+	Person.movies(P1, M2);
+	Person.movies(P2, M2);
+	Person.movies(P3, M2);
+	
+	Person.movies(P1, M3);
+	Person.movies(P2, M3);
+	Person.movies(P3, M3);
+	
+	M1 != M2;
+	M2 != M3;
+	M1 != M3;
+	
+	Person.name(P1, p1name);
+	Person.name(P2, p2name);
+	Person.name(P3, p3name);
+	check(p1name < p2name);
+	check(p2name < p3name);
+}
+
+pattern personsTo4Clique(p1name, p2name, p3name, p4name) {
+	Person.movies(P1, M1);
+	Person.movies(P2, M1);
+	Person.movies(P3, M1);
+	Person.movies(P4, M1);
+	
+	Person.movies(P1, M2);
+	Person.movies(P2, M2);
+	Person.movies(P3, M2);
+	Person.movies(P4, M2);
+	
+	Person.movies(P1, M3);
+	Person.movies(P2, M3);
+	Person.movies(P3, M3);
+	Person.movies(P4, M3);
+	
+	M1 != M2;
+	M2 != M3;
+	M1 != M3;
+	
+	Person.name(P1, p1name);
+	Person.name(P2, p2name);
+	Person.name(P3, p3name);
+	Person.name(P4, p4name);
+	
+	check(p1name < p2name);
+	check(p2name < p3name);
+	check(p3name < p4name);
+}
+
+pattern personsTo5Clique(p1name, p2name, p3name, p4name, p5name) {
+	Person.movies(P1, M1);
+	Person.movies(P2, M1);
+	Person.movies(P3, M1);
+	Person.movies(P4, M1);
+	Person.movies(P5, M1);
+	
+	Person.movies(P1, M2);
+	Person.movies(P2, M2);
+	Person.movies(P3, M2);
+	Person.movies(P4, M2);
+	Person.movies(P5, M2);
+	
+	Person.movies(P1, M3);
+	Person.movies(P2, M3);
+	Person.movies(P3, M3);
+	Person.movies(P4, M3);
+	Person.movies(P5, M3);
+	
+	M1 != M2;
+	M2 != M3;
+	M1 != M3;
+	
+	Person.name(P1, p1name);
+	Person.name(P2, p2name);
+	Person.name(P3, p3name);
+	Person.name(P4, p4name);
+	Person.name(P5, p5name);
+	
+	check(p1name < p2name);
+	check(p2name < p3name);
+	check(p3name < p4name);
+	check(p4name < p5name);
+}
+
+
 // Extension Task 2
 // Clique
-@QueryExplorer(display = false)
-pattern commonMoviesOfGroup(g, m) {
-	Group.commonMovies(g, m);
-}
-
-// Groups
-@QueryExplorer(display = false)
-pattern group(g) {
-	Group(g);
-}
-
-// a Group is either a Couple or a Clique
-@QueryExplorer(display = false)
-pattern memberOfGroup(p, g) {
-	Couple.p1(g, p);
-} or {
-	Couple.p2(g, p);
-} or {
-	Clique.persons(g, p);
-}
-
-@QueryExplorer(display = false)
-pattern commonMovieOfGroupAndPerson(g, p, m) {
-	find commonMoviesOfGroup(g, m);
-	Person.movies(p, m);
-}
-
-@QueryExplorer(display = false)
-pattern nextCliques(g : Group, p : Person) {
-	find commonMovieOfGroupAndPerson(g, p, m1);
-	find commonMovieOfGroupAndPerson(g, p, m2);
-	find commonMovieOfGroupAndPerson(g, p, m3);
-	m1 != m2;
-	m2 != m3;
-	m1 != m3;
-	neg find alphabeticallyLaterMemberOfGroup(g, p);
-}
-
-// this also filters the person in the parameter
-@QueryExplorer(display = false)
-pattern alphabeticallyLaterMemberOfGroup(g : Group, p : Person) {
-	find memberOfGroup(m, g);
-	find personName(p, pName);
-	find personName(m, mName);
-	check(mName >= pName);
-}
-
-
-// alternative nextClique to avoid decart product in alphabeticallyLater 
-@QueryExplorer(display = false)
-pattern nextCliques2(g : Group, p : Person) {
-	find commonMovieOfGroupAndPerson(g, p, m1);
-	find commonMovieOfGroupAndPerson(g, p, m2);
-	find commonMovieOfGroupAndPerson(g, p, m3);
-	m1 != m2;
-	m2 != m3;
-	m1 != m3;
-	find alphabeticallyLatestMemberOfGroup(g, pl);
-	find personName(p, pName);
-	find personName(pl, plName);
-	check(pName >= plName);
-}
-
-@QueryExplorer(display = false)
-pattern alphabeticallyLatestMemberOfGroup(g : Group, p : Person) {
-	find memberOfGroup(p, g);
-	neg find alphabeticallyLaterMemberOfGroup2(g, p, _m);
-}
-
-@QueryExplorer(display = false)
-pattern alphabeticallyLaterMemberOfGroup2(g : Group, p : Person, m : Person) {
-	find memberOfGroup(p, g);
-	find memberOfGroup(m, g);
-	find personName(p, pName);
-	find personName(m, mName);
-	check(mName >= pName);
-}
+//@QueryExplorer(display = false)
+//pattern commonMoviesOfGroup(g, m) {
+//	Group.commonMovies(g, m);
+//}
+//
+//// Groups
+//@QueryExplorer(display = false)
+//pattern group(g) {
+//	Group(g);
+//}
+//
+//// a Group is either a Couple or a Clique
+//@QueryExplorer(display = false)
+//pattern memberOfGroup(p, g) {
+//	Couple.p1(g, p);
+//} or {
+//	Couple.p2(g, p);
+//} or {
+//	Clique.persons(g, p);
+//}
+//
+//@QueryExplorer(display = false)
+//pattern commonMovieOfGroupAndPerson(g, p, m) {
+//	find commonMoviesOfGroup(g, m);
+//	Person.movies(p, m);
+//}
+//
+//@QueryExplorer(display = false)
+//pattern nextCliques(g : Group, p : Person) {
+//	find commonMovieOfGroupAndPerson(g, p, m1);
+//	find commonMovieOfGroupAndPerson(g, p, m2);
+//	find commonMovieOfGroupAndPerson(g, p, m3);
+//	m1 != m2;
+//	m2 != m3;
+//	m1 != m3;
+//	neg find alphabeticallyLaterMemberOfGroup(g, p);
+//}
+//
+//// this also filters the person in the parameter
+//@QueryExplorer(display = false)
+//pattern alphabeticallyLaterMemberOfGroup(g : Group, p : Person) {
+//	find memberOfGroup(m, g);
+//	find personName(p, pName);
+//	find personName(m, mName);
+//	check(mName >= pName);
+//}
+//
+//
+//// alternative nextClique to avoid decart product in alphabeticallyLater 
+//@QueryExplorer(display = false)
+//pattern nextCliques2(g : Group, p : Person) {
+//	find commonMovieOfGroupAndPerson(g, p, m1);
+//	find commonMovieOfGroupAndPerson(g, p, m2);
+//	find commonMovieOfGroupAndPerson(g, p, m3);
+//	m1 != m2;
+//	m2 != m3;
+//	m1 != m3;
+//	find alphabeticallyLatestMemberOfGroup(g, pl);
+//	find personName(p, pName);
+//	find personName(pl, plName);
+//	check(pName >= plName);
+//}
+//
+//@QueryExplorer(display = false)
+//pattern alphabeticallyLatestMemberOfGroup(g : Group, p : Person) {
+//	find memberOfGroup(p, g);
+//	neg find alphabeticallyLaterMemberOfGroup2(g, p, _m);
+//}
+//
+//@QueryExplorer(display = false)
+//pattern alphabeticallyLaterMemberOfGroup2(g : Group, p : Person, m : Person) {
+//	find memberOfGroup(p, g);
+//	find memberOfGroup(m, g);
+//	find personName(p, pName);
+//	find personName(m, mName);
+//	check(mName >= pName);
+//}
 

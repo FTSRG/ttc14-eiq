@@ -53,9 +53,7 @@ class TransformationTest {
 		transformation.createCouples(calcAVGRating) // 2-cliques (t2 and others)
 		
 		if ((config.task == "et2") || (config.task == "et3") || (config.task == "et4a") || (config.task == "et4b"))
-			(3 .. config.cliques).forEach [
-				transformation.createCliques(calcAVGRating) // n-cliques
-			]
+				transformation.createCliques(calcAVGRating, config.cliques) // n-cliques
 		
 		if (config.task == "et1a") // et4a?
 			transformation.topCouplesByRating

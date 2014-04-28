@@ -58,75 +58,27 @@
       </matcher>
    </extension>
    <extension
-         id="hu.bme.mit.ttc.imdb.queries.commonMoviesOfGroup"
+         id="hu.bme.mit.ttc.imdb.queries.personsTo3Clique"
          point="org.eclipse.incquery.runtime.queryspecification">
       <matcher
-            querySpecificationProvider="hu.bme.mit.ttc.imdb.queries.util.CommonMoviesOfGroupQuerySpecification$Provider"
-            id="hu.bme.mit.ttc.imdb.queries.commonMoviesOfGroup">
+            querySpecificationProvider="hu.bme.mit.ttc.imdb.queries.util.PersonsTo3CliqueQuerySpecification$Provider"
+            id="hu.bme.mit.ttc.imdb.queries.personsTo3Clique">
       </matcher>
    </extension>
    <extension
-         id="hu.bme.mit.ttc.imdb.queries.group"
+         id="hu.bme.mit.ttc.imdb.queries.personsTo4Clique"
          point="org.eclipse.incquery.runtime.queryspecification">
       <matcher
-            querySpecificationProvider="hu.bme.mit.ttc.imdb.queries.util.GroupQuerySpecification$Provider"
-            id="hu.bme.mit.ttc.imdb.queries.group">
+            querySpecificationProvider="hu.bme.mit.ttc.imdb.queries.util.PersonsTo4CliqueQuerySpecification$Provider"
+            id="hu.bme.mit.ttc.imdb.queries.personsTo4Clique">
       </matcher>
    </extension>
    <extension
-         id="hu.bme.mit.ttc.imdb.queries.memberOfGroup"
+         id="hu.bme.mit.ttc.imdb.queries.personsTo5Clique"
          point="org.eclipse.incquery.runtime.queryspecification">
       <matcher
-            querySpecificationProvider="hu.bme.mit.ttc.imdb.queries.util.MemberOfGroupQuerySpecification$Provider"
-            id="hu.bme.mit.ttc.imdb.queries.memberOfGroup">
-      </matcher>
-   </extension>
-   <extension
-         id="hu.bme.mit.ttc.imdb.queries.commonMovieOfGroupAndPerson"
-         point="org.eclipse.incquery.runtime.queryspecification">
-      <matcher
-            querySpecificationProvider="hu.bme.mit.ttc.imdb.queries.util.CommonMovieOfGroupAndPersonQuerySpecification$Provider"
-            id="hu.bme.mit.ttc.imdb.queries.commonMovieOfGroupAndPerson">
-      </matcher>
-   </extension>
-   <extension
-         id="hu.bme.mit.ttc.imdb.queries.nextCliques"
-         point="org.eclipse.incquery.runtime.queryspecification">
-      <matcher
-            querySpecificationProvider="hu.bme.mit.ttc.imdb.queries.util.NextCliquesQuerySpecification$Provider"
-            id="hu.bme.mit.ttc.imdb.queries.nextCliques">
-      </matcher>
-   </extension>
-   <extension
-         id="hu.bme.mit.ttc.imdb.queries.alphabeticallyLaterMemberOfGroup"
-         point="org.eclipse.incquery.runtime.queryspecification">
-      <matcher
-            querySpecificationProvider="hu.bme.mit.ttc.imdb.queries.util.AlphabeticallyLaterMemberOfGroupQuerySpecification$Provider"
-            id="hu.bme.mit.ttc.imdb.queries.alphabeticallyLaterMemberOfGroup">
-      </matcher>
-   </extension>
-   <extension
-         id="hu.bme.mit.ttc.imdb.queries.nextCliques2"
-         point="org.eclipse.incquery.runtime.queryspecification">
-      <matcher
-            querySpecificationProvider="hu.bme.mit.ttc.imdb.queries.util.NextCliques2QuerySpecification$Provider"
-            id="hu.bme.mit.ttc.imdb.queries.nextCliques2">
-      </matcher>
-   </extension>
-   <extension
-         id="hu.bme.mit.ttc.imdb.queries.alphabeticallyLatestMemberOfGroup"
-         point="org.eclipse.incquery.runtime.queryspecification">
-      <matcher
-            querySpecificationProvider="hu.bme.mit.ttc.imdb.queries.util.AlphabeticallyLatestMemberOfGroupQuerySpecification$Provider"
-            id="hu.bme.mit.ttc.imdb.queries.alphabeticallyLatestMemberOfGroup">
-      </matcher>
-   </extension>
-   <extension
-         id="hu.bme.mit.ttc.imdb.queries.alphabeticallyLaterMemberOfGroup2"
-         point="org.eclipse.incquery.runtime.queryspecification">
-      <matcher
-            querySpecificationProvider="hu.bme.mit.ttc.imdb.queries.util.AlphabeticallyLaterMemberOfGroup2QuerySpecification$Provider"
-            id="hu.bme.mit.ttc.imdb.queries.alphabeticallyLaterMemberOfGroup2">
+            querySpecificationProvider="hu.bme.mit.ttc.imdb.queries.util.PersonsTo5CliqueQuerySpecification$Provider"
+            id="hu.bme.mit.ttc.imdb.queries.personsTo5Clique">
       </matcher>
    </extension>
 
