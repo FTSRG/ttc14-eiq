@@ -9,9 +9,6 @@ import hu.bme.mit.ttc.imdb.util.BenchmarkResults
 
 class TransformationTest {
 
-	ResourceSet rs;
-	Resource r;
-
 // Task dependencies:
 // t2 -> t3 -> et1a 
 //  |       -> et1b
@@ -20,18 +17,35 @@ class TransformationTest {
 //               -> et4b
 	
 	def xform(Configuration config) {
-		val instanceModelPath = URI.createFileURI(config.instanceModelPath)
 		val bmr = new BenchmarkResults
-		bmr.printImmediately = config.printImmediately
 		
 		// read instance model
 		bmr.startStopper
-		rs = new ResourceSetImpl
-		r = rs.getResource(instanceModelPath, true)
+		val model = init(config,bmr)
 		bmr.setReadTime
 		
 		// transform model
 		bmr.startStopper
+		model.execute(config,bmr);
+		bmr.setXFormTime
+		
+		// persist model
+		bmr.startStopper
+		model.finalize(config,bmr)
+		bmr.setSaveTime
+		
+		bmr.printResults
+	}
+	
+	def protected init(Configuration config, BenchmarkResults bmr) {
+		val instanceModelPath = URI.createFileURI(config.instanceModelPath)
+		
+		bmr.printImmediately = config.printImmediately
+		val ResourceSet rs = new ResourceSetImpl
+		return rs.getResource(instanceModelPath, true)
+	}
+	
+	def protected void execute(Resource r, Configuration config, BenchmarkResults bmr) {
 		val transformation = new Transformation
 		transformation.r = r
 		
@@ -48,15 +62,9 @@ class TransformationTest {
 			transformation.topCouplesByRating
 		if (config.task == "et1b") // et4b?
 			transformation.topCouplesByCommonMovies
-		
-		bmr.setXFormTime
-		
-		// persist model
-		bmr.startStopper
-		r.save(emptyMap)
-		bmr.setSaveTime
-		
-		bmr.printResults
 	}
-
+	
+	def protected void finalize(Resource r, Configuration config, BenchmarkResults bmr) {
+		r.save(emptyMap)
+	}
 }
