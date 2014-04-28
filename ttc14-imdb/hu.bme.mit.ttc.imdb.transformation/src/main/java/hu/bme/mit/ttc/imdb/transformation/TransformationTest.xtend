@@ -16,8 +16,8 @@ class TransformationTest {
 // et2(n) -> et3 -> et4a
 //               -> et4b
 	
-	def xform(Configuration config) {
-		val bmr = new BenchmarkResults
+	def xform(Configuration config, String name) {
+		val bmr = new BenchmarkResults(name)
 		
 		// read instance model
 		bmr.startStopper("Load/Generate")

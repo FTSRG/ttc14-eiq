@@ -31,13 +31,24 @@ class Transformation {
 //		val x = new HashSet<IQuerySpecification<?>>
 //		x += #{personsToCouple, commonMoviesToCouple, personName}
 //		val group = new GenericPatternGroup(x)
-
+		bmr.startStopper("createCouples/Engine")
 		val engine = IncQueryEngine.on(r)
+		bmr.endStopper("createCouples/Engine")
+		
 //		group.prepare(engine);
+		bmr.startStopper("createCouples/coupleMatcher")
 		val coupleMatcher = engine.personsToCouple
+		bmr.endStopper("createCouples/coupleMatcher")
+		
+		bmr.startStopper("createCouples/commonMoviesMatcher")
 		val commonMoviesMatcher = engine.commonMoviesToCouple
+		bmr.endStopper("createCouples/commonMoviesMatcher")
+		
+		bmr.startStopper("createCouples/personNameMatcher")
 		val personNameMatcher = engine.personName
-
+		bmr.endStopper("createCouples/personNameMatcher")
+		
+		bmr.startStopper("createCouples/transformation")
 		coupleMatcher.forEachMatch [
 			val couple = createCouple()
 			val p1 = personNameMatcher.getAllValuesOfp(p1name).head
@@ -50,6 +61,7 @@ class Transformation {
 				calculateAvgRating(commonMovies, couple)
 			r.contents += couple
 		]
+		bmr.endStopper("createCouples/transformation")
 	}
 
 	def topCouplesByRating() {
