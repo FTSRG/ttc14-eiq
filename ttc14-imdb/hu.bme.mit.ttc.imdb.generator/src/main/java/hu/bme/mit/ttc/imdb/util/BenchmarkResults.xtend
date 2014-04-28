@@ -8,15 +8,20 @@ import hu.bme.mit.ttc.imdb.generator.StatisticEntry
 
 class BenchmarkResults {
 	
-	val separator = ";\t"
+	val separator = ";"
+	
+	val String name;
+	new (String name) {
+		this.name = name
+	}
 	
 	val List<String> statNames = new LinkedList;
 	val Map<String,StatisticEntry> statValues = new HashMap;
 	public boolean printImmediately = false
 	
 	def printResults() {
-		println('''«FOR statName : statNames SEPARATOR separator»«statName»«ENDFOR»''');
-		println('''«FOR statName : statNames SEPARATOR separator»«statValues.get(statName).time»«ENDFOR»''');
+		println('''id«separator»«FOR statName : statNames SEPARATOR separator»«statName»«ENDFOR»''');
+		println('''«name»«separator»«FOR statName : statNames SEPARATOR separator»«statValues.get(statName).time»«ENDFOR»''');
 	}
 
 	def startStopper(String name) {
