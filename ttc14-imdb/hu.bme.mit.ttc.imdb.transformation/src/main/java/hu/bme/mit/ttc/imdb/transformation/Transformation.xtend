@@ -13,6 +13,9 @@ import org.eclipse.incquery.runtime.api.GenericPatternGroup
 import org.eclipse.incquery.runtime.api.IQuerySpecification
 import org.eclipse.incquery.runtime.api.IncQueryEngine
 import hu.bme.mit.ttc.imdb.util.BenchmarkResults
+import java.util.LinkedList
+import hu.bme.mit.ttc.imdb.movies.Couple
+import org.eclipse.incquery.runtime.api.AdvancedIncQueryEngine
 
 class Transformation {
 
@@ -32,7 +35,7 @@ class Transformation {
 //		x += #{personsToCouple, commonMoviesToCouple, personName}
 //		val group = new GenericPatternGroup(x)
 		bmr.startStopper("createCouples/Engine")
-		val engine = IncQueryEngine.on(r)
+		val engine = AdvancedIncQueryEngine.createUnmanagedEngine(r)
 		bmr.endStopper("createCouples/Engine")
 		
 //		group.prepare(engine);
@@ -49,6 +52,7 @@ class Transformation {
 		bmr.endStopper("createCouples/personNameMatcher")
 		
 		bmr.startStopper("createCouples/transformation")
+		val newCouples = new LinkedList<Couple>
 		coupleMatcher.forEachMatch [
 			val couple = createCouple()
 			val p1 = personNameMatcher.getAllValuesOfp(p1name).head
@@ -59,20 +63,36 @@ class Transformation {
 			couple.commonMovies.addAll(commonMovies)
 			if (calcAVGRating) 
 				calculateAvgRating(commonMovies, couple)
-			r.contents += couple
+			newCouples += couple
 		]
 		bmr.endStopper("createCouples/transformation")
+		
+		bmr.startStopper("createCouples/dispose")
+		engine.dispose
+		bmr.endStopper("createCouples/dispose")
+		
+		bmr.startStopper("createCouples/adding")
+		r.contents.addAll(newCouples);
+		bmr.endStopper("createCouples/adding")
 	}
 
 	def topCouplesByRating() {
 		println("Top-15 by Average Rating")
 		println("========================")
 		val n = 15;
+		
+		bmr.startStopper("couplesAVG/Engine")
 		val engine = IncQueryEngine.on(r)
+		bmr.endStopper("couplesAVG/Engine")
+		
+		bmr.startStopper("couplesAVG/Engine")
 		val coupleWithRatingMatcher = engine.coupleWithRating
-
+		bmr.endStopper("couplesAVG/Engine")
+		
+		bmr.startStopper("couplesAVG/Sort")
 		val ccfr = new CoupleComparatorForRating
 		val rankedCouples = coupleWithRatingMatcher.allMatches.sort(ccfr)
+		bmr.endStopper("couplesAVG/Sort")
 
 		printCouples(n, rankedCouples)
 	}
