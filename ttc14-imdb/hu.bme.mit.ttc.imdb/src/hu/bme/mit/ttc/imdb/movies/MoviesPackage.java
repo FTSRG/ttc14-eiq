@@ -58,6 +58,34 @@ public interface MoviesPackage extends EPackage {
 	MoviesPackage eINSTANCE = hu.bme.mit.ttc.imdb.movies.impl.MoviesPackageImpl.init();
 
 	/**
+	 * The meta object id for the '{@link hu.bme.mit.ttc.imdb.movies.impl.ContainedElementImpl <em>Contained Element</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see hu.bme.mit.ttc.imdb.movies.impl.ContainedElementImpl
+	 * @see hu.bme.mit.ttc.imdb.movies.impl.MoviesPackageImpl#getContainedElement()
+	 * @generated
+	 */
+	int CONTAINED_ELEMENT = 8;
+
+	/**
+	 * The number of structural features of the '<em>Contained Element</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTAINED_ELEMENT_FEATURE_COUNT = 0;
+
+	/**
+	 * The number of operations of the '<em>Contained Element</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTAINED_ELEMENT_OPERATION_COUNT = 0;
+
+	/**
 	 * The meta object id for the '{@link hu.bme.mit.ttc.imdb.movies.impl.PersonImpl <em>Person</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -74,7 +102,7 @@ public interface MoviesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PERSON__MOVIES = 0;
+	int PERSON__MOVIES = CONTAINED_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -83,7 +111,7 @@ public interface MoviesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PERSON__NAME = 1;
+	int PERSON__NAME = CONTAINED_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Person</em>' class.
@@ -92,7 +120,7 @@ public interface MoviesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PERSON_FEATURE_COUNT = 2;
+	int PERSON_FEATURE_COUNT = CONTAINED_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of operations of the '<em>Person</em>' class.
@@ -101,7 +129,7 @@ public interface MoviesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PERSON_OPERATION_COUNT = 0;
+	int PERSON_OPERATION_COUNT = CONTAINED_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link hu.bme.mit.ttc.imdb.movies.impl.ActorImpl <em>Actor</em>}' class.
@@ -212,7 +240,7 @@ public interface MoviesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int GROUP__COMMON_MOVIES = 0;
+	int GROUP__COMMON_MOVIES = CONTAINED_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Avg Rating</b></em>' attribute.
@@ -221,7 +249,7 @@ public interface MoviesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int GROUP__AVG_RATING = 1;
+	int GROUP__AVG_RATING = CONTAINED_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Group</em>' class.
@@ -230,7 +258,7 @@ public interface MoviesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int GROUP_FEATURE_COUNT = 2;
+	int GROUP_FEATURE_COUNT = CONTAINED_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of operations of the '<em>Group</em>' class.
@@ -239,7 +267,7 @@ public interface MoviesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int GROUP_OPERATION_COUNT = 0;
+	int GROUP_OPERATION_COUNT = CONTAINED_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link hu.bme.mit.ttc.imdb.movies.impl.CoupleImpl <em>Couple</em>}' class.
@@ -322,7 +350,7 @@ public interface MoviesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MOVIE__PERSONS = 0;
+	int MOVIE__PERSONS = CONTAINED_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Title</b></em>' attribute.
@@ -331,7 +359,7 @@ public interface MoviesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MOVIE__TITLE = 1;
+	int MOVIE__TITLE = CONTAINED_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Rating</b></em>' attribute.
@@ -340,7 +368,7 @@ public interface MoviesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MOVIE__RATING = 2;
+	int MOVIE__RATING = CONTAINED_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Year</b></em>' attribute.
@@ -349,7 +377,7 @@ public interface MoviesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MOVIE__YEAR = 3;
+	int MOVIE__YEAR = CONTAINED_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Type</b></em>' attribute.
@@ -358,7 +386,7 @@ public interface MoviesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MOVIE__TYPE = 4;
+	int MOVIE__TYPE = CONTAINED_ELEMENT_FEATURE_COUNT + 4;
 
 	/**
 	 * The number of structural features of the '<em>Movie</em>' class.
@@ -367,7 +395,7 @@ public interface MoviesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MOVIE_FEATURE_COUNT = 5;
+	int MOVIE_FEATURE_COUNT = CONTAINED_ELEMENT_FEATURE_COUNT + 5;
 
 	/**
 	 * The number of operations of the '<em>Movie</em>' class.
@@ -376,7 +404,7 @@ public interface MoviesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MOVIE_OPERATION_COUNT = 0;
+	int MOVIE_OPERATION_COUNT = CONTAINED_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link hu.bme.mit.ttc.imdb.movies.impl.CliqueImpl <em>Clique</em>}' class.
@@ -434,6 +462,43 @@ public interface MoviesPackage extends EPackage {
 	int CLIQUE_OPERATION_COUNT = GROUP_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link hu.bme.mit.ttc.imdb.movies.impl.RootImpl <em>Root</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see hu.bme.mit.ttc.imdb.movies.impl.RootImpl
+	 * @see hu.bme.mit.ttc.imdb.movies.impl.MoviesPackageImpl#getRoot()
+	 * @generated
+	 */
+	int ROOT = 7;
+
+	/**
+	 * The feature id for the '<em><b>Children</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ROOT__CHILDREN = 0;
+
+	/**
+	 * The number of structural features of the '<em>Root</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ROOT_FEATURE_COUNT = 1;
+
+	/**
+	 * The number of operations of the '<em>Root</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ROOT_OPERATION_COUNT = 0;
+
+	/**
 	 * The meta object id for the '{@link hu.bme.mit.ttc.imdb.movies.MovieType <em>Movie Type</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -441,7 +506,7 @@ public interface MoviesPackage extends EPackage {
 	 * @see hu.bme.mit.ttc.imdb.movies.impl.MoviesPackageImpl#getMovieType()
 	 * @generated
 	 */
-	int MOVIE_TYPE = 7;
+	int MOVIE_TYPE = 9;
 
 
 	/**
@@ -647,6 +712,37 @@ public interface MoviesPackage extends EPackage {
 	EReference getClique_Persons();
 
 	/**
+	 * Returns the meta object for class '{@link hu.bme.mit.ttc.imdb.movies.Root <em>Root</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Root</em>'.
+	 * @see hu.bme.mit.ttc.imdb.movies.Root
+	 * @generated
+	 */
+	EClass getRoot();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link hu.bme.mit.ttc.imdb.movies.Root#getChildren <em>Children</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Children</em>'.
+	 * @see hu.bme.mit.ttc.imdb.movies.Root#getChildren()
+	 * @see #getRoot()
+	 * @generated
+	 */
+	EReference getRoot_Children();
+
+	/**
+	 * Returns the meta object for class '{@link hu.bme.mit.ttc.imdb.movies.ContainedElement <em>Contained Element</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Contained Element</em>'.
+	 * @see hu.bme.mit.ttc.imdb.movies.ContainedElement
+	 * @generated
+	 */
+	EClass getContainedElement();
+
+	/**
 	 * Returns the meta object for enum '{@link hu.bme.mit.ttc.imdb.movies.MovieType <em>Movie Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -844,6 +940,34 @@ public interface MoviesPackage extends EPackage {
 		 * @generated
 		 */
 		EReference CLIQUE__PERSONS = eINSTANCE.getClique_Persons();
+
+		/**
+		 * The meta object literal for the '{@link hu.bme.mit.ttc.imdb.movies.impl.RootImpl <em>Root</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see hu.bme.mit.ttc.imdb.movies.impl.RootImpl
+		 * @see hu.bme.mit.ttc.imdb.movies.impl.MoviesPackageImpl#getRoot()
+		 * @generated
+		 */
+		EClass ROOT = eINSTANCE.getRoot();
+
+		/**
+		 * The meta object literal for the '<em><b>Children</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ROOT__CHILDREN = eINSTANCE.getRoot_Children();
+
+		/**
+		 * The meta object literal for the '{@link hu.bme.mit.ttc.imdb.movies.impl.ContainedElementImpl <em>Contained Element</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see hu.bme.mit.ttc.imdb.movies.impl.ContainedElementImpl
+		 * @see hu.bme.mit.ttc.imdb.movies.impl.MoviesPackageImpl#getContainedElement()
+		 * @generated
+		 */
+		EClass CONTAINED_ELEMENT = eINSTANCE.getContainedElement();
 
 		/**
 		 * The meta object literal for the '{@link hu.bme.mit.ttc.imdb.movies.MovieType <em>Movie Type</em>}' enum.

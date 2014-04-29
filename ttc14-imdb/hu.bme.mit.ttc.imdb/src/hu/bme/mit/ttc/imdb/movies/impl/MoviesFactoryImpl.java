@@ -62,6 +62,8 @@ public class MoviesFactoryImpl extends EFactoryImpl implements MoviesFactory {
 			case MoviesPackage.COUPLE: return createCouple();
 			case MoviesPackage.MOVIE: return createMovie();
 			case MoviesPackage.CLIQUE: return createClique();
+			case MoviesPackage.ROOT: return createRoot();
+			case MoviesPackage.CONTAINED_ELEMENT: return createContainedElement();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -145,6 +147,26 @@ public class MoviesFactoryImpl extends EFactoryImpl implements MoviesFactory {
 	public Clique createClique() {
 		CliqueImpl clique = new CliqueImpl();
 		return clique;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Root createRoot() {
+		RootImpl root = new RootImpl();
+		return root;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ContainedElement createContainedElement() {
+		ContainedElementImpl containedElement = new ContainedElementImpl();
+		return containedElement;
 	}
 
 	/**

@@ -5,20 +5,13 @@ package hu.bme.mit.ttc.imdb.movies.impl;
 import hu.bme.mit.ttc.imdb.movies.Movie;
 import hu.bme.mit.ttc.imdb.movies.MoviesPackage;
 import hu.bme.mit.ttc.imdb.movies.Person;
-
 import java.util.Collection;
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
 import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
@@ -36,7 +29,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *
  * @generated
  */
-public abstract class PersonImpl extends MinimalEObjectImpl.Container implements Person {
+public abstract class PersonImpl extends ContainedElementImpl implements Person {
 	/**
 	 * The cached value of the '{@link #getMovies() <em>Movies</em>}' reference list.
 	 * <!-- begin-user-doc -->

@@ -5,6 +5,7 @@ package hu.bme.mit.ttc.imdb.movies.impl;
 import hu.bme.mit.ttc.imdb.movies.Actor;
 import hu.bme.mit.ttc.imdb.movies.Actress;
 import hu.bme.mit.ttc.imdb.movies.Clique;
+import hu.bme.mit.ttc.imdb.movies.ContainedElement;
 import hu.bme.mit.ttc.imdb.movies.Couple;
 import hu.bme.mit.ttc.imdb.movies.Group;
 import hu.bme.mit.ttc.imdb.movies.Movie;
@@ -13,6 +14,7 @@ import hu.bme.mit.ttc.imdb.movies.MoviesFactory;
 import hu.bme.mit.ttc.imdb.movies.MoviesPackage;
 import hu.bme.mit.ttc.imdb.movies.Person;
 
+import hu.bme.mit.ttc.imdb.movies.Root;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EEnum;
@@ -76,6 +78,20 @@ public class MoviesPackageImpl extends EPackageImpl implements MoviesPackage {
 	 * @generated
 	 */
 	private EClass cliqueEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass rootEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass containedElementEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -321,6 +337,33 @@ public class MoviesPackageImpl extends EPackageImpl implements MoviesPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getRoot() {
+		return rootEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getRoot_Children() {
+		return (EReference)rootEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getContainedElement() {
+		return containedElementEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EEnum getMovieType() {
 		return movieTypeEEnum;
 	}
@@ -379,6 +422,11 @@ public class MoviesPackageImpl extends EPackageImpl implements MoviesPackage {
 		cliqueEClass = createEClass(CLIQUE);
 		createEReference(cliqueEClass, CLIQUE__PERSONS);
 
+		rootEClass = createEClass(ROOT);
+		createEReference(rootEClass, ROOT__CHILDREN);
+
+		containedElementEClass = createEClass(CONTAINED_ELEMENT);
+
 		// Create enums
 		movieTypeEEnum = createEEnum(MOVIE_TYPE);
 	}
@@ -411,9 +459,12 @@ public class MoviesPackageImpl extends EPackageImpl implements MoviesPackage {
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
+		personEClass.getESuperTypes().add(this.getContainedElement());
 		actorEClass.getESuperTypes().add(this.getPerson());
 		actressEClass.getESuperTypes().add(this.getPerson());
 		coupleEClass.getESuperTypes().add(this.getGroup());
+		movieEClass.getESuperTypes().add(this.getContainedElement());
+		groupEClass.getESuperTypes().add(this.getContainedElement());
 		cliqueEClass.getESuperTypes().add(this.getGroup());
 
 		// Initialize classes, features, and operations; add parameters
@@ -442,6 +493,11 @@ public class MoviesPackageImpl extends EPackageImpl implements MoviesPackage {
 
 		initEClass(cliqueEClass, Clique.class, "Clique", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getClique_Persons(), this.getPerson(), null, "persons", null, 0, -1, Clique.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(rootEClass, Root.class, "Root", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getRoot_Children(), this.getContainedElement(), null, "children", null, 0, -1, Root.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(containedElementEClass, ContainedElement.class, "ContainedElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		// Initialize enums and add enum literals
 		initEEnum(movieTypeEEnum, MovieType.class, "MovieType");

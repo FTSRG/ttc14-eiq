@@ -187,6 +187,52 @@ public class MoviesItemProviderAdapterFactory extends MoviesAdapterFactory imple
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link hu.bme.mit.ttc.imdb.movies.Root} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected RootItemProvider rootItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link hu.bme.mit.ttc.imdb.movies.Root}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createRootAdapter() {
+		if (rootItemProvider == null) {
+			rootItemProvider = new RootItemProvider(this);
+		}
+
+		return rootItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link hu.bme.mit.ttc.imdb.movies.ContainedElement} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ContainedElementItemProvider containedElementItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link hu.bme.mit.ttc.imdb.movies.ContainedElement}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createContainedElementAdapter() {
+		if (containedElementItemProvider == null) {
+			containedElementItemProvider = new ContainedElementItemProvider(this);
+		}
+
+		return containedElementItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -290,6 +336,8 @@ public class MoviesItemProviderAdapterFactory extends MoviesAdapterFactory imple
 		if (coupleItemProvider != null) coupleItemProvider.dispose();
 		if (movieItemProvider != null) movieItemProvider.dispose();
 		if (cliqueItemProvider != null) cliqueItemProvider.dispose();
+		if (rootItemProvider != null) rootItemProvider.dispose();
+		if (containedElementItemProvider != null) containedElementItemProvider.dispose();
 	}
 
 }

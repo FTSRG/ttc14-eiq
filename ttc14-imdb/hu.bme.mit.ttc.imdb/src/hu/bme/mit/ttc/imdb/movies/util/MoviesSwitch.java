@@ -69,6 +69,7 @@ public class MoviesSwitch<T> extends Switch<T> {
 			case MoviesPackage.PERSON: {
 				Person person = (Person)theEObject;
 				T result = casePerson(person);
+				if (result == null) result = caseContainedElement(person);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -76,6 +77,7 @@ public class MoviesSwitch<T> extends Switch<T> {
 				Actor actor = (Actor)theEObject;
 				T result = caseActor(actor);
 				if (result == null) result = casePerson(actor);
+				if (result == null) result = caseContainedElement(actor);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -83,6 +85,7 @@ public class MoviesSwitch<T> extends Switch<T> {
 				Actress actress = (Actress)theEObject;
 				T result = caseActress(actress);
 				if (result == null) result = casePerson(actress);
+				if (result == null) result = caseContainedElement(actress);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -90,18 +93,21 @@ public class MoviesSwitch<T> extends Switch<T> {
 				Couple couple = (Couple)theEObject;
 				T result = caseCouple(couple);
 				if (result == null) result = caseGroup(couple);
+				if (result == null) result = caseContainedElement(couple);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case MoviesPackage.MOVIE: {
 				Movie movie = (Movie)theEObject;
 				T result = caseMovie(movie);
+				if (result == null) result = caseContainedElement(movie);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case MoviesPackage.GROUP: {
 				Group group = (Group)theEObject;
 				T result = caseGroup(group);
+				if (result == null) result = caseContainedElement(group);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -109,6 +115,19 @@ public class MoviesSwitch<T> extends Switch<T> {
 				Clique clique = (Clique)theEObject;
 				T result = caseClique(clique);
 				if (result == null) result = caseGroup(clique);
+				if (result == null) result = caseContainedElement(clique);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case MoviesPackage.ROOT: {
+				Root root = (Root)theEObject;
+				T result = caseRoot(root);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case MoviesPackage.CONTAINED_ELEMENT: {
+				ContainedElement containedElement = (ContainedElement)theEObject;
+				T result = caseContainedElement(containedElement);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -218,6 +237,36 @@ public class MoviesSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseClique(Clique object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Root</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Root</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseRoot(Root object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Contained Element</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Contained Element</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseContainedElement(ContainedElement object) {
 		return null;
 	}
 

@@ -67,6 +67,24 @@ public interface MoviesFactory extends EFactory {
 	Clique createClique();
 
 	/**
+	 * Returns a new object of class '<em>Root</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Root</em>'.
+	 * @generated
+	 */
+	Root createRoot();
+
+	/**
+	 * Returns a new object of class '<em>Contained Element</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Contained Element</em>'.
+	 * @generated
+	 */
+	ContainedElement createContainedElement();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

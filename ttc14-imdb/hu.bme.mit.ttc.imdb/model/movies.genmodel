@@ -37,5 +37,9 @@
     <genClasses ecoreClass="movies.ecore#//Clique">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference movies.ecore#//Clique/persons"/>
     </genClasses>
+    <genClasses ecoreClass="movies.ecore#//Root">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference movies.ecore#//Root/children"/>
+    </genClasses>
+    <genClasses ecoreClass="movies.ecore#//ContainedElement"/>
   </genPackages>
 </genmodel:GenModel>

@@ -5,18 +5,11 @@ package hu.bme.mit.ttc.imdb.movies.impl;
 import hu.bme.mit.ttc.imdb.movies.Group;
 import hu.bme.mit.ttc.imdb.movies.Movie;
 import hu.bme.mit.ttc.imdb.movies.MoviesPackage;
-
 import java.util.Collection;
-
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 
 /**
@@ -33,7 +26,7 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  *
  * @generated
  */
-public abstract class GroupImpl extends MinimalEObjectImpl.Container implements Group {
+public abstract class GroupImpl extends ContainedElementImpl implements Group {
 	/**
 	 * The cached value of the '{@link #getCommonMovies() <em>Common Movies</em>}' reference list.
 	 * <!-- begin-user-doc -->

@@ -4,8 +4,6 @@ package hu.bme.mit.ttc.imdb.movies;
 
 import org.eclipse.emf.common.util.EList;
 
-import org.eclipse.emf.ecore.EObject;
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Group</b></em>'.
@@ -23,7 +21,7 @@ import org.eclipse.emf.ecore.EObject;
  * @model abstract="true"
  * @generated
  */
-public interface Group extends EObject {
+public interface Group extends ContainedElement {
 	/**
 	 * Returns the value of the '<em><b>Common Movies</b></em>' reference list.
 	 * The list contents are of type {@link hu.bme.mit.ttc.imdb.movies.Movie}.

@@ -4,8 +4,6 @@ package hu.bme.mit.ttc.imdb.movies;
 
 import org.eclipse.emf.common.util.EList;
 
-import org.eclipse.emf.ecore.EObject;
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Movie</b></em>'.
@@ -26,7 +24,7 @@ import org.eclipse.emf.ecore.EObject;
  * @model
  * @generated
  */
-public interface Movie extends EObject {
+public interface Movie extends ContainedElement {
 	/**
 	 * Returns the value of the '<em><b>Persons</b></em>' reference list.
 	 * The list contents are of type {@link hu.bme.mit.ttc.imdb.movies.Person}.
