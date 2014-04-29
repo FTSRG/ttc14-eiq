@@ -105,21 +105,5 @@
             id="hu.bme.mit.ttc.imdb.queries.groupSize">
       </matcher>
    </extension>
-   <extension
-         id="hu.bme.mit.ttc.imdb.queries.commonMoviesInGroup"
-         point="org.eclipse.incquery.runtime.queryspecification">
-      <matcher
-            querySpecificationProvider="hu.bme.mit.ttc.imdb.queries.util.CommonMoviesInGroupQuerySpecification$Provider"
-            id="hu.bme.mit.ttc.imdb.queries.commonMoviesInGroup">
-      </matcher>
-   </extension>
-   <extension
-         id="hu.bme.mit.ttc.imdb.queries.numberOfMoviesInGroup"
-         point="org.eclipse.incquery.runtime.queryspecification">
-      <matcher
-            querySpecificationProvider="hu.bme.mit.ttc.imdb.queries.util.NumberOfMoviesInGroupQuerySpecification$Provider"
-            id="hu.bme.mit.ttc.imdb.queries.numberOfMoviesInGroup">
-      </matcher>
-   </extension>
 
 </plugin>

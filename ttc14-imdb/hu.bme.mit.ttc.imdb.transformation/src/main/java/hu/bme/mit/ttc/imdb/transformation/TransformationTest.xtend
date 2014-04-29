@@ -64,9 +64,13 @@ class TransformationTest {
 		
 		// Couple Toplist
 		else if (config.task == "et1a") // et4a?
-			transformation.topCouplesByRating
+			transformation.topGroupByRating(2)
+		else if (config.task == "et4a")
+			transformation.topGroupByRating(config.cliques)
 		else if (config.task == "et1b") // et4b?
-			transformation.topCouplesByCommonMovies
+			transformation.topGroupByCommonMovies(2)
+		else if (config.task == "et4b")
+			transformation.topGroupByCommonMovies(config.cliques)
 		else throw new UnsupportedOperationException("Unknown task")
 	}
 	

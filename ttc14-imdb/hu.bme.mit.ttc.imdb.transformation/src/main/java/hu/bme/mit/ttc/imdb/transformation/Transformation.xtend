@@ -77,53 +77,64 @@ class Transformation {
 		bmr.endStopper("createCouples/adding")
 	}
 
-	def topCouplesByRating() {
+	def topGroupByRating(int size) {
 		println("Top-15 by Average Rating")
 		println("========================")
 		val n = 15;
 		
-		bmr.startStopper("couplesAVG/Engine")
+		bmr.startStopper("AVG/Engine")
 		val engine = IncQueryEngine.on(r)
-		bmr.endStopper("couplesAVG/Engine")
+		bmr.endStopper("AVG/Engine")
 		
-		bmr.startStopper("couplesAVG/Engine")
-		val coupleWithRatingMatcher = engine.coupleWithRating
-		bmr.endStopper("couplesAVG/Engine")
+		bmr.startStopper("AVG/matcher")
+		val coupleWithRatingMatcher = engine.groupSize
+		bmr.endStopper("AVG/matcher")
 		
-		bmr.startStopper("couplesAVG/Sort")
-		val ccfr = new CoupleComparatorForRating
-		val rankedCouples = coupleWithRatingMatcher.allMatches.sort(ccfr)
-		bmr.endStopper("couplesAVG/Sort")
+		bmr.startStopper("AVG/Sort")
+		//val ccfr = new CoupleComparatorForRating
+		val rankedCouples = coupleWithRatingMatcher.getAllValuesOfgroup(size).sort(
+			new GroupAVGComparator)
+		bmr.endStopper("AVG/Sort")
 
 		printCouples(n, rankedCouples)
 	}
 
-	def topCouplesByCommonMovies() {
+	def topGroupByCommonMovies(int size) {
 		println("Top-15 by Number of Common Movies")
 		println("=================================")
 
 		val n = 15;
 		val engine = IncQueryEngine.on(r)
-		val coupleWithRatingMatcher = engine.coupleWithRating
-
-		val ccfm = new CoupleComparatorForCommonMovies
-		val rankedCouples = coupleWithRatingMatcher.allMatches.sort(ccfm)
+		
+		bmr.startStopper("Movies/matcher")
+		val coupleWithRatingMatcher = engine.groupSize
+		bmr.endStopper("Movies/matcher")
+		
+		bmr.startStopper("Movies/Sort")
+		val rankedCouples = coupleWithRatingMatcher.getAllValuesOfgroup(size).sort(
+			new GroupSizeComparator
+		)
+		bmr.endStopper("Movies/Sort")
 
 		printCouples(n, rankedCouples)
 	}
 
-	def printCouples(int n, List<CoupleWithRatingMatch> rankedCouples) {
+	def printCouples(int n, List<Group> rankedCouples) {
 		(0 .. n - 1).forEach [
-			val c = rankedCouples.get(it);
-			println(
-				String.format(
-					"%d. Couple avgRating %.03f,  %d movies (%s; %s)",
-					it + 1,
-					c.avgRating,
-					c.c.commonMovies.size,
-					c.c.p1.name,
-					c.c.p2.name
-				))
+			if(it < rankedCouples.size) {
+				val c = rankedCouples.get(it);
+				println(
+					'''«it+1». avgRating «c.avgRating», «c.commonMovies.size» movies''')
+	//			println(
+	//				String.format(
+	//					"%d. Couple avgRating %.03f,  %d movies (%s; %s)",
+	//					it + 1,
+	//					c.avgRating,
+	//					c.c.commonMovies.size,
+	//					c.c.p1.name,
+	//					c.c.p2.name
+	//				))
+			}
 		]
 	}
 	
@@ -209,7 +220,7 @@ class Transformation {
 		bmr.endStopper("createClique/dispose")
 		
 		bmr.startStopper("createClique/commonMovies")
-		newCliques.forEach[x|x.commonMovies.addAll(x.commonMovies)]
+		newCliques.forEach[x|x.commonMovies.addAll(x.collectCommonMovies)]
 		bmr.endStopper("createClique/commonMovies")
 		
 		bmr.startStopper("createClique/adding")
@@ -223,7 +234,7 @@ class Transformation {
 		return c
 	}
 	
-	protected def commonMovies(Clique clique) {
+	protected def collectCommonMovies(Clique clique) {
 		var Set<Movie> commonMovies = null;
 		for(personMovies : clique.persons.map[movies]) {
 			if(commonMovies == null) {

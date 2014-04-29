@@ -202,19 +202,19 @@ pattern memberOfGroup(person, group) {
 
 pattern groupSize(group, S) {
 	Group(group);
-	S == count find memberOfGroup(group, _);
+	S == count find memberOfGroup(_, group);
 }
 
-pattern commonMoviesInGroup(group, size, movie) {
+/*pattern commonMoviesInGroup(group, size, movie) {
 	Group.commonMovies(group,movie);
 	find groupSize(group, size);
-}
+}*/
 
-pattern numberOfMoviesInGroup(group, size, number) 
+/*pattern numberOfMoviesInGroup(group, size, number) 
 {
 	find groupSize(group, size);
 	number == count find commonMoviesInGroup(group,size,_);
-}
+}*/
 
 
 // Extension Task 2
