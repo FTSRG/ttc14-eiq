@@ -18,6 +18,30 @@
       </matcher>
    </extension>
    <extension
+         id="hu.bme.mit.ttc.imdb.queries.commonMoviesOfCouple"
+         point="org.eclipse.incquery.runtime.queryspecification">
+      <matcher
+            querySpecificationProvider="hu.bme.mit.ttc.imdb.queries.util.CommonMoviesOfCoupleQuerySpecification$Provider"
+            id="hu.bme.mit.ttc.imdb.queries.commonMoviesOfCouple">
+      </matcher>
+   </extension>
+   <extension
+         id="hu.bme.mit.ttc.imdb.queries.memberOfGroup"
+         point="org.eclipse.incquery.runtime.queryspecification">
+      <matcher
+            querySpecificationProvider="hu.bme.mit.ttc.imdb.queries.util.MemberOfGroupQuerySpecification$Provider"
+            id="hu.bme.mit.ttc.imdb.queries.memberOfGroup">
+      </matcher>
+   </extension>
+   <extension
+         id="hu.bme.mit.ttc.imdb.queries.groupSize"
+         point="org.eclipse.incquery.runtime.queryspecification">
+      <matcher
+            querySpecificationProvider="hu.bme.mit.ttc.imdb.queries.util.GroupSizeQuerySpecification$Provider"
+            id="hu.bme.mit.ttc.imdb.queries.groupSize">
+      </matcher>
+   </extension>
+   <extension
          id="hu.bme.mit.ttc.imdb.queries.personsToCouple"
          point="org.eclipse.incquery.runtime.queryspecification">
       <matcher
@@ -31,30 +55,6 @@
       <matcher
             querySpecificationProvider="hu.bme.mit.ttc.imdb.queries.util.CommonMoviesToCoupleQuerySpecification$Provider"
             id="hu.bme.mit.ttc.imdb.queries.commonMoviesToCouple">
-      </matcher>
-   </extension>
-   <extension
-         id="hu.bme.mit.ttc.imdb.queries.couple"
-         point="org.eclipse.incquery.runtime.queryspecification">
-      <matcher
-            querySpecificationProvider="hu.bme.mit.ttc.imdb.queries.util.CoupleQuerySpecification$Provider"
-            id="hu.bme.mit.ttc.imdb.queries.couple">
-      </matcher>
-   </extension>
-   <extension
-         id="hu.bme.mit.ttc.imdb.queries.commonMoviesOfCouple"
-         point="org.eclipse.incquery.runtime.queryspecification">
-      <matcher
-            querySpecificationProvider="hu.bme.mit.ttc.imdb.queries.util.CommonMoviesOfCoupleQuerySpecification$Provider"
-            id="hu.bme.mit.ttc.imdb.queries.commonMoviesOfCouple">
-      </matcher>
-   </extension>
-   <extension
-         id="hu.bme.mit.ttc.imdb.queries.coupleWithRating"
-         point="org.eclipse.incquery.runtime.queryspecification">
-      <matcher
-            querySpecificationProvider="hu.bme.mit.ttc.imdb.queries.util.CoupleWithRatingQuerySpecification$Provider"
-            id="hu.bme.mit.ttc.imdb.queries.coupleWithRating">
       </matcher>
    </extension>
    <extension
@@ -87,22 +87,6 @@
       <matcher
             querySpecificationProvider="hu.bme.mit.ttc.imdb.queries.util.PersonsTo5CliqueQuerySpecification$Provider"
             id="hu.bme.mit.ttc.imdb.queries.personsTo5Clique">
-      </matcher>
-   </extension>
-   <extension
-         id="hu.bme.mit.ttc.imdb.queries.memberOfGroup"
-         point="org.eclipse.incquery.runtime.queryspecification">
-      <matcher
-            querySpecificationProvider="hu.bme.mit.ttc.imdb.queries.util.MemberOfGroupQuerySpecification$Provider"
-            id="hu.bme.mit.ttc.imdb.queries.memberOfGroup">
-      </matcher>
-   </extension>
-   <extension
-         id="hu.bme.mit.ttc.imdb.queries.groupSize"
-         point="org.eclipse.incquery.runtime.queryspecification">
-      <matcher
-            querySpecificationProvider="hu.bme.mit.ttc.imdb.queries.util.GroupSizeQuerySpecification$Provider"
-            id="hu.bme.mit.ttc.imdb.queries.groupSize">
       </matcher>
    </extension>
 

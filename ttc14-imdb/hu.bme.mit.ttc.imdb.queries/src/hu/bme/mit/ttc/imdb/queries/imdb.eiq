@@ -3,7 +3,7 @@ package hu.bme.mit.ttc.imdb.queries
 import "http://movies/1.0"
 
 
-// support
+// Shorthand patterns
 pattern personName(p, pName) {
 	Person.name(p, pName);
 }
@@ -12,7 +12,35 @@ pattern cast(name, M) {
 	Movie.persons.name(M, name);
 }
 
+pattern commonMoviesOfCouple(c, m) {
+	Couple.commonMovies(c, m);
+}
+
+/**
+ * This pattern determines if a person is a member of a group.
+ */
+pattern memberOfGroup(person, group) {
+	Couple.p1(group,person);
+} or {
+	Couple.p2(group,person);
+} or {
+	Clique.persons(group, person);
+}
+
+/**
+ * This pattern determines the size of a group.
+ */
+pattern groupSize(group, S) {
+	Group(group);
+	S == count find memberOfGroup(_, group);
+}
+
 // Couple patterns
+/**
+ * This pattern looks for two person names (p1name, p2name), who were in the cast of three different movies (M1, M2, M3).
+ * The names are ordered lexicographically in order to list the same pair only one
+ * (the match set contains only {(a1, a2)} instead of {(a1, a2), (a2, a1)}. 
+ */
 pattern personsToCouple(p1name, p2name) {
 	find cast(p1name, M1); find cast(p2name, M1);
 	find cast(p1name, M2); find cast(p2name, M2);
@@ -23,6 +51,9 @@ pattern personsToCouple(p1name, p2name) {
 	check(p1name < p2name);
 }
 
+/**
+ * This pattern looks for the common movies of a couple. The couple is determined with the personsToCouple pattern. 
+ */
 pattern commonMoviesToCouple(p1name, p2name, m) {
 	find personsToCouple(p1name, p2name);
 	
@@ -34,30 +65,19 @@ pattern commonMoviesToCouple(p1name, p2name, m) {
 	check(p1name < p2name);
 }
 
-// Task 3
-// Average rankings
-@QueryExplorer(display = false)
-pattern couple(c, p1, p2) {
+/**
+ * Returns with the number of common movies of a couple. 
+ */
+pattern countOfCommonMoviesOfCouple(p1, p2, n) {
 	Couple.p1(c, p1);
 	Couple.p2(c, p2);
-}
-
-// Extension Task 1
-pattern commonMoviesOfCouple(c, m) {
-	Couple.commonMovies(c, m);
-}
-
-pattern coupleWithRating(c, avgRating) {
-	Couple.avgRating(c, avgRating);
-}
-
-pattern countOfCommonMoviesOfCouple(p1, p2, n) {
-	find couple(c, p1, p2);
 	n == count find commonMoviesOfCouple(c, _m);
 }
 
-// ET2
 // Clique patterns
+/**
+ * Similarly to the couple pattern, this pattern looks for 3-cliques.
+ */
 pattern personsTo3Clique(P1, P2, P3) {
 	find cast(P1, M1); find cast(P2, M1); find cast(P3, M1);
 	find cast(P1, M2); find cast(P2, M2); find cast(P3, M2);
@@ -68,6 +88,9 @@ pattern personsTo3Clique(P1, P2, P3) {
 	check(P1 < P2); check(P2 < P3);
 }
 
+/**
+ * Similarly to the couple pattern, this pattern looks for 4-cliques.
+ */
 pattern personsTo4Clique(P1, P2, P3, P4) {
 	find cast(P1, M1); find cast(P2, M1); find cast(P3, M1); find cast(P4, M1);
 	find cast(P1, M2); find cast(P2, M2); find cast(P3, M2); find cast(P4, M2);
@@ -78,6 +101,9 @@ pattern personsTo4Clique(P1, P2, P3, P4) {
 	check(P1 < P2); check(P2 < P3); check(P3 < P4);
 }
 
+/**
+ * Similarly to the couple pattern, this pattern looks for 5-cliques.
+ */
 pattern personsTo5Clique(P1, P2, P3, P4, P5) {
 	find cast(P1, M1); find cast(P2, M1); find cast(P3, M1); find cast(P4, M1); find cast(P5, M1);
 	find cast(P1, M2); find cast(P2, M2); find cast(P3, M2); find cast(P4, M2); find cast(P5, M2);
@@ -86,18 +112,4 @@ pattern personsTo5Clique(P1, P2, P3, P4, P5) {
 	M1 != M2; M2 != M3; M1 != M3;
 	
 	check(P1 < P2); check(P2 < P3); check(P3 < P4); check(P4 < P5);
-}
-
-// Patterns to search group with specific size
-pattern memberOfGroup(person, group) {
-	Couple.p1(group,person);
-} or {
-	Couple.p2(group,person);
-} or {
-	Clique.persons(group, person);
-}
-
-pattern groupSize(group, S) {
-	Group(group);
-	S == count find memberOfGroup(_, group);
 }

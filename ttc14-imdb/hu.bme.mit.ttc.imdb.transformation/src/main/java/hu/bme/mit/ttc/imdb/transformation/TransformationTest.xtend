@@ -3,8 +3,8 @@ package hu.bme.mit.ttc.imdb.transformation
 import hu.bme.mit.ttc.imdb.movies.ContainedElement
 import hu.bme.mit.ttc.imdb.movies.MoviesFactory
 import hu.bme.mit.ttc.imdb.movies.Root
-import hu.bme.mit.ttc.imdb.util.BenchmarkResults
-import hu.bme.mit.ttc.imdb.util.Configuration
+import hu.bme.mit.ttc.imdb.transformation.configuration.BenchmarkResults
+import hu.bme.mit.ttc.imdb.transformation.configuration.TransformationConfiguration
 import java.util.ArrayList
 import org.eclipse.emf.common.util.URI
 import org.eclipse.emf.ecore.resource.Resource
@@ -13,7 +13,7 @@ import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl
 
 class TransformationTest {
 	
-	def xform(Configuration config, String name) {
+	def xform(TransformationConfiguration config, String name) {
 		val bmr = new BenchmarkResults(name)
 		
 		// read instance model
@@ -34,10 +34,9 @@ class TransformationTest {
 		bmr.printResults
 	}
 	
-	def protected init(Configuration config, BenchmarkResults bmr) {
+	def protected init(TransformationConfiguration config, BenchmarkResults bmr) {
 		val instanceModelPath = URI.createFileURI(config.instanceModelPath)
 		
-		bmr.printImmediately = config.printImmediately
 		val ResourceSet rs = new ResourceSetImpl
 		val r = rs.getResource(instanceModelPath, true)
 		
@@ -60,7 +59,7 @@ class TransformationTest {
 	//  v
 	// et2(n) -> et3 -> et4a
 	//               -> et4b
-	def protected void execute(Resource r, Configuration config, BenchmarkResults bmr) {
+	def protected void execute(Resource r, TransformationConfiguration config, BenchmarkResults bmr) {
 		val transformation = new Transformation(r,bmr)
 		
 		// Couple generation
@@ -88,7 +87,7 @@ class TransformationTest {
 		else throw new UnsupportedOperationException("Unknown task")
 	}
 	
-	def protected void finalize(Resource r, Configuration config, BenchmarkResults bmr) {
+	def protected void finalize(Resource r, TransformationConfiguration config, BenchmarkResults bmr) {
 		bmr.startStopper("resourceRestructure2")
 		val root = r.contents.get(0) as Root
 		val children = root.children

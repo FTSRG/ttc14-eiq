@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: TTC Generator
+Bundle-Name: TTC Transformation
 Bundle-SymbolicName: hu.bme.mit.ttc.imdb.transformation
 Bundle-Version: 1.0.0.qualifier
 Require-Bundle: org.eclipse.xtend.lib,
@@ -14,7 +14,6 @@ Require-Bundle: org.eclipse.xtend.lib,
  org.eclipse.incquery.patternlanguage.emf;bundle-version="0.8.0",
  org.eclipse.xtext.xbase;bundle-version="2.4.3",
  org.eclipse.emf.codegen.ecore;bundle-version="2.9.1",
- hu.bme.mit.ttc.imdb.generator;bundle-version="1.0.0",
  hu.bme.mit.ttc.imdb.queries;bundle-version="1.0.0",
  hu.bme.mit.ttc.imdb;bundle-version="1.0.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7

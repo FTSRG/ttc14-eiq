@@ -1,13 +1,15 @@
 package hu.bme.mit.ttc.imdb.transformation
 
 import hu.bme.mit.ttc.imdb.movies.Clique
+import hu.bme.mit.ttc.imdb.movies.ContainedElement
 import hu.bme.mit.ttc.imdb.movies.Couple
 import hu.bme.mit.ttc.imdb.movies.Group
 import hu.bme.mit.ttc.imdb.movies.Movie
 import hu.bme.mit.ttc.imdb.movies.MoviesFactory
 import hu.bme.mit.ttc.imdb.movies.Person
+import hu.bme.mit.ttc.imdb.movies.Root
 import hu.bme.mit.ttc.imdb.queries.Imdb
-import hu.bme.mit.ttc.imdb.util.BenchmarkResults
+import hu.bme.mit.ttc.imdb.transformation.configuration.BenchmarkResults
 import java.util.Collection
 import java.util.LinkedList
 import java.util.List
@@ -15,8 +17,6 @@ import java.util.Set
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.incquery.runtime.api.AdvancedIncQueryEngine
 import org.eclipse.incquery.runtime.api.IncQueryEngine
-import hu.bme.mit.ttc.imdb.movies.Root
-import hu.bme.mit.ttc.imdb.movies.ContainedElement
 
 class Transformation {
 
