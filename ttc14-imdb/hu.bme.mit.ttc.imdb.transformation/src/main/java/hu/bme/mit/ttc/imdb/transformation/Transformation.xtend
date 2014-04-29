@@ -20,6 +20,12 @@ import hu.bme.mit.ttc.imdb.movies.ContainedElement
 
 class Transformation {
 
+	/**
+	 * Initialize the transformation processor on a resource.
+	 * The runtime of the transformation steps are logged.
+	 * @param r The target resource of the transformation.
+	 * @param bmr The benchmark logger.
+	 */
 	new (Resource r, BenchmarkResults bmr) {
 		this.r = r;
 		this.bmr = bmr;
@@ -31,6 +37,10 @@ class Transformation {
 	
 	////// Resources Management
 	protected val Root root;
+	/**
+	 * Helper function to add elements to the target resource.
+	 * @param
+	 */
 	def addElementToResource(ContainedElement containedElement) {
 		root.children.add(containedElement)
 	}

@@ -17,5 +17,4 @@ public class TransformationMain {
 			val tt = new TransformationTest();
 			tt.xform(config,"test");
 	}
-
 }
