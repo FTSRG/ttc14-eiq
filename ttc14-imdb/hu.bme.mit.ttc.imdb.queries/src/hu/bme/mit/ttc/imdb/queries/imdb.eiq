@@ -20,25 +20,45 @@ pattern playedTogetherIn(p1name, p2name, m) {
 	check(p1name < p2name);
 }*/
 
+pattern cast(name, M) {
+	Movie.persons.name(M,name);
+}
+
 pattern personsToCouple(p1name, p2name) {
-	Person.movies(P1, M1);
-	Person.movies(P2, M1);
+	find cast(p1name, M1);
+	find cast(p2name, M1);
 	
-	Person.movies(P1, M2);
-	Person.movies(P2, M2);
+	find cast(p1name, M2);
+	find cast(p2name, M2);
 	
-	Person.movies(P1, M3);
-	Person.movies(P2, M3);
+	find cast(p1name, M3);
+	find cast(p2name, M3);
 	
 	M1 != M2;
 	M2 != M3;
 	M1 != M3;
 	
-	Person.name(P1, p1name);
-	Person.name(P2, p2name);
 	check(p1name < p2name);
 	
-	// V1
+	// V3
+//	Person.movies(P1, M1);
+//	Person.movies(P2, M1);
+//	
+//	Person.movies(P1, M2);
+//	Person.movies(P2, M2);
+//	
+//	Person.movies(P1, M3);
+//	Person.movies(P2, M3);
+//	
+//	M1 != M2;
+//	M2 != M3;
+//	M1 != M3;
+//	
+//	Person.name(P1, p1name);
+//	Person.name(P2, p2name);
+//	check(p1name < p2name);
+	
+	// V2
 //	find playedTogetherIn(p1name, p2name, m1);
 //	find playedTogetherIn(p1name, p2name, m2);
 //	find playedTogetherIn(p1name, p2name, m3);
@@ -46,7 +66,7 @@ pattern personsToCouple(p1name, p2name) {
 //	m2 != m3;
 //	m1 != m3;
 
-	// V2
+	// V1
 //	find playedTogetherIn(p1name, p2name, _anymovie);
 //	N == count find playedTogetherIn(p1name, p2name, _m);
 //	check(N >= 3);
@@ -97,93 +117,79 @@ pattern countOfCommonMoviesOfCouple(p1, p2, n) {
 
 // ET2 v2
 
-pattern personsTo3Clique(p1name, p2name, p3name) {
-	Person.movies(P1, M1);
-	Person.movies(P2, M1);
-	Person.movies(P3, M1);
+pattern personsTo3Clique(P1, P2, P3) {
+	find cast(P1, M1);
+	find cast(P2, M1);
+	find cast(P3, M1);
 	
-	Person.movies(P1, M2);
-	Person.movies(P2, M2);
-	Person.movies(P3, M2);
+	find cast(P1, M2);
+	find cast(P2, M2);
+	find cast(P3, M2);
 	
-	Person.movies(P1, M3);
-	Person.movies(P2, M3);
-	Person.movies(P3, M3);
+	find cast(P1, M3);
+	find cast(P2, M3);
+	find cast(P3, M3);
 	
 	M1 != M2;
 	M2 != M3;
 	M1 != M3;
 	
-	Person.name(P1, p1name);
-	Person.name(P2, p2name);
-	Person.name(P3, p3name);
-	check(p1name < p2name);
-	check(p2name < p3name);
+	check(P1 < P2);
+	check(P2 < P3);
 }
 
-pattern personsTo4Clique(p1name, p2name, p3name, p4name) {
-	Person.movies(P1, M1);
-	Person.movies(P2, M1);
-	Person.movies(P3, M1);
-	Person.movies(P4, M1);
+pattern personsTo4Clique(P1, P2, P3, P4) {
+	find cast(P1, M1);
+	find cast(P2, M1);
+	find cast(P3, M1);
+	find cast(P4, M1);
 	
-	Person.movies(P1, M2);
-	Person.movies(P2, M2);
-	Person.movies(P3, M2);
-	Person.movies(P4, M2);
+	find cast(P1, M2);
+	find cast(P2, M2);
+	find cast(P3, M2);
+	find cast(P4, M2);
 	
-	Person.movies(P1, M3);
-	Person.movies(P2, M3);
-	Person.movies(P3, M3);
-	Person.movies(P4, M3);
+	find cast(P1, M3);
+	find cast(P2, M3);
+	find cast(P3, M3);
+	find cast(P4, M3);
 	
 	M1 != M2;
 	M2 != M3;
 	M1 != M3;
 	
-	Person.name(P1, p1name);
-	Person.name(P2, p2name);
-	Person.name(P3, p3name);
-	Person.name(P4, p4name);
-	
-	check(p1name < p2name);
-	check(p2name < p3name);
-	check(p3name < p4name);
+	check(P1 < P2);
+	check(P2 < P3);
+	check(P3 < P4);
 }
 
-pattern personsTo5Clique(p1name, p2name, p3name, p4name, p5name) {
-	Person.movies(P1, M1);
-	Person.movies(P2, M1);
-	Person.movies(P3, M1);
-	Person.movies(P4, M1);
-	Person.movies(P5, M1);
+pattern personsTo5Clique(P1, P2, P3, P4, P5) {
+	find cast(P1, M1);
+	find cast(P2, M1);
+	find cast(P3, M1);
+	find cast(P4, M1);
+	find cast(P5, M1);
 	
-	Person.movies(P1, M2);
-	Person.movies(P2, M2);
-	Person.movies(P3, M2);
-	Person.movies(P4, M2);
-	Person.movies(P5, M2);
+	find cast(P1, M2);
+	find cast(P2, M2);
+	find cast(P3, M2);
+	find cast(P4, M2);
+	find cast(P5, M2);
 	
-	Person.movies(P1, M3);
-	Person.movies(P2, M3);
-	Person.movies(P3, M3);
-	Person.movies(P4, M3);
-	Person.movies(P5, M3);
+	find cast(P1, M3);
+	find cast(P2, M3);
+	find cast(P3, M3);
+	find cast(P4, M3);
+	find cast(P5, M3);
 	
 	M1 != M2;
 	M2 != M3;
 	M1 != M3;
 	
-	Person.name(P1, p1name);
-	Person.name(P2, p2name);
-	Person.name(P3, p3name);
-	Person.name(P4, p4name);
-	Person.name(P5, p5name);
-	
-	check(p1name < p2name);
-	check(p2name < p3name);
-	check(p3name < p4name);
-	check(p4name < p5name);
+	check(P1 < P2);
+	check(P2 < P3);
+	check(P3 < P4);
+	check(P4 < P5);
 }
 
 

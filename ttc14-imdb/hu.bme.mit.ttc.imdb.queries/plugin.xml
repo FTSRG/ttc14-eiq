@@ -10,6 +10,14 @@
       </matcher>
    </extension>
    <extension
+         id="hu.bme.mit.ttc.imdb.queries.cast"
+         point="org.eclipse.incquery.runtime.queryspecification">
+      <matcher
+            querySpecificationProvider="hu.bme.mit.ttc.imdb.queries.util.CastQuerySpecification$Provider"
+            id="hu.bme.mit.ttc.imdb.queries.cast">
+      </matcher>
+   </extension>
+   <extension
          id="hu.bme.mit.ttc.imdb.queries.personsToCouple"
          point="org.eclipse.incquery.runtime.queryspecification">
       <matcher
