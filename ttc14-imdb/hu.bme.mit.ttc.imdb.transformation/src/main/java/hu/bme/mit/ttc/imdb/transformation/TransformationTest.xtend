@@ -14,7 +14,7 @@ import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl
 class TransformationTest {
 	
 	def xform(TransformationConfiguration config, String name) {
-		val bmr = new BenchmarkResults(name)
+		val bmr = new BenchmarkResults(name, config.first)
 		
 		// read instance model
 		bmr.startStopper("Load/Generate")

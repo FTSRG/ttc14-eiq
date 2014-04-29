@@ -17,6 +17,7 @@ public class TransformationConfiguration {
 	Integer cliques
 	String instanceModelPath
 	String task
+	boolean first
 
 	public new() {
 		initOptions()
@@ -39,7 +40,7 @@ public class TransformationConfiguration {
 		options.addOption("instanceModelPath", true, "instance model path")
 		options.addOption("task", true, "task id: [t2|t3|et1a|et1b|et2|et3|et4a|et4b]")
 		options.addOption("cliques", true, "clique size for extension tasks 2-4")
-		options.addOption("printImmediately", false, "print results printImmediately")
+		options.addOption("first", false, "defines if this is the first run (if results header should be generated)")
 	}
 
 	def protected processArguments(String[] args) {
@@ -51,6 +52,7 @@ public class TransformationConfiguration {
 			task = cmd.getOptionValue("task")
 		if (cmd.hasOption("cliques"))
 			cliques = new Integer(cmd.getOptionValue("cliques"))
+		first = cmd.hasOption("first");		
 	}
 
 	// shorthand for generating required options
@@ -86,5 +88,9 @@ public class TransformationConfiguration {
 		}
 		return false
 	}
+
+	def public boolean getFirst() {
+		return first
+	}	
 
 }

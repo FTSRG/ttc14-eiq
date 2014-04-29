@@ -8,7 +8,12 @@ if [ "$#" -eq 0 ]; then
 fi
 
 filename=$1
-executable="timeout -s KILL 10m ./transform-model.sh -instanceModelPath $1"
+first=$2
+executable="timeout -s KILL 10m ./transform-model.sh -instanceModelPath $filename"
+
+if $first; then
+	executable="$executable -first"
+fi
 
 $executable -task t2 2>> results-t2.csv
 $executable -task t3 2>> results-t3.csv

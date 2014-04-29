@@ -10,10 +10,12 @@ class BenchmarkResults {
 
 	val separator = ";"
 
-	var String name;
+	var String name
+	var boolean printHeader
 
-	new(String name) {
+	new(String name, boolean printHeader) {
 		this.name = name
+		this.printHeader = printHeader
 	}
 
 	def setName(String name) {
@@ -24,9 +26,11 @@ class BenchmarkResults {
 	val Map<String, StatisticEntry> statValues = new HashMap;
 
 	def printResults() {
-		System::err.println('''id«separator»«FOR statName : statNames SEPARATOR separator»«statName»«ENDFOR»''');
+		if (printHeader) {
+			System::err.println('''id«separator»«FOR statName : statNames SEPARATOR separator»«statName»«ENDFOR»''')
+		}
 		System::err.println(
-			'''«name»«separator»«FOR statName : statNames SEPARATOR separator»«statValues.get(statName).time»«ENDFOR»''');
+			'''«name»«separator»«FOR statName : statNames SEPARATOR separator»«statValues.get(statName).time»«ENDFOR»''')
 	}
 
 	def startStopper(String name) {
