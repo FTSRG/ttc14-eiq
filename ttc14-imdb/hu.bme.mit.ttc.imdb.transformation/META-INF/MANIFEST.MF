@@ -18,5 +18,4 @@ Require-Bundle: org.eclipse.xtend.lib,
  hu.bme.mit.ttc.imdb.queries;bundle-version="1.0.0",
  hu.bme.mit.ttc.imdb;bundle-version="1.0.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
-Export-Package: hu.bme.mit.ttc.imdb.main,
- hu.bme.mit.ttc.imdb.transformation
+Export-Package: hu.bme.mit.ttc.imdb.transformation

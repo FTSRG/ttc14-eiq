@@ -1,17 +1,15 @@
 package hu.bme.mit.ttc.imdb.transformation
 
+import hu.bme.mit.ttc.imdb.movies.ContainedElement
+import hu.bme.mit.ttc.imdb.movies.MoviesFactory
+import hu.bme.mit.ttc.imdb.movies.Root
+import hu.bme.mit.ttc.imdb.util.BenchmarkResults
+import hu.bme.mit.ttc.imdb.util.Configuration
+import java.util.ArrayList
 import org.eclipse.emf.common.util.URI
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.emf.ecore.resource.ResourceSet
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl
-import hu.bme.mit.ttc.imdb.util.Configuration
-import hu.bme.mit.ttc.imdb.util.BenchmarkResults
-import hu.bme.mit.ttc.imdb.movies.MoviesFactory
-import hu.bme.mit.ttc.imdb.movies.ContainedElement
-import java.util.Collection
-import org.eclipse.emf.common.notify.Notifier
-import hu.bme.mit.ttc.imdb.movies.Root
-import java.util.ArrayList
 
 class TransformationTest {
 
@@ -64,8 +62,6 @@ class TransformationTest {
 	
 	def protected void execute(Resource r, Configuration config, BenchmarkResults bmr) {
 		val transformation = new Transformation(r,bmr)
-		
-		val calcAVGRating = config.AVGRating
 		
 		// Couple generation
 		if(config.task == "t2") // 2-cliques (t2 and others)
