@@ -192,6 +192,30 @@ pattern personsTo5Clique(P1, P2, P3, P4, P5) {
 	check(P4 < P5);
 }
 
+pattern memberOfGroup(person, group) {
+	Couple.p1(group,person);
+} or {
+	Couple.p2(group,person);
+} or {
+	Clique.persons(group, person);
+}
+
+pattern groupSize(group, S) {
+	Group(group);
+	S == count find memberOfGroup(group, _);
+}
+
+pattern commonMoviesInGroup(group, size, movie) {
+	Group.commonMovies(group,movie);
+	find groupSize(group, size);
+}
+
+pattern numberOfMoviesInGroup(group, size, number) 
+{
+	find groupSize(group, size);
+	number == count find commonMoviesInGroup(group,size,_);
+}
+
 
 // Extension Task 2
 // Clique
