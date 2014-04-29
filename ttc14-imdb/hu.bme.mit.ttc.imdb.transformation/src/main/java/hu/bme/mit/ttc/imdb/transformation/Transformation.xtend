@@ -29,7 +29,7 @@ class Transformation {
 	protected val BenchmarkResults bmr;
 	protected Resource r
 	
-	////// Resources
+	////// Resources Management
 	protected val Root root;
 	def addElementToResource(ContainedElement containedElement) {
 		root.children.add(containedElement)
@@ -40,21 +40,16 @@ class Transformation {
 	def getElementsFromResource() {
 		root.children
 	}
-	
 	////////////////////////////
 	
 	extension MoviesFactory = MoviesFactory.eINSTANCE
 	extension Imdb = Imdb.instance
 
-	public def createCouples(/*boolean calcAVGRating*/) {
-//		val x = new HashSet<IQuerySpecification<?>>
-//		x += #{personsToCouple, commonMoviesToCouple, personName}
-//		val group = new GenericPatternGroup(x)
+	public def createCouples() {
 		bmr.startStopper("createCouples/Engine")
 		val engine = AdvancedIncQueryEngine.createUnmanagedEngine(r)
 		bmr.endStopper("createCouples/Engine")
 		
-//		group.prepare(engine);
 		bmr.startStopper("createCouples/coupleMatcher")
 		val coupleMatcher = engine.personsToCouple
 		bmr.endStopper("createCouples/coupleMatcher")
@@ -107,7 +102,6 @@ class Transformation {
 		bmr.endStopper("AVG/matcher")
 		
 		bmr.startStopper("AVG/Sort")
-		//val ccfr = new CoupleComparatorForRating
 		val rankedCouples = coupleWithRatingMatcher.getAllValuesOfgroup(size).sort(
 			new GroupAVGComparator)
 		bmr.endStopper("AVG/Sort")
@@ -139,22 +133,22 @@ class Transformation {
 		(0 .. n - 1).forEach [
 			if(it < rankedCouples.size) {
 				val c = rankedCouples.get(it);
-				println(
-					'''«it+1». avgRating «c.avgRating», «c.commonMovies.size» movies''')
-	//			println(
-	//				String.format(
-	//					"%d. Couple avgRating %.03f,  %d movies (%s; %s)",
-	//					it + 1,
-	//					c.avgRating,
-	//					c.c.commonMovies.size,
-	//					c.c.p1.name,
-	//					c.c.p2.name
-	//				))
+				println(c.printGroup(it))
 			}
 		]
 	}
 	
-	//////// AVG
+	def printGroup(Group group, int lineNumber) {
+		if(group instanceof Couple) {
+			val couple = group as Couple
+			return '''«lineNumber». Couple avgRating «group.avgRating», «group.commonMovies.size» movies («couple.p1.name»; «couple.p2.name»)'''
+		}
+		else {
+			val clique = group as Clique
+			return '''«lineNumber». «clique.persons.size»-Clique avgRating «group.avgRating», «group.commonMovies.size» movies («
+				FOR person : clique.persons SEPARATOR ", "»«person.name»«ENDFOR»)'''
+		}
+	}
 	
 	def calculateAvgRatings() {
 		bmr.startStopper("avg")
@@ -170,12 +164,7 @@ class Transformation {
 		}
 		val n = commonMovies.size
 		group.avgRating = sumRating / n
-		// group.avgRating = DoubleMath.mean(commonMovies.map[rating]) // if we have the latest version of Guava
 	}
-	
-	//////// AVG
-	
-	//////// Clique
 
 	public def createCliques(int cliques) {
 		bmr.startStopper("createClique/Engine")
@@ -262,6 +251,4 @@ class Transformation {
 		}
 		return commonMovies
 	}
-	
-	//////// Clique
 }

@@ -12,13 +12,6 @@ import org.eclipse.emf.ecore.resource.ResourceSet
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl
 
 class TransformationTest {
-
-// Task dependencies:
-// t2 -> t3 -> et1a 
-//  |       -> et1b
-//  v
-// et2(n) -> et3 -> et4a
-//               -> et4b
 	
 	def xform(Configuration config, String name) {
 		val bmr = new BenchmarkResults(name)
@@ -60,6 +53,12 @@ class TransformationTest {
 		return r
 	}
 	
+	// Task dependencies:
+	// t2 -> t3 -> et1a 
+	//  |       -> et1b
+	//  v
+	// et2(n) -> et3 -> et4a
+	//               -> et4b
 	def protected void execute(Resource r, Configuration config, BenchmarkResults bmr) {
 		val transformation = new Transformation(r,bmr)
 		
@@ -76,14 +75,15 @@ class TransformationTest {
 			transformation.calculateAvgRatings
 		
 		// Couple Toplist
-		else if (config.task == "et1a") // et4a?
+		else if (config.task == "et1a") 
 			transformation.topGroupByRating(2)
 		else if (config.task == "et4a")
 			transformation.topGroupByRating(config.cliques)
-		else if (config.task == "et1b") // et4b?
+		else if (config.task == "et1b")
 			transformation.topGroupByCommonMovies(2)
 		else if (config.task == "et4b")
 			transformation.topGroupByCommonMovies(config.cliques)
+			
 		else throw new UnsupportedOperationException("Unknown task")
 	}
 	
