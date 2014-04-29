@@ -1,8 +1,0 @@
-Manifest-Version: 1.0
-Bundle-ManifestVersion: 2
-Bundle-Name: Tests
-Bundle-SymbolicName: hu.bme.mit.ttc.imdb.tests
-Bundle-Version: 1.0.0.qualifier
-Export-Package: hu.bme.mit.ttc.imdb.tests
-Require-Bundle: hu.bme.mit.ttc.imdb.generator;bundle-version="1.0.0",
- org.apache.commons.cli;bundle-version="1.2.0"
