@@ -6,7 +6,6 @@ import hu.bme.mit.ttc.imdb.movies.Group
 import hu.bme.mit.ttc.imdb.movies.Movie
 import hu.bme.mit.ttc.imdb.movies.MoviesFactory
 import hu.bme.mit.ttc.imdb.movies.Person
-import hu.bme.mit.ttc.imdb.queries.CoupleWithRatingMatch
 import hu.bme.mit.ttc.imdb.queries.Imdb
 import hu.bme.mit.ttc.imdb.util.BenchmarkResults
 import java.util.Collection
@@ -16,17 +15,34 @@ import java.util.Set
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.incquery.runtime.api.AdvancedIncQueryEngine
 import org.eclipse.incquery.runtime.api.IncQueryEngine
+import hu.bme.mit.ttc.imdb.movies.Root
+import hu.bme.mit.ttc.imdb.movies.ContainedElement
 
 class Transformation {
 
 	new (Resource r, BenchmarkResults bmr) {
 		this.r = r;
 		this.bmr = bmr;
+		this.root = r.contents.get(0) as Root
 	}
 	
 	protected val BenchmarkResults bmr;
 	protected Resource r
-
+	
+	////// Resources
+	protected val Root root;
+	def addElementToResource(ContainedElement containedElement) {
+		root.children.add(containedElement)
+	}
+	def addElementsToResource(Collection<? extends ContainedElement> containedElements) {
+		root.children.addAll(containedElements)
+	}
+	def getElementsFromResource() {
+		root.children
+	}
+	
+	////////////////////////////
+	
 	extension MoviesFactory = MoviesFactory.eINSTANCE
 	extension Imdb = Imdb.instance
 
@@ -66,14 +82,14 @@ class Transformation {
 		]
 		bmr.endStopper("createCouples/transformation")
 		
-		println("# of couples = " + newCouples)
+		println("# of couples = " + newCouples.size)
 		
 		bmr.startStopper("createCouples/dispose")
 		engine.dispose
 		bmr.endStopper("createCouples/dispose")
 		
 		bmr.startStopper("createCouples/adding")
-		r.contents.addAll(newCouples);
+		addElementsToResource(newCouples);
 		bmr.endStopper("createCouples/adding")
 	}
 
@@ -142,7 +158,7 @@ class Transformation {
 	
 	def calculateAvgRatings() {
 		bmr.startStopper("avg")
-		r.allContents.filter(typeof(Group)).forEach[x|calculateAvgRating(x.commonMovies, x)]
+		getElementsFromResource.filter(typeof(Group)).forEach[x|calculateAvgRating(x.commonMovies, x)]
 		bmr.endStopper("avg")
 	}
 
@@ -224,7 +240,7 @@ class Transformation {
 		bmr.endStopper("createClique/commonMovies")
 		
 		bmr.startStopper("createClique/adding")
-		r.contents.addAll(newCliques);
+		addElementsToResource(newCliques);
 		bmr.endStopper("createClique/adding")
 	}
 	

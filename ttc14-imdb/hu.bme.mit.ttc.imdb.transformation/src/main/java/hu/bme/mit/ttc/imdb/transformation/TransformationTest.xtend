@@ -6,6 +6,12 @@ import org.eclipse.emf.ecore.resource.ResourceSet
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl
 import hu.bme.mit.ttc.imdb.util.Configuration
 import hu.bme.mit.ttc.imdb.util.BenchmarkResults
+import hu.bme.mit.ttc.imdb.movies.MoviesFactory
+import hu.bme.mit.ttc.imdb.movies.ContainedElement
+import java.util.Collection
+import org.eclipse.emf.common.notify.Notifier
+import hu.bme.mit.ttc.imdb.movies.Root
+import java.util.ArrayList
 
 class TransformationTest {
 
@@ -42,7 +48,18 @@ class TransformationTest {
 		
 		bmr.printImmediately = config.printImmediately
 		val ResourceSet rs = new ResourceSetImpl
-		return rs.getResource(instanceModelPath, true)
+		val r = rs.getResource(instanceModelPath, true)
+		
+		bmr.startStopper("resourceRestructure1")
+		val root = MoviesFactory.eINSTANCE.createRoot()
+		
+		val c = new ArrayList(r.contents)
+		root.children.addAll(c.filter(typeof(ContainedElement)))
+		
+		r.contents += root
+		bmr.endStopper("resourceRestructure1")
+		
+		return r
 	}
 	
 	def protected void execute(Resource r, Configuration config, BenchmarkResults bmr) {
@@ -75,6 +92,13 @@ class TransformationTest {
 	}
 	
 	def protected void finalize(Resource r, Configuration config, BenchmarkResults bmr) {
+		bmr.startStopper("resourceRestructure2")
+		val root = r.contents.get(0) as Root
+		val children = root.children
+		r.contents.remove(root)
+		r.contents.addAll(children)
+		bmr.endStopper("resourceRestructure2")
+		
 		r.save(emptyMap)
 	}
 }
