@@ -45,6 +45,7 @@ class TransformationTest {
 		val root = MoviesFactory.eINSTANCE.createRoot()
 		
 		val c = new ArrayList(r.contents)
+		bmr.setName(""+c.size)
 		root.children.addAll(c.filter(typeof(ContainedElement)))
 		
 		r.contents += root

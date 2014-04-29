@@ -10,8 +10,12 @@ class BenchmarkResults {
 	
 	val separator = ";"
 	
-	val String name;
+	var String name;
 	new (String name) {
+		this.name = name
+	}
+	
+	def setName(String name) {
 		this.name = name
 	}
 	
@@ -20,8 +24,8 @@ class BenchmarkResults {
 	public boolean printImmediately = false
 	
 	def printResults() {
-		println('''id«separator»«FOR statName : statNames SEPARATOR separator»«statName»«ENDFOR»''');
-		println('''«name»«separator»«FOR statName : statNames SEPARATOR separator»«statValues.get(statName).time»«ENDFOR»''');
+		System::err.println('''id«separator»«FOR statName : statNames SEPARATOR separator»«statName»«ENDFOR»''');
+		System::err.println('''«name»«separator»«FOR statName : statNames SEPARATOR separator»«statValues.get(statName).time»«ENDFOR»''');
 	}
 
 	def startStopper(String name) {
