@@ -50,15 +50,24 @@ class TransformationTest {
 		
 		val calcAVGRating = config.AVGRating
 		
-		transformation.createCouples(calcAVGRating) // 2-cliques (t2 and others)
+		// Couple generation
+		if(config.task == "t2") // 2-cliques (t2 and others)
+			transformation.createCouples()
 		
-		if ((config.task == "et2") || (config.task == "et3") || (config.task == "et4a") || (config.task == "et4b"))
-				transformation.createCliques(calcAVGRating, config.cliques) // n-cliques
+		// Clique generation
+		else if ((config.task == "et2") /*|| (config.task == "et3") || (config.task == "et4a") || (config.task == "et4b")*/)
+				transformation.createCliques(config.cliques) // n-cliques
 		
-		if (config.task == "et1a") // et4a?
+		// Average calculation for each groups
+		else if (config.task == "t3" || config.task == "et3")
+			transformation.calculateAvgRatings
+		
+		// Couple Toplist
+		else if (config.task == "et1a") // et4a?
 			transformation.topCouplesByRating
-		if (config.task == "et1b") // et4b?
+		else if (config.task == "et1b") // et4b?
 			transformation.topCouplesByCommonMovies
+		else throw new UnsupportedOperationException("Unknown task")
 	}
 	
 	def protected void finalize(Resource r, Configuration config, BenchmarkResults bmr) {

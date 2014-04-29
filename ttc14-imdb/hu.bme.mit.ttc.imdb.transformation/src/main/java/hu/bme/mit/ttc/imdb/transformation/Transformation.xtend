@@ -1,21 +1,21 @@
 package hu.bme.mit.ttc.imdb.transformation
 
+import hu.bme.mit.ttc.imdb.movies.Clique
+import hu.bme.mit.ttc.imdb.movies.Couple
 import hu.bme.mit.ttc.imdb.movies.Group
 import hu.bme.mit.ttc.imdb.movies.Movie
 import hu.bme.mit.ttc.imdb.movies.MoviesFactory
+import hu.bme.mit.ttc.imdb.movies.Person
 import hu.bme.mit.ttc.imdb.queries.CoupleWithRatingMatch
 import hu.bme.mit.ttc.imdb.queries.Imdb
-import java.util.Collection
-import java.util.HashSet
-import java.util.List
-import org.eclipse.emf.ecore.resource.Resource
-import org.eclipse.incquery.runtime.api.GenericPatternGroup
-import org.eclipse.incquery.runtime.api.IQuerySpecification
-import org.eclipse.incquery.runtime.api.IncQueryEngine
 import hu.bme.mit.ttc.imdb.util.BenchmarkResults
+import java.util.Collection
 import java.util.LinkedList
-import hu.bme.mit.ttc.imdb.movies.Couple
+import java.util.List
+import java.util.Set
+import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.incquery.runtime.api.AdvancedIncQueryEngine
+import org.eclipse.incquery.runtime.api.IncQueryEngine
 
 class Transformation {
 
@@ -30,7 +30,7 @@ class Transformation {
 	extension MoviesFactory = MoviesFactory.eINSTANCE
 	extension Imdb = Imdb.instance
 
-	def createCouples(boolean calcAVGRating) {
+	public def createCouples(/*boolean calcAVGRating*/) {
 //		val x = new HashSet<IQuerySpecification<?>>
 //		x += #{personsToCouple, commonMoviesToCouple, personName}
 //		val group = new GenericPatternGroup(x)
@@ -61,11 +61,12 @@ class Transformation {
 			couple.setP2(p2)
 			val commonMovies = commonMoviesMatcher.getAllValuesOfm(p1name, p2name)
 			couple.commonMovies.addAll(commonMovies)
-			if (calcAVGRating) 
-				calculateAvgRating(commonMovies, couple)
+				
 			newCouples += couple
 		]
 		bmr.endStopper("createCouples/transformation")
+		
+		println("# of couples = " + newCouples)
 		
 		bmr.startStopper("createCouples/dispose")
 		engine.dispose
@@ -125,8 +126,16 @@ class Transformation {
 				))
 		]
 	}
+	
+	//////// AVG
+	
+	def calculateAvgRatings() {
+		bmr.startStopper("avg")
+		r.allContents.filter(typeof(Group)).forEach[x|calculateAvgRating(x.commonMovies, x)]
+		bmr.endStopper("avg")
+	}
 
-	def calculateAvgRating(Collection<Movie> commonMovies, Group group) {
+	protected def calculateAvgRating(Collection<Movie> commonMovies, Group group) {
 		var sumRating = 0.0
 
 		for (m : commonMovies) {
@@ -136,47 +145,96 @@ class Transformation {
 		group.avgRating = sumRating / n
 		// group.avgRating = DoubleMath.mean(commonMovies.map[rating]) // if we have the latest version of Guava
 	}
+	
+	//////// AVG
+	
+	//////// Clique
 
-	def createCliques(boolean calcAVGRating, int cliques) {
-		val engine = IncQueryEngine.on(r)
+	public def createCliques(int cliques) {
+		bmr.startStopper("createClique/Engine")
+		val engine = AdvancedIncQueryEngine.createUnmanagedEngine(r)
+		bmr.endStopper("createClique/Engine")
+		
+		bmr.startStopper("createClique/personMatcher")
+		val personMatcher = getPersonName(engine)
+		bmr.endStopper("createClique/personMatcher")
+		
+		var Collection<Clique> newCliques
 		
 		if(cliques == 3) {
-			bmr.startStopper("clique/3engine")
+			bmr.startStopper("createClique/3engine")
 			val clique3 = getPersonsTo3Clique(engine)
-			bmr.endStopper("clique/3engine")
+			bmr.endStopper("createClique/3engine")
+			
+			bmr.startStopper("createClique/cliqueGeneration")
+			newCliques = clique3.allMatches.map[x|generateClique(
+				personMatcher.getOneArbitraryMatch(null,x.p1).p,
+				personMatcher.getOneArbitraryMatch(null,x.p2).p,
+				personMatcher.getOneArbitraryMatch(null,x.p3).p)].toList;
+			bmr.endStopper("createClique/cliqueGeneration")
+			
 		}
 		else if(cliques == 4) {
-			bmr.startStopper("clique/4engine")
+			bmr.startStopper("createClique/4engine")
 			val clique4 = getPersonsTo4Clique(engine)
-			bmr.endStopper("clique/4engine")
+			bmr.endStopper("createClique/4engine")
+			
+			bmr.startStopper("createClique/cliqueGeneration")
+			newCliques = clique4.allMatches.map[x|generateClique(
+				personMatcher.getOneArbitraryMatch(null,x.p1).p,
+				personMatcher.getOneArbitraryMatch(null,x.p2).p,
+				personMatcher.getOneArbitraryMatch(null,x.p3).p,
+				personMatcher.getOneArbitraryMatch(null,x.p4).p)].toList;
+			bmr.endStopper("createClique/cliqueGeneration")
 		}
 		else if(cliques == 5) {
-			bmr.startStopper("clique/5engine")
+			bmr.startStopper("createClique/5engine")
 			val clique5 = getPersonsTo5Clique(engine)
-			bmr.endStopper("clique/5engine")
+			bmr.endStopper("createClique/5engine")
+			
+			bmr.startStopper("createClique/cliqueGeneration")
+			newCliques = clique5.allMatches.map[x|generateClique(
+				personMatcher.getOneArbitraryMatch(null,x.p1).p,
+				personMatcher.getOneArbitraryMatch(null,x.p2).p,
+				personMatcher.getOneArbitraryMatch(null,x.p3).p,
+				personMatcher.getOneArbitraryMatch(null,x.p4).p,
+				personMatcher.getOneArbitraryMatch(null,x.p5).p)].toList;
+			bmr.endStopper("createClique/cliqueGeneration")
 		}
 		
-		/*val engine = IncQueryEngine.on(r)
-		val nextCliquesMatcher = getNextCliques(engine)
-		val memberOfGroupMatcher = getMemberOfGroup(engine)
-		val groupMatcher = getGroup(engine)
-
-		val oldGroups = groupMatcher.allValuesOfg
+		println("# of "+cliques+"-cliques = " + newCliques.size)
 		
-		nextCliquesMatcher.forEachMatch [
-			val clique = createClique()
-			val gPersons = memberOfGroupMatcher.getAllValuesOfp(g)
-			clique.commonMovies.addAll(g.commonMovies)
-			clique.commonMovies.retainAll(p.movies)
-			if (calcAVGRating)
-				calculateAvgRating(clique.commonMovies, clique)
-			clique.persons.addAll(gPersons)
-			clique.persons.add(p)
-			r.contents += clique
-		]
+		bmr.startStopper("createClique/dispose")
+		engine.dispose
+		bmr.endStopper("createClique/dispose")
 		
-		oldGroups.forEach[
-			r.contents -= it
-		]*/
+		bmr.startStopper("createClique/commonMovies")
+		newCliques.forEach[x|x.commonMovies.addAll(x.commonMovies)]
+		bmr.endStopper("createClique/commonMovies")
+		
+		bmr.startStopper("createClique/adding")
+		r.contents.addAll(newCliques);
+		bmr.endStopper("createClique/adding")
 	}
+	
+	protected def generateClique(Person... persons) {
+		val c = createClique
+		c.persons += persons
+		return c
+	}
+	
+	protected def commonMovies(Clique clique) {
+		var Set<Movie> commonMovies = null;
+		for(personMovies : clique.persons.map[movies]) {
+			if(commonMovies == null) {
+				commonMovies = personMovies.toSet;
+			}
+			else {
+				commonMovies.retainAll(personMovies)
+			}
+		}
+		return commonMovies
+	}
+	
+	//////// Clique
 }
