@@ -2,7 +2,7 @@
 
 . config.sh
 
-rm results*.csv
+rm results*.*
 
 first=true
 
