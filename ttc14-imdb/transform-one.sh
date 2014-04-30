@@ -15,17 +15,10 @@ if $first; then
 	executable="$executable -first"
 fi
 
-$executable -task t2 2>> results-t2.csv | tee -a results.txt
-$executable -task t3 2>> results-t3.csv | tee -a results.txt
-$executable -task et1a 2>> results-et1a.csv | tee -a results.txt
-$executable -task et1b 2>> results-et1b.csv | tee -a results.txt
-$executable -task et2 -cliques 3 2>> results-et2-3.csv | tee -a results.txt
-$executable -task et2 -cliques 4 2>> results-et2-4.csv | tee -a results.txt
-$executable -task et2 -cliques 5 2>> results-et2-5.csv | tee -a results.txt
-$executable -task et3 2>> results-et3.csv | tee -a results.txt
-$executable -task et4a -cliques 3 2>> results-et4a-3.csv | tee -a results.txt
-$executable -task et4a -cliques 4 2>> results-et4a-4.csv | tee -a results.txt
-$executable -task et4a -cliques 5 2>> results-et4a-5.csv | tee -a results.txt
-$executable -task et4b -cliques 3 2>> results-et4b-3.csv | tee -a results.txt
-$executable -task et4b -cliques 4 2>> results-et4b-4.csv | tee -a results.txt
-$executable -task et4b -cliques 5 2>> results-et4b-5.csv | tee -a results.txt
+$executable -task [t2][t3][et1a][et1b] 2>> results-t2.csv | tee -a results.txt
+
+# restore
+for k in 3 4 5; do
+	$executable -task [et2][et3][et4a][et4b] -cliques $k 2>> results-clique-$k.csv | tee -a results.txt
+done
+
