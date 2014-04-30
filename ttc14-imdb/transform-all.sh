@@ -13,6 +13,6 @@ for n in $sizes; do
 done
 
 # IMDb movies
-for f in cd $imdb_location/*.movies; do
+for f in $imdb_location/*.movies; do
 	./transform-one.sh $f
 done
