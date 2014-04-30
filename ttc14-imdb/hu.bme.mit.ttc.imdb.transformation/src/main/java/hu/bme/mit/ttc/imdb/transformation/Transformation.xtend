@@ -143,7 +143,7 @@ class Transformation {
 		(0 .. n - 1).forEach [
 			if(it < rankedCouples.size) {
 				val c = rankedCouples.get(it);
-				println(c.printGroup(it))
+				println(c.printGroup(it + 1))
 			}
 		]
 	}
