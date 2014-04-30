@@ -36,7 +36,9 @@ import org.eclipse.incquery.runtime.util.IncQueryLoggingUtil;
  * 	
  * 	M1 != M2; M2 != M3; M1 != M3;
  * 	
- * 	check(P1 {@literal <} P2); check(P2 {@literal <} P3); check(P3 {@literal <} P4);
+ * 	check(P1 {@literal <} P2); check(P1 {@literal <} P3); check(P1 {@literal <} P4);
+ * 	check(P2 {@literal <} P3); check(P2 {@literal <} P4);
+ * 	check(P3 {@literal <} P4);
  * }
  * </pre></code>
  * 

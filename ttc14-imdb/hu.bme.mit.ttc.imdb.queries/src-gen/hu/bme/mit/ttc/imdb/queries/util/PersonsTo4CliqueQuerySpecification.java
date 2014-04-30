@@ -125,6 +125,44 @@ public final class PersonsTo4CliqueQuerySpecification extends BaseGeneratedQuery
         
         @Override
         public Iterable<String> getInputParameterNames() {
+        	return Arrays.asList("P1", "P3");
+        }
+        
+        @Override
+        public Object evaluateExpression(IValueProvider provider) throws Exception {
+        	java.lang.String P1 = (java.lang.String) provider.getValue("P1");
+        	java.lang.String P3 = (java.lang.String) provider.getValue("P3");
+        	return evaluateExpression_1_2(P1, P3);
+        }
+        
+        },  null); 
+      new ExpressionEvaluation(body, new IExpressionEvaluator() {
+        @Override
+        public String getShortDescription() {
+        	return "Expression evaluation from pattern personsTo4Clique";
+        }
+        
+        @Override
+        public Iterable<String> getInputParameterNames() {
+        	return Arrays.asList("P1", "P4");
+        }
+        
+        @Override
+        public Object evaluateExpression(IValueProvider provider) throws Exception {
+        	java.lang.String P1 = (java.lang.String) provider.getValue("P1");
+        	java.lang.String P4 = (java.lang.String) provider.getValue("P4");
+        	return evaluateExpression_1_3(P1, P4);
+        }
+        
+        },  null); 
+      new ExpressionEvaluation(body, new IExpressionEvaluator() {
+        @Override
+        public String getShortDescription() {
+        	return "Expression evaluation from pattern personsTo4Clique";
+        }
+        
+        @Override
+        public Iterable<String> getInputParameterNames() {
         	return Arrays.asList("P2", "P3");
         }
         
@@ -132,7 +170,26 @@ public final class PersonsTo4CliqueQuerySpecification extends BaseGeneratedQuery
         public Object evaluateExpression(IValueProvider provider) throws Exception {
         	java.lang.String P2 = (java.lang.String) provider.getValue("P2");
         	java.lang.String P3 = (java.lang.String) provider.getValue("P3");
-        	return evaluateExpression_1_2(P2, P3);
+        	return evaluateExpression_1_4(P2, P3);
+        }
+        
+        },  null); 
+      new ExpressionEvaluation(body, new IExpressionEvaluator() {
+        @Override
+        public String getShortDescription() {
+        	return "Expression evaluation from pattern personsTo4Clique";
+        }
+        
+        @Override
+        public Iterable<String> getInputParameterNames() {
+        	return Arrays.asList("P2", "P4");
+        }
+        
+        @Override
+        public Object evaluateExpression(IValueProvider provider) throws Exception {
+        	java.lang.String P2 = (java.lang.String) provider.getValue("P2");
+        	java.lang.String P4 = (java.lang.String) provider.getValue("P4");
+        	return evaluateExpression_1_5(P2, P4);
         }
         
         },  null); 
@@ -151,7 +208,7 @@ public final class PersonsTo4CliqueQuerySpecification extends BaseGeneratedQuery
         public Object evaluateExpression(IValueProvider provider) throws Exception {
         	java.lang.String P3 = (java.lang.String) provider.getValue("P3");
         	java.lang.String P4 = (java.lang.String) provider.getValue("P4");
-        	return evaluateExpression_1_3(P3, P4);
+        	return evaluateExpression_1_6(P3, P4);
         }
         
         },  null); 
@@ -185,12 +242,27 @@ public final class PersonsTo4CliqueQuerySpecification extends BaseGeneratedQuery
     return _lessThan;
   }
   
-  private boolean evaluateExpression_1_2(final String P2, final String P3) {
+  private boolean evaluateExpression_1_2(final String P1, final String P3) {
+    boolean _lessThan = (P1.compareTo(P3) < 0);
+    return _lessThan;
+  }
+  
+  private boolean evaluateExpression_1_3(final String P1, final String P4) {
+    boolean _lessThan = (P1.compareTo(P4) < 0);
+    return _lessThan;
+  }
+  
+  private boolean evaluateExpression_1_4(final String P2, final String P3) {
     boolean _lessThan = (P2.compareTo(P3) < 0);
     return _lessThan;
   }
   
-  private boolean evaluateExpression_1_3(final String P3, final String P4) {
+  private boolean evaluateExpression_1_5(final String P2, final String P4) {
+    boolean _lessThan = (P2.compareTo(P4) < 0);
+    return _lessThan;
+  }
+  
+  private boolean evaluateExpression_1_6(final String P3, final String P4) {
     boolean _lessThan = (P3.compareTo(P4) < 0);
     return _lessThan;
   }

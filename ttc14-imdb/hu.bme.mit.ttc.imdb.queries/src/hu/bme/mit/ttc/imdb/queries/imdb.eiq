@@ -85,7 +85,8 @@ pattern personsTo3Clique(P1, P2, P3) {
 	
 	M1 != M2; M2 != M3; M1 != M3;
 	
-	check(P1 < P2); check(P2 < P3);
+	check(P1 < P2); check(P1 < P3);
+	check(P2 < P3);
 }
 
 /**
@@ -98,7 +99,9 @@ pattern personsTo4Clique(P1, P2, P3, P4) {
 	
 	M1 != M2; M2 != M3; M1 != M3;
 	
-	check(P1 < P2); check(P2 < P3); check(P3 < P4);
+	check(P1 < P2); check(P1 < P3); check(P1 < P4);
+	check(P2 < P3); check(P2 < P4);
+	check(P3 < P4);
 }
 
 /**
@@ -111,5 +114,8 @@ pattern personsTo5Clique(P1, P2, P3, P4, P5) {
 	
 	M1 != M2; M2 != M3; M1 != M3;
 	
-	check(P1 < P2); check(P2 < P3); check(P3 < P4); check(P4 < P5);
+	check(P1 < P2); check(P1 < P3); check(P1 < P4); check(P1 < P5); 
+	check(P2 < P3); check(P2 < P4); check(P2 < P5);
+	check(P3 < P4); check(P3 < P5);
+	check(P4 < P5);
 }
