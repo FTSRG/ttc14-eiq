@@ -123,6 +123,8 @@ class TransformationTest {
 		r.contents.addAll(children)
 		bmr.endStopper("resourceRestructure2")
 
-		//r.save(emptyMap)
+		if (config.save) {
+			r.save(emptyMap)
+		}
 	}
 }

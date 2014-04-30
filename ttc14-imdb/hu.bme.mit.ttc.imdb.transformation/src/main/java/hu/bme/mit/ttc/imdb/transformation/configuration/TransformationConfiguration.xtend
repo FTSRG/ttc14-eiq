@@ -18,6 +18,7 @@ public class TransformationConfiguration {
 	String instanceModelPath
 	String task
 	boolean first
+	boolean save
 
 	public new() {
 		initOptions()
@@ -41,6 +42,7 @@ public class TransformationConfiguration {
 		options.addOption("task", true, "task id: [t2|t3|et1a|et1b|et2|et3|et4a|et4b]")
 		options.addOption("cliques", true, "clique size for extension tasks 2-4")
 		options.addOption("first", false, "defines if this is the first run (if results header should be generated)")
+		options.addOption("save", false, "defines if the resource should be saved")
 	}
 
 	def protected processArguments(String[] args) {
@@ -52,7 +54,8 @@ public class TransformationConfiguration {
 			task = cmd.getOptionValue("task")
 		if (cmd.hasOption("cliques"))
 			cliques = new Integer(cmd.getOptionValue("cliques"))
-		first = cmd.hasOption("first");		
+		first = cmd.hasOption("first")
+		save = cmd.hasOption("save")
 	}
 
 	// shorthand for generating required options
@@ -91,6 +94,10 @@ public class TransformationConfiguration {
 
 	def public boolean getFirst() {
 		return first
-	}	
+	}
+	
+	def public boolean getSave() {
+		return save
+	}
 
 }
