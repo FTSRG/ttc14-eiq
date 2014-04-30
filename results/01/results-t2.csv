@@ -5,5 +5,3 @@ id;Load/Generate;resourceRestructure1;Transform;createCouples/Engine;createCoupl
 80000;6759;2360;27100;45;18791;3143;17;3833;978;209;26591;3474
 100000;9835;3503;36174;41;21230;3309;76;9931;1259;240;34238;5316
 200000;20816;12772;56476;40;33430;10575;73;10243;1727;287;138088;19633
-id;Load/Generate;resourceRestructure1;Transform;createCouples/Engine;createCouples/coupleMatcher;createCouples/commonMoviesMatcher;createCouples/personNameMatcher;createCouples/transformation;createCouples/dispose;createCouples/adding;Save;resourceRestructure2
-49930;6583;905;140755;32;132869;4631;16;2005;1015;121;6537;1119
