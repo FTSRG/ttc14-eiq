@@ -1,0 +1,36 @@
+id;Load/Generate;resourceRestructure1;Transform;AVG/Engine;AVG/matcher;AVG/Sort;Save;resourceRestructure2
+46000;5859;854;6583;69;6019;388;8873;3649
+92000;6899;2118;7793;37;7237;415;16721;6099
+138000;12506;4724;8664;28;8065;490;41200;13078
+184000;14590;8011;13660;218;12582;759;63376;17729
+230000;26229;16578;14625;43;13621;839;103021;29067
+410000;64220;51462;19082;38;18215;739;214443;50198
+Exception in thread "main" org.eclipse.emf.ecore.resource.impl.ResourceSetImpl$1DiagnosticWrappedException: org.xml.sax.SAXParseExceptionpublicId: hu.bme.mit.ttc.imdb.instance/model/synthetic-50000.movies; systemId: file:///home/ubuntu/data/git/ttc14-eiq/ttc14-imdb/hu.bme.mit.ttc.imdb.instance/model/synthetic-50000.movies; lineNumber: 1; columnNumber: 1; Premature end of file.
+	at org.eclipse.emf.ecore.resource.impl.ResourceSetImpl.handleDemandLoadException(ResourceSetImpl.java:319)
+	at org.eclipse.emf.ecore.resource.impl.ResourceSetImpl.demandLoadHelper(ResourceSetImpl.java:278)
+	at org.eclipse.emf.ecore.resource.impl.ResourceSetImpl.getResource(ResourceSetImpl.java:406)
+	at hu.bme.mit.ttc.imdb.transformation.TransformationTest.init(TransformationTest.java:45)
+	at hu.bme.mit.ttc.imdb.transformation.TransformationTest.xform(TransformationTest.java:29)
+	at hu.bme.mit.ttc.imdb.main.TransformationMain.main(TransformationMain.java:19)
+Caused by: org.xml.sax.SAXParseExceptionpublicId: hu.bme.mit.ttc.imdb.instance/model/synthetic-50000.movies; systemId: file:///home/ubuntu/data/git/ttc14-eiq/ttc14-imdb/hu.bme.mit.ttc.imdb.instance/model/synthetic-50000.movies; lineNumber: 1; columnNumber: 1; Premature end of file.
+	at com.sun.org.apache.xerces.internal.util.ErrorHandlerWrapper.createSAXParseException(ErrorHandlerWrapper.java:198)
+	at com.sun.org.apache.xerces.internal.util.ErrorHandlerWrapper.fatalError(ErrorHandlerWrapper.java:177)
+	at com.sun.org.apache.xerces.internal.impl.XMLErrorReporter.reportError(XMLErrorReporter.java:441)
+	at com.sun.org.apache.xerces.internal.impl.XMLErrorReporter.reportError(XMLErrorReporter.java:368)
+	at com.sun.org.apache.xerces.internal.impl.XMLScanner.reportFatalError(XMLScanner.java:1436)
+	at com.sun.org.apache.xerces.internal.impl.XMLDocumentScannerImpl$PrologDriver.next(XMLDocumentScannerImpl.java:1019)
+	at com.sun.org.apache.xerces.internal.impl.XMLDocumentScannerImpl.next(XMLDocumentScannerImpl.java:606)
+	at com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl.scanDocument(XMLDocumentFragmentScannerImpl.java:510)
+	at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:848)
+	at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:777)
+	at com.sun.org.apache.xerces.internal.parsers.XMLParser.parse(XMLParser.java:141)
+	at com.sun.org.apache.xerces.internal.parsers.AbstractSAXParser.parse(AbstractSAXParser.java:1213)
+	at com.sun.org.apache.xerces.internal.jaxp.SAXParserImpl$JAXPSAXParser.parse(SAXParserImpl.java:649)
+	at com.sun.org.apache.xerces.internal.jaxp.SAXParserImpl.parse(SAXParserImpl.java:333)
+	at org.eclipse.emf.ecore.xmi.impl.XMLLoadImpl.load(XMLLoadImpl.java:175)
+	at org.eclipse.emf.ecore.xmi.impl.XMLResourceImpl.doLoad(XMLResourceImpl.java:253)
+	at org.eclipse.emf.ecore.resource.impl.ResourceImpl.load(ResourceImpl.java:1518)
+	at org.eclipse.emf.ecore.resource.impl.ResourceImpl.load(ResourceImpl.java:1297)
+	at org.eclipse.emf.ecore.resource.impl.ResourceSetImpl.demandLoad(ResourceSetImpl.java:259)
+	at org.eclipse.emf.ecore.resource.impl.ResourceSetImpl.demandLoadHelper(ResourceSetImpl.java:274)
+	... 4 more
