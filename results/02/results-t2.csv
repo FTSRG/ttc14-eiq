@@ -1,0 +1,9 @@
+id;Load/Generate;resourceRestructure1;Transform;[t2];createCouples/Engine;createCouples/coupleMatcher;createCouples/commonMoviesMatcher;createCouples/personNameMatcher;createCouples/transformation;createCouples/dispose;createCouples/adding;[t3];avg;[et1a];AVG/Engine;AVG/matcher;AVG/Sort;[et1b];Movies/matcher;Movies/Sort;Save;resourceRestructure2
+20000;5878;533;19008;15301;41;8088;3025;34;2710;1149;230;174;174;3199;1;2785;305;251;0;226;2311;2311
+40000;5969;683;18733;14976;33;7166;2709;62;3900;900;201;82;82;3375;1;3052;283;242;0;230;3298;3298
+60000;7249;1547;32736;27603;42;11117;4251;39;10537;1348;263;118;118;4694;1;4302;355;236;0;215;4925;4925
+80000;5636;1726;22552;19232;31;12488;2417;59;2998;1043;189;86;86;2946;1;2568;350;236;0;230;8062;8062
+100000;7551;2734;43002;32368;35;20007;4430;37;5997;1556;300;141;141;10144;1;9697;411;288;0;265;10511;10511
+200000;21340;13130;72449;65382;44;34057;14701;40;13683;2420;430;179;179;6312;2;5591;690;490;0;480;32477;32477
+id;Load/Generate;resourceRestructure1;Transform;[t2];createCouples/Engine;createCouples/coupleMatcher;createCouples/commonMoviesMatcher;createCouples/personNameMatcher;createCouples/transformation;createCouples/dispose;createCouples/adding;[t3];avg;[et1a];AVG/Engine;AVG/matcher;AVG/Sort;[et1b];Movies/matcher;Movies/Sort;Save;resourceRestructure2
+49930;7400;988;39029;37130;36;21123;11560;67;2866;1315;160;96;96;1546;2;1304;195;194;0;182;2410;2410
