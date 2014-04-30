@@ -67,7 +67,7 @@ class TransformationTest {
 			transformation.createCouples()
 		
 		// Clique generation
-		else if ((config.task == "et2") /*|| (config.task == "et3") || (config.task == "et4a") || (config.task == "et4b")*/)
+		else if (config.task == "et2")
 				transformation.createCliques(config.cliques) // n-cliques
 		
 		// Average calculation for each groups
