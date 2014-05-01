@@ -30,8 +30,9 @@ export sizes="1000 2000 3000 4000 5000 10000 50000 100000 200000"
 export vmargs="-XX:MaxPermSize=256m -Xms5G -Xmx5G -XX:+UseCompressedOops"
 export imdb_location=~/data/imdb-models
 export imdb_original_location=~/data/imdb-models-original
-export imdb=false
 export save=false
+
 export synthetic=true
+export imdb=false
 
 [ -f config-override.sh ] && . config-override.sh
