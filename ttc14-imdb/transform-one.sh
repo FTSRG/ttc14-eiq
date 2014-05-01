@@ -15,10 +15,14 @@ if $first; then
 	executable="$executable -first"
 fi
 
-$executable -task [t2][t3][et1a][et1b] 2>> results-t2.csv | tee -a results.txt
+run="$executable -task [t2][t3][et1a][et1b]"
+echo $run
+$run 2>> results-t2.csv | tee -a results.txt
 
 # restore
 for k in 3 4 5; do
-	$executable -task [et2][et3][et4a][et4b] -cliques $k 2>> results-clique-$k.csv | tee -a results.txt
+	run="$executable -task [et2][et3][et4a][et4b] -cliques $k"
+	echo $run
+	$run 2>> results-clique-$k.csv | tee -a results.txt
 done
 

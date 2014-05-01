@@ -6,13 +6,20 @@ rm results*.*
 
 first=true
 
-# synthetic
-for n in $sizes; do
+synthetic=true
+imdb=false
+
+
+if $synthetic; then
+    for n in $sizes; do
 	./transform-one.sh hu.bme.mit.ttc.imdb.instance/model/synthetic-$n.movies $first
 	first=false
-done
+    done
+fi
 
-# IMDb movies
-for f in $imdb_location/*.movies; do
+if $imdb; then
+    for f in $imdb_location/*.movies; do
 	./transform-one.sh $f
-done
+	first=false
+    done
+fi
