@@ -15,6 +15,10 @@ if $first; then
 	executable="$executable -first"
 fi
 
+if $save; then
+	executable="$executable -save"
+fi
+
 run="$executable -task [t2][t3][et1a][et1b]"
 echo $run
 $run 2>> results-t2.csv | tee -a results.txt
