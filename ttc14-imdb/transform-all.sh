@@ -4,18 +4,24 @@
 
 rm results*.*
 
-first=true
-
+export first=true
 if $synthetic; then
+    export model=synthetic
     for n in $sizes; do
-	./transform-one.sh hu.bme.mit.ttc.imdb.instance/model/synthetic-$n.movies $first
-	first=false
+	export executable="timeout -s KILL 10m ./transform-model.sh -N $n"
+
+	./transform-one.sh
+	export first=false
     done
 fi
 
+export first=true
 if $imdb; then
+    export model=imdb
     for f in $imdb_location/*.movies; do
-	./transform-one.sh $f
-	first=false
+	export executable="timeout -s KILL 10m ./transform-model.sh -instanceModelPath $f"
+	
+	./transform-one.sh
+	export first=false
     done
 fi

@@ -27,10 +27,10 @@ class BenchmarkResults {
 
 	def printResults() {
 		if (printHeader) {
-			System::err.println('''id«separator»«FOR statName : statNames SEPARATOR separator»«statName»«ENDFOR»''')
-		}
-		System::err.println(
-			'''«name»«separator»«FOR statName : statNames SEPARATOR separator»«statValues.get(statName).time»«ENDFOR»''')
+			System::err.println('''«FOR statName : statNames SEPARATOR separator»«statName»«ENDFOR»''')
+		}	
+		
+		System::err.println('''«FOR statName : statNames SEPARATOR separator»«statValues.get(statName).time»«ENDFOR»''')
 	}
 
 	def startStopper(String name) {

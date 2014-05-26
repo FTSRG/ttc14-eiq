@@ -33,6 +33,6 @@ export imdb_original_location=~/data/imdb-models-original
 export save=false
 
 export synthetic=true
-export imdb=false
+export imdb=true
 
 [ -f config-override.sh ] && . config-override.sh

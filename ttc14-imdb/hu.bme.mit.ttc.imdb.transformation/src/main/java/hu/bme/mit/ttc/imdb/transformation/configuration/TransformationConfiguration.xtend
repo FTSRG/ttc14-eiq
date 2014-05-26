@@ -40,7 +40,7 @@ public class TransformationConfiguration {
 
 	def protected initOptions() {
 		options.addOption("help", false, "displays this text")
-		
+
 		options.addOption("instanceModelPath", true, "instance model path")
 		options.addOption("N", true, "model size")
 
@@ -56,15 +56,18 @@ public class TransformationConfiguration {
 
 		if (cmd.hasOption("instanceModelPath"))
 			instanceModelPath = cmd.getOptionValue("instanceModelPath")
-		if (cmd.hasOption("N"))
+		if (cmd.hasOption("N")) {
 			n = new Integer(cmd.getOptionValue("N"))
-		
+		} else {
+			n = -1
+		}
+
 		if (cmd.hasOption("task"))
 			task = cmd.getOptionValue("task")
 		if (cmd.hasOption("cliques"))
 			cliques = new Integer(cmd.getOptionValue("cliques"))
-		
-		first = cmd.hasOption("first")		
+
+		first = cmd.hasOption("first")
 		save = cmd.hasOption("save")
 	}
 
