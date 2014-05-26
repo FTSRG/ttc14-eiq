@@ -36,24 +36,35 @@ class TransformationTest {
 	}
 
 	def protected init(TransformationConfiguration config, BenchmarkResults bmr) {
-		val g = new Generator
-		
 		val instanceModelPath = URI.createFileURI(config.instanceModelPath)
-
 		val ResourceSet rs = new ResourceSetImpl
-		val r = rs.getResource(instanceModelPath, true)
-
-		bmr.startStopper("resourceRestructure1")
-		val root = MoviesFactory.eINSTANCE.createRoot()
-
-		val c = new ArrayList(r.contents)
-		bmr.setName("" + c.size)
-		root.children.addAll(c.filter(typeof(ContainedElement)))
-
-		r.contents += root
-		bmr.endStopper("resourceRestructure1")
-
-		return r
+		var Resource r;
+		
+		val load = true; // todo: set the value from the config
+		
+		if(load) {
+			r = rs.getResource(instanceModelPath, true)
+	
+			bmr.startStopper("resourceRestructure1")
+			val root = MoviesFactory.eINSTANCE.createRoot()
+	
+			val c = new ArrayList(r.contents)
+			bmr.setName("" + c.size)
+			root.children.addAll(c.filter(typeof(ContainedElement)))
+	
+			r.contents += root
+			bmr.endStopper("resourceRestructure1")
+	
+			return r
+		}
+		else {
+			r = rs.createResource(instanceModelPath)
+			
+			val generator = new Generator
+			generator.r = r
+			generator.generate(config.cliques)
+			return r
+		}
 	}
 
 	// Task dependencies:
