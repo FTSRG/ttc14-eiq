@@ -19,3 +19,4 @@ Require-Bundle: org.eclipse.xtend.lib,
  hu.bme.mit.ttc.imdb.generator;bundle-version="1.0.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Export-Package: hu.bme.mit.ttc.imdb.transformation
+Import-Package: org.eclipse.incquery.runtime.rete.recipes

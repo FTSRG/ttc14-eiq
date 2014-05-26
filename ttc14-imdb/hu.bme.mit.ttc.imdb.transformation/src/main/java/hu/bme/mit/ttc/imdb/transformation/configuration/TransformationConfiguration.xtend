@@ -14,9 +14,12 @@ public class TransformationConfiguration {
 	protected final CommandLineParser parser = new PosixParser()
 	protected CommandLine cmd
 
-	Integer cliques
 	String instanceModelPath
+	Integer n
+
 	String task
+	Integer cliques
+
 	boolean first
 	boolean save
 
@@ -37,10 +40,13 @@ public class TransformationConfiguration {
 
 	def protected initOptions() {
 		options.addOption("help", false, "displays this text")
-
+		
 		options.addOption("instanceModelPath", true, "instance model path")
+		options.addOption("N", true, "model size")
+
 		options.addOption("task", true, "task id: [t2|t3|et1a|et1b|et2|et3|et4a|et4b]")
 		options.addOption("cliques", true, "clique size for extension tasks 2-4")
+
 		options.addOption("first", false, "defines if this is the first run (if results header should be generated)")
 		options.addOption("save", false, "defines if the resource should be saved")
 	}
@@ -50,11 +56,15 @@ public class TransformationConfiguration {
 
 		if (cmd.hasOption("instanceModelPath"))
 			instanceModelPath = cmd.getOptionValue("instanceModelPath")
+		if (cmd.hasOption("N"))
+			n = new Integer(cmd.getOptionValue("N"))
+		
 		if (cmd.hasOption("task"))
 			task = cmd.getOptionValue("task")
 		if (cmd.hasOption("cliques"))
 			cliques = new Integer(cmd.getOptionValue("cliques"))
-		first = cmd.hasOption("first")
+		
+		first = cmd.hasOption("first")		
 		save = cmd.hasOption("save")
 	}
 
@@ -95,9 +105,12 @@ public class TransformationConfiguration {
 	def public boolean getFirst() {
 		return first
 	}
-	
+
 	def public boolean getSave() {
 		return save
 	}
 
+	def public int getN() {
+		return n
+	}
 }

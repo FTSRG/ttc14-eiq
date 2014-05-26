@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <launchConfiguration type="org.eclipse.jdt.launching.localJavaApplication">
 <listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
-<listEntry value="/hu.bme.mit.ttc.imdb.generator/src/main/java/hu/bme/mit/ttc/imdb/main/GeneratorMain.java"/>
+<listEntry value="/hu.bme.mit.ttc.imdb.generator/src/main/generated-sources/xtend/hu/bme/mit/ttc/imdb/main/GeneratorMain.java"/>
 </listAttribute>
 <listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_TYPES">
 <listEntry value="1"/>

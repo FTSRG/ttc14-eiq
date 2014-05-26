@@ -36,13 +36,11 @@ class TransformationTest {
 	}
 
 	def protected init(TransformationConfiguration config, BenchmarkResults bmr) {
-		val instanceModelPath = URI.createFileURI(config.instanceModelPath)
 		val ResourceSet rs = new ResourceSetImpl
 		var Resource r;
 		
-		val load = true; // todo: set the value from the config
-		
-		if(load) {
+		if (config.n == 0) {
+			val instanceModelPath = URI.createFileURI(config.instanceModelPath)
 			r = rs.getResource(instanceModelPath, true)
 	
 			bmr.startStopper("resourceRestructure1")
@@ -58,11 +56,23 @@ class TransformationTest {
 			return r
 		}
 		else {
+			val instanceModelPath = URI.createFileURI("dummy://synthetic.movies")
 			r = rs.createResource(instanceModelPath)
 			
+			bmr.startStopper("resourceRestructure1")
+			val root = MoviesFactory.eINSTANCE.createRoot()
+
 			val generator = new Generator
 			generator.r = r
-			generator.generate(config.cliques)
+			generator.generate(config.n)
+	
+			val c = new ArrayList(r.contents)
+			bmr.setName("" + c.size)
+			root.children.addAll(c.filter(typeof(ContainedElement)))
+			
+			r.contents += root
+			bmr.endStopper("resourceRestructure1")
+	
 			return r
 		}
 	}
