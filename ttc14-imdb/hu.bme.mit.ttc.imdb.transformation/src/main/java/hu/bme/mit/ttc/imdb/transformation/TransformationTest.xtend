@@ -10,6 +10,7 @@ import org.eclipse.emf.common.util.URI
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.emf.ecore.resource.ResourceSet
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl
+import hu.bme.mit.ttc.imdb.generator.Generator
 
 class TransformationTest {
 
@@ -35,6 +36,8 @@ class TransformationTest {
 	}
 
 	def protected init(TransformationConfiguration config, BenchmarkResults bmr) {
+		val g = new Generator
+		
 		val instanceModelPath = URI.createFileURI(config.instanceModelPath)
 
 		val ResourceSet rs = new ResourceSetImpl
