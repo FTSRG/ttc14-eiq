@@ -1,6 +1,7 @@
 package hu.bme.mit.ttc.imdb.queries.util;
 
 import com.google.common.collect.Sets;
+import hu.bme.mit.ttc.imdb.queries.PersonNameMatch;
 import hu.bme.mit.ttc.imdb.queries.PersonNameMatcher;
 import java.util.Arrays;
 import java.util.List;
@@ -8,7 +9,6 @@ import java.util.Set;
 import org.eclipse.incquery.runtime.api.IncQueryEngine;
 import org.eclipse.incquery.runtime.api.impl.BaseGeneratedQuerySpecification;
 import org.eclipse.incquery.runtime.exception.IncQueryException;
-import org.eclipse.incquery.runtime.extensibility.IQuerySpecificationProvider;
 import org.eclipse.incquery.runtime.matchers.psystem.PBody;
 import org.eclipse.incquery.runtime.matchers.psystem.PVariable;
 import org.eclipse.incquery.runtime.matchers.psystem.basicdeferred.ExportedParameter;
@@ -56,6 +56,16 @@ public final class PersonNameQuerySpecification extends BaseGeneratedQuerySpecif
   }
   
   @Override
+  public PersonNameMatch newEmptyMatch() {
+    return PersonNameMatch.newEmptyMatch();
+  }
+  
+  @Override
+  public PersonNameMatch newMatch(final Object... parameters) {
+    return PersonNameMatch.newMatch((hu.bme.mit.ttc.imdb.movies.Person) parameters[0], (java.lang.String) parameters[1]);
+  }
+  
+  @Override
   public Set<PBody> doGetContainedBodies() throws IncQueryException {
     Set<PBody> bodies = Sets.newLinkedHashSet();
     {
@@ -74,16 +84,6 @@ public final class PersonNameQuerySpecification extends BaseGeneratedQuerySpecif
     return bodies;
   }
   
-  @SuppressWarnings("all")
-  public static class Provider implements IQuerySpecificationProvider<PersonNameQuerySpecification> {
-    @Override
-    public PersonNameQuerySpecification get() throws IncQueryException {
-      return instance();
-    }
-  }
-  
-  
-  @SuppressWarnings("all")
   private static class LazyHolder {
     private final static PersonNameQuerySpecification INSTANCE = make();
     
@@ -92,5 +92,4 @@ public final class PersonNameQuerySpecification extends BaseGeneratedQuerySpecif
       
     }
   }
-  
 }

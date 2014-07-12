@@ -155,6 +155,12 @@ public abstract class PersonsTo5CliqueMatch extends BasePatternMatch {
   }
   
   @Override
+  public PersonsTo5CliqueMatch toImmutable() {
+    return isMutable() ? newMatch(fP1, fP2, fP3, fP4, fP5) : this;
+    
+  }
+  
+  @Override
   public String prettyPrint() {
     StringBuilder result = new StringBuilder();
     result.append("\"P1\"=" + prettyPrintValue(fP1) + ", ");
@@ -218,8 +224,53 @@ public abstract class PersonsTo5CliqueMatch extends BasePatternMatch {
     
   }
   
-  @SuppressWarnings("all")
-  static final class Mutable extends PersonsTo5CliqueMatch {
+  /**
+   * Returns an empty, mutable match.
+   * Fields of the mutable match can be filled to create a partial match, usable as matcher input.
+   * 
+   * @return the empty match.
+   * 
+   */
+  public static PersonsTo5CliqueMatch newEmptyMatch() {
+    return new Mutable(null, null, null, null, null);
+    
+  }
+  
+  /**
+   * Returns a mutable (partial) match.
+   * Fields of the mutable match can be filled to create a partial match, usable as matcher input.
+   * 
+   * @param pP1 the fixed value of pattern parameter P1, or null if not bound.
+   * @param pP2 the fixed value of pattern parameter P2, or null if not bound.
+   * @param pP3 the fixed value of pattern parameter P3, or null if not bound.
+   * @param pP4 the fixed value of pattern parameter P4, or null if not bound.
+   * @param pP5 the fixed value of pattern parameter P5, or null if not bound.
+   * @return the new, mutable (partial) match object.
+   * 
+   */
+  public static PersonsTo5CliqueMatch newMutableMatch(final String pP1, final String pP2, final String pP3, final String pP4, final String pP5) {
+    return new Mutable(pP1, pP2, pP3, pP4, pP5);
+    
+  }
+  
+  /**
+   * Returns a new (partial) match.
+   * This can be used e.g. to call the matcher with a partial match.
+   * <p>The returned match will be immutable. Use {@link #newEmptyMatch()} to obtain a mutable match object.
+   * @param pP1 the fixed value of pattern parameter P1, or null if not bound.
+   * @param pP2 the fixed value of pattern parameter P2, or null if not bound.
+   * @param pP3 the fixed value of pattern parameter P3, or null if not bound.
+   * @param pP4 the fixed value of pattern parameter P4, or null if not bound.
+   * @param pP5 the fixed value of pattern parameter P5, or null if not bound.
+   * @return the (partial) match object.
+   * 
+   */
+  public static PersonsTo5CliqueMatch newMatch(final String pP1, final String pP2, final String pP3, final String pP4, final String pP5) {
+    return new Immutable(pP1, pP2, pP3, pP4, pP5);
+    
+  }
+  
+  private static final class Mutable extends PersonsTo5CliqueMatch {
     Mutable(final String pP1, final String pP2, final String pP3, final String pP4, final String pP5) {
       super(pP1, pP2, pP3, pP4, pP5);
       
@@ -231,9 +282,7 @@ public abstract class PersonsTo5CliqueMatch extends BasePatternMatch {
     }
   }
   
-  
-  @SuppressWarnings("all")
-  static final class Immutable extends PersonsTo5CliqueMatch {
+  private static final class Immutable extends PersonsTo5CliqueMatch {
     Immutable(final String pP1, final String pP2, final String pP3, final String pP4, final String pP5) {
       super(pP1, pP2, pP3, pP4, pP5);
       
@@ -244,5 +293,4 @@ public abstract class PersonsTo5CliqueMatch extends BasePatternMatch {
       return false;
     }
   }
-  
 }

@@ -1,6 +1,7 @@
 package hu.bme.mit.ttc.imdb.queries.util;
 
 import com.google.common.collect.Sets;
+import hu.bme.mit.ttc.imdb.queries.CommonMoviesOfCoupleMatch;
 import hu.bme.mit.ttc.imdb.queries.CommonMoviesOfCoupleMatcher;
 import java.util.Arrays;
 import java.util.List;
@@ -8,7 +9,6 @@ import java.util.Set;
 import org.eclipse.incquery.runtime.api.IncQueryEngine;
 import org.eclipse.incquery.runtime.api.impl.BaseGeneratedQuerySpecification;
 import org.eclipse.incquery.runtime.exception.IncQueryException;
-import org.eclipse.incquery.runtime.extensibility.IQuerySpecificationProvider;
 import org.eclipse.incquery.runtime.matchers.psystem.PBody;
 import org.eclipse.incquery.runtime.matchers.psystem.PVariable;
 import org.eclipse.incquery.runtime.matchers.psystem.basicdeferred.ExportedParameter;
@@ -57,6 +57,16 @@ public final class CommonMoviesOfCoupleQuerySpecification extends BaseGeneratedQ
   }
   
   @Override
+  public CommonMoviesOfCoupleMatch newEmptyMatch() {
+    return CommonMoviesOfCoupleMatch.newEmptyMatch();
+  }
+  
+  @Override
+  public CommonMoviesOfCoupleMatch newMatch(final Object... parameters) {
+    return CommonMoviesOfCoupleMatch.newMatch((hu.bme.mit.ttc.imdb.movies.Couple) parameters[0], (hu.bme.mit.ttc.imdb.movies.Movie) parameters[1]);
+  }
+  
+  @Override
   public Set<PBody> doGetContainedBodies() throws IncQueryException {
     Set<PBody> bodies = Sets.newLinkedHashSet();
     {
@@ -76,16 +86,6 @@ public final class CommonMoviesOfCoupleQuerySpecification extends BaseGeneratedQ
     return bodies;
   }
   
-  @SuppressWarnings("all")
-  public static class Provider implements IQuerySpecificationProvider<CommonMoviesOfCoupleQuerySpecification> {
-    @Override
-    public CommonMoviesOfCoupleQuerySpecification get() throws IncQueryException {
-      return instance();
-    }
-  }
-  
-  
-  @SuppressWarnings("all")
   private static class LazyHolder {
     private final static CommonMoviesOfCoupleQuerySpecification INSTANCE = make();
     
@@ -94,5 +94,4 @@ public final class CommonMoviesOfCoupleQuerySpecification extends BaseGeneratedQ
       
     }
   }
-  
 }

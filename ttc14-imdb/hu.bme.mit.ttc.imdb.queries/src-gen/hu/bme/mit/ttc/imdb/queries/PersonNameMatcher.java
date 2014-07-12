@@ -194,7 +194,7 @@ public class PersonNameMatcher extends BaseMatcher<PersonNameMatch> {
   }
   
   /**
-   * Returns a new (partial) Match object for the matcher.
+   * Returns a new (partial) match.
    * This can be used e.g. to call the matcher with a partial match.
    * <p>The returned match will be immutable. Use {@link #newEmptyMatch()} to obtain a mutable match object.
    * @param pP the fixed value of pattern parameter p, or null if not bound.
@@ -203,7 +203,7 @@ public class PersonNameMatcher extends BaseMatcher<PersonNameMatch> {
    * 
    */
   public PersonNameMatch newMatch(final Person pP, final String pPName) {
-    return new PersonNameMatch.Immutable(pP, pPName);
+    return PersonNameMatch.newMatch(pP, pPName);
     
   }
   
@@ -286,7 +286,7 @@ public class PersonNameMatcher extends BaseMatcher<PersonNameMatch> {
   @Override
   protected PersonNameMatch tupleToMatch(final Tuple t) {
     try {
-      return new PersonNameMatch.Immutable((hu.bme.mit.ttc.imdb.movies.Person) t.get(POSITION_P), (java.lang.String) t.get(POSITION_PNAME));
+      return PersonNameMatch.newMatch((hu.bme.mit.ttc.imdb.movies.Person) t.get(POSITION_P), (java.lang.String) t.get(POSITION_PNAME));
     } catch(ClassCastException e) {
       LOGGER.error("Element(s) in tuple not properly typed!",e);
       return null;
@@ -297,7 +297,7 @@ public class PersonNameMatcher extends BaseMatcher<PersonNameMatch> {
   @Override
   protected PersonNameMatch arrayToMatch(final Object[] match) {
     try {
-      return new PersonNameMatch.Immutable((hu.bme.mit.ttc.imdb.movies.Person) match[POSITION_P], (java.lang.String) match[POSITION_PNAME]);
+      return PersonNameMatch.newMatch((hu.bme.mit.ttc.imdb.movies.Person) match[POSITION_P], (java.lang.String) match[POSITION_PNAME]);
     } catch(ClassCastException e) {
       LOGGER.error("Element(s) in array not properly typed!",e);
       return null;
@@ -308,7 +308,7 @@ public class PersonNameMatcher extends BaseMatcher<PersonNameMatch> {
   @Override
   protected PersonNameMatch arrayToMatchMutable(final Object[] match) {
     try {
-      return new PersonNameMatch.Mutable((hu.bme.mit.ttc.imdb.movies.Person) match[POSITION_P], (java.lang.String) match[POSITION_PNAME]);
+      return PersonNameMatch.newMutableMatch((hu.bme.mit.ttc.imdb.movies.Person) match[POSITION_P], (java.lang.String) match[POSITION_PNAME]);
     } catch(ClassCastException e) {
       LOGGER.error("Element(s) in array not properly typed!",e);
       return null;

@@ -206,7 +206,7 @@ public class CountOfCommonMoviesOfCoupleMatcher extends BaseMatcher<CountOfCommo
   }
   
   /**
-   * Returns a new (partial) Match object for the matcher.
+   * Returns a new (partial) match.
    * This can be used e.g. to call the matcher with a partial match.
    * <p>The returned match will be immutable. Use {@link #newEmptyMatch()} to obtain a mutable match object.
    * @param pP1 the fixed value of pattern parameter p1, or null if not bound.
@@ -216,7 +216,7 @@ public class CountOfCommonMoviesOfCoupleMatcher extends BaseMatcher<CountOfCommo
    * 
    */
   public CountOfCommonMoviesOfCoupleMatch newMatch(final Person pP1, final Person pP2, final Integer pN) {
-    return new CountOfCommonMoviesOfCoupleMatch.Immutable(pP1, pP2, pN);
+    return CountOfCommonMoviesOfCoupleMatch.newMatch(pP1, pP2, pN);
     
   }
   
@@ -337,7 +337,7 @@ public class CountOfCommonMoviesOfCoupleMatcher extends BaseMatcher<CountOfCommo
   @Override
   protected CountOfCommonMoviesOfCoupleMatch tupleToMatch(final Tuple t) {
     try {
-      return new CountOfCommonMoviesOfCoupleMatch.Immutable((hu.bme.mit.ttc.imdb.movies.Person) t.get(POSITION_P1), (hu.bme.mit.ttc.imdb.movies.Person) t.get(POSITION_P2), (java.lang.Integer) t.get(POSITION_N));
+      return CountOfCommonMoviesOfCoupleMatch.newMatch((hu.bme.mit.ttc.imdb.movies.Person) t.get(POSITION_P1), (hu.bme.mit.ttc.imdb.movies.Person) t.get(POSITION_P2), (java.lang.Integer) t.get(POSITION_N));
     } catch(ClassCastException e) {
       LOGGER.error("Element(s) in tuple not properly typed!",e);
       return null;
@@ -348,7 +348,7 @@ public class CountOfCommonMoviesOfCoupleMatcher extends BaseMatcher<CountOfCommo
   @Override
   protected CountOfCommonMoviesOfCoupleMatch arrayToMatch(final Object[] match) {
     try {
-      return new CountOfCommonMoviesOfCoupleMatch.Immutable((hu.bme.mit.ttc.imdb.movies.Person) match[POSITION_P1], (hu.bme.mit.ttc.imdb.movies.Person) match[POSITION_P2], (java.lang.Integer) match[POSITION_N]);
+      return CountOfCommonMoviesOfCoupleMatch.newMatch((hu.bme.mit.ttc.imdb.movies.Person) match[POSITION_P1], (hu.bme.mit.ttc.imdb.movies.Person) match[POSITION_P2], (java.lang.Integer) match[POSITION_N]);
     } catch(ClassCastException e) {
       LOGGER.error("Element(s) in array not properly typed!",e);
       return null;
@@ -359,7 +359,7 @@ public class CountOfCommonMoviesOfCoupleMatcher extends BaseMatcher<CountOfCommo
   @Override
   protected CountOfCommonMoviesOfCoupleMatch arrayToMatchMutable(final Object[] match) {
     try {
-      return new CountOfCommonMoviesOfCoupleMatch.Mutable((hu.bme.mit.ttc.imdb.movies.Person) match[POSITION_P1], (hu.bme.mit.ttc.imdb.movies.Person) match[POSITION_P2], (java.lang.Integer) match[POSITION_N]);
+      return CountOfCommonMoviesOfCoupleMatch.newMutableMatch((hu.bme.mit.ttc.imdb.movies.Person) match[POSITION_P1], (hu.bme.mit.ttc.imdb.movies.Person) match[POSITION_P2], (java.lang.Integer) match[POSITION_N]);
     } catch(ClassCastException e) {
       LOGGER.error("Element(s) in array not properly typed!",e);
       return null;

@@ -1,6 +1,7 @@
 package hu.bme.mit.ttc.imdb.queries.util;
 
 import com.google.common.collect.Sets;
+import hu.bme.mit.ttc.imdb.queries.GroupSizeMatch;
 import hu.bme.mit.ttc.imdb.queries.GroupSizeMatcher;
 import hu.bme.mit.ttc.imdb.queries.util.MemberOfGroupQuerySpecification;
 import java.util.Arrays;
@@ -9,7 +10,6 @@ import java.util.Set;
 import org.eclipse.incquery.runtime.api.IncQueryEngine;
 import org.eclipse.incquery.runtime.api.impl.BaseGeneratedQuerySpecification;
 import org.eclipse.incquery.runtime.exception.IncQueryException;
-import org.eclipse.incquery.runtime.extensibility.IQuerySpecificationProvider;
 import org.eclipse.incquery.runtime.matchers.psystem.PBody;
 import org.eclipse.incquery.runtime.matchers.psystem.PVariable;
 import org.eclipse.incquery.runtime.matchers.psystem.basicdeferred.ExportedParameter;
@@ -59,6 +59,16 @@ public final class GroupSizeQuerySpecification extends BaseGeneratedQuerySpecifi
   }
   
   @Override
+  public GroupSizeMatch newEmptyMatch() {
+    return GroupSizeMatch.newEmptyMatch();
+  }
+  
+  @Override
+  public GroupSizeMatch newMatch(final Object... parameters) {
+    return GroupSizeMatch.newMatch((hu.bme.mit.ttc.imdb.movies.Group) parameters[0], (java.lang.Integer) parameters[1]);
+  }
+  
+  @Override
   public Set<PBody> doGetContainedBodies() throws IncQueryException {
     Set<PBody> bodies = Sets.newLinkedHashSet();
     {
@@ -79,16 +89,6 @@ public final class GroupSizeQuerySpecification extends BaseGeneratedQuerySpecifi
     return bodies;
   }
   
-  @SuppressWarnings("all")
-  public static class Provider implements IQuerySpecificationProvider<GroupSizeQuerySpecification> {
-    @Override
-    public GroupSizeQuerySpecification get() throws IncQueryException {
-      return instance();
-    }
-  }
-  
-  
-  @SuppressWarnings("all")
   private static class LazyHolder {
     private final static GroupSizeQuerySpecification INSTANCE = make();
     
@@ -97,5 +97,4 @@ public final class GroupSizeQuerySpecification extends BaseGeneratedQuerySpecifi
       
     }
   }
-  
 }

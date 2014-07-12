@@ -1,6 +1,7 @@
 package hu.bme.mit.ttc.imdb.queries.util;
 
 import com.google.common.collect.Sets;
+import hu.bme.mit.ttc.imdb.queries.PersonsToCoupleMatch;
 import hu.bme.mit.ttc.imdb.queries.PersonsToCoupleMatcher;
 import hu.bme.mit.ttc.imdb.queries.util.CastQuerySpecification;
 import java.util.Arrays;
@@ -9,7 +10,6 @@ import java.util.Set;
 import org.eclipse.incquery.runtime.api.IncQueryEngine;
 import org.eclipse.incquery.runtime.api.impl.BaseGeneratedQuerySpecification;
 import org.eclipse.incquery.runtime.exception.IncQueryException;
-import org.eclipse.incquery.runtime.extensibility.IQuerySpecificationProvider;
 import org.eclipse.incquery.runtime.matchers.psystem.IExpressionEvaluator;
 import org.eclipse.incquery.runtime.matchers.psystem.IValueProvider;
 import org.eclipse.incquery.runtime.matchers.psystem.PBody;
@@ -62,6 +62,16 @@ public final class PersonsToCoupleQuerySpecification extends BaseGeneratedQueryS
   }
   
   @Override
+  public PersonsToCoupleMatch newEmptyMatch() {
+    return PersonsToCoupleMatch.newEmptyMatch();
+  }
+  
+  @Override
+  public PersonsToCoupleMatch newMatch(final Object... parameters) {
+    return PersonsToCoupleMatch.newMatch((java.lang.String) parameters[0], (java.lang.String) parameters[1]);
+  }
+  
+  @Override
   public Set<PBody> doGetContainedBodies() throws IncQueryException {
     Set<PBody> bodies = Sets.newLinkedHashSet();
     {
@@ -110,16 +120,6 @@ public final class PersonsToCoupleQuerySpecification extends BaseGeneratedQueryS
     return bodies;
   }
   
-  @SuppressWarnings("all")
-  public static class Provider implements IQuerySpecificationProvider<PersonsToCoupleQuerySpecification> {
-    @Override
-    public PersonsToCoupleQuerySpecification get() throws IncQueryException {
-      return instance();
-    }
-  }
-  
-  
-  @SuppressWarnings("all")
   private static class LazyHolder {
     private final static PersonsToCoupleQuerySpecification INSTANCE = make();
     
@@ -128,7 +128,6 @@ public final class PersonsToCoupleQuerySpecification extends BaseGeneratedQueryS
       
     }
   }
-  
   
   private boolean evaluateExpression_1_1(final String p1name, final String p2name) {
     boolean _lessThan = (p1name.compareTo(p2name) < 0);

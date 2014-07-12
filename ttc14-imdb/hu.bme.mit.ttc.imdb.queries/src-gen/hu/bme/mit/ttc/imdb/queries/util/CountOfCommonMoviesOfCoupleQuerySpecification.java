@@ -1,6 +1,7 @@
 package hu.bme.mit.ttc.imdb.queries.util;
 
 import com.google.common.collect.Sets;
+import hu.bme.mit.ttc.imdb.queries.CountOfCommonMoviesOfCoupleMatch;
 import hu.bme.mit.ttc.imdb.queries.CountOfCommonMoviesOfCoupleMatcher;
 import hu.bme.mit.ttc.imdb.queries.util.CommonMoviesOfCoupleQuerySpecification;
 import java.util.Arrays;
@@ -9,7 +10,6 @@ import java.util.Set;
 import org.eclipse.incquery.runtime.api.IncQueryEngine;
 import org.eclipse.incquery.runtime.api.impl.BaseGeneratedQuerySpecification;
 import org.eclipse.incquery.runtime.exception.IncQueryException;
-import org.eclipse.incquery.runtime.extensibility.IQuerySpecificationProvider;
 import org.eclipse.incquery.runtime.matchers.psystem.PBody;
 import org.eclipse.incquery.runtime.matchers.psystem.PVariable;
 import org.eclipse.incquery.runtime.matchers.psystem.basicdeferred.ExportedParameter;
@@ -59,6 +59,16 @@ public final class CountOfCommonMoviesOfCoupleQuerySpecification extends BaseGen
   }
   
   @Override
+  public CountOfCommonMoviesOfCoupleMatch newEmptyMatch() {
+    return CountOfCommonMoviesOfCoupleMatch.newEmptyMatch();
+  }
+  
+  @Override
+  public CountOfCommonMoviesOfCoupleMatch newMatch(final Object... parameters) {
+    return CountOfCommonMoviesOfCoupleMatch.newMatch((hu.bme.mit.ttc.imdb.movies.Person) parameters[0], (hu.bme.mit.ttc.imdb.movies.Person) parameters[1], (java.lang.Integer) parameters[2]);
+  }
+  
+  @Override
   public Set<PBody> doGetContainedBodies() throws IncQueryException {
     Set<PBody> bodies = Sets.newLinkedHashSet();
     {
@@ -84,16 +94,6 @@ public final class CountOfCommonMoviesOfCoupleQuerySpecification extends BaseGen
     return bodies;
   }
   
-  @SuppressWarnings("all")
-  public static class Provider implements IQuerySpecificationProvider<CountOfCommonMoviesOfCoupleQuerySpecification> {
-    @Override
-    public CountOfCommonMoviesOfCoupleQuerySpecification get() throws IncQueryException {
-      return instance();
-    }
-  }
-  
-  
-  @SuppressWarnings("all")
   private static class LazyHolder {
     private final static CountOfCommonMoviesOfCoupleQuerySpecification INSTANCE = make();
     
@@ -102,5 +102,4 @@ public final class CountOfCommonMoviesOfCoupleQuerySpecification extends BaseGen
       
     }
   }
-  
 }

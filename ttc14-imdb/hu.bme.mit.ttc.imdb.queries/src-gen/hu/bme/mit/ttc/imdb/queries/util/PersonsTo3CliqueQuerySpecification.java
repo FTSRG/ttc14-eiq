@@ -1,6 +1,7 @@
 package hu.bme.mit.ttc.imdb.queries.util;
 
 import com.google.common.collect.Sets;
+import hu.bme.mit.ttc.imdb.queries.PersonsTo3CliqueMatch;
 import hu.bme.mit.ttc.imdb.queries.PersonsTo3CliqueMatcher;
 import hu.bme.mit.ttc.imdb.queries.util.CastQuerySpecification;
 import java.util.Arrays;
@@ -9,7 +10,6 @@ import java.util.Set;
 import org.eclipse.incquery.runtime.api.IncQueryEngine;
 import org.eclipse.incquery.runtime.api.impl.BaseGeneratedQuerySpecification;
 import org.eclipse.incquery.runtime.exception.IncQueryException;
-import org.eclipse.incquery.runtime.extensibility.IQuerySpecificationProvider;
 import org.eclipse.incquery.runtime.matchers.psystem.IExpressionEvaluator;
 import org.eclipse.incquery.runtime.matchers.psystem.IValueProvider;
 import org.eclipse.incquery.runtime.matchers.psystem.PBody;
@@ -59,6 +59,16 @@ public final class PersonsTo3CliqueQuerySpecification extends BaseGeneratedQuery
   @Override
   public List<PParameter> getParameters() {
     return Arrays.asList(new PParameter("P1", "java.lang.String"),new PParameter("P2", "java.lang.String"),new PParameter("P3", "java.lang.String"));
+  }
+  
+  @Override
+  public PersonsTo3CliqueMatch newEmptyMatch() {
+    return PersonsTo3CliqueMatch.newEmptyMatch();
+  }
+  
+  @Override
+  public PersonsTo3CliqueMatch newMatch(final Object... parameters) {
+    return PersonsTo3CliqueMatch.newMatch((java.lang.String) parameters[0], (java.lang.String) parameters[1], (java.lang.String) parameters[2]);
   }
   
   @Override
@@ -154,16 +164,6 @@ public final class PersonsTo3CliqueQuerySpecification extends BaseGeneratedQuery
     return bodies;
   }
   
-  @SuppressWarnings("all")
-  public static class Provider implements IQuerySpecificationProvider<PersonsTo3CliqueQuerySpecification> {
-    @Override
-    public PersonsTo3CliqueQuerySpecification get() throws IncQueryException {
-      return instance();
-    }
-  }
-  
-  
-  @SuppressWarnings("all")
   private static class LazyHolder {
     private final static PersonsTo3CliqueQuerySpecification INSTANCE = make();
     
@@ -172,7 +172,6 @@ public final class PersonsTo3CliqueQuerySpecification extends BaseGeneratedQuery
       
     }
   }
-  
   
   private boolean evaluateExpression_1_1(final String P1, final String P2) {
     boolean _lessThan = (P1.compareTo(P2) < 0);

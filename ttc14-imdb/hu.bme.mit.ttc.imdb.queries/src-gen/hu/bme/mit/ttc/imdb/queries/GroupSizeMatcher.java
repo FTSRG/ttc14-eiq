@@ -196,7 +196,7 @@ public class GroupSizeMatcher extends BaseMatcher<GroupSizeMatch> {
   }
   
   /**
-   * Returns a new (partial) Match object for the matcher.
+   * Returns a new (partial) match.
    * This can be used e.g. to call the matcher with a partial match.
    * <p>The returned match will be immutable. Use {@link #newEmptyMatch()} to obtain a mutable match object.
    * @param pGroup the fixed value of pattern parameter group, or null if not bound.
@@ -205,7 +205,7 @@ public class GroupSizeMatcher extends BaseMatcher<GroupSizeMatch> {
    * 
    */
   public GroupSizeMatch newMatch(final Group pGroup, final Integer pS) {
-    return new GroupSizeMatch.Immutable(pGroup, pS);
+    return GroupSizeMatch.newMatch(pGroup, pS);
     
   }
   
@@ -288,7 +288,7 @@ public class GroupSizeMatcher extends BaseMatcher<GroupSizeMatch> {
   @Override
   protected GroupSizeMatch tupleToMatch(final Tuple t) {
     try {
-      return new GroupSizeMatch.Immutable((hu.bme.mit.ttc.imdb.movies.Group) t.get(POSITION_GROUP), (java.lang.Integer) t.get(POSITION_S));
+      return GroupSizeMatch.newMatch((hu.bme.mit.ttc.imdb.movies.Group) t.get(POSITION_GROUP), (java.lang.Integer) t.get(POSITION_S));
     } catch(ClassCastException e) {
       LOGGER.error("Element(s) in tuple not properly typed!",e);
       return null;
@@ -299,7 +299,7 @@ public class GroupSizeMatcher extends BaseMatcher<GroupSizeMatch> {
   @Override
   protected GroupSizeMatch arrayToMatch(final Object[] match) {
     try {
-      return new GroupSizeMatch.Immutable((hu.bme.mit.ttc.imdb.movies.Group) match[POSITION_GROUP], (java.lang.Integer) match[POSITION_S]);
+      return GroupSizeMatch.newMatch((hu.bme.mit.ttc.imdb.movies.Group) match[POSITION_GROUP], (java.lang.Integer) match[POSITION_S]);
     } catch(ClassCastException e) {
       LOGGER.error("Element(s) in array not properly typed!",e);
       return null;
@@ -310,7 +310,7 @@ public class GroupSizeMatcher extends BaseMatcher<GroupSizeMatch> {
   @Override
   protected GroupSizeMatch arrayToMatchMutable(final Object[] match) {
     try {
-      return new GroupSizeMatch.Mutable((hu.bme.mit.ttc.imdb.movies.Group) match[POSITION_GROUP], (java.lang.Integer) match[POSITION_S]);
+      return GroupSizeMatch.newMutableMatch((hu.bme.mit.ttc.imdb.movies.Group) match[POSITION_GROUP], (java.lang.Integer) match[POSITION_S]);
     } catch(ClassCastException e) {
       LOGGER.error("Element(s) in array not properly typed!",e);
       return null;

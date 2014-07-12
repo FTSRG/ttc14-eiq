@@ -20,7 +20,7 @@
 		<xtend.compiler.version>2.4.3</xtend.compiler.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.showWarnings>true</maven.compiler.showWarnings>
-		<incquery.update.site>http://download.eclipse.org/incquery/updates/integration</incquery.update.site>
+		<incquery.update.site>http://download.eclipse.org/incquery/updates/release</incquery.update.site>
 		<maven.compiler.source>1.7</maven.compiler.source>
 		<maven.compiler.target>1.7</maven.compiler.target>
 	</properties>
@@ -107,6 +107,11 @@
 			<id>incquery</id>
 			<layout>p2</layout>
 			<url>${incquery.update.site}</url>
+		</repository>
+		<repository>
+			<id>xtext</id>
+			<layout>p2</layout>
+			<url>http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases/</url>
 		</repository>
 	</repositories>
 </project>

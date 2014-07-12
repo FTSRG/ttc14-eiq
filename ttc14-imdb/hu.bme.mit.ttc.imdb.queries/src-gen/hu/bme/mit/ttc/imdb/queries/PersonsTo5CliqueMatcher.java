@@ -230,7 +230,7 @@ public class PersonsTo5CliqueMatcher extends BaseMatcher<PersonsTo5CliqueMatch> 
   }
   
   /**
-   * Returns a new (partial) Match object for the matcher.
+   * Returns a new (partial) match.
    * This can be used e.g. to call the matcher with a partial match.
    * <p>The returned match will be immutable. Use {@link #newEmptyMatch()} to obtain a mutable match object.
    * @param pP1 the fixed value of pattern parameter P1, or null if not bound.
@@ -242,7 +242,7 @@ public class PersonsTo5CliqueMatcher extends BaseMatcher<PersonsTo5CliqueMatch> 
    * 
    */
   public PersonsTo5CliqueMatch newMatch(final String pP1, final String pP2, final String pP3, final String pP4, final String pP5) {
-    return new PersonsTo5CliqueMatch.Immutable(pP1, pP2, pP3, pP4, pP5);
+    return PersonsTo5CliqueMatch.newMatch(pP1, pP2, pP3, pP4, pP5);
     
   }
   
@@ -439,7 +439,7 @@ public class PersonsTo5CliqueMatcher extends BaseMatcher<PersonsTo5CliqueMatch> 
   @Override
   protected PersonsTo5CliqueMatch tupleToMatch(final Tuple t) {
     try {
-      return new PersonsTo5CliqueMatch.Immutable((java.lang.String) t.get(POSITION_P1), (java.lang.String) t.get(POSITION_P2), (java.lang.String) t.get(POSITION_P3), (java.lang.String) t.get(POSITION_P4), (java.lang.String) t.get(POSITION_P5));
+      return PersonsTo5CliqueMatch.newMatch((java.lang.String) t.get(POSITION_P1), (java.lang.String) t.get(POSITION_P2), (java.lang.String) t.get(POSITION_P3), (java.lang.String) t.get(POSITION_P4), (java.lang.String) t.get(POSITION_P5));
     } catch(ClassCastException e) {
       LOGGER.error("Element(s) in tuple not properly typed!",e);
       return null;
@@ -450,7 +450,7 @@ public class PersonsTo5CliqueMatcher extends BaseMatcher<PersonsTo5CliqueMatch> 
   @Override
   protected PersonsTo5CliqueMatch arrayToMatch(final Object[] match) {
     try {
-      return new PersonsTo5CliqueMatch.Immutable((java.lang.String) match[POSITION_P1], (java.lang.String) match[POSITION_P2], (java.lang.String) match[POSITION_P3], (java.lang.String) match[POSITION_P4], (java.lang.String) match[POSITION_P5]);
+      return PersonsTo5CliqueMatch.newMatch((java.lang.String) match[POSITION_P1], (java.lang.String) match[POSITION_P2], (java.lang.String) match[POSITION_P3], (java.lang.String) match[POSITION_P4], (java.lang.String) match[POSITION_P5]);
     } catch(ClassCastException e) {
       LOGGER.error("Element(s) in array not properly typed!",e);
       return null;
@@ -461,7 +461,7 @@ public class PersonsTo5CliqueMatcher extends BaseMatcher<PersonsTo5CliqueMatch> 
   @Override
   protected PersonsTo5CliqueMatch arrayToMatchMutable(final Object[] match) {
     try {
-      return new PersonsTo5CliqueMatch.Mutable((java.lang.String) match[POSITION_P1], (java.lang.String) match[POSITION_P2], (java.lang.String) match[POSITION_P3], (java.lang.String) match[POSITION_P4], (java.lang.String) match[POSITION_P5]);
+      return PersonsTo5CliqueMatch.newMutableMatch((java.lang.String) match[POSITION_P1], (java.lang.String) match[POSITION_P2], (java.lang.String) match[POSITION_P3], (java.lang.String) match[POSITION_P4], (java.lang.String) match[POSITION_P5]);
     } catch(ClassCastException e) {
       LOGGER.error("Element(s) in array not properly typed!",e);
       return null;

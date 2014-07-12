@@ -1,6 +1,7 @@
 package hu.bme.mit.ttc.imdb.queries.util;
 
 import com.google.common.collect.Sets;
+import hu.bme.mit.ttc.imdb.queries.CommonMoviesToCoupleMatch;
 import hu.bme.mit.ttc.imdb.queries.CommonMoviesToCoupleMatcher;
 import hu.bme.mit.ttc.imdb.queries.util.PersonsToCoupleQuerySpecification;
 import java.util.Arrays;
@@ -9,7 +10,6 @@ import java.util.Set;
 import org.eclipse.incquery.runtime.api.IncQueryEngine;
 import org.eclipse.incquery.runtime.api.impl.BaseGeneratedQuerySpecification;
 import org.eclipse.incquery.runtime.exception.IncQueryException;
-import org.eclipse.incquery.runtime.extensibility.IQuerySpecificationProvider;
 import org.eclipse.incquery.runtime.matchers.psystem.IExpressionEvaluator;
 import org.eclipse.incquery.runtime.matchers.psystem.IValueProvider;
 import org.eclipse.incquery.runtime.matchers.psystem.PBody;
@@ -62,6 +62,16 @@ public final class CommonMoviesToCoupleQuerySpecification extends BaseGeneratedQ
   }
   
   @Override
+  public CommonMoviesToCoupleMatch newEmptyMatch() {
+    return CommonMoviesToCoupleMatch.newEmptyMatch();
+  }
+  
+  @Override
+  public CommonMoviesToCoupleMatch newMatch(final Object... parameters) {
+    return CommonMoviesToCoupleMatch.newMatch((java.lang.String) parameters[0], (java.lang.String) parameters[1], (hu.bme.mit.ttc.imdb.movies.Movie) parameters[2]);
+  }
+  
+  @Override
   public Set<PBody> doGetContainedBodies() throws IncQueryException {
     Set<PBody> bodies = Sets.newLinkedHashSet();
     {
@@ -108,16 +118,6 @@ public final class CommonMoviesToCoupleQuerySpecification extends BaseGeneratedQ
     return bodies;
   }
   
-  @SuppressWarnings("all")
-  public static class Provider implements IQuerySpecificationProvider<CommonMoviesToCoupleQuerySpecification> {
-    @Override
-    public CommonMoviesToCoupleQuerySpecification get() throws IncQueryException {
-      return instance();
-    }
-  }
-  
-  
-  @SuppressWarnings("all")
   private static class LazyHolder {
     private final static CommonMoviesToCoupleQuerySpecification INSTANCE = make();
     
@@ -126,7 +126,6 @@ public final class CommonMoviesToCoupleQuerySpecification extends BaseGeneratedQ
       
     }
   }
-  
   
   private boolean evaluateExpression_1_1(final String p1name, final String p2name) {
     boolean _lessThan = (p1name.compareTo(p2name) < 0);

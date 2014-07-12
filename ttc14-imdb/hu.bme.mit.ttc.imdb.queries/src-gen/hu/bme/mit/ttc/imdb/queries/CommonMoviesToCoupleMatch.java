@@ -118,6 +118,12 @@ public abstract class CommonMoviesToCoupleMatch extends BasePatternMatch {
   }
   
   @Override
+  public CommonMoviesToCoupleMatch toImmutable() {
+    return isMutable() ? newMatch(fP1name, fP2name, fM) : this;
+    
+  }
+  
+  @Override
   public String prettyPrint() {
     StringBuilder result = new StringBuilder();
     result.append("\"p1name\"=" + prettyPrintValue(fP1name) + ", ");
@@ -173,8 +179,49 @@ public abstract class CommonMoviesToCoupleMatch extends BasePatternMatch {
     
   }
   
-  @SuppressWarnings("all")
-  static final class Mutable extends CommonMoviesToCoupleMatch {
+  /**
+   * Returns an empty, mutable match.
+   * Fields of the mutable match can be filled to create a partial match, usable as matcher input.
+   * 
+   * @return the empty match.
+   * 
+   */
+  public static CommonMoviesToCoupleMatch newEmptyMatch() {
+    return new Mutable(null, null, null);
+    
+  }
+  
+  /**
+   * Returns a mutable (partial) match.
+   * Fields of the mutable match can be filled to create a partial match, usable as matcher input.
+   * 
+   * @param pP1name the fixed value of pattern parameter p1name, or null if not bound.
+   * @param pP2name the fixed value of pattern parameter p2name, or null if not bound.
+   * @param pM the fixed value of pattern parameter m, or null if not bound.
+   * @return the new, mutable (partial) match object.
+   * 
+   */
+  public static CommonMoviesToCoupleMatch newMutableMatch(final String pP1name, final String pP2name, final Movie pM) {
+    return new Mutable(pP1name, pP2name, pM);
+    
+  }
+  
+  /**
+   * Returns a new (partial) match.
+   * This can be used e.g. to call the matcher with a partial match.
+   * <p>The returned match will be immutable. Use {@link #newEmptyMatch()} to obtain a mutable match object.
+   * @param pP1name the fixed value of pattern parameter p1name, or null if not bound.
+   * @param pP2name the fixed value of pattern parameter p2name, or null if not bound.
+   * @param pM the fixed value of pattern parameter m, or null if not bound.
+   * @return the (partial) match object.
+   * 
+   */
+  public static CommonMoviesToCoupleMatch newMatch(final String pP1name, final String pP2name, final Movie pM) {
+    return new Immutable(pP1name, pP2name, pM);
+    
+  }
+  
+  private static final class Mutable extends CommonMoviesToCoupleMatch {
     Mutable(final String pP1name, final String pP2name, final Movie pM) {
       super(pP1name, pP2name, pM);
       
@@ -186,9 +233,7 @@ public abstract class CommonMoviesToCoupleMatch extends BasePatternMatch {
     }
   }
   
-  
-  @SuppressWarnings("all")
-  static final class Immutable extends CommonMoviesToCoupleMatch {
+  private static final class Immutable extends CommonMoviesToCoupleMatch {
     Immutable(final String pP1name, final String pP2name, final Movie pM) {
       super(pP1name, pP2name, pM);
       
@@ -199,5 +244,4 @@ public abstract class CommonMoviesToCoupleMatch extends BasePatternMatch {
       return false;
     }
   }
-  
 }

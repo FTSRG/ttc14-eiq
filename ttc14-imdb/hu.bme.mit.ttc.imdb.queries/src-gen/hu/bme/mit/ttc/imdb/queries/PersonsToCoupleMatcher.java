@@ -204,7 +204,7 @@ public class PersonsToCoupleMatcher extends BaseMatcher<PersonsToCoupleMatch> {
   }
   
   /**
-   * Returns a new (partial) Match object for the matcher.
+   * Returns a new (partial) match.
    * This can be used e.g. to call the matcher with a partial match.
    * <p>The returned match will be immutable. Use {@link #newEmptyMatch()} to obtain a mutable match object.
    * @param pP1name the fixed value of pattern parameter p1name, or null if not bound.
@@ -213,7 +213,7 @@ public class PersonsToCoupleMatcher extends BaseMatcher<PersonsToCoupleMatch> {
    * 
    */
   public PersonsToCoupleMatch newMatch(final String pP1name, final String pP2name) {
-    return new PersonsToCoupleMatch.Immutable(pP1name, pP2name);
+    return PersonsToCoupleMatch.newMatch(pP1name, pP2name);
     
   }
   
@@ -296,7 +296,7 @@ public class PersonsToCoupleMatcher extends BaseMatcher<PersonsToCoupleMatch> {
   @Override
   protected PersonsToCoupleMatch tupleToMatch(final Tuple t) {
     try {
-      return new PersonsToCoupleMatch.Immutable((java.lang.String) t.get(POSITION_P1NAME), (java.lang.String) t.get(POSITION_P2NAME));
+      return PersonsToCoupleMatch.newMatch((java.lang.String) t.get(POSITION_P1NAME), (java.lang.String) t.get(POSITION_P2NAME));
     } catch(ClassCastException e) {
       LOGGER.error("Element(s) in tuple not properly typed!",e);
       return null;
@@ -307,7 +307,7 @@ public class PersonsToCoupleMatcher extends BaseMatcher<PersonsToCoupleMatch> {
   @Override
   protected PersonsToCoupleMatch arrayToMatch(final Object[] match) {
     try {
-      return new PersonsToCoupleMatch.Immutable((java.lang.String) match[POSITION_P1NAME], (java.lang.String) match[POSITION_P2NAME]);
+      return PersonsToCoupleMatch.newMatch((java.lang.String) match[POSITION_P1NAME], (java.lang.String) match[POSITION_P2NAME]);
     } catch(ClassCastException e) {
       LOGGER.error("Element(s) in array not properly typed!",e);
       return null;
@@ -318,7 +318,7 @@ public class PersonsToCoupleMatcher extends BaseMatcher<PersonsToCoupleMatch> {
   @Override
   protected PersonsToCoupleMatch arrayToMatchMutable(final Object[] match) {
     try {
-      return new PersonsToCoupleMatch.Mutable((java.lang.String) match[POSITION_P1NAME], (java.lang.String) match[POSITION_P2NAME]);
+      return PersonsToCoupleMatch.newMutableMatch((java.lang.String) match[POSITION_P1NAME], (java.lang.String) match[POSITION_P2NAME]);
     } catch(ClassCastException e) {
       LOGGER.error("Element(s) in array not properly typed!",e);
       return null;

@@ -100,6 +100,12 @@ public abstract class MemberOfGroupMatch extends BasePatternMatch {
   }
   
   @Override
+  public MemberOfGroupMatch toImmutable() {
+    return isMutable() ? newMatch(fPerson, fGroup) : this;
+    
+  }
+  
+  @Override
   public String prettyPrint() {
     StringBuilder result = new StringBuilder();
     result.append("\"person\"=" + prettyPrintValue(fPerson) + ", ");
@@ -151,8 +157,47 @@ public abstract class MemberOfGroupMatch extends BasePatternMatch {
     
   }
   
-  @SuppressWarnings("all")
-  static final class Mutable extends MemberOfGroupMatch {
+  /**
+   * Returns an empty, mutable match.
+   * Fields of the mutable match can be filled to create a partial match, usable as matcher input.
+   * 
+   * @return the empty match.
+   * 
+   */
+  public static MemberOfGroupMatch newEmptyMatch() {
+    return new Mutable(null, null);
+    
+  }
+  
+  /**
+   * Returns a mutable (partial) match.
+   * Fields of the mutable match can be filled to create a partial match, usable as matcher input.
+   * 
+   * @param pPerson the fixed value of pattern parameter person, or null if not bound.
+   * @param pGroup the fixed value of pattern parameter group, or null if not bound.
+   * @return the new, mutable (partial) match object.
+   * 
+   */
+  public static MemberOfGroupMatch newMutableMatch(final Person pPerson, final Group pGroup) {
+    return new Mutable(pPerson, pGroup);
+    
+  }
+  
+  /**
+   * Returns a new (partial) match.
+   * This can be used e.g. to call the matcher with a partial match.
+   * <p>The returned match will be immutable. Use {@link #newEmptyMatch()} to obtain a mutable match object.
+   * @param pPerson the fixed value of pattern parameter person, or null if not bound.
+   * @param pGroup the fixed value of pattern parameter group, or null if not bound.
+   * @return the (partial) match object.
+   * 
+   */
+  public static MemberOfGroupMatch newMatch(final Person pPerson, final Group pGroup) {
+    return new Immutable(pPerson, pGroup);
+    
+  }
+  
+  private static final class Mutable extends MemberOfGroupMatch {
     Mutable(final Person pPerson, final Group pGroup) {
       super(pPerson, pGroup);
       
@@ -164,9 +209,7 @@ public abstract class MemberOfGroupMatch extends BasePatternMatch {
     }
   }
   
-  
-  @SuppressWarnings("all")
-  static final class Immutable extends MemberOfGroupMatch {
+  private static final class Immutable extends MemberOfGroupMatch {
     Immutable(final Person pPerson, final Group pGroup) {
       super(pPerson, pGroup);
       
@@ -177,5 +220,4 @@ public abstract class MemberOfGroupMatch extends BasePatternMatch {
       return false;
     }
   }
-  
 }

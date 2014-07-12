@@ -194,7 +194,7 @@ public class CommonMoviesOfCoupleMatcher extends BaseMatcher<CommonMoviesOfCoupl
   }
   
   /**
-   * Returns a new (partial) Match object for the matcher.
+   * Returns a new (partial) match.
    * This can be used e.g. to call the matcher with a partial match.
    * <p>The returned match will be immutable. Use {@link #newEmptyMatch()} to obtain a mutable match object.
    * @param pC the fixed value of pattern parameter c, or null if not bound.
@@ -203,7 +203,7 @@ public class CommonMoviesOfCoupleMatcher extends BaseMatcher<CommonMoviesOfCoupl
    * 
    */
   public CommonMoviesOfCoupleMatch newMatch(final Couple pC, final Movie pM) {
-    return new CommonMoviesOfCoupleMatch.Immutable(pC, pM);
+    return CommonMoviesOfCoupleMatch.newMatch(pC, pM);
     
   }
   
@@ -286,7 +286,7 @@ public class CommonMoviesOfCoupleMatcher extends BaseMatcher<CommonMoviesOfCoupl
   @Override
   protected CommonMoviesOfCoupleMatch tupleToMatch(final Tuple t) {
     try {
-      return new CommonMoviesOfCoupleMatch.Immutable((hu.bme.mit.ttc.imdb.movies.Couple) t.get(POSITION_C), (hu.bme.mit.ttc.imdb.movies.Movie) t.get(POSITION_M));
+      return CommonMoviesOfCoupleMatch.newMatch((hu.bme.mit.ttc.imdb.movies.Couple) t.get(POSITION_C), (hu.bme.mit.ttc.imdb.movies.Movie) t.get(POSITION_M));
     } catch(ClassCastException e) {
       LOGGER.error("Element(s) in tuple not properly typed!",e);
       return null;
@@ -297,7 +297,7 @@ public class CommonMoviesOfCoupleMatcher extends BaseMatcher<CommonMoviesOfCoupl
   @Override
   protected CommonMoviesOfCoupleMatch arrayToMatch(final Object[] match) {
     try {
-      return new CommonMoviesOfCoupleMatch.Immutable((hu.bme.mit.ttc.imdb.movies.Couple) match[POSITION_C], (hu.bme.mit.ttc.imdb.movies.Movie) match[POSITION_M]);
+      return CommonMoviesOfCoupleMatch.newMatch((hu.bme.mit.ttc.imdb.movies.Couple) match[POSITION_C], (hu.bme.mit.ttc.imdb.movies.Movie) match[POSITION_M]);
     } catch(ClassCastException e) {
       LOGGER.error("Element(s) in array not properly typed!",e);
       return null;
@@ -308,7 +308,7 @@ public class CommonMoviesOfCoupleMatcher extends BaseMatcher<CommonMoviesOfCoupl
   @Override
   protected CommonMoviesOfCoupleMatch arrayToMatchMutable(final Object[] match) {
     try {
-      return new CommonMoviesOfCoupleMatch.Mutable((hu.bme.mit.ttc.imdb.movies.Couple) match[POSITION_C], (hu.bme.mit.ttc.imdb.movies.Movie) match[POSITION_M]);
+      return CommonMoviesOfCoupleMatch.newMutableMatch((hu.bme.mit.ttc.imdb.movies.Couple) match[POSITION_C], (hu.bme.mit.ttc.imdb.movies.Movie) match[POSITION_M]);
     } catch(ClassCastException e) {
       LOGGER.error("Element(s) in array not properly typed!",e);
       return null;

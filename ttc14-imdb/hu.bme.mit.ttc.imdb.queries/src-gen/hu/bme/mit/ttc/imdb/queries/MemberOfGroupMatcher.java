@@ -200,7 +200,7 @@ public class MemberOfGroupMatcher extends BaseMatcher<MemberOfGroupMatch> {
   }
   
   /**
-   * Returns a new (partial) Match object for the matcher.
+   * Returns a new (partial) match.
    * This can be used e.g. to call the matcher with a partial match.
    * <p>The returned match will be immutable. Use {@link #newEmptyMatch()} to obtain a mutable match object.
    * @param pPerson the fixed value of pattern parameter person, or null if not bound.
@@ -209,7 +209,7 @@ public class MemberOfGroupMatcher extends BaseMatcher<MemberOfGroupMatch> {
    * 
    */
   public MemberOfGroupMatch newMatch(final Person pPerson, final Group pGroup) {
-    return new MemberOfGroupMatch.Immutable(pPerson, pGroup);
+    return MemberOfGroupMatch.newMatch(pPerson, pGroup);
     
   }
   
@@ -292,7 +292,7 @@ public class MemberOfGroupMatcher extends BaseMatcher<MemberOfGroupMatch> {
   @Override
   protected MemberOfGroupMatch tupleToMatch(final Tuple t) {
     try {
-      return new MemberOfGroupMatch.Immutable((hu.bme.mit.ttc.imdb.movies.Person) t.get(POSITION_PERSON), (hu.bme.mit.ttc.imdb.movies.Group) t.get(POSITION_GROUP));
+      return MemberOfGroupMatch.newMatch((hu.bme.mit.ttc.imdb.movies.Person) t.get(POSITION_PERSON), (hu.bme.mit.ttc.imdb.movies.Group) t.get(POSITION_GROUP));
     } catch(ClassCastException e) {
       LOGGER.error("Element(s) in tuple not properly typed!",e);
       return null;
@@ -303,7 +303,7 @@ public class MemberOfGroupMatcher extends BaseMatcher<MemberOfGroupMatch> {
   @Override
   protected MemberOfGroupMatch arrayToMatch(final Object[] match) {
     try {
-      return new MemberOfGroupMatch.Immutable((hu.bme.mit.ttc.imdb.movies.Person) match[POSITION_PERSON], (hu.bme.mit.ttc.imdb.movies.Group) match[POSITION_GROUP]);
+      return MemberOfGroupMatch.newMatch((hu.bme.mit.ttc.imdb.movies.Person) match[POSITION_PERSON], (hu.bme.mit.ttc.imdb.movies.Group) match[POSITION_GROUP]);
     } catch(ClassCastException e) {
       LOGGER.error("Element(s) in array not properly typed!",e);
       return null;
@@ -314,7 +314,7 @@ public class MemberOfGroupMatcher extends BaseMatcher<MemberOfGroupMatch> {
   @Override
   protected MemberOfGroupMatch arrayToMatchMutable(final Object[] match) {
     try {
-      return new MemberOfGroupMatch.Mutable((hu.bme.mit.ttc.imdb.movies.Person) match[POSITION_PERSON], (hu.bme.mit.ttc.imdb.movies.Group) match[POSITION_GROUP]);
+      return MemberOfGroupMatch.newMutableMatch((hu.bme.mit.ttc.imdb.movies.Person) match[POSITION_PERSON], (hu.bme.mit.ttc.imdb.movies.Group) match[POSITION_GROUP]);
     } catch(ClassCastException e) {
       LOGGER.error("Element(s) in array not properly typed!",e);
       return null;
