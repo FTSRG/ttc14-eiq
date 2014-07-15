@@ -12,11 +12,11 @@
 /.MemberOfGroupQuerySpecification.java._trace
 /.PersonNameProcessor.java._trace
 /.PersonNameQuerySpecification.java._trace
-/.PersonsToCoupleProcessor.java._trace
-/.PersonsToCoupleQuerySpecification.java._trace
 /.PersonsTo3CliqueProcessor.java._trace
 /.PersonsTo3CliqueQuerySpecification.java._trace
 /.PersonsTo4CliqueProcessor.java._trace
 /.PersonsTo4CliqueQuerySpecification.java._trace
 /.PersonsTo5CliqueProcessor.java._trace
 /.PersonsTo5CliqueQuerySpecification.java._trace
+/.PersonsToCoupleProcessor.java._trace
+/.PersonsToCoupleQuerySpecification.java._trace

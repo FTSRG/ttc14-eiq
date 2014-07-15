@@ -17,7 +17,7 @@
 	<properties>
 		<tycho.version>0.20.0</tycho.version>
 		<tycho.extras.version>0.20.0</tycho.extras.version>
-		<xtend.compiler.version>2.4.3</xtend.compiler.version>
+		<xtend.compiler.version>2.6.2</xtend.compiler.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.showWarnings>true</maven.compiler.showWarnings>
 		<incquery.update.site>http://download.eclipse.org/incquery/updates/release</incquery.update.site>

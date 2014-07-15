@@ -35,6 +35,7 @@ public class GeneratorConfiguration {
 	def protected initOptions() {
 		options.addOption("help", false, "displays this text")
 		options.addOption("instanceModelDir", true, "instance model directory")
+		options.addOption("N", true, "model size")
 	}
 
 	def protected processArguments(String[] args) {
@@ -42,7 +43,7 @@ public class GeneratorConfiguration {
 
 		if (cmd.hasOption("instanceModelDir"))
 			instanceModelDir = cmd.getOptionValue("instanceModelDir")
-		if (cmd.hasOption("N"))
+		if (cmd.hasOption("N")) 
 			n = new Integer(cmd.getOptionValue("N"))
 	}
 
