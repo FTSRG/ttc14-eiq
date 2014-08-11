@@ -1,0 +1,4 @@
+pattern groupSize(group, S) {
+	Group(group);
+	S == count find memberOfGroup(_, group);
+}

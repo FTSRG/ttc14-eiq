@@ -1,0 +1,3 @@
+pattern commonMoviesOfCouple(c, m) {
+	Couple.commonMovies(c, m);
+}

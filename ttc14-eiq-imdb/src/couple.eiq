@@ -1,0 +1,17 @@
+pattern personsToCouple(p1name, p2name) {
+	find cast(p1name, M1); find cast(p2name, M1);
+	find cast(p1name, M2); find cast(p2name, M2);
+	find cast(p1name, M3); find cast(p2name, M3);
+	
+	M1 != M2; M2 != M3; M1 != M3;
+	
+	check(p1name < p2name);
+}
+
+pattern cast(name, M) {
+	Movie.persons.name(M, name);
+}
+
+pattern personName(p, pName) {
+	Person.name(p, pName);
+}

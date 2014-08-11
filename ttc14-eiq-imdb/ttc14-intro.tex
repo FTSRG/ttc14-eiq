@@ -1,0 +1,13 @@
+\section{Introduction}
+
+The use of automated model transformations is a key factor in modern model-driven system engineering. Model transformations allow to query, derive and manipulate large industrial models, including models based on existing systems, e.g.\ source code models created with reverse engineering techniques. Since such transformations are frequently integrated to modeling environments, they need to feature both high performance and a concise programming interface to support software engineers.
+
+The objective of the \incquery{}~\cite{eiq-hompage} framework is to provide a declarative way to define queries over EMF models without needing to manually define imperative model traversals. \incquery{} extended the pattern language of VIATRA with new features (including transitive closure, role navigation, match count) and tailored it to EMF models~\cite{iqpl}. The semantics of the pattern language is similar to VTCL~\cite{Varro2007214}, but the adaptation of the rule language is an ongoing work.
+
+\incquery{} is developed with a focus on \emph{incremental query evaluation} and uses the same incremental algorithm as VIATRA. The latest developments extend this concept by providing a preliminary rule execution engine to perform transformations. As the engine is under heavy development, the design of a dedicated rule language (instead of using the API of the engine) is currently subject to future work. 
+
+Conceptually, the current execution environment provides a method for specifying graph transformations (GT) as rules, where the LHS (left hand side) is defined with declarative \incquery{} graph patterns, defined in \iqpl{}~\cite{iqpl} and the RHS (right hand side) as imperative model manipulations formulated in the Xtend programming language~\cite{xtend}. The rule execution engine is also configured from Xtend code.
+
+One case study of the 2014 Transformation Tool Contest describes a movie database transformation~\cite{Horn14}. The main characteristics of the transformation related to the application of \incquery{} are that i) it only adds new elements to the input model (i.e.\ couples and groups are created without modifying the input model), and ii) it is non-incremental (i.e.\ adding a new group with a rule will not affect the applicability of rules).
+
+The rest of the paper is structured as follows: \secref{sec:overview} gives an overview of the implementation, \secref{sec:solution} describes the solution including design decisions, benchmark results, and \secref{sec:conclusion} concludes our paper.

@@ -1,0 +1,167 @@
+\documentclass[submission,copyright,creativecommons]{eptcs}
+\providecommand{\event}{TTC 2014} % Name of the event you are submitting to
+\usepackage{breakurl}             % Not needed if you use pdflatex only.
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{url}
+\usepackage{float}
+\usepackage{textcomp}
+\usepackage{wrapfig}
+\usepackage{tabularx}
+\usepackage{graphicx}
+\usepackage{caption}
+\captionsetup{compatibility=false}
+\usepackage{subcaption}
+\graphicspath{ {./fig/} }
+
+\newcommand{\todo}[1]{\textbf{TODO: {#1}}}
+\newcommand{\textunit}[1]{\textbf{#1.} }
+
+% standard VIATRA stuff
+\usepackage{color}
+\definecolor{listinggray}{rgb}{0.92,0.92,0.92}
+\definecolor{keywordcolor}{rgb}{0.5,0,0.1}
+\definecolor{commentcolor}{rgb}{0,0.3,0.1}
+\definecolor{stringcolor}{rgb}{0,0,1}
+\usepackage{listings}
+\lstdefinelanguage{viatra}
+{morekeywords={@QueryBasedFeature,@Constraint,count,pattern,
+    neg,find,import,true,false,or,check,job,action,state,severity,location,message,
+    oclIsKindOf,self,exists,includes,invariant,class},
+ sensitive=true, morecomment=[l]{//}, morecomment=[s]{/*}{*/},
+ morestring=[b]{"},
+}
+\newcommand{\listingIQPL}[1]
+{
+\lstset{backgroundcolor=\color{listinggray}}
+\lstset{basicstyle=\scriptsize\ttfamily}
+\lstset{commentstyle=\color{commentcolor}\ttfamily}
+\lstset{stringstyle=\color{stringcolor}\ttfamily}
+\lstset{frameround=tttt}
+\lstset{captionpos=b}
+\lstset{keywordstyle=\color{keywordcolor}\bfseries\ttfamily}
+\lstset{showstringspaces=false}
+\lstset{tabsize=2}
+\lstset{numbers=left,numberstyle=\scriptsize\ttfamily,stepnumber=1,numbersep=5pt}
+\lstset{language=viatra}
+\lstset{escapeinside={(*@}{@*)}}
+\lstset{breaklines=true}
+\lstinputlisting{#1}
+}
+
+\lstdefinelanguage{Xtend}{
+ morekeywords={def,val,var,cached,case,default,extension,false,import,JAVA,WORKFLOWSLOT,let,new,null,private,create,switch,this,true,reexport,around,if,then,else,context,DEFAULT_NO_UPDATE_AND_DISAPPEAR,DEFAULT,APPEARED,DISAPPEARED,UPDATED,processor},
+ keywordstyle=[2]{\textbf},
+ morecomment=[l]{//}, 
+ morecomment=[s]{/*}{*/}, 
+ morestring=[b]",
+ tabsize=2
+}
+\newcommand{\listingXtend}[1]{
+%\lstset{backgroundcolor=\color{listinggray}}
+\lstset{numbers=left,numberstyle=\tiny\ttfamily,stepnumber=1,numbersep=5pt}
+\lstset{commentstyle=\color{commentcolor}\ttfamily}
+\lstset{stringstyle=\color{stringcolor}\ttfamily}
+\lstset{keywordstyle=\color{keywordcolor}\bfseries\ttfamily}
+\lstset{breaklines=true}
+\lstset{language=Xtend}
+\lstset{mathescape=true}
+\lstset{basicstyle=\scriptsize\ttfamily}
+\lstset{escapeinside={(*@}{@*)}}
+\lstset{literate=*{[guilleft]}{\guillemotleft{}}{1}{[guilright]}{\guillemotright{}}{1},}
+
+%\lstset{literate={\-}{}{0\discretionary{-}{}{}}}
+\lstinputlisting{#1}
+}
+
+\newcommand{\viatra}{\textsc{Viatra2}}
+\newcommand{\incquery}{\textsc{EMF-IncQuery}}
+\newcommand{\iqpl}{\incquery{} Pattern Language}
+
+\newcommand{\defref}[1]{#1~(see~\ref{def:#1}, page~\pageref{def:#1})}
+\newcommand{\figref}[1]{Figure~\ref{#1}}
+\newcommand{\tblref}[1]{Table~\ref{#1}}
+%\newcommand{\charef}[1]{Chapter~\ref{#1}}
+\newcommand{\secref}[1]{Section~\ref{#1}}
+\newcommand{\subsecref}[1]{Section~\ref{#1}}
+\newcommand{\appref}[1]{Appendix~\ref{#1}}
+\newcommand{\figlabel}[1]{\textsf{#1}}
+\newcommand{\fl}[1]{\figlabel{#1}}
+
+\newcommand{\code}[1]{\lstinline[basicstyle=\small\ttfamily]!#1!}
+%\newcommand{\code}[1]{\lstinline[basicstyle=\small\itshape]!#1!}
+\newcommand{\df}[1]{\emph{#1}}
+\newcommand{\highlight}[1]{\textit{#1}}
+%Defining the contract and element dependency relations
+\newcommand{\edepend}[2]{\ensuremath{#1 \succ #2}}
+\newcommand{\cdepend}[2]{\ensuremath{#1 \gg #2}}
+\newcommand{\assign}[2]{\ensuremath{#1 \mapsto #2}}
+\newcommand{\tuple}[1]{\ensuremath{\langle#1\rangle}}
+\newcommand{\HEADER}{\item[\textsf{PROCEDURE}]}
+% \renewcommand{\algorithmicforall}{\textbf{for each}}
+
+\definecolor{lvl2}{rgb}{0,0.5,0}
+\definecolor{lvl1}{rgb}{0,0,0.5}
+\definecolor{lvl0}{rgb}{0.5,0,0}				
+
+
+\makeatletter
+\providecommand*{\toclevel@author}{0}
+\providecommand*{\toclevel@title}{0}
+\makeatother
+
+
+\def\figureautorefname{Fig.}%
+\def\subfigureautorefname{Fig.}%
+\def\tableautorefname{Table}%
+\def\partautorefname{Part}%
+\def\appendixautorefname{Appendix}%
+\def\chapterautorefname{Chapter}%
+\def\sectionautorefname{Sec.}%
+\def\subsectionautorefname{Sec.}
+\def\listingautorefname{Lst.}
+\def\lstnumberautorefname{Line}
+
+\setcounter{tocdepth}{4}
+
+\title{Movie Database Case: An \incquery{} Solution\thanks{This work was partially supported by the MONDO (EU ICT-611125) and T\'AMOP (4.2.2.B-10/1--2010-0009) projects. This research was realized in the frames of TÁMOP 4.2.4. A/1-11-1-2012-0001  ,,National Excellence Program – Elaborating and operating an inland student and researcher personal support system''. The project was subsidized by the European Union and co-financed by the European Social Fund.}}
+\author{
+G\'{a}bor Sz\'{a}rnyas \quad 
+Oszk\'{a}r Semer\'{a}th \quad 
+Benedek Izs\'{o} \quad
+Csaba Debreceni \and
+\'{A}bel Heged\"{u}s \quad
+Zolt\'{a}n Ujhelyi \quad 
+G\'{a}bor Bergmann
+\institute{Budapest University of Technology and Economics,\\
+Department of Measurement and Information Systems,\\
+H-1117 Magyar tud\'{o}sok krt. 2., Budapest, Hungary}
+\email{\{szarnyas, semerath, izso, debrecenics, abel.hegedus, ujhelyiz, bergmann\}@mit.bme.hu}
+}
+\def\titlerunning{Movie Database Case: An \incquery{} solution}
+\def\authorrunning{G. Sz\'{a}rnyas et al.}
+\begin{document}
+\maketitle
+
+\begin{abstract}
+This paper presents a solution for the Movie Database Case of the Transformation Tool Contest 2014, using \incquery{} and Xtend for implementing the model transformation.
+\end{abstract}
+
+\input{ttc14-intro}
+
+\input{ttc14-overview}
+
+\input{ttc14-solution}
+
+\input{ttc14-conclusion}
+
+\newpage 
+
+\bibliographystyle{eptcs}
+\bibliography{bib/ttc14}
+
+%\clearpage
+%\appendix
+%\input{ttc14-appendix}
+
+\end{document}
