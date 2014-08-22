@@ -1,10 +1,13 @@
 pattern personsTo3Clique(P1, P2, P3) {
-	find cast(P1, M1); find cast(P2, M1); find cast(P3, M1);
-	find cast(P1, M2); find cast(P2, M2); find cast(P3, M2);
-	find cast(P1, M3); find cast(P2, M3); find cast(P3, M3);
+ find cast(P1, M1); find cast(P2, M1); 
+ find cast(P3, M1);
+ find cast(P1, M2); find cast(P2, M2); 
+ find cast(P3, M2);
+ find cast(P1, M3); find cast(P2, M3); 
+ find cast(P3, M3);
 	
-	M1 != M2; M2 != M3; M1 != M3;
+ M1 != M2; M2 != M3; M1 != M3;
 	
-	check(P1 < P2); check(P2 < P3);
-	check(P1 < P3);
+ check(P1 < P2); check(P2 < P3);
+ check(P1 < P3);
 }

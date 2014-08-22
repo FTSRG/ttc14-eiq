@@ -1,27 +1,24 @@
-pattern nextCliques(g : Group, p : Person)  {
+pattern nextCliques(g : Group, p : Person){
 	neg find alphabeticallyLaterMemberOfGroup(g, p);
 	n == count find commonMovieOfGroupAndPerson(g, p, m);
 	check(n >= 3);	
 	neg find union(g, p);
 }
-
-pattern alphabeticallyLaterMemberOfGroup(g : Group, p : Person)  {
+// alphabeticallyLaterMemberOfGroup
+pattern aLaterMemberOfGroup(g : Group, p : Person){
 	find memberOfGroup(m, g);
 	Person.name(p, pName);
 	Person.name(m, mName);
 	check(mName >= pName);
 }
-
-pattern commonMovieOfGroupAndPerson(g, p, m) {
+pattern commonMovieOfGroupAndPerson(g,p,m){
 	find commonMoviesOfGroup(g, m);
 	Person.movies(p, m);
 }
-
-pattern commonMoviesOfGroup(g, m) {
+pattern commonMoviesOfGroup(g, m){
 	Group.commonMovies(g, m);
 }
-
-pattern union(g0, p) {
+pattern union(g0, p){
 	find memberOfGroup(p, gx);
 	find subsetOfGroup(g0, gx);
 }

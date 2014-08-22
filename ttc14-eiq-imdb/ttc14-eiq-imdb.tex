@@ -1,7 +1,7 @@
 \documentclass[submission,copyright,creativecommons]{eptcs}
 \providecommand{\event}{TTC 2014} % Name of the event you are submitting to
 \usepackage{breakurl}             % Not needed if you use pdflatex only.
-\usepackage[utf8]{inputenc}
+\usepackage[utf8x]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{url}
 \usepackage{float}
@@ -31,8 +31,13 @@
  sensitive=true, morecomment=[l]{//}, morecomment=[s]{/*}{*/},
  morestring=[b]{"},
 }
-\newcommand{\listingIQPL}[1]
+
+\DeclareCaptionFormat{listing}{\colorbox[cmyk]{0, 0, 0,0}{\parbox{1.03\textwidth}{\center#1#2#3}}}
+\captionsetup[lstlisting]{format=listing, singlelinecheck=false, margin=0pt}
+
+\newcommand{\listingIQPL}[2]
 {
+%\renewcommand\lstlistingname{Pattern}
 \lstset{backgroundcolor=\color{listinggray}}
 \lstset{basicstyle=\scriptsize\ttfamily}
 \lstset{commentstyle=\color{commentcolor}\ttfamily}
@@ -46,7 +51,7 @@
 \lstset{language=viatra}
 \lstset{escapeinside={(*@}{@*)}}
 \lstset{breaklines=true}
-\lstinputlisting{#1}
+\lstinputlisting[caption=#2]{#1}
 }
 
 \lstdefinelanguage{Xtend}{
@@ -124,7 +129,7 @@
 
 \setcounter{tocdepth}{4}
 
-\title{Movie Database Case: An \incquery{} Solution\thanks{This work was partially supported by the MONDO (EU ICT-611125) and T\'AMOP (4.2.2.B-10/1--2010-0009) projects. This research was realized in the frames of TÁMOP 4.2.4. A/1-11-1-2012-0001  ,,National Excellence Program – Elaborating and operating an inland student and researcher personal support system''. The project was subsidized by the European Union and co-financed by the European Social Fund.}}
+\title{Movie Database Case: An \incquery{} Solution\thanks{This work was partially supported by the MONDO (EU ICT-611125) and T\'AMOP (4.2.2.B-10/1--2010-0009) projects. This research was realized in the frames of TĂ�MOP 4.2.4. A/1-11-1-2012-0001  ,,National Excellence Program â€“ Elaborating and operating an inland student and researcher personal support system''. The project was subsidized by the European Union and co-financed by the European Social Fund.}}
 \author{
 G\'{a}bor Sz\'{a}rnyas \quad 
 Oszk\'{a}r Semer\'{a}th \quad 
@@ -155,7 +160,7 @@ This paper presents a solution for the Movie Database Case of the Transformation
 
 \input{ttc14-conclusion}
 
-\newpage 
+%\newpage 
 
 \bibliographystyle{eptcs}
 \bibliography{bib/ttc14}

@@ -27,9 +27,9 @@ class Generator {
 		val d = createActress("a" + (10 * n + 3))
 		val e = createActress("a" + (10 * n + 4))
 
-		val actors =   #[a, b, c, d, e]
+		val actors   = #[a, b, c, d, e]
 		val firstTwo = #[a, b]
-		val lastTwo =  #[         d, e]
+		val lastTwo  = #[         d, e]
 
 		movies.get(0).persons += firstTwo;
 		(1 .. 3).forEach[movies.get(it).persons += actors]
